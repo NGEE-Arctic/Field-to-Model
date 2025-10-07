@@ -143,6 +143,66 @@ USER modex_user
 WORKDIR /home/modex_user
 ADD tools /home/modex_user/tools
 
+
+################ TEM ####################
+WORKDIR /home/modex_user/TEM
+
+COPY TEM/src/ /home/modex_user/TEM/src/
+COPY TEM/Makefile /home/modex_user/TEM/Makefile
+COPY TEM/include/ /home/modex_user/TEM/include/
+
+WORKDIR /home/modex_user/TEM
+
+USER root
+RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime \
+    && echo $CONTAINER_TIMEZONE > /etc/timezone \
+    && apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y \
+      libjsoncpp-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+USER modex_user
+
+ENV SITE_SPECIFIC_INCLUDES="-I/usr/include/jsoncpp"
+ENV SITE_SPECIFIC_LIBS="-I/usr/lib"
+
+RUN make clean && make
+
+WORKDIR /home/modex_user
+
+# TODO:
+#  - Figure out how to set the GIT_VERSION variable so that it can get used
+#    in the Makefile
+#
+#  - Figure out how we should be handling the pyddt package (not even merged
+#    to dvmdostem upstream yet, but plan to do this ASAP)
+#
+#  - Figure out how handle the config, parameters, demo-data, files...
+#
+#  - Think about something like this: 
+#         export PATH=/home/modex_user/TEM:$PATH
+#    so that the dvmdostem binary is in the path when we launch the container
+
+# Tried this, it returns nothing...seems like git is installed in the image
+# but once in the container, the .git directory is not there, so the 
+# /home/modex_user/TEM is not recognized as a git repo.
+#RUN echo $(git rev-parse --short HEAD) > /home/modex_user/TEM/GIT_VERSION.txt
+
+###### TEM DEVELOPER NOTES...
+# Build:
+#     $ docker build -t f2m -f Docker/Dockerfile-models .
+# At this point if I launch a container:
+#     $ docker run -it f2m
+# it drops me into a bash shell in the container, and it appears that the
+# compiled TEM binary is at /home/modex_user/TEM/dvmdostem and I am able to 
+# run with the --help flag!!
+#     $ docker run -it f2m
+#     modex_user@0fb8e6933dc8:~$ ./TEM/dvmdostem -h
+#       -c [ --cal-mode ]      .... etc
+
+
+
 RUN git clone https://github.com/amanzi/amanzi.git
 
 WORKDIR /home/modex_user/amanzi
