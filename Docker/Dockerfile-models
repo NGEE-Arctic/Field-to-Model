@@ -1,4 +1,122 @@
-FROM ubuntu:noble
+FROM ubuntu:noble AS base
+
+RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime \
+    && echo $CONTAINER_TIMEZONE > /etc/timezone \
+    && apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y \
+      apt-utils \
+      cmake \
+      curl \
+      libcurl4-openssl-dev \
+      git \
+      gfortran \
+      gcc \
+      g++ \
+      groff \
+      libblas-dev \
+      liblapacke-dev \
+      liblapack-dev \
+      libssl-dev \
+      m4 \
+      make \
+      openssl \
+      pkg-config \
+      rsync \
+      wget \
+      zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install miniforge
+ENV MINIFORGE_VERSION=24.7.1-0
+RUN wget https://github.com/conda-forge/miniforge/releases/download/${MINIFORGE_VERSION}/Miniforge3-Linux-$(uname -m).sh -O /tmp/miniforge.sh \
+    && bash /tmp/miniforge.sh -b -p /opt/conda \
+    && rm /tmp/miniforge.sh
+
+# Make conda available
+ENV PATH=/opt/conda/bin:$PATH
+
+# Create a Python 3.11 environment
+RUN mamba install -y python=3.11 \
+    && conda clean -afy
+
+ENV mpi_version=5.0.8
+RUN export mpi_version_major=`echo ${mpi_version} | cut -c1-3` && echo $mpi_version_major \
+  && wget https://download.open-mpi.org/release/open-mpi/v${mpi_version_major}/openmpi-${mpi_version}.tar.gz \
+  && tar xvf openmpi-${mpi_version}.tar.gz \
+  && cd openmpi-${mpi_version} \
+  && FFLAGS="-fallow-argument-mismatch" FCFLAGS="-fallow-argument-mismatch" ./configure --enable-shared --prefix=/usr/local \
+  && make -j4 \
+  && make install \
+  && cd ../ \
+  && rm -r openmpi-${mpi_version}/ \
+  && rm openmpi-${mpi_version}.tar.gz
+
+# Versions change and we cannot set environment variables from command output.
+ARG petsc_ver
+ARG trilinos_ver
+ARG https_proxy
+ARG http_proxy
+ARG amanzi_branch=master
+
+# Installation paths
+ENV AMANZI_PREFIX=/home/modex_user/install \
+  AMANZI_INSTALL_DIR=/home/modex_user/install/amanzi \
+  AMANZI_TPLS_DIR=/home/modex_user/install/tpls
+ENV  AMANZI_PETSC_LIBS=$AMANZI_TPLS_DIR/petsc-${petsc_ver}/lib \
+  AMANZI_TRILINOS_LIBS=$AMANZI_TPLS_DIR/trilinos-${trilinos_ver}/lib \
+  AMANZI_SEACAS_LIBS=$AMANZI_TPLS_DIR/SEACAS/lib
+
+# Set the current working directory as the users home directory
+# (creates the directory if it doesn't exist)
+WORKDIR /home/modex_user
+ADD tools /home/modex_user/tools
+
+RUN git clone https://github.com/amanzi/amanzi.git \
+  && cd amanzi/ \
+  && git submodule update --init --recursive
+
+WORKDIR /home/modex_user/amanzi
+ENV LD_LIBRARY_PATH=/usr/local/lib64:/usr/local/lib
+RUN echo `which mpicc`
+RUN ./bootstrap.sh --prefix=${AMANZI_PREFIX} \
+      --parallel=4 --opt \
+      --amanzi-build-dir=/home/modex_user/amanzi_builddir/amanzi \
+      --tpl-build-dir=/home/modex_user/amanzi_builddir/tpls \
+      --tpl-download-dir=/home/modex_user/amanzi_builddir/tpls/Downloads \
+      --disable-build_user_guide \
+      --enable-shared --enable-geochemistry \
+      --disable-build_amanzi \
+      --with-mpi=/usr/local \
+      --with-python=/opt/conda/bin/python \
+  && rm -r /home/modex_user/amanzi_builddir \
+  && cd /home/modex_user/install \
+  && find . -type f -name '*.pdf' -exec rm {} + \
+  && find . -type f -name '*.png' -exec rm {} + \
+  && find . -type f -name '*.html' -exec rm {} +
+
+# set environment variables
+ENV HDF5_DIR=/home/modex_user/install/tpls \
+    LD_LIBRARY_PATH=${AMANZI_TPLS_DIR}/lib:${AMANZI_PETSC_LIBS}:${AMANZI_TRILINOS_LIBS}:${AMANZI_SEACAS_LIBS}:/usr/local/lib64:/usr/local/lib:/usr/lib \
+    PATH=/home/amanzi_user/amanzi/install/tools/bin:${PATH}
+
+RUN mamba install -y -c conda-forge \
+        h5py \
+    && conda clean -afy
+
+RUN ./bootstrap.sh --prefix=${AMANZI_PREFIX} \
+      --parallel=4 --opt \
+      --with-mpi=/usr/local \
+      --amanzi-build-dir=/home/modex_user/amanzi_builddir/ats \
+      --tpl-config-file=${AMANZI_TPLS_DIR}/share/cmake/amanzi-tpl-config.cmake \
+      --disable-build_user_guide \ 
+      --enable-ats_physics --disable-amanzi_physics --enable-reg_tests \
+      --disable-structured --enable-geochemistry \
+  && cd /home/modex_user/amanzi_builddir \
+  && ctest
+
+
+FROM ubuntu:noble AS modex-ats-elm
 
 RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime \
     && echo $CONTAINER_TIMEZONE > /etc/timezone \
@@ -93,16 +211,16 @@ ENV PATH=/opt/conda/bin:$PATH
 
 # Create a Python 3.11 environment
 RUN mamba install -y python=3.11 \
-    && mamba install -y -c conda-forge \
-	numpy \
-	Cython \
-	netcdf4 \
-	scipy \
-	mpi4py \
-	cftime \
-	configparser \
-	h5py \
-    && conda clean -afy
+  && mamba install -y -c conda-forge \
+	  numpy \
+	  Cython \
+	  netcdf4 \
+	  scipy \
+	  mpi4py \
+	  cftime \
+	  configparser \
+	  h5py \
+  && conda clean -afy
 
 ENV mpi_version=5.0.8
 RUN export mpi_version_major=`echo ${mpi_version} | cut -c1-3` && echo $mpi_version_major \
@@ -110,38 +228,31 @@ RUN export mpi_version_major=`echo ${mpi_version} | cut -c1-3` && echo $mpi_vers
   && tar xvf openmpi-${mpi_version}.tar.gz \
   && cd openmpi-${mpi_version} \
   && FFLAGS="-fallow-argument-mismatch" FCFLAGS="-fallow-argument-mismatch" ./configure --enable-shared --prefix=/usr/local \
-  && make -j16 \
+  && make -j4 \
   && make install \
   && cd ../ \
   && rm -r openmpi-${mpi_version}/ \
   && rm openmpi-${mpi_version}.tar.gz
-
-# Versions change and we cannot set environment variables from command output.
-ARG petsc_ver
-ARG trilinos_ver
-ARG https_proxy
-ARG http_proxy
-ARG amanzi_branch=master
-
-# Installation paths
-ENV AMANZI_PREFIX=/home/modex_user/install \
-  AMANZI_INSTALL_DIR=/home/modex_user/install/amanzi \
-  AMANZI_TPLS_DIR=/home/modex_user/install/tpls
-
-# TPL versions needed for LD_LIBRARY_PATH
-ENV AMANZI_PETSC_LIBS=$AMANZI_TPLS_DIR/petsc-${petsc_ver}/lib \
-  AMANZI_TRILINOS_LIBS=$AMANZI_TPLS_DIR/trilinos-${trilinos_ver}/lib \
-  AMANZI_SEACAS_LIBS=$AMANZI_TPLS_DIR/SEACAS/lib
 
 # Add an unprivileged user and group: modex_user, modex_user
 RUN groupadd -r modex_user \
   && useradd -r -K UMASK=0022 -K HOME_MODE=0755 -m -g modex_user modex_user
 USER modex_user
 
-# Set the current working directory as the users home directory
-# (creates the directory if it doesn't exist)
-WORKDIR /home/modex_user
-ADD tools /home/modex_user/tools
+# Installation paths
+ENV AMANZI_PREFIX=/home/modex_user/install \
+  AMANZI_INSTALL_DIR=/home/modex_user/install/amanzi \
+  AMANZI_TPLS_DIR=/home/modex_user/install/tpls
+
+ENV  AMANZI_PETSC_LIBS=$AMANZI_TPLS_DIR/petsc-${petsc_ver}/lib \
+  AMANZI_TRILINOS_LIBS=$AMANZI_TPLS_DIR/trilinos-${trilinos_ver}/lib \
+  AMANZI_SEACAS_LIBS=$AMANZI_TPLS_DIR/SEACAS/lib
+  
+ENV HDF5_DIR=/home/modex_user/install/tpls \
+    LD_LIBRARY_PATH=${AMANZI_TPLS_DIR}/lib:${AMANZI_PETSC_LIBS}:${AMANZI_TRILINOS_LIBS}:${AMANZI_SEACAS_LIBS}:/usr/local/lib64:/usr/local/lib:/usr/lib 
+
+COPY --from=base /home/modex_user/install /home/modex_user/install
+COPY .cime ~/.cime
 
 
 ################ TEM ####################
@@ -202,49 +313,4 @@ WORKDIR /home/modex_user
 #       -c [ --cal-mode ]      .... etc
 
 
-
-RUN git clone https://github.com/amanzi/amanzi.git
-
-WORKDIR /home/modex_user/amanzi
-ENV LD_LIBRARY_PATH=/usr/local/lib64:/usr/local/lib
-RUN echo `which mpicc`
-RUN ./bootstrap.sh --prefix=${AMANZI_PREFIX} \
-      --parallel=4 --opt \
-      --amanzi-build-dir=/home/modex_user/amanzi_builddir/amanzi \
-      --tpl-build-dir=/home/modex_user/amanzi_builddir/tpls \
-      --tpl-download-dir=/home/modex_user/amanzi_builddir/tpls/Downloads \
-      --disable-build_user_guide \
-      --enable-shared --enable-geochemistry \
-      --disable-build_amanzi \
-      --with-mpi=/usr/local \
-      --with-python=/opt/conda/bin/python \
-  && rm -r /home/modex_user/amanzi_builddir \
-  && cd /home/modex_user/install \
-  && find . -type f -name '*.pdf' -exec rm {} + \
-  && find . -type f -name '*.png' -exec rm {} + \
-  && find . -type f -name '*.html' -exec rm {} +
-
-# set environment variables
-ENV HDF5_DIR=/home/modex_user/install/tpls \
-    LD_LIBRARY_PATH=${AMANZI_TPLS_DIR}/lib:${AMANZI_PETSC_LIBS}:${AMANZI_TRILINOS_LIBS}:${AMANZI_SEACAS_LIBS}:/usr/local/lib64:/usr/local/lib:/usr/lib \
-    PATH=/home/amanzi_user/amanzi/install/tools/bin:${PATH}
-
-RUN mamba install -y -c conda-forge \
-        numpy \
-        Cython \
-        netcdf4 \
-        scipy \
-        mpi4py \
-        cftime \
-        configparser \
-        h5py \
-    && conda clean -afy
-
-RUN ./bootstrap.sh --prefix=${AMANZI_PREFIX} \
-      --parallel=4 --opt \
-      --with-mpi=/usr/local \
-      --amanzi-build-dir=/home/modex_user/amanzi_builddir/amanzi \
-      --tpl-config-file=${AMANZI_TPLS_DIR}/share/cmake/amanzi-tpl-config.cmake \
-      --disable-build_user_guide \ 
-      --enable-ats_physics --disable-amanzi_physics --enable-reg_tests \
-  && cd /home/modex_user/amanzi_builddir
+#EOF
