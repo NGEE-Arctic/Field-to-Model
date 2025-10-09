@@ -1,17 +1,51 @@
 # Field-to-Model
 
-## temporary instructions - move to wiki:
-1) `git clone --recurse-submodules https://github.com/NGEE-Arctic/field-to-model`
-2) `cd field-to-model`
-3) `docker volume create workshop_data`
-4) To build model container: `docker build -t model-container -f Docker/Dockerfile-models .` (this will take a while, please open an issue for any build failures)
-5) To build visualization container: `docker build -t vis-container -f Docker/Dockerfile-vis .`
+> temporary instructions - move to wiki:
 
-To run before CI is finalized:
-6) Model container: `docker run -it -v $(pwd):/home/modex_user -v workshop_data:/home/modex_user/data yuanfornl/model-test:main-latest`
-7) Vis container (@jsta this will need some work) - a) launch jupyter lab with same folder mounts; b) connect over localhost
+## Setup
 
-When CI is up/more robust:
-8) To run model container: `docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-models:main-latest`
-(Note: still needs volume mounts for input/output data)
-9) To run visualization container: `docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-visualization:main-latest`
+```shell
+# # data
+git clone --recurse-submodules https://github.com/NGEE-Arctic/field-to-model
+cd field-to-model
+docker volume create workshop_data
+
+# # to build model container
+# # (this will take a while, please open an issue for any build failures)
+docker build -t model-container -f Docker/Dockerfile-models . 
+
+# # to build visualization container
+docker build -t vis-container -f Docker/Dockerfile-vis .
+
+# # to run before CI is finalized:
+# # Model container:
+docker run -it -v $(pwd):/home/modex_user -v workshop_data:/home/modex_user/data yuanfornl/model-test:main-latest
+
+# # Vis container (@jsta this will need some work) - a) launch jupyter lab with same folder mounts; b) connect over localhost
+
+# # When CI is up/more robust:
+# # To run model container:
+docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-models:main-latest
+
+# # (Note: still needs volume mounts for input/output data)
+# # To run visualization container: 
+docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-visualization:main-latest
+```
+
+## Usage
+
+```shell
+# # model image
+
+# # visualization image
+docker pull yuanfornl/vis-test:main-latest
+
+docker run -it --init \
+    --mount type=bind,source=$(pwd),target=/home/joyvan/workdir -w /home/joyvan/workdir -p 9999:9999 \
+    yuanfornl/vis-test:main-latest
+
+docker run -it --init \
+    --mount type=bind,source=$(pwd),target=/home/joyvan/workdir -w /home/joyvan/workdir -p 8888:8888 \
+    vis-test
+```
+
