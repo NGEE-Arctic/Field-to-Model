@@ -116,7 +116,7 @@ RUN ./bootstrap.sh --prefix=${AMANZI_PREFIX} \
   && ctest
 
 
-FROM ubuntu:noble AS modex-ats-elm
+FROM ubuntu:noble AS modex-ats-elm-tem
 
 RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime \
     && echo $CONTAINER_TIMEZONE > /etc/timezone \
@@ -251,36 +251,66 @@ ENV  AMANZI_PETSC_LIBS=$AMANZI_TPLS_DIR/petsc-${petsc_ver}/lib \
 ENV HDF5_DIR=/home/modex_user/install/tpls \
     LD_LIBRARY_PATH=${AMANZI_TPLS_DIR}/lib:${AMANZI_PETSC_LIBS}:${AMANZI_TRILINOS_LIBS}:${AMANZI_SEACAS_LIBS}:/usr/local/lib64:/usr/local/lib:/usr/lib 
 
-COPY --from=base /home/modex_user/install /home/modex_user/install
-COPY .cime ~/.cime
-
-
 ################ TEM ####################
-WORKDIR /home/modex_user/TEM
 
-COPY TEM/src/ /home/modex_user/TEM/src/
-COPY TEM/Makefile /home/modex_user/TEM/Makefile
-COPY TEM/include/ /home/modex_user/TEM/include/
-
-WORKDIR /home/modex_user/TEM
-
-USER root
-RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime \
-    && echo $CONTAINER_TIMEZONE > /etc/timezone \
-    && apt-get update -y \
-    && apt-get upgrade -y \
-    && apt-get install -y \
-      libjsoncpp-dev \
-    && rm -rf /var/lib/apt/lists/*
-
+ARG TEM_VERSION="unset"      # default if not passed as --build-arg TEM_VERSION=xxx
 USER modex_user
+WORKDIR /home/modex_user/TEM
 
+# Copy the source into the image
+COPY --chown=modex_user:modex_user TEM/src/ /home/modex_user/TEM/src/
+COPY --chown=modex_user:modex_user TEM/Makefile /home/modex_user/TEM/Makefile
+COPY --chown=modex_user:modex_user TEM/include/ /home/modex_user/TEM/include/
+
+# Set some environment variables used during the compile
 ENV SITE_SPECIFIC_INCLUDES="-I/usr/include/jsoncpp"
 ENV SITE_SPECIFIC_LIBS="-I/usr/lib"
 
-RUN make clean && make
+# Compile the C++ part of dvmdostem
+# passing in the git version. Typically this is looked up automatically
+# during the make process, but since we are copying the source into the
+# image, the .git directory is not there, so it cannot be determined.
+# We can pass it in as a build argument when building the image.
+# If not passed in, it defaults to "unset"
+RUN make clean && GIT_SHA=$TEM_VERSION make
 
-WORKDIR /home/modex_user
+# Copy a bunch of other stuff needed to run TEM into the image
+COPY --chown=modex_user:modex_user TEM/config/ /home/modex_user/TEM/config/
+COPY --chown=modex_user:modex_user TEM/parameters/ /home/modex_user/TEM/parameters/
+COPY --chown=modex_user:modex_user TEM/demo-data/ /home/modex_user/TEM/demo-data/
+COPY --chown=modex_user:modex_user TEM/pyddt/ /home/modex_user/TEM/pyddt
+COPY --chown=modex_user:modex_user TEM/bootstrap_install.sh /home/modex_user/TEM/bootstrap_install.sh
+
+# Run the installer script to put dvmdostem and pyddt in a location
+# that is not wiped out if the user mounts a volume at /home/modex_user/TEM
+# when launching the container.
+# since dvmdostem doesn't follow a standard autotools or cmake install, I put
+# it in its own directory to avoid messing with the amanzi install
+RUN ./bootstrap_install.sh --prefix="/home/modex_user/install_dvmdostem"
+RUN echo "Trying to run installed dvmdostem binary..." \
+  && /home/modex_user/install_dvmdostem/bin/dvmdostem --help
+
+RUN pip install -e /home/modex_user/install_dvmdostem/pyddt
+RUN echo "Trying to run pyddt..." \
+  && python -c "import pyddt; print(pyddt)" 
+
+# Cleanup...all the relevant bits should have been copied during the install
+# The full source can be made available by mounting a volume at container 
+# runtime.
+RUN rm -rf /home/modex_user/TEM
+
+# Make dvmdostem and pyddt available in the PATH
+ENV PATH="/home/modex_user/install_dvmdostem/bin:$PATH"
+ENV PATH="/home/modex_user/.local/bin:$PATH"
+
+# End of TEM section
+#########################################
+
+WORKDIR /home/modex_user/
+COPY --from=base /home/modex_user/install /home/modex_user/install
+COPY .cime /home/modex_user/.cime
+
+
 
 # TODO:
 #  - Figure out how to set the GIT_VERSION variable so that it can get used
