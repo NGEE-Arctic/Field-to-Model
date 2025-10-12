@@ -16,14 +16,14 @@ Here you will find resources and documentation needed to follow the workshop exa
 
 .. toctree::
   :maxdepth: 2
-  :caption: Examples
+  :caption: Modeling Exercises
   :numbered: 3
 
   tem_ee3_warming
 
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
   :caption: Developer Info
 
   dev_notes

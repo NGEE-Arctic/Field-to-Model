@@ -2,61 +2,40 @@ Getting Started
 ====================
 
 Follow these instructions to set up your environment for the workshop. This
-workshop uses Docker containers to encapsulate the models and visualization tools.
+workshop uses Docker containers to encapsulate the models and visualization
+tools.
 
-We have pre-built Docker images for the models and visualization tools, which can be pulled
-from Docker Hub. However, if you prefer to build the images locally, instructions are
-provided below.
+We have pre-built Docker images for the models and visualization tools, which
+can be pulled from Docker Hub. However, if you prefer to build the images
+locally, instructions are provided in the developer section.
 
+Download Docker containers
+----------------------------
 
-Container Setup
--------------------
+The workshop uses two Docker containers: one for running the models and another
+for visualization.
 
-.. code::
+Each the model container has the following models installed:
 
-    # # data
-    git clone --recurse-submodules https://github.com/NGEE-Arctic/field-to-model
-    cd field-to-model
-    docker volume create workshop_data
+- ELM (Energy Exascale Earth System Land Model)    
+- TEM (Terrestrial Ecosystem Model)    
+- ATS (Advanced Terrestrial Simulator)
 
-    # # to build model container
-    # # (this will take a while, please open an issue for any build failures)
-    docker build -t model-container -f Docker/Dockerfile-models . 
+The model container is ~???GB, and the visualization container is ~???GB.
 
-    # # to build visualization container
-    docker build -t vis-container -f Docker/Dockerfile-vis .
+Get the workshop data
+------------------------------
 
-    # # to run before CI is finalized:
-    # # Model container:
-    docker run -it -v $(pwd):/home/modex_user -v workshop_data:/home/modex_user/data yuanfornl/model-test:main-latest
-
-    # # Vis container (@jsta this will need some work) - a) launch jupyter lab with same folder mounts; b) connect over localhost
-
-    # # When CI is up/more robust:
-    # # To run model container:
-    docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-models:main-latest
-
-    # # (Note: still needs volume mounts for input/output data)
-    # # To run visualization container: 
-    docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-visualization:main-latest
+.. note:: TODO, write this...
+    
+    Download from bucket? Google Drive? git clone? Thumb drives?
 
 
-Usage
--------------------
+Launch the containers
+----------------------------
 
-These examples show 
+.. note:: TODO, write this...
+    
+    issue some kind of run command and get a shell in the container with 
+    volumes mounted to the workshop data and the correct ports open...
 
-.. code::
-
-  # # model image
-
-  # # visualization image
-  docker pull yuanfornl/vis-test:main-latest
-
-  docker run -it --init \
-      --mount type=bind,source=$(pwd),target=/home/joyvan/workdir -w /home/joyvan/workdir -p 9999:9999 \
-      yuanfornl/vis-test:main-latest
-
-  docker run -it --init \
-      --mount type=bind,source=$(pwd),target=/home/joyvan/workdir -w /home/joyvan/workdir -p 8888:8888 \
-      vis-test
