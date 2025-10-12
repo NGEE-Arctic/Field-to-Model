@@ -1,34 +1,31 @@
 .. Modex2025 documentation master file, created by
    sphinx-quickstart on Sat Oct 11 21:15:10 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
-
-Welcome to the Modex2025 Field to Model Workshop
+Welcome to the ModEx 2025 Field to Model Workshop
 ===================================================
 
 Here you will find resources and documentation needed to follow the workshop examples.
 
 .. toctree::
-  :maxdepth: 5
-  :caption: Setup and Model Overviews
-  :numbered: 3
+  :maxdepth: 2
+  :caption: Setup
+  :numbered: 2
 
   setup
-  elm_overview
-  ats_overview
-  tem_overview
 
 
 .. toctree::
-  :maxdepth: 5
-  :caption: Demos and Exercises
+  :maxdepth: 2
+  :caption: Examples
+  :numbered: 3
 
-  tem_ee0_basic_model_run
-  tem_ee3_warming_experiment
-
-
+  tem_ee3_warming
 
 
+.. toctree::
+  :maxdepth: 2
+  :caption: Developer Info
 
+  dev_notes
+  tem_dev_notes
 
