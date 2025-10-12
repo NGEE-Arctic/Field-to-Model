@@ -6,15 +6,24 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Modex2025'
-copyright = '2025, Rich Fiorella, Tobey Carman'
-author = 'Rich Fiorella, Tobey Carman'
+project = 'ModEx 2025'
+copyright = '2025, ModEx Team, LANL, ORNL, UAF'
+author = 'ModEx 2025 Developers'
 release = '0.0.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [  
+  'sphinx_toolbox.collapse',
+  'myst_parser'
+]
+
+source_suffix = {
+  '.rst': 'restructuredtext',
+  '.txt': 'markdown',
+  '.md': 'markdown',
+}
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -26,3 +35,6 @@ exclude_patterns = []
 
 html_theme = 'nature' # alabaster, basic, nature, bizstyle, scrolls, sphinxdoc, agoago, traditional, haiku
 html_static_path = ['_static']
+html_css_files = [
+    'css/custom.css',
+]

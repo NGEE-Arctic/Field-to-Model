@@ -1,0 +1,11 @@
+/* Custom CSS for Field-to-Model documentation */
+
+.workshop-collapse {
+    background-color: rgb(196, 230, 159);
+    margin: 10px;
+    padding: 10px;
+    border: 1px;
+    border-color: rgb(206, 206, 206);
+    border-style: solid;
+    border-radius: 5px;
+}
