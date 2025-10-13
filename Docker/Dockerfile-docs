@@ -1,0 +1,18 @@
+# The image for building and serving the sphinx docs.
+# Build with: 
+#     docker build --tag docbuilder --target docbuilder -f Docker/Dockerfile-models . 
+FROM sphinxdoc/sphinx as docbuilder
+
+RUN pip install sphinx-toolbox
+RUN pip install myst-parser
+RUN pip install sphinx-autobuild
+
+WORKDIR /docs
+
+# This allows a stand alone docs container to be built, maybe this will be 
+# useful in the CI context? For development and document writing the typical use
+# case involves bind mounting a volume over the /docs path allowing the user 
+# to work on the host system and have the docs rebuilt (and served) from the 
+# container.
+COPY docs /docs
+

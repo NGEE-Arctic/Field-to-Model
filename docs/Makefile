@@ -19,3 +19,6 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+# This is might be a security issue, but it works for local testing.
+livehtml:
+	sphinx-autobuild --watch source --host 0.0.0.0 --port 9999 "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
