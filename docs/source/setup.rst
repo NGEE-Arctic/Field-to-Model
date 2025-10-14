@@ -21,7 +21,31 @@ Each the model container has the following models installed:
 - TEM (Terrestrial Ecosystem Model)    
 - ATS (Advanced Terrestrial Simulator)
 
-The model container is ~???GB, and the visualization container is ~???GB.
+The model container is ~1.6GB on Docker Hub, and the visualization container is 
+~2.1GB on Docker Hub.
+
+Once you have the containers downloaded, you can run them on your local machine
+with the following commands:
+
+.. code::
+    
+    docker pull yuanfornl/ngee-arctic-modex25:model-main-latest
+    docker pull yuanfornl/ngee-arctic-modex25:vis-main-latest
+
+Then once you have the images you can run them with the following commands:
+
+.. code:: Running the model container
+
+    docker run -it --rm \
+        -v <path_to_your_workshop_data>:/home/workshop_data \
+        yuanfornl/ngee-arctic-modex25:model-main-latest /bin/bash
+
+.. code:: Running the visualization container
+
+    docker run -it --rm \
+        -v <path_to_your_workshop_data>:/home/workshop_data \
+        -p 8888:8888 \
+        yuanfornl/ngee-arctic-modex25:vis-main-latest /bin/bash
 
 Get the workshop data
 ------------------------------
