@@ -12,18 +12,45 @@ used to make predictions into the future with further warming.
 Setup
 -----
 
-We will be running the model at the Toolik Field Station. We will use the demo
-demonstration data that is shipped with the TEM model for our "control" or
-"base" run. This data is based on the CRU TS 4.0 dataset.
+.. warning:: 
 
-We will then create a second input dataset that is identical to the first except
-that the air temperatures have been increased by 2 degrees Celsius during the
-summer months (June, July, August) for the years 2000-2015.
+   Waiting on Tobey to finalize input data prep. For now, just use the 
+   demo data that is shipped with the TEM install...in the modex model container
+   you can find it at :code:`/home/modex_user/install_dvmdostem/demo-data`.
 
-This will be our "treatment" or "warming" run.
+.. note:: from 10/14 brainstorming session
 
-We will then compare the outputs of the two runs to see how the warming has
-affected the model's predictions of various ecosystem variables.
+   #. User starts by finding the inputs provided for workshop (distribution method TBD, but end result will be a folder mounted into the container at :code:`/home/modex_user/workshop_data` )
+   #. User makes a copy of the input dataset they wish to use
+   #. User modifies the copy to create a "treatment" dataset. TODO: consider naming recommendations
+   #. User uses :code:`pyddt-swd` to create a "working directory" for each run (base, treatment)
+
+      - Each run's config will point to the appropriate input dataset (base or treatment)
+
+   #. User runs the model for each configuration
+   #. User analyzes the outputs
+   #. Repeat as needed (more treatments - by copying and adjusting the inputs,
+      or more model runs with different settings by using :code:`pyddt-swd`
+      again)
+   
+
+   
+   
+
+.. note:: draft ...edit rinse, repeat :-)
+
+   We will be running the model at the Toolik Field Station. We will use the demo
+   demonstration data that is shipped with the TEM model for our "control" or
+   "base" run. This data is based on the CRU TS 4.0 dataset.
+
+   We will then create a second input dataset that is identical to the first except
+   that the air temperatures have been increased by 2 degrees Celsius during the
+   summer months (June, July, August) for the years 2000-2015.
+
+   This will be our "treatment" or "warming" run.
+
+   We will then compare the outputs of the two runs to see how the warming has
+   affected the model's predictions of various ecosystem variables.
 
 .. collapse:: Draft API ideas for creating altered input data
    :class: workshop-collapse
@@ -55,69 +82,72 @@ affected the model's predictions of various ecosystem variables.
 Technical Experiment Setup
 ----------------------------
 
-#. What spatial (geographic) area(s) do you want to run. Single or multi-pixel run?
-  
-   Single pixel, choose one of the available places (e.g. Utqiagvik, Kougarok, Kougarok Hillslope, Toolik) 
 
-#. Is this experiment designed around a single run or multiple runs? If multiple describe what is different between each run.
+.. note:: Draft outline steps from a brainstorming session. Please edit and improve.
 
-   Two different runs: the control run and a warming experiment (treatment)
-
-#. Decide what variables and resolutions you want to have output.
-  
-   This will be very variable depending on the person. I would want to output a wide range of variables and provide a wide range of plotting tools.
-
-#. Which stages to run? How many years for each stage?
-  
-   :code:`-p 100 -e 2000 -s 250 -t 115 -n 85`, Potentially with the option of combining transient and scenario? 
-   Also consider using the restart capability to avoid running eq over and over?
-
-#. From which stages do we need to save the output?
-  
-   Transient and scenario; combined, see above
-
-#. Which Community Type(s) to use?
-  
-   Shrub, tussock, and wet sedge tundra
-
-#. Is this run a calibration (parameter estimation) run? If so, elaborate.
-  
-   No
-
-#. List some ideas for how you expect to analyze the outputs
-  
-   This is the complicated answer because it's likely a lot! We want options for people to be able to explore their science questions.
-
-#. What computer will the runs be on?
+   #. What spatial (geographic) area(s) do you want to run. Single or multi-pixel run?
    
-   Laptop with Docker container pulled from cloud
+      Single pixel, choose one of the available places (e.g. Utqiagvik, Kougarok, Kougarok Hillslope, Toolik) 
 
-#. Decide where on your computer you want to store your model run(s).
+   #. Is this experiment designed around a single run or multiple runs? If multiple describe what is different between each run.
+
+      Two different runs: the control run and a warming experiment (treatment)
+
+   #. Decide what variables and resolutions you want to have output.
    
-   User will have a folder on their host, i.e. :code:`~/ngee-modex-2025/workflows` that is mounted inside the container
+      This will be very variable depending on the person. I would want to output a wide range of variables and provide a wide range of plotting tools.
 
-#. Decide how to organize the outputs (important if the experiment dictates multiple runs)
+   #. Which stages to run? How many years for each stage?
    
-   One folder for "control" one folder for each "treatment case"
+      :code:`-p 100 -e 2000 -s 250 -t 115 -n 85`, Potentially with the option of combining transient and scenario? 
+      Also consider using the restart capability to avoid running eq over and over?
 
-#. Are the driving inputs and parameters for the specified run(s) available?
+   #. From which stages do we need to save the output?
    
-   We should make sure they are :) I guess the specific warming experiment driver will be created as part of the example though.
+      Transient and scenario; combined, see above
 
-#. If the experiment is a multi-run experiment, can the different runs be scripted?
+   #. Which Community Type(s) to use?
    
-   Not sure yet...see example API above in the intro; only 2 runs so no need to fully automate...
+      Shrub, tussock, and wet sedge tundra
 
-#. Is the run a single pixel (site) run or a multi pixel?
+   #. Is this run a calibration (parameter estimation) run? If so, elaborate.
    
-   single
+      No
 
-#. Decide on all other run settings/parameters:
+   #. List some ideas for how you expect to analyze the outputs
+   
+      This is the complicated answer because it's likely a lot! We want options for people to be able to explore their science questions.
 
-   * Is the community type (CMT) fixed or driven by input vegetation.nc map?
-   * Any other command line options or special environment settings?
+   #. What computer will the runs be on?
+      
+      Laptop with Docker container pulled from cloud
 
-#. Will the plotting happen in the run-time environment or will the data need to be copied to a different environment?
+   #. Decide where on your computer you want to store your model run(s).
+      
+      User will have a folder on their host, i.e. :code:`~/ngee-modex-2025/workflows` that is mounted inside the container
+
+   #. Decide how to organize the outputs (important if the experiment dictates multiple runs)
+      
+      One folder for "control" one folder for each "treatment case"
+
+   #. Are the driving inputs and parameters for the specified run(s) available?
+      
+      We should make sure they are :) I guess the specific warming experiment driver will be created as part of the example though.
+
+   #. If the experiment is a multi-run experiment, can the different runs be scripted?
+      
+      Not sure yet...see example API above in the intro; only 2 runs so no need to fully automate...
+
+   #. Is the run a single pixel (site) run or a multi pixel?
+      
+      single
+
+   #. Decide on all other run settings/parameters:
+
+      * Is the community type (CMT) fixed or driven by input vegetation.nc map?
+      * Any other command line options or special environment settings?
+
+   #. Will the plotting happen in the run-time environment or will the data need to be copied to a different environment?
 
 Analysis
 ----------------------------
