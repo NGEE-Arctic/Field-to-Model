@@ -1,4 +1,4 @@
-TEM Warming Experiment (TEM Introduction and hands-on exercises)
+TEM Disturbance Experiment (Fire breakout group)
 ================================================
 
 What are we trying to model?

@@ -1,4 +1,4 @@
-TEM Warming Experiment (TEM Introduction and hands-on exercises)
+TEM Precipitation Experiment (Hydrology/snow/vegetation interactions breakout group)
 ================================================
 
 What are we trying to model?
