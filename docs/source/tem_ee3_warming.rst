@@ -4,10 +4,24 @@ TEM Warming Experiment (TEM Introduction and hands-on exercises)
 What are we trying to model?
 -------------------------------------------------------------
 
+NGEE Arctic has worked on numerous experiments and field equipment over the last decade+, one of which being the zero-power warming 
+chambers (see Lewin et at. (2017) https://bg.copernicus.org/articles/14/4071/2017/bg-14-4071-2017.pdf) 
+The chambers passively warm the mean daily temperature inside the chamber by 2.6◦C above ambient temperatures during the summer months. 
+
+At Utqiagvik, the chambers were deployed over a single season in multiple locations from 2017-2021 from mid-June through to mid-September. 
+In this example, we model the 2019 summer warming experiment and compare the modeled and measured soil temperatures at 10cm depth 
+for the warmed and control site. The 2019 experiment focused on *Eriophorum angustifolium*, a common sedge species in Arctic tundra which 
+in the model DVM-DOS-TEM is represented by the sedge plant functional type (PFT) and grows for example in the wet sedge tundra 
+community type (CMT).
+
+
+
+
 We are trying to model a warming experiment. This will help us understand
 whether our models are doing an adequate job at representing the outcomes of
 field warming experiments. If they do, we are more confident that they can be
 used to make predictions into the future with further warming.
+
 
 Setup
 -----
