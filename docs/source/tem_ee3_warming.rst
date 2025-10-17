@@ -7,20 +7,23 @@ What are we trying to model?
 NGEE Arctic has worked on numerous experiments and field equipment over the last decade+, one of which being the zero-power warming 
 chambers (see Lewin et at. (2017) https://bg.copernicus.org/articles/14/4071/2017/bg-14-4071-2017.pdf) 
 The chambers passively warm the mean daily temperature inside the chamber by 2.6◦C above ambient temperatures during the summer months. 
+Modeling such field experiments allows us to evaluate how well the model is able to capture the ecosystem responses to warming, 
+and thus how adequate the model is for predicting future ecosystem changes.
 
-At Utqiagvik, the chambers were deployed over a single season in multiple locations from 2017-2021 from mid-June through to mid-September. 
+At Utqiagvik, the chambers were deployed over a single season in multiple locations from 2017-2021 from mid-June through to mid-September (Ely et al. 2024). 
 In this example, we model the 2019 summer warming experiment and compare the modeled and measured soil temperatures at 10cm depth 
 for the warmed and control site. The 2019 experiment focused on *Eriophorum angustifolium*, a common sedge species in Arctic tundra which 
 in the model DVM-DOS-TEM is represented by the sedge plant functional type (PFT) and grows for example in the wet sedge tundra 
-community type (CMT).
+community type (CMT). We model the warming experiment at a single pixel representing the wet sedge tundra CMT at Utqiagvik and compare the 
+soil temperature at 10cm depth between the control and warmed runs to the observed soil temperatures at the site (Ely et al. 2024).
+
+
+Lewin, K. F., McMahon, A. M., Ely, K. S., Serbin, S. P., & Rogers, A. (2017). A zero-power warming chamber for investigating plant responses to rising temperature. Biogeosciences, 14(18), 4071-4083.
+
+Ely, Kim, Anderson, Jeremiah, Serbin, Shawn, & Rogers, Alistair (2024). Vegetation Warming Experiment: Thaw depth and dGPS locations, Utqiagvik, Alaska, 2019. https://doi.org/10.5440/1887568
 
 
 
-
-We are trying to model a warming experiment. This will help us understand
-whether our models are doing an adequate job at representing the outcomes of
-field warming experiments. If they do, we are more confident that they can be
-used to make predictions into the future with further warming.
 
 
 Setup
@@ -53,18 +56,35 @@ Setup
 
 .. note:: draft ...edit rinse, repeat :-)
 
-   We will be running the model at the Toolik Field Station. We will use the demo
+   We will be running the model at the Toolik Field Station (note from Hannah: Utquiagvik for this one ideally). We will use the demo
    demonstration data that is shipped with the TEM model for our "control" or
    "base" run. This data is based on the CRU TS 4.0 dataset.
 
    We will then create a second input dataset that is identical to the first except
    that the air temperatures have been increased by 2 degrees Celsius during the
-   summer months (June, July, August) for the years 2000-2015.
+   summer months (June, July, August) for the years 2000-2015. Update from Hannah: 2019 only, min-July to mid-Sept, 
+   increase temperature by 2.6C.
 
    This will be our "treatment" or "warming" run.
 
    We will then compare the outputs of the two runs to see how the warming has
-   affected the model's predictions of various ecosystem variables.
+   affected the model's predictions of various ecosystem variables. Hannah: soil temperature at 10cm depth comparison to observations and between
+   control and warming runs.
+
+
+.. note:: draft of the actual instructions for participants
+
+   do the setup
+
+   make copy of input dataset
+
+   create warming treatment dataset (increase air temp by 2.6C in June-Sept 2019) out of the copy
+
+   create two runfolders, one for control pointing to original input data, one for warming pointing to modified input data
+
+   run both experiments
+
+   analyze the outputs (for that locate the observational data)
 
 .. collapse:: Draft API ideas for creating altered input data
    :class: workshop-collapse
@@ -101,7 +121,7 @@ Technical Experiment Setup
 
    #. What spatial (geographic) area(s) do you want to run. Single or multi-pixel run?
    
-      Single pixel, choose one of the available places (e.g. Utqiagvik, Kougarok, Kougarok Hillslope, Toolik) 
+      Single pixel at Utqiagvik
 
    #. Is this experiment designed around a single run or multiple runs? If multiple describe what is different between each run.
 
@@ -109,12 +129,13 @@ Technical Experiment Setup
 
    #. Decide what variables and resolutions you want to have output.
    
-      This will be very variable depending on the person. I would want to output a wide range of variables and provide a wide range of plotting tools.
+     soil temperature at 10cm depth, monthly resolution (compared to daily observations but that should be ok)
 
    #. Which stages to run? How many years for each stage?
    
       :code:`-p 100 -e 2000 -s 250 -t 115 -n 85`, Potentially with the option of combining transient and scenario? 
-      Also consider using the restart capability to avoid running eq over and over?
+      Also consider using the restart capability to avoid running eq over and over? In this case we could even shorten 
+      the scenario and just run until 2025 or something. Plot the outputs for 2018 - 2025? 
 
    #. From which stages do we need to save the output?
    
@@ -122,7 +143,7 @@ Technical Experiment Setup
 
    #. Which Community Type(s) to use?
    
-      Shrub, tussock, and wet sedge tundra
+      Wet sedge tundra (target PFT from the experiment was a sedge species)
 
    #. Is this run a calibration (parameter estimation) run? If so, elaborate.
    
@@ -130,7 +151,8 @@ Technical Experiment Setup
 
    #. List some ideas for how you expect to analyze the outputs
    
-      This is the complicated answer because it's likely a lot! We want options for people to be able to explore their science questions.
+      Plot the control and warming soil temperature at 10cm depth time series for comparison to observations. 
+      Designate control vs warming by color, observations vs model by line style?
 
    #. What computer will the runs be on?
       
@@ -142,11 +164,13 @@ Technical Experiment Setup
 
    #. Decide how to organize the outputs (important if the experiment dictates multiple runs)
       
-      One folder for "control" one folder for each "treatment case"
+      One folder for "control" one folder for each "treatment case" (I think we said creating a separate 
+      input dataset for each treatment that is stored in the input datda folder, and then creating hte different experiments from the input data folders)
 
    #. Are the driving inputs and parameters for the specified run(s) available?
       
-      We should make sure they are :) I guess the specific warming experiment driver will be created as part of the example though.
+      The specific warming experiment driver will be created as part of the example, the field observation data should be 
+      available somewhere - it's the citation in the header. 
 
    #. If the experiment is a multi-run experiment, can the different runs be scripted?
       
@@ -158,10 +182,12 @@ Technical Experiment Setup
 
    #. Decide on all other run settings/parameters:
 
-      * Is the community type (CMT) fixed or driven by input vegetation.nc map?
-      * Any other command line options or special environment settings?
+      * Is the community type (CMT) fixed or driven by input vegetation.nc map? Fixed: wet sedge tundra
+      * Any other command line options or special environment settings? I don't think so?
 
    #. Will the plotting happen in the run-time environment or will the data need to be copied to a different environment?
+   
+      
 
 Analysis
 ----------------------------
