@@ -35,10 +35,10 @@
       </mpirun>
       <module_system type="none"/>
       <environment_variables>
-        <env name="HDF5_ROOT">/home/$USER/install/tpls</env>
-        <env name="NETCDF_PATH">/home/$USER/install/tpls</env>
-        <env name="NETCDF_C_PATH">/home/$USER/install/tpls</env>
-        <env name="NETCDF_FORTRAN_PATH">/home/$USER/install/tpls</env>
+	      <env name="HDF5_ROOT">/opt/ats/tpls</env>
+	      <env name="NETCDF_PATH">/opt/ats/tpls</env>
+	      <env name="NETCDF_C_PATH">/opt/ats/tpls</env>
+	      <env name="NETCDF_FORTRAN_PATH">/opt/ats/tpls</env>
       </environment_variables>
    </machine>
 </config_machines>

@@ -1,3 +1,13 @@
 
 # The sphinx build directory
 docs/build/**
+# ignore some things produced in the container
+*/.bash_history
+*/.gitconfig
+*/.viminfo
+*/.wget-hsts
+.bash_history
+.gitconfig
+.viminfo
+.wget-hsts
+.vim

@@ -54,14 +54,14 @@ RUN export mpi_version_major=`echo ${mpi_version} | cut -c1-3` && echo $mpi_vers
   && rm openmpi-${mpi_version}.tar.gz
 
 # Versions change and we cannot set environment variables from command output.
-ARG petsc_ver=
-ARG trilinos_ver=
+ARG petsc_ver=3.20
+ARG trilinos_ver=15-1-0
 ARG amanzi_branch=master
 
 # Installation paths
-ENV AMANZI_PREFIX=/home/modex_user/install_ats \
-  AMANZI_INSTALL_DIR=/home/modex_user/install_ats/amanzi \
-  AMANZI_TPLS_DIR=/home/modex_user/install_ats/tpls
+ENV AMANZI_PREFIX=/opt/ats \
+  AMANZI_INSTALL_DIR=/opt/ats/amanzi \
+  AMANZI_TPLS_DIR=/opt/ats/tpls
 ENV  AMANZI_PETSC_LIBS=$AMANZI_TPLS_DIR/petsc-${petsc_ver}/lib \
   AMANZI_TRILINOS_LIBS=$AMANZI_TPLS_DIR/trilinos-${trilinos_ver}/lib \
   AMANZI_SEACAS_LIBS=$AMANZI_TPLS_DIR/SEACAS/lib
@@ -77,7 +77,7 @@ RUN git clone -b amanzi-1.6 https://github.com/amanzi/amanzi.git \
 
 WORKDIR /home/modex_user/amanzi
 ENV LD_LIBRARY_PATH=/usr/local/lib64:/usr/local/lib
-RUN ./bootstrap.sh --prefix=${AMANZI_PREFIX} \
+RUN mkdir -p ${AMANZI_PREFIX} && ./bootstrap.sh --prefix=${AMANZI_PREFIX} \
       --parallel=4 --opt \
       --amanzi-build-dir=/home/modex_user/amanzi_builddir/amanzi \
       --tpl-build-dir=/home/modex_user/amanzi_builddir/tpls \
@@ -88,15 +88,15 @@ RUN ./bootstrap.sh --prefix=${AMANZI_PREFIX} \
       --with-mpi=/usr/local \
       --with-python=/opt/conda/bin/python \
   && rm -r /home/modex_user/amanzi_builddir \
-  && cd /home/modex_user/install_ats \
+  && cd /opt/ats \
   && find . -type f -name '*.pdf' -exec rm {} + \
   && find . -type f -name '*.png' -exec rm {} + \
   && find . -type f -name '*.html' -exec rm {} +
 
 # set environment variables
-ENV HDF5_DIR=/home/modex_user/install_ats/tpls \
+ENV HDF5_DIR=/opt/ats/tpls \
     LD_LIBRARY_PATH=${AMANZI_TPLS_DIR}/lib:${AMANZI_PETSC_LIBS}:${AMANZI_TRILINOS_LIBS}:${AMANZI_SEACAS_LIBS}:/usr/local/lib64:/usr/local/lib:/usr/lib \
-    PATH=/home/amanzi_user/amanzi/install_ats/tools/bin:${PATH}
+    PATH=/opt/ats/tools/bin:${PATH}
 
 RUN mamba install -y -c conda-forge \
         h5py \
@@ -193,7 +193,7 @@ RUN wget https://github.com/conda-forge/miniforge/releases/download/${MINIFORGE_
     && rm /tmp/miniforge.sh
 
 # Make conda available
-ENV PATH=/opt/conda/bin:$PATH
+ENV PATH=$PATH:/opt/conda/bin
 
 # Create a Python 3.11 environment
 RUN mamba install -y python=3.11 \
@@ -221,22 +221,37 @@ RUN export mpi_version_major=`echo ${mpi_version} | cut -c1-3` && echo $mpi_vers
   && rm openmpi-${mpi_version}.tar.gz
 
 # Add an unprivileged user and group: modex_user, modex_user
+ARG petsc_ver=3.20
+ARG trilinos_ver=15-1-0
+RUN git config --system user.name "ModEx User" \
+  && git config --system user.email "ngeearctic@dev.null" \
+  && mkdir -p /mnt/inputdata /mnt/output /opt/dvmdostem
 RUN groupadd -r modex_user -g 1001 \
   && useradd -u 1001 -r -K UMASK=0022 -K HOME_MODE=0755 -m -g modex_user modex_user \
-  && chown -R 1001:1001 /home/modex_user
+  && chown -R 1001:1001 /home/modex_user /mnt /opt
 USER modex_user
 
 # Installation paths
-ENV AMANZI_PREFIX=/home/modex_user/install_ats \
-  AMANZI_INSTALL_DIR=/home/modex_user/install_ats/amanzi \
-  AMANZI_TPLS_DIR=/home/modex_user/install_ats/tpls
+ENV AMANZI_PREFIX=/opt/ats \
+  AMANZI_INSTALL_DIR=/opt/ats/amanzi \
+  AMANZI_TPLS_DIR=/opt/ats/tpls
 
 ENV  AMANZI_PETSC_LIBS=$AMANZI_TPLS_DIR/petsc-${petsc_ver}/lib \
   AMANZI_TRILINOS_LIBS=$AMANZI_TPLS_DIR/trilinos-${trilinos_ver}/lib \
   AMANZI_SEACAS_LIBS=$AMANZI_TPLS_DIR/SEACAS/lib
   
-ENV HDF5_DIR=/home/modex_user/install_ats/tpls \
+ENV HDF5_DIR=/opt/ats/tpls \
     LD_LIBRARY_PATH=${AMANZI_TPLS_DIR}/lib:${AMANZI_PETSC_LIBS}:${AMANZI_TRILINOS_LIBS}:${AMANZI_SEACAS_LIBS}:/usr/local/lib64:/usr/local/lib:/usr/lib 
+
+# Set a bunch of environment variables for compilers
+ENV USER=modex_user \
+  CC=/usr/local/bin/mpicc \
+  CXX=/usr/local/bin/mpicxx \
+  FC=/usr/local/bin/mpifort \
+  MPICC=/usr/local/bin/mpicc \
+  MPICXX=/usr/local/bin/mpicxx \
+  MPIFC=/usr/local/bin/mpifort
+
 
 ################ TEM ####################
 
@@ -261,30 +276,28 @@ RUN git clone https://github.com/uaf-arctic-eco-modeling/dvm-dos-tem \
 # when launching the container.
 # since dvmdostem doesn't follow a standard autotools or cmake install, I put
 # it in its own directory to avoid messing with the amanzi install
-  && ./bootstrap_install.sh --prefix="/home/modex_user/install_dvmdostem" \
+  && ./bootstrap_install.sh --prefix="/opt/dvmdostem" \
   && echo "Trying to run installed dvmdostem binary..." \
-  && /home/modex_user/install_dvmdostem/bin/dvmdostem --help \
+  && /opt/dvmdostem/bin/dvmdostem --help \
   && rm -rf /home/modex_user/dvm-dos-tem
 
-RUN pip install -e /home/modex_user/install_dvmdostem/pyddt \
+RUN pip install -e /opt/dvmdostem/pyddt \
   && echo "Trying to run pyddt..." \
   && python -c "import pyddt; print(pyddt)" 
 
 # Make dvmdostem and pyddt available in the PATH
-ENV PATH="/home/modex_user/.local/bin:/home/modex_user/install_dvmdostem/bin:$PATH"
+ENV PATH="/home/modex_user/.local/bin:/opt/dvmdostem/bin:$PATH"
 
 # End of TEM section
 #########################################
 
 WORKDIR /home/modex_user/
-COPY --from=ats --chown=modex_user:modex_user /home/modex_user/install_ats /home/modex_user/install_ats
+COPY --from=ats --chown=modex_user:modex_user /opt/ats /opt/ats
 COPY --chown=modex_user:modex_user .cime /home/modex_user/.cime
-ENV PATH="/home/modex_user/install_ats/bin:$PATH"
+ENV PATH="/opt/ats/bin:$PATH"
 
 # Need to fix a lot of permissions:
-RUN mkdir ~/inputdata  \
-  && mkdir -p ~/output/elm ~/output/tem \
-  && mkdir -p ~/tools ~/examples/elm ~/examples/ats ~/examples/tem \
-  && chown -R 1001:1001 /home/modex_user \
-  && git config --global user.name "ModEx User" \
-  && git config --global user.email "ngeearctic@dev.null"
+RUN mkdir -p ~/tools ~/model_examples ~/E3SM \
+  && chown -R 1001:1001 /home/modex_user
+
+
