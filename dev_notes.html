@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>General Notes &#8212; ModEx 2025 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=710ef168" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TEM Setup Details" href="tem_dev_notes.html" />
+    <link rel="prev" title="1. TEM Warming Experiment" href="tem_ee3_warming.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tem_dev_notes.html" title="TEM Setup Details"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tem_ee3_warming.html" title="1. TEM Warming Experiment"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">General Notes</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="general-notes">
+<h1>General Notes<a class="headerlink" href="#general-notes" title="Link to this heading">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p>This Sphinx project is configured to use MyST parser to allow writing in
+Markdown as well as reStructuredText.</p></li>
+<li><p>Markdown is easier to write, but reStructuredText is much more powerful for
+advanced formatting.</p></li>
+<li><p>If you want collapse blocks, use reStructuredText.</p></li>
+<li><p>The <code class="code docutils literal notranslate"><span class="pre">sphinx-autobuild</span></code> extension (which is enabled) would be super
+handy, but for some reason the hot reloading is not working; changes to the
+source files in the host editor don’t trigger any events in the dev server.</p></li>
+<li><p>There is some custom CSS in the <code class="code docutils literal notranslate"><span class="pre">source/_static/css/custom.css</span></code> file to
+style the collapse blocks. You can edit that file to change the colors,
+borders, etc. See the comments in the CSS file for more details.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="working-with-sphinx-docs">
+<h1>Working with Sphinx Docs<a class="headerlink" href="#working-with-sphinx-docs" title="Link to this heading">¶</a></h1>
+<p>The Dockerfile-docs file contains instructions to build a Docker image that can
+build and serve the Sphinx docs.</p>
+<p>There are a number of ways you can use this, but for working on content and
+editing the docs, the easiest is to use the live reloading server shown below.</p>
+<section id="building-the-docker-image">
+<h2>Building the Docker Image<a class="headerlink" href="#building-the-docker-image" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>docbuilder<span class="w"> </span>--target<span class="w"> </span>docbuilder<span class="w"> </span>-f<span class="w"> </span>Docker/Dockerfile-docs<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="running-the-container-with-live-reload">
+<h2>Running the container with Live Reload<a class="headerlink" href="#running-the-container-with-live-reload" title="Link to this heading">¶</a></h2>
+<p>Run the container! This starts a live-reloading server on port 9999 that is
+watching the docs folder for changes. When it encounters changes, it rebuilds
+the docs. On your host system you can open a browser to localhost:9999 to see
+the docs.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>docbuilder<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p9999:9999<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,src<span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/docs,dst<span class="o">=</span>/docs<span class="w"> </span><span class="se">\ </span><span class="c1"># bind mount wants abs path</span>
+<span class="w">    </span>-it<span class="w"> </span>--rm<span class="w"> </span>docbuilder<span class="w"> </span>make<span class="w"> </span>livehtml
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>On OSX host, the traditional volume mount doesn’t seem to trigger rebuilds.
+Also note that restarting the Docker daemon was necessary before live reload
+worked with the bind mount!!</p>
+</div>
+</section>
+</section>
+<section id="working-with-the-modeling-and-visualization-docker-images">
+<h1>Working with the Modeling and Visualization Docker Images<a class="headerlink" href="#working-with-the-modeling-and-visualization-docker-images" title="Link to this heading">¶</a></h1>
+<section id="container-setup">
+<h2>Container Setup<a class="headerlink" href="#container-setup" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># # data
+git clone --recurse-submodules https://github.com/NGEE-Arctic/field-to-model
+cd field-to-model
+docker volume create workshop_data
+
+# # to build model container
+# # (this will take a while, please open an issue for any build failures)
+docker build -t model-container -f Docker/Dockerfile-models .
+
+# # to build visualization container
+docker build -t vis-container -f Docker/Dockerfile-vis .
+
+# # to run before CI is finalized:
+# # Model container:
+docker run -it -v $(pwd):/home/modex_user -v workshop_data:/home/modex_user/data yuanfornl/model-test:main-latest
+
+# # Vis container (@jsta this will need some work) - a) launch jupyter lab with same folder mounts; b) connect over localhost
+
+# # When CI is up/more robust:
+# # To run model container:
+docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-models:main-latest
+
+# # (Note: still needs volume mounts for input/output data)
+# # To run visualization container:
+docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-visualization:main-latest
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
+<p>These examples show</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># # model image
+
+# # visualization image
+docker pull yuanfornl/vis-test:main-latest
+
+docker run -it --init \
+    --mount type=bind,source=$(pwd),target=/home/joyvan/workdir -w /home/joyvan/workdir -p 9999:9999 \
+    yuanfornl/vis-test:main-latest
+
+docker run -it --init \
+    --mount type=bind,source=$(pwd),target=/home/joyvan/workdir -w /home/joyvan/workdir -p 8888:8888 \
+    vis-test
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">General Notes</a></li>
+<li><a class="reference internal" href="#working-with-sphinx-docs">Working with Sphinx Docs</a><ul>
+<li><a class="reference internal" href="#building-the-docker-image">Building the Docker Image</a></li>
+<li><a class="reference internal" href="#running-the-container-with-live-reload">Running the container with Live Reload</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-with-the-modeling-and-visualization-docker-images">Working with the Modeling and Visualization Docker Images</a><ul>
+<li><a class="reference internal" href="#container-setup">Container Setup</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tem_ee3_warming.html"
+                          title="previous chapter"><span class="section-number">1. </span>TEM Warming Experiment</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tem_dev_notes.html"
+                          title="next chapter">TEM Setup Details</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/dev_notes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tem_dev_notes.html" title="TEM Setup Details"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tem_ee3_warming.html" title="1. TEM Warming Experiment"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">General Notes</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, ModEx Team, LANL, ORNL, UAF, LBNL.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

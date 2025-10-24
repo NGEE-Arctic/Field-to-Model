@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TEM Setup Details &#8212; ModEx 2025 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=710ef168" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="General Notes" href="dev_notes.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dev_notes.html" title="General Notes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">TEM Setup Details</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="tem-setup-details">
+<h1>TEM Setup Details<a class="headerlink" href="#tem-setup-details" title="Link to this heading">¶</a></h1>
+<section id="build-images">
+<h2>Build Images<a class="headerlink" href="#build-images" title="Link to this heading">¶</a></h2>
+<p>Ultimately this will be done by CI but this is the command I was using for dev.
+Note the means of getting the version ID from TEM repo. This gets injected into
+the compiled binary.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker build --build-arg TEM_VERSION=$(git -C TEM describe) \
+    -t model-container -f Docker/Dockerfile-models .
+</pre></div>
+</div>
+<p>Note that some of the TEM install could get moved to the base image. Or
+otherwise re-arranged, but it was useful to have it all together at the end
+of the build for faster development.</p>
+</section>
+<section id="start-container">
+<h2>Start Container<a class="headerlink" href="#start-container" title="Link to this heading">¶</a></h2>
+<p>Note the explicit directory for this repo inside the container to prevent
+mounting over the home directory (and obscuring all the stuff in it like the
+install directories!!).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker volume create workshop_data
+docker run -it --rm \
+       --port 9999:9999 \
+       -v workshop_data:/home/modex_user/workshop_data \
+       -v $(pwd):/home/modex_user/Field-To-Model model-container:latest
+</pre></div>
+</div>
+</section>
+<section id="demo-run">
+<h2>Demo run<a class="headerlink" href="#demo-run" title="Link to this heading">¶</a></h2>
+<p>Proof of concept that the installation and compilation worked. Also shows how to
+use the <code class="code docutils literal notranslate"><span class="pre">pyddt</span></code> tools to set up a working directory for a run, modify some
+settings, and run the model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a place to save our output...</span>
+<span class="n">mkdir</span> <span class="n">runs</span>
+
+<span class="c1"># Use the helper tool to setup a working directory for your experiment</span>
+<span class="c1"># has copies of parameters, config files, and</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">swd</span> <span class="o">--</span><span class="nb">input</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">path</span> <span class="n">install_dvmdostem</span><span class="o">/</span><span class="n">demo</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">cru</span><span class="o">-</span><span class="n">ts40_ar5_rcp85_ncar</span><span class="o">-</span><span class="n">ccsm4_toolik_field_station_10x10</span><span class="o">/</span> <span class="n">runs</span><span class="o">/</span><span class="n">EE3_warming</span>
+
+<span class="c1"># Fiddle with the settings...single pixel, turn on some output variables...</span>
+<span class="n">cd</span> <span class="n">runs</span><span class="o">/</span><span class="n">EE3_warming</span><span class="o">/</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">runmask</span> <span class="o">--</span><span class="n">reset</span> <span class="o">--</span><span class="n">yx</span> <span class="mi">5</span> <span class="mi">5</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">runmask</span> <span class="o">--</span><span class="n">reset</span> <span class="o">--</span><span class="n">yx</span> <span class="mi">5</span> <span class="mi">5</span> <span class="n">run</span><span class="o">-</span><span class="n">mask</span><span class="o">.</span><span class="n">nc</span>
+
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">on</span> <span class="n">LAYERDZ</span> <span class="n">m</span> <span class="n">l</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">on</span> <span class="n">TLAYER</span> <span class="n">m</span> <span class="n">l</span>
+
+<span class="c1"># check the outspec file to see what we have...</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="o">-</span><span class="n">s</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span>
+
+<span class="c1"># Run the model</span>
+<span class="n">dvmdostem</span> <span class="o">-</span><span class="n">p</span> <span class="mi">25</span> <span class="o">-</span><span class="n">e</span> <span class="mi">25</span> <span class="o">-</span><span class="n">s</span> <span class="mi">15</span> <span class="o">-</span><span class="n">t</span> <span class="mi">115</span> <span class="o">-</span><span class="n">n</span> <span class="mi">85</span>
+
+<span class="c1"># outputs are in the output folder!</span>
+<span class="n">ls</span> <span class="n">output</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">TEM Setup Details</a><ul>
+<li><a class="reference internal" href="#build-images">Build Images</a></li>
+<li><a class="reference internal" href="#start-container">Start Container</a></li>
+<li><a class="reference internal" href="#demo-run">Demo run</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="dev_notes.html"
+                          title="previous chapter">General Notes</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tem_dev_notes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dev_notes.html" title="General Notes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">TEM Setup Details</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, ModEx Team, LANL, ORNL, UAF, LBNL.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>
