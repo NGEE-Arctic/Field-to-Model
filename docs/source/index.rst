@@ -20,7 +20,7 @@ Here you will find resources and documentation needed to follow the workshop exa
   :numbered: 3
 
   tem_ee3_warming
-
+  elm_intro
 
 .. toctree::
   :maxdepth: 1
