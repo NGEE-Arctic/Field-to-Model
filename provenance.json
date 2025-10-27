@@ -23,7 +23,7 @@
     {
       "name": "_sources/index.rst.txt",
       "digest": {
-        "sha256": "1280a05ce546796a7d9e8699240d4946df54241a8b7e93addeab6a8321932056"
+        "sha256": "1d3f0cb2b34c1c4620938050fb4c894ac2ecd1d9156a4aa83754d1ae37d134a9"
       }
     },
     {
@@ -35,13 +35,25 @@
     {
       "name": "_sources/tem_dev_notes.rst.txt",
       "digest": {
-        "sha256": "637f4a175d58e707488d58688ea60401a2f41f7d2dc91c74f2cb77400e2b87ae"
+        "sha256": "e8f474042627065c56a3bda224448591b64c45e599f62f7b651d1462e1e2606e"
       }
     },
     {
-      "name": "_sources/tem_ee3_warming.rst.txt",
+      "name": "_sources/tem_ee1_warming.rst.txt",
       "digest": {
-        "sha256": "7bdf03d6a5fd8af67cde928d3d315b4ad12b07de5c69fa7d86d49fc255e9585b"
+        "sha256": "d3aea339a66dc1bec63a56af8637ad018acaf2112993b5da6bfd16b542390394"
+      }
+    },
+    {
+      "name": "_sources/tem_ee2_precip.rst.txt",
+      "digest": {
+        "sha256": "ecf7ca210ab2216c6862ce9ac8a2d7f8b09433bc2d2cb466a65b2afeb7d13c52"
+      }
+    },
+    {
+      "name": "_sources/tem_ee3_fire.rst.txt",
+      "digest": {
+        "sha256": "64e031cfe956dad13ea9c17e33f0f2e557cecb072ec1a0bc55f50b6d66c0f401"
       }
     },
     {
@@ -53,7 +65,7 @@
     {
       "name": "_static/css/custom.css",
       "digest": {
-        "sha256": "813cb40f9c16aa2134ba58addf4a94f11ef5a6bb83595d59be44ebc447359e62"
+        "sha256": "80655077c056943171bdeb3d16e5b551ddd1e0aaaa71019c944cf12acc4f1d90"
       }
     },
     {
@@ -119,67 +131,79 @@
     {
       "name": "dev_notes.html",
       "digest": {
-        "sha256": "ec0380029cc6dcf764bf92261ecd30cbdea9732373937de99a7da81e25afc13c"
+        "sha256": "cc4934f855c1931657bdb9d93984b6beb5cbf59bf1d4b657a49655a50ed16c22"
       }
     },
     {
       "name": "elm_intro.html",
       "digest": {
-        "sha256": "c94141dca77e5dbfb02d23e93d75e057bfd69584fe879fd806af38fb41058e58"
+        "sha256": "6a393129d6785b0aa43d16f0ba37d7a1c11081f58ca5f675d149ab7ad861980d"
       }
     },
     {
       "name": "genindex.html",
       "digest": {
-        "sha256": "ab8b7b2d7b908c3c8de8860fcb90da1ab40c69ad95c2909981ec461eaa4065f3"
+        "sha256": "2298a9c78dddbbb831bc7a48db2c02928ae8f77d2679ca3895f0ab0854cebc5d"
       }
     },
     {
       "name": "index.html",
       "digest": {
-        "sha256": "81316cdd2a000f99303634166c80ba72710c9cc517af4bc213cb0775f5d6f4d4"
+        "sha256": "fb06aadf112fc0454418ef7f769587bb25085b23bc7284e6e6e063679071f9d7"
       }
     },
     {
       "name": "objects.inv",
       "digest": {
-        "sha256": "28255f9758efc884ff42bbc11c1770e7b35a91a972fe92a40448d30f2a2d0739"
+        "sha256": "c9c95b3c8cd4947e72b38a893ebbab2a26b942e35eaacdabd74f26beba930849"
       }
     },
     {
       "name": "search.html",
       "digest": {
-        "sha256": "909417c530707be1af293bd88e75e1bcd08d5655fb79830ef11450fd64bd85d5"
+        "sha256": "1b4c001b016ee13d3951a86068dfad55c06b4ec585a83d1446d1d3282a6020fc"
       }
     },
     {
       "name": "searchindex.js",
       "digest": {
-        "sha256": "0f5d9414f6629cef5af5a2a8f5d2f9f31d8278563e42c067afea473e132040a5"
+        "sha256": "75cd5b9715cfa2a0f8fe54ea28d6ee3bafc3be3354c6ee662643b233175987b8"
       }
     },
     {
       "name": "setup.html",
       "digest": {
-        "sha256": "5948f2d75837d73c0bcc363bf64b8b2ff1cc19107105bb4f54d694c349dad29b"
+        "sha256": "e012973375f8d5e71c02788af988a91138ae3ef39efe6af6bf34233774f9a3ac"
       }
     },
     {
       "name": "tem_dev_notes.html",
       "digest": {
-        "sha256": "e245f7443da26f8d07afcd001cea68f6c92e1090f027e9e5323c9782f211344a"
+        "sha256": "6684341c21164ef2089d8ca58cc68fb334c6d66d2016616a7054329758997a08"
       }
     },
     {
-      "name": "tem_ee3_warming.html",
+      "name": "tem_ee1_warming.html",
       "digest": {
-        "sha256": "f7bccc70b0708d27f4e4ced3de47d400de3172e06bcf9c2e41d76bb56f732730"
+        "sha256": "24be1c748f431e689c3f24d80b2790a908ee0b3ab8a94db526cd4aa451522814"
+      }
+    },
+    {
+      "name": "tem_ee2_precip.html",
+      "digest": {
+        "sha256": "b723b045d1366c9221be709873e9e0e1682dd049ecf230bc335434c0aa0066bd"
+      }
+    },
+    {
+      "name": "tem_ee3_fire.html",
+      "digest": {
+        "sha256": "0e50c095fee551b266d8d831ce6d62ec3a678603341ec932f2c79b94667f972c"
       }
     }
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/18853344927/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/18858943469/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -455,21 +479,21 @@
         }
       ],
       "digestMapping": {
+        "sha256:0fa48c27963041c3fc62c6c4bb7a0dae342f432afd7a8bf6d1b6583782834896": "step4",
+        "sha256:2095790565ce651ad11c04360393b2e25fbcc1d254e632422fdc78de71c5b962": "step1",
+        "sha256:44fdba97e6fab7a28aaee2207516057eeeb3678f2ba2e1533d7974c51b544d77": "step8",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:4d27859cd37a02316eb12e2df11943f0459029bf882e886b4f51ac7c6fb6edfc": "step8",
-        "sha256:51f5573d726d17f5f596f122d2f65ba745f1c991aacd32c3dbf5c86d0f5997e6": "step3",
-        "sha256:5d7a95da4a642f4064791246a1c4a05d4d8d8f3da78a52dcc06f2200b9fa114c": "step2",
-        "sha256:60bd81b44f1cd5589d806472ed3c362a50d0b168062862b4f4f1600d53055bb0": "step6",
-        "sha256:827fd13cb2f441b512189585ddcfe14694ac11182f4410a3e34be70cb32891ad": "step7",
-        "sha256:cb55ee4f3233a0894800e241dc6cc13e78d9e25f5b4f0c895a446174861870e0": "step5",
-        "sha256:d35f88592ae8238627f05e1d91771154e87aadbff0ccccde78b72c01285d6e26": "step1",
-        "sha256:e57436d563e02088183e015929add870b3c5397a29944a4013d000fc2c23bffc": "step4"
+        "sha256:5522f3ad54e0f63b3aac495b72ef77a97aa9ddf49c3fe980c12f80be905b1d27": "step3",
+        "sha256:57e65dcf60f6de7ed3e80bc03fbfc8462bf1757f0e8167201c5a82e2fca0f63b": "step6",
+        "sha256:6b29d44c58df5b8da445d5d0364d3b46f50cb728c23da1a3d1efa8f3aac8a632": "step7",
+        "sha256:6ee795a8e3264fffee34168d51b2a868e7a98ceac9545337965e1c7ad77e8ae1": "step2",
+        "sha256:f811ad366f0e96349fee82f259ed7c08aa1ec5f64a0d7b967baa8ffa443dac5d": "step5"
       }
     },
     "metadata": {
-      "buildInvocationID": "qb7tt1e9sbgio2ydsr4cwq3th",
-      "buildStartedOn": "2025-10-27T19:24:06.856713491Z",
-      "buildFinishedOn": "2025-10-27T19:24:21.942026298Z",
+      "buildInvocationID": "tmpljf6ocyjhjzw3dp323ovk2",
+      "buildStartedOn": "2025-10-27T23:27:52.908311512Z",
+      "buildFinishedOn": "2025-10-27T23:28:04.015633803Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -480,7 +504,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "46caf93ec4af216fdcf24c2d799060e41ce4c2f2",
+          "revision": "7b667cbd9b31836f8b70ef49e470bfd0485977fe",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -632,8 +656,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:5078e1426602a23eb0489e1f2863d7e3d33f7ca24d240d6aa6887f9bbeb1c54b": "step1",
-                "sha256:eb90720735453e8facb368f86f26da80d9666e9c3c67a8d9f80d5f6b1f3e9c27": "step0"
+                "sha256:247a6b4ccaf9b2d1a22eb044ebd37c6366fbec6f4de936a9d43705b6c9652466": "step1",
+                "sha256:68c156162a7331863f2b6363468e9e1ae6d1151f7a68f8d2e520666a07087afc": "step0"
               }
             }
           ]

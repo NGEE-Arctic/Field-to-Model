@@ -2,10 +2,19 @@
 
 .workshop-collapse {
     background-color: rgb(196, 230, 159);
-    margin: 10px;
+    margin: 0px;
     padding: 10px;
     border: 1px;
     border-color: rgb(206, 206, 206);
     border-style: solid;
-    border-radius: 5px;
+    border-radius: 0px;
+}
+
+/* Use this to modify the code block appearance */
+div[class*="highlight-"] {
+    /* background-color: rgb(241, 127, 127); */
+    /* border-radius: 5px; */
+    /* border-style: dotted; */
+    padding: 2px;
+
 }

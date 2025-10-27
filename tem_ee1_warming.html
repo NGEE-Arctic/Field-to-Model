@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. TEM Warming Experiment (and TEM Introduction) &#8212; ModEx 2025 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=15df1221" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Introduction to ELM and workshop scripts" href="elm_intro.html" />
+    <link rel="prev" title="1. Getting Started" href="setup.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="elm_intro.html" title="2. Introduction to ELM and workshop scripts"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="setup.html" title="1. Getting Started"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>TEM Warming Experiment (and TEM Introduction)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="tem-warming-experiment-and-tem-introduction">
+<h1><span class="section-number">1. </span>TEM Warming Experiment (and TEM Introduction)<a class="headerlink" href="#tem-warming-experiment-and-tem-introduction" title="Link to this heading">¶</a></h1>
+<section id="what-are-we-trying-to-model">
+<h2><span class="section-number">1.1. </span>What are we trying to model?<a class="headerlink" href="#what-are-we-trying-to-model" title="Link to this heading">¶</a></h2>
+<p>NGEE Arctic has worked on numerous experiments and field equipment over the last decade+, one of which being the zero-power warming
+chambers (see Lewin et at. (2017) <a class="reference external" href="https://bg.copernicus.org/articles/14/4071/2017/bg-14-4071-2017.pdf">https://bg.copernicus.org/articles/14/4071/2017/bg-14-4071-2017.pdf</a>)
+The chambers passively warm the mean daily temperature inside the chamber by 2.6◦C above ambient temperatures during the summer months.
+Modeling such field experiments allows us to evaluate how well the model is able to capture the ecosystem responses to warming,
+and thus how adequate the model is for predicting future ecosystem changes.</p>
+<p>At Utqiagvik, the chambers were deployed over a single season in multiple locations from 2017-2021 from mid-June through to mid-September (Ely et al. 2024).
+In this example, we model the 2019 summer warming experiment and compare the modeled and measured soil temperatures at 10cm depth
+for the warmed and control site. The 2019 experiment focused on <em>Eriophorum angustifolium</em>, a common sedge species in Arctic tundra which
+in the model DVM-DOS-TEM is represented by the sedge plant functional type (PFT) and grows for example in the wet sedge tundra
+community type (CMT). We model the warming experiment at a single pixel representing the wet sedge tundra CMT at Utqiagvik and compare the
+soil temperature at 10cm depth between the control and warmed runs to the observed soil temperatures at the site (Ely et al. 2024).</p>
+<p>Lewin, K. F., McMahon, A. M., Ely, K. S., Serbin, S. P., &amp; Rogers, A. (2017). A zero-power warming chamber for investigating plant responses to rising temperature. Biogeosciences, 14(18), 4071-4083.</p>
+<p>Ely, Kim, Anderson, Jeremiah, Serbin, Shawn, &amp; Rogers, Alistair (2024). Vegetation Warming Experiment: Thaw depth and dGPS locations, Utqiagvik, Alaska, 2019. <a class="reference external" href="https://doi.org/10.5440/1887568">https://doi.org/10.5440/1887568</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TODO</p>
+<p>Add some links to the text above into the relevant sections of the TEM
+User Guide. For example linking to the description of Community Types, PFTs,
+etc.</p>
+</div>
+</section>
+<section id="setup">
+<h2><span class="section-number">1.2. </span>Setup<a class="headerlink" href="#setup" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Waiting on Tobey to finalize input data prep. For now, just use the
+demo data that is shipped with the TEM install…in the modex model container
+you can find it at <code class="code docutils literal notranslate"><span class="pre">/home/modex_user/install_dvmdostem/demo-data</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Prerequisites</p>
+<p>Assumes you have done the following container setup after downloading
+the container image from the cloud:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>inputdata
+docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>output
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/model_examples:/home/modex_user/model_examples<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span>inputdata:/home/modex_user/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span>output:/home/modex_user/output<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>model-container:latest
+
+<span class="c1"># Alternate ways, mount might work better if you plan to edit files on the</span>
+<span class="c1"># host side and have them show up in the container right away....</span>
+<span class="c1"># -v $(pwd)/model_examples:/home/modex_user/model_examples \</span>
+<span class="c1"># --mount type=bind,src=$(pwd)/model_examples,dst=/home/modex_user/model_examples \</span>
+</pre></div>
+</div>
+<p>Which should give you a shell prompt inside the container with two
+volumes mounted for input data and workshop runs.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modex_user@5cf5a55dff62:~$
+</pre></div>
+</div>
+</div>
+<section id="inputs">
+<h3><span class="section-number">1.2.1. </span>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h3>
+<p>Copy the input data that you’d like to use to the input data directory:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Once we have inputs prepared for the workshop you can skip this step and
+just browse the input data folder to find data you want to use.</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>-r<span class="w"> </span>/opt/dvmdostem/demo-data/*<span class="w"> </span>/mnt/inputdata/
+</pre></div>
+</div>
+<p>Next, to make the experiment and analysis easier, we will glue together the
+historic and projected (scenario) climate data into a single continuous dataset.
+This will allow us to run the model in a single stage from 1901-2100 rather than
+having to do a transient run followed by a scenario run. Use the helper script
+in the <code class="code docutils literal notranslate"><span class="pre">model_examples/TEM</span></code> directory to do this:</p>
+<details name="tem-run-stages" class="workshop-collapse summary-more-info-on-tem-run-stages">
+<summary>More info on TEM run stages...</summary><p>TEM typically runs in multiple stages to cover the full historical and future
+periods. The typical stages are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Equilibrium (EQ): Run model to reach a steady state using pre-industrial climate data.</p></li>
+<li><p>Spinup (SP): Further spin-up using historical climate data.</p></li>
+<li><p>Transient (TR): Run model with historical climate data from 1901 to present.</p></li>
+<li><p>Scenario (SC): Run model with future climate projections from present to 2100.</p></li>
+</ul>
+</div></blockquote>
+<p>By gluing the transient and scenario datasets together, we can simplify the
+run process into a single stage covering 1901-2100.</p>
+</details><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./model_examples/TEM/glue_transient_scenario.py<span class="w"> </span>/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
+</pre></div>
+</div>
+<p>Now if you look in the new directory, you should see a new file called
+<code class="code docutils literal notranslate"><span class="pre">stock-historic-climate.nc</span></code> which is the original file that came with the
+dataset. The file <code class="code docutils literal notranslate"><span class="pre">historic-climate.nc</span></code> is now the glued together version
+that covers 1901-2100. The same applies to the CO2 files.</p>
+<details name="ncdump-glued" class="workshop-collapse summary-examining-a-netcdf-file">
+<summary>Examining a NetCDF file.</summary><p>You can use the <code class="code docutils literal notranslate"><span class="pre">ncdump</span></code> utility to inspect the contents of the new
+netCDF file. For example:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ncdump<span class="w"> </span>-h<span class="w"> </span>/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10/historic-climate.nc
+</pre></div>
+</div>
+<p>This will show you the dimensions and variables in the file, including the
+time dimension which should now span from 1901 to 2100.</p>
+</details></section>
+<section id="creating-the-warming-treatment-dataset">
+<h3><span class="section-number">1.2.2. </span>Creating the Warming Treatment Dataset<a class="headerlink" href="#creating-the-warming-treatment-dataset" title="Link to this heading">¶</a></h3>
+<p>Now we are going to make copy of this dataset to create our “treatment” or
+“warming” dataset. We will then modify this copy to increase the air temperatures
+by 2.6 degrees Celsius during the summer months (June, July, August, September)
+for the year 2019.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>-r<span class="w"> </span>/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019
+</pre></div>
+</div>
+<p>Now we will run the helper script to modify the air temperatures in the new
+dataset:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./model_examples/TEM/modify_air_temperature.py<span class="w"> </span><span class="se">\</span>
+--input-file<span class="w"> </span>/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/historic-climate.nc<span class="w"> </span><span class="se">\</span>
+--months<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
+--years<span class="w"> </span><span class="m">2019</span><span class="w"> </span><span class="se">\</span>
+--deviation<span class="w"> </span><span class="m">2</span>.6
+</pre></div>
+</div>
+<details name="modify-script-details" class="workshop-collapse summary-details-about-the-modification-script">
+<summary>Details about the modification script</summary><p>The modification script uses <code class="code docutils literal notranslate"><span class="pre">xarray</span></code> under the hood to manipulate
+the netCDF data. It creates a boolean mask for the time dimension based
+on the specified years and months, and then applies the temperature deviation
+only to those selected time points.</p>
+<p>The modification script can take additional arguments to modify multiple
+years and different months as needed. See the help message for details.</p>
+</details><p>As you will see in the statements that are printed out from this script it will
+actually create an new file alongside the existing one. Here we throw out the
+original file and rename the modified version to clean things up.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/modified_historic-climate.nc<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/historic-climate.nc
+</pre></div>
+</div>
+<p>Now we have two datasets:</p>
+<ul class="simple">
+<li><p>the control dataset: <code class="code docutils literal notranslate"><span class="pre">/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10</span></code></p></li>
+<li><p>the warming treatment dataset: <code class="code docutils literal notranslate"><span class="pre">/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TODO</p>
+<p>would be nice to show some viz of this…do we need to use the other container??</p>
+</div>
+</section>
+<section id="setting-up-the-run-folders">
+<h3><span class="section-number">1.2.3. </span>Setting up the run folders<a class="headerlink" href="#setting-up-the-run-folders" title="Link to this heading">¶</a></h3>
+<p>Now that we have the datasets set up, we can create two run folders using the
+<code class="code docutils literal notranslate"><span class="pre">pyddt-swd</span></code> utility helper tool. For this we will work in the
+<code class="code docutils literal notranslate"><span class="pre">/mnt/output/tem_ee1_warming</span></code> directory.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/output/tem/tem_ee1_warming
+<span class="nb">cd</span><span class="w"> </span>/mnt/output/tem/tem_ee1_warming
+
+pyddt-swd<span class="w"> </span>--input-data<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>control
+
+pyddt-swd<span class="w"> </span>--input-data<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>treatment
+</pre></div>
+</div>
+<p>You should now have two run folders set up for the control and treatment runs:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">pwd</span>
+/mnt/output/tem/tem_ee1_warming/control
+
+$<span class="w"> </span>ls<span class="w"> </span>-l
+drwxr-xr-x<span class="w"> </span><span class="m">6</span><span class="w"> </span>modex_user<span class="w"> </span>modex_user<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">22</span>:17<span class="w"> </span>control
+drwxr-xr-x<span class="w"> </span><span class="m">6</span><span class="w"> </span>modex_user<span class="w"> </span>modex_user<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">22</span>:17<span class="w"> </span>warming_2.6C_JJAS_2019
+</pre></div>
+</div>
+<p>Now we can start a run in each folder.</p>
+</section>
+<section id="running-the-model">
+<h3><span class="section-number">1.2.4. </span>Running the model<a class="headerlink" href="#running-the-model" title="Link to this heading">¶</a></h3>
+<p>Take care of the last setup steps. <strong>DO THIS FOR EACH RUN</strong>:</p>
+<ol class="arabic">
+<li><p>Change into the run folder, e.g. <code class="code docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/mnt/output/tem/tem_ee1_warming/control</span></code>.</p></li>
+<li><p>Adjust the run mask so that only a single pixel is enabled.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyddt</span><span class="o">-</span><span class="n">runmask</span> <span class="o">--</span><span class="n">reset</span> <span class="o">--</span><span class="n">yx</span> <span class="mi">0</span> <span class="mi">0</span> <span class="n">run</span><span class="o">-</span><span class="n">mask</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+</li>
+<li><p>Setup the output specification file. This is a <cite>:code:`csv</cite> file that tells
+the model which variables to output and at what resolution. You can edit it
+by hand but it’s easier to use the <code class="code docutils literal notranslate"><span class="pre">pyddt-outspec</span></code> utility to add the
+variables you want.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">on</span> <span class="n">GPP</span> <span class="n">m</span> <span class="n">p</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">on</span> <span class="n">LAYERDZ</span> <span class="n">m</span> <span class="n">l</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">on</span> <span class="n">TLAYER</span> <span class="n">m</span> <span class="n">l</span>
+
+<span class="c1"># Print it out to see what vars we have at what resolution...</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">-</span><span class="n">s</span>
+         <span class="n">Name</span>                <span class="n">Units</span>       <span class="n">Yearly</span>      <span class="n">Monthly</span>        <span class="n">Daily</span>          <span class="n">PFT</span> <span class="n">Compartments</span>       <span class="n">Layers</span>    <span class="n">Data</span> <span class="n">Type</span>     <span class="n">Description</span>
+          <span class="n">GPP</span>            <span class="n">g</span><span class="o">/</span><span class="n">m2</span><span class="o">/</span><span class="n">time</span>            <span class="n">y</span>                   <span class="n">invalid</span>                                <span class="n">invalid</span>       <span class="n">double</span>     <span class="n">GPP</span>
+      <span class="n">LAYERDZ</span>                    <span class="n">m</span>            <span class="n">y</span>            <span class="n">m</span>      <span class="n">invalid</span>      <span class="n">invalid</span>      <span class="n">invalid</span>            <span class="n">l</span>       <span class="n">double</span>     <span class="n">Thickness</span> <span class="n">of</span> <span class="n">layer</span>
+       <span class="n">TLAYER</span>             <span class="n">degree_C</span>            <span class="n">y</span>            <span class="n">m</span>      <span class="n">invalid</span>      <span class="n">invalid</span>      <span class="n">invalid</span>            <span class="n">l</span>       <span class="n">double</span>     <span class="n">Temperature</span> <span class="n">by</span> <span class="n">layer</span>
+</pre></div>
+</div>
+</li>
+<li><p>Optional - config file settings.</p>
+<p>Expand this section to see a discussion of adjusting the config file.</p>
+<details name="alt-file-shuffle" class="workshop-collapse summary-example-of-adjusting-config-file-settings">
+<summary>Example of adjusting config file settings</summary><p>The config file is a <code class="code docutils literal notranslate"><span class="pre">json</span></code> file that contains a bunch of settings
+for the run. You may want to look through the file to see what things
+are available for changing. You can edit the file directly with a text
+editor, or you can use a small script to do it programmatically or in
+an interactive Python session, as in the following example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">output</span><span class="o">/</span><span class="n">tem</span><span class="o">/</span><span class="n">tem_ee1_warming</span><span class="o">/</span><span class="n">control</span><span class="o">/</span>
+
+<span class="n">ipython</span>
+<span class="n">Python</span> <span class="mf">3.11.14</span> <span class="o">|</span> <span class="n">packaged</span> <span class="n">by</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">|</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Oct</span> <span class="mi">13</span> <span class="mi">2025</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">32</span><span class="p">)</span> <span class="p">[</span><span class="n">GCC</span> <span class="mf">14.3.0</span><span class="p">]</span>
+<span class="n">Type</span> <span class="s1">&#39;copyright&#39;</span><span class="p">,</span> <span class="s1">&#39;credits&#39;</span> <span class="ow">or</span> <span class="s1">&#39;license&#39;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span>
+<span class="n">IPython</span> <span class="mf">9.6.0</span> <span class="o">--</span> <span class="n">An</span> <span class="n">enhanced</span> <span class="n">Interactive</span> <span class="n">Python</span><span class="o">.</span> <span class="n">Type</span> <span class="s1">&#39;?&#39;</span> <span class="k">for</span> <span class="n">help</span><span class="o">.</span>
+<span class="n">Tip</span><span class="p">:</span> <span class="n">Put</span> <span class="n">a</span> <span class="s1">&#39;;&#39;</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">a</span> <span class="n">line</span> <span class="n">to</span> <span class="n">suppress</span> <span class="n">the</span> <span class="n">printing</span> <span class="n">of</span> <span class="n">output</span><span class="o">.</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;config/config.js&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+   <span class="o">...</span><span class="p">:</span>   <span class="n">jd</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">jd</span><span class="p">[</span><span class="s1">&#39;IO&#39;</span><span class="p">][</span><span class="s1">&#39;hist_climate_file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10/transient-scenario-climate.nc&quot;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">jd</span><span class="p">[</span><span class="s1">&#39;IO&#39;</span><span class="p">][</span><span class="s1">&#39;co2_file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/mnt/inputdata/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10/transient-scenario-co2.nc&quot;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;config/config.js&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+   <span class="o">...</span><span class="p">:</span>    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">jd</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</details></li>
+<li><p>Now we can start the run.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>dvmdostem<span class="w"> </span>-f<span class="w"> </span>config/config.js<span class="w"> </span>-p<span class="w"> </span><span class="m">15</span><span class="w"> </span>-e<span class="w"> </span><span class="m">10</span><span class="w"> </span>-s<span class="w"> </span><span class="m">10</span><span class="w"> </span>-t<span class="w"> </span><span class="m">150</span><span class="w"> </span>-n<span class="w"> </span><span class="m">0</span><span class="w"> </span>-l<span class="w"> </span>monitor
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="analysis">
+<h2><span class="section-number">1.3. </span>Analysis<a class="headerlink" href="#analysis" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TODO, write this…</p>
+<p>What kinds of plots and analyses do we want to provide? What variables are we
+most interested in? How do we want to visualize the differences between the
+control and warming runs?</p>
+<p>Some ideas:</p>
+<ul class="simple">
+<li><p>Time series plots of key variables (e.g. GPP, NEE, soil carbon) for control vs warming</p></li>
+<li><p>Seasonal cycle plots</p></li>
+<li><p>Difference maps if multi-pixel</p></li>
+<li><p>Statistical summaries (means, variances, trends)</p></li>
+<li><p>Comparison to observational data if available</p></li>
+</ul>
+<p>We can use Jupyter notebooks for interactive analysis and visualization.</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">1. TEM Warming Experiment (and TEM Introduction)</a><ul>
+<li><a class="reference internal" href="#what-are-we-trying-to-model">1.1. What are we trying to model?</a></li>
+<li><a class="reference internal" href="#setup">1.2. Setup</a><ul>
+<li><a class="reference internal" href="#inputs">1.2.1. Inputs</a></li>
+<li><a class="reference internal" href="#creating-the-warming-treatment-dataset">1.2.2. Creating the Warming Treatment Dataset</a></li>
+<li><a class="reference internal" href="#setting-up-the-run-folders">1.2.3. Setting up the run folders</a></li>
+<li><a class="reference internal" href="#running-the-model">1.2.4. Running the model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#analysis">1.3. Analysis</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="setup.html"
+                          title="previous chapter"><span class="section-number">1. </span>Getting Started</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="elm_intro.html"
+                          title="next chapter"><span class="section-number">2. </span>Introduction to ELM and workshop scripts</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tem_ee1_warming.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="elm_intro.html" title="2. Introduction to ELM and workshop scripts"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="setup.html" title="1. Getting Started"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>TEM Warming Experiment (and TEM Introduction)</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, ModEx Team, LANL, ORNL, UAF, LBNL.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>
