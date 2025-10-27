@@ -7,7 +7,7 @@ tools.
 
 We have pre-built Docker images for the models and visualization tools, which
 can be pulled from Docker Hub. However, if you prefer to build the images
-locally, instructions are provided in the developer section.
+locally, instructions are provided in the :ref:`container-setup` section.
 
 Clone Field-to-Model repository for the workshop
 -------------------------------------------------

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction to ELM and workshop scripts &#8212; ModEx 2025 0.0.1 documentation</title>
+    <title>2. Introduction to ELM and workshop scripts &#8212; ModEx 2025 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=710ef168" />
@@ -13,7 +13,9 @@
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="General Notes" href="dev_notes.html" />
+    <link rel="prev" title="1. TEM Warming Experiment" href="tem_ee3_warming.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
@@ -21,8 +23,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dev_notes.html" title="General Notes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tem_ee3_warming.html" title="1. TEM Warming Experiment"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Introduction to ELM and workshop scripts</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>  
 
@@ -32,13 +40,13 @@
           <div class="body" role="main">
             
   <section id="introduction-to-elm-and-workshop-scripts">
-<h1>Introduction to ELM and workshop scripts<a class="headerlink" href="#introduction-to-elm-and-workshop-scripts" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">2. </span>Introduction to ELM and workshop scripts<a class="headerlink" href="#introduction-to-elm-and-workshop-scripts" title="Link to this heading">¶</a></h1>
 <p>The E3SM Land Model (ELM) is the land surface component of the coupled E3SM model. ELM simulates a wide set of land surface and ecosystem processes, including surface energy balance, photosynthesis, carbon allocation, soil and surface hydrology, nitrogen and phosphorus dynamics, and snow processes, among others. ELM can be run by itself (if provided meteorological forcing data) or in different coupling configurations of E3SM. In addition, ELM can be run in point (e.g., single grid cell), regional, or global configurations.</p>
 <p>For this workshop, we have simplified the process of running ELM for several Arctic sites using a shell script. Several of the new parameterizations added in phase 3 of the NGEE Arctic project are accessible through this script, as are several ways of testing the sensitivity of model results to changes in forcing conditions. You can see the options that are available for the script by running:</p>
 <p>In the first example, we will run a ‘control’ case for one of the NGEE Arctic sites where none of the new capabilities developed for NGEE Arctic have been turned on.</p>
 <p>note:</p>
 <section id="under-the-hood">
-<h2>Under the hood<a class="headerlink" href="#under-the-hood" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">2.1. </span>Under the hood<a class="headerlink" href="#under-the-hood" title="Link to this heading">¶</a></h2>
 <p>The script we have developed simplifies the interface to the Offline Land Model Testbed (OLMT), developed by Dan Ricciuto (ORNL). OLMT itself simplifies the setup of model cases necessary to spin up an ELM simulation from a ‘cold start’ condition. (Figure of hierarchy?). OLMT sets up three cases that run consecutively: an ‘accelerated’ decomposition spin up that features accelerated biogeochemical cycling, a second stage of spin up with normal biogeochemical cycling rates, and finally a transient run that starts in 1850 and continues to near present (depending on how long the forcing datasets run). OLMT automates the setup of these cases through the E3SM case control system (CIME - Common Infrastructure for Modeling the Earth).</p>
 </section>
 </section>
@@ -53,12 +61,22 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">Introduction to ELM and workshop scripts</a><ul>
-<li><a class="reference internal" href="#under-the-hood">Under the hood</a></li>
+<li><a class="reference internal" href="#">2. Introduction to ELM and workshop scripts</a><ul>
+<li><a class="reference internal" href="#under-the-hood">2.1. Under the hood</a></li>
 </ul>
 </li>
 </ul>
 
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tem_ee3_warming.html"
+                          title="previous chapter"><span class="section-number">1. </span>TEM Warming Experiment</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="dev_notes.html"
+                          title="next chapter">General Notes</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -87,8 +105,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="dev_notes.html" title="General Notes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tem_ee3_warming.html" title="1. TEM Warming Experiment"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Introduction to ELM and workshop scripts</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

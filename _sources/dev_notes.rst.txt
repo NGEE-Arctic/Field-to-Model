@@ -57,6 +57,7 @@ the docs.
 Working with the Modeling and Visualization Docker Images
 ===========================================================
 
+.. _container-setup:
 
 Container Setup
 -------------------
