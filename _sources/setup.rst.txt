@@ -37,7 +37,7 @@ with the following commands:
 
 .. code::
     
-    docker pull yuanfornl/ngee-arctic-modex25:model-main-latest
+    docker pull yuanfornl/ngee-arctic-modex25:models-main-latest
     docker pull yuanfornl/ngee-arctic-modex25:vis-main-latest
 
 You will also need to set up a few docker volumes for the workshop:
@@ -61,13 +61,31 @@ E3SM/ELM input data needed for the workshop can be downloaded by:
     docker run -it --rm \
         -v $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
-        yuanfornl/ngee-arctic-modex25:model-main-latest \
+        yuanfornl/ngee-arctic-modex25:models-main-latest \
         /home/modex_user/tools/scripts/get_inputdata.sh
 
-.. note:: TODO, write this...
-    
-    Download from bucket? Google Drive? git clone? Thumb drives?
+Test the containers
+----------------------------
 
+We have included a quick script to test whether the container images work for you:
+
+.. code::
+
+    docker run -it --rm \
+        -v $(pwd):/home/modex_user \
+        -v inputdata:/mnt/inputdata \
+        -v output:/mnt/output \
+        yuanfornl/ngee-arctic-modex25:models-main-latest \
+        /home/modex_user/tools/scripts/test_container.sh
+
+If you get output that matches the output below, you've setup the container correctly:
+
+.. code:: 
+
+    ATS version 1.6.0_9f6f117d
+    v0.8.3-42-g77038e0c
+    Docker	E3SM  README.md  docs  model_examples  tools
+    inputdata  output
 
 Launch the containers
 ----------------------------
@@ -81,7 +99,7 @@ from the folder containing the field-to-model repo:
         -v  $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
-        yuanfornl/ngee-arctic-modex25:model-main-latest /bin/bash
+        yuanfornl/ngee-arctic-modex25:models-main-latest /bin/bash
 
 .. code::
 
@@ -96,6 +114,12 @@ If you need a shell into the visualization container, you can open one using:
 .. code::
 
     docker exec -it {CONTAINER_NAME} /bin/bash
+
+You can find the value of ``{CONTAINER_NAME}`` by using:
+
+.. code:: 
+
+    docker ps
 
 .. note:: TODO, write this...
     

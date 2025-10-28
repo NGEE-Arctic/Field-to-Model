@@ -68,7 +68,7 @@ for visualization.</p>
 ~2.1GB on Docker Hub.</p>
 <p>Once you have the containers downloaded, you can run them on your local machine
 with the following commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex25</span><span class="p">:</span><span class="n">model</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex25</span><span class="p">:</span><span class="n">models</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span>
 <span class="n">docker</span> <span class="n">pull</span> <span class="n">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex25</span><span class="p">:</span><span class="n">vis</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span>
 </pre></div>
 </div>
@@ -87,25 +87,39 @@ platforms (e.g., Windows vs mac).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
     -v $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
-    yuanfornl/ngee-arctic-modex25:model-main-latest \
+    yuanfornl/ngee-arctic-modex25:models-main-latest \
     /home/modex_user/tools/scripts/get_inputdata.sh
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>TODO, write this…</p>
-<p>Download from bucket? Google Drive? git clone? Thumb drives?</p>
+</section>
+<section id="test-the-containers">
+<h2><span class="section-number">1.4. </span>Test the containers<a class="headerlink" href="#test-the-containers" title="Link to this heading">¶</a></h2>
+<p>We have included a quick script to test whether the container images work for you:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+    -v $(pwd):/home/modex_user \
+    -v inputdata:/mnt/inputdata \
+    -v output:/mnt/output \
+    yuanfornl/ngee-arctic-modex25:models-main-latest \
+    /home/modex_user/tools/scripts/test_container.sh
+</pre></div>
+</div>
+<p>If you get output that matches the output below, you’ve setup the container correctly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ATS</span> <span class="n">version</span> <span class="mf">1.6.0_9</span><span class="n">f6f117d</span>
+<span class="n">v0</span><span class="mf">.8.3</span><span class="o">-</span><span class="mi">42</span><span class="o">-</span><span class="n">g77038e0c</span>
+<span class="n">Docker</span>      <span class="n">E3SM</span>  <span class="n">README</span><span class="o">.</span><span class="n">md</span>  <span class="n">docs</span>  <span class="n">model_examples</span>  <span class="n">tools</span>
+<span class="n">inputdata</span>  <span class="n">output</span>
+</pre></div>
 </div>
 </section>
 <section id="launch-the-containers">
-<h2><span class="section-number">1.4. </span>Launch the containers<a class="headerlink" href="#launch-the-containers" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">1.5. </span>Launch the containers<a class="headerlink" href="#launch-the-containers" title="Link to this heading">¶</a></h2>
 <p>Then once you have the images you can run them with the following commands
 from the folder containing the field-to-model repo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
     -v  $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
-    yuanfornl/ngee-arctic-modex25:model-main-latest /bin/bash
+    yuanfornl/ngee-arctic-modex25:models-main-latest /bin/bash
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
@@ -117,6 +131,10 @@ from the folder containing the field-to-model repo:</p>
 </div>
 <p>If you need a shell into the visualization container, you can open one using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="p">{</span><span class="n">CONTAINER_NAME</span><span class="p">}</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+</pre></div>
+</div>
+<p>You can find the value of <code class="docutils literal notranslate"><span class="pre">{CONTAINER_NAME}</span></code> by using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">ps</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -145,7 +163,8 @@ the container name at container startup in the docker run commands.</p>
 <li><a class="reference internal" href="#clone-field-to-model-repository-for-the-workshop">1.1. Clone Field-to-Model repository for the workshop</a></li>
 <li><a class="reference internal" href="#download-docker-containers">1.2. Download Docker containers</a></li>
 <li><a class="reference internal" href="#get-the-workshop-data">1.3. Get the workshop data</a></li>
-<li><a class="reference internal" href="#launch-the-containers">1.4. Launch the containers</a></li>
+<li><a class="reference internal" href="#test-the-containers">1.4. Test the containers</a></li>
+<li><a class="reference internal" href="#launch-the-containers">1.5. Launch the containers</a></li>
 </ul>
 </li>
 </ul>
