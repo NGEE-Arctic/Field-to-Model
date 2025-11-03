@@ -225,15 +225,20 @@ echo " "
 # specify met dir prefix
 # Set site codes for OLMT
 # EACH OF THESE SITES ALSO NEEDS THE SURFFILE, LU FILE, DOMAIN FILE SPECIFIED>
+met_root_gswp3="mnt/inputdata/atm/datm7/gswp3"
+met_root_era5="mnt/inputdata/atm/datm7/era5"  # Nick-- 2025.11.3: switched input-data strucutre,
+# guess at correct behavior
+# met_root_era5="mnt/inputdata/atm/datm7/dapper" #  # this is previous path definition
+
 if [ ${site_name} = beo ]; then
   site_code="AK-BEOG"
   surf_file="surfdata_1x1pt_beo-GRID_simyr1850_c360x720_c171002.nc"
   landuse_file="landuse.timeseries_1x1pt_beo-GRID_simyr1850-2015_c180423.nc"
   domain_file="domain.lnd.1x1pt_beo-GRID_navy.nc"
   if [ ${met_source} = era5 ]; then
-    met_path="/mnt/inputdata/atm/datm7/dapper/utq"
+    met_path="${met_root_era5}/utq"
   elif [ ${met_source} = gswp3 ]; then
-    met_path=
+    met_path="${met_root_gswp3}/utq"
   fi
 elif [ ${site_name} = council ]; then
   site_code="AK-CLG"
@@ -241,25 +246,40 @@ elif [ ${site_name} = council ]; then
   landuse_file="MISSING"
   domain_file="domain.lnd.1x1pt_council-GRID_navy.nc"
   if [ ${met_source} = era5 ]; then
-    met_path="/mnt/inputdata/atm/datm7/dapper/cnl"
+    # met_path="/mnt/inputdata/atm/datm7/dapper/cnl"
+    met_path="${met_root_era5}/cnl"
   elif [ ${met_source} = gswp3 ]; then
-    met_path=
+    met_path="${met_root_gswp3}/cnl"
   fi
+
 elif [ ${site_name} = kougarok ]; then
   site_code="AK-K64G"
   surf_file="surfdata_1x1pt_kougarok-GRID_simyr1850_c360x720_c171002.nc"
   landuse_file="landuse.timeseries_1x1pt_kougarok-GRID_simyr1850-2015_c180423.nc"
   domain_file="domain.lnd.1x1pt_kougarok-GRID_navy.nc"
-  met_path="/mnt/inputdata/atm/datm7/dapper/kg"
+
+  ## was missing option for either met
+  # met_path="${met_root_era5}/kg"
+  # # met_path="/mnt/inputdata/atm/datm7/dapper/kg"
+  # replaced below
+  
+  if [ ${met_source} = era5 ]; then
+    # met_path="/mnt/inputdata/atm/datm7/dapper/cnl"
+    met_path="${met_root_era5}/kg"
+  elif [ ${met_source} = gswp3 ]; then
+    met_path="${met_root_gswp3}/kg"
+  fi
+
 elif [ ${site_name} = teller ]; then
   site_code="AK-TLG"
   surf_file="surfdata_1x1pt_teller-GRID_simyr1850_c360x720_c171002.nc"
   landuse_file="landuse.timeseries_1x1pt_teller-GRID_simyr1850-2015_c180423.nc"
   domain_file="domain.lnd.1x1pt_teller-GRID_navy.nc"
   if [ ${met_source} = era5 ]; then
-    met_path="/mnt/inputdata/atm/datm7/dapper/tl"
+    # met_path="/mnt/inputdata/atm/datm7/dapper/tl"
+    met_path="${met_root_era5}/tl"
   elif [ ${met_source} = gswp3 ]; then
-    met_path=
+    met_path="${met_root_gswp3}/tl"
   fi
 elif [ ${site_name} = toolik_lake ]; then
   site_code="AK-Tlk"
@@ -267,9 +287,10 @@ elif [ ${site_name} = toolik_lake ]; then
   landuse_file="landuse.timeseries_1x1pt_ToolikLake-GRID_simyr1850-2015_c250306.nc"
   domain_file="domain.lnd.1x1pt_ToolikLake-GRID.nc"
   if [ ${met_source} = era5 ]; then
-    met_path="/mnt/inputdata/atm/datm7/dapper/tfs"
+    # met_path="/mnt/inputdata/atm/datm7/dapper/tfs"
+    met_path="${met_root_era5}/tfs"
   elif [ ${met_source} = gswp3 ]; then
-    met_path=
+    met_path="${met_root_gswp3}/tfs"
   fi
 elif [ ${site_name} = trail_valley_creek ]; then
   site_code="CA-TVC"
@@ -277,9 +298,10 @@ elif [ ${site_name} = trail_valley_creek ]; then
   landuse_file="landuse.timeseries_1x1pt_TrailValleyCreek-GRID_simyr1850-2015_c250306.nc"
   domain_file="domain.lnd.1x1pt_TrailValleyCreek-GRID.nc"
   if [ ${met_source} = era5 ]; then
-    met_path="/mnt/inputdata/atm/datm7/dapper/tvc"
+    # met_path="/mnt/inputdata/atm/datm7/dapper/tvc"
+    met_path="${met_root_era5}/tvc"
   elif [ ${met_source} = gswp3 ]; then
-    met_path=
+    met_path="${met_root_gswp3}/tvc"
   fi
 elif [ ${site_name} = abisko ]; then
   site_code="SE-Abi"
@@ -288,8 +310,9 @@ elif [ ${site_name} = abisko ]; then
   domain_file="domain.lnd.1x1pt_Abisko-GRID.nc"
   if [ ${met_source} = era5 ]; then
     met_path="/mnt/inputdata/atm/datm7/dapper/abs"
+    met_path="${met_root_era5}/abs"
   elif [ ${met_source} = gswp3 ]; then
-    met_path=
+    met_path="${met_root_gswp3}/abs"
   fi
 elif [ ${site_name} = bayelva ]; then
   site_code="NO-SJB"
@@ -297,9 +320,10 @@ elif [ ${site_name} = bayelva ]; then
   landuse_file="landuse.timeseries_1x1pt_SJ-BlvBayelva-GRID_simyr1850-2015_c250306.nc"
   domain_file="domain.lnd.1x1pt_SJ-BlvBayelva-GRID.nc"
   if [ ${met_source} = era5 ]; then
-    met_path="/mnt/inputdata/atm/datm7/dapper/bs"
+    # met_path="/mnt/inputdata/atm/datm7/dapper/bs"
+    met_path="${met_root_era5}/bs"
   elif [ ${met_source} = gswp3 ]; then
-    met_path=
+    met_path="${met_root_gswp3}/bs"
   fi
 elif [ ${site_name} = samoylov_island ]; then
   site_code="RU-Sam"
@@ -307,10 +331,12 @@ elif [ ${site_name} = samoylov_island ]; then
   landuse_file="landuse.timeseries_1x1pt_SamoylovIsland-GRID_simyr1850-2015_c250306.nc"
   domain_file="domain.lnd.1x1pt_SamoylovIsland-GRID.nc"
   if [ ${met_source} = era5 ]; then
-    met_path="/mnt/inputdata/atm/datm7/dapper/si"
+    met_path="${met_root_era5}/si"
+    # met_path="/mnt/inputdata/atm/datm7/dapper/si"
   elif [ ${met_source} = gswp3 ]; then
-    met_path=
+    met_path="${met_root_gswp3}/si"
   fi
+
 else 
   echo " "
   echo "**** EXECUTION HALTED ****"
