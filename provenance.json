@@ -203,7 +203,7 @@
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/19080770481/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/19080785197/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -479,21 +479,21 @@
         }
       ],
       "digestMapping": {
-        "sha256:437ac820ed9f263d4dc25561689f510f4a81ea150d9cf9c4b5257d9b39e12ed8": "step3",
+        "sha256:32098e15d1b78aa2bbb7f4af9fb1404c076913117163bd94f7dfec83c437594a": "step6",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:4bba45f0fd25b491f0da603d73b01baa0b3191728ab017a1a4d0bc259dba9cdb": "step8",
-        "sha256:62dc13aff2f6675dd63900639cc84d24adc3d930837802df66bfd308a14023ce": "step4",
-        "sha256:7560ebcfdddcb7a63da02c0400cc0835477e0da1f78eae245984e5cdee7db3b4": "step6",
-        "sha256:cafd9768eeef5e95cc3936308562b8a669f221d074a56c7fe406b229e6117fdc": "step5",
-        "sha256:e987c41c179c90600048a21df6c7f4ea5c1e11c44af794896d427e5ef8c41858": "step1",
-        "sha256:f0f1210539c46e3472fc29e7aa3c68007706a057f935ab22680c3aa3104a7635": "step2",
-        "sha256:f36f6bd5feba6136f7a74bf629b81ed7c009597d0d7c63b90e2e2e5ae6c7acb6": "step7"
+        "sha256:64a4f5e11a7c34ba742c5b2b7137eba16b3deef1997ec6a84553eb5f640a05c7": "step1",
+        "sha256:a4021914e5f73273fd26ffb5f53b813e65a8fe0b48011f8000fbdd2a6f4fb2ee": "step2",
+        "sha256:a70ea0ed3640fd451f53b0211e2f12c8ce37add0cabbd7479f83acb15eedf57e": "step8",
+        "sha256:ad05eedd058ac15014d22f44e53f9da6871adb9506fc7afcb0bc910a5144bdc3": "step7",
+        "sha256:e5989bee91d7a92557a998a24bc474b2e76ef9e3a0416aefb7257e15ab015444": "step4",
+        "sha256:e7eebaa7d553621566f0ec173e5d995e16160ab4aefd25624243a913ff87870b": "step3",
+        "sha256:f2f966f6ee60627c2cff1d159434d5803d84eca29010539f12a7a4a057c71564": "step5"
       }
     },
     "metadata": {
-      "buildInvocationID": "nxlzszgxfj1ndoie73et7pk7v",
-      "buildStartedOn": "2025-11-04T19:40:31.454906996Z",
-      "buildFinishedOn": "2025-11-04T19:40:42.321216278Z",
+      "buildInvocationID": "5m8b06xpakz9bx6k587du5vin",
+      "buildStartedOn": "2025-11-04T19:41:12.054821179Z",
+      "buildFinishedOn": "2025-11-04T19:41:24.442098505Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -504,7 +504,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "5112a61bf64b196f49cdd92cfb82cb206fc53ac9",
+          "revision": "7a9ff42d10acde03c46a876f80c93f8023a9dd7d",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -656,8 +656,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:273cb746222e0f883e82211fd93b2c397aeda5a6257b026bf8bc9883daa3a673": "step1",
-                "sha256:61bafef2e86aeb0b1e0e7f6de25fa6854076c209fa39797b508df248dc9d7ded": "step0"
+                "sha256:5451ea5a3653e1942fb1b9ae5b499174ab560c19d12f88cfad4030e288009476": "step1",
+                "sha256:555a008e248d18503323058bd835706b1857de3594eda1f40d1b8da0f4dc36a1": "step0"
               }
             }
           ]
