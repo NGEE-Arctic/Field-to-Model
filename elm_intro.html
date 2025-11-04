@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. Introduction to ELM and workshop scripts &#8212; ModEx 2025 0.0.1 documentation</title>
+    <title>1. Introduction to ELM and workshop scripts &#8212; ModEx 2025 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=15df1221" />
@@ -14,8 +14,8 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="General Notes" href="dev_notes.html" />
-    <link rel="prev" title="1. TEM Warming Experiment (and TEM Introduction)" href="tem_ee1_warming.html" /> 
+    <link rel="next" title="2. TEM Warming Experiment (and TEM Introduction)" href="tem_ee1_warming.html" />
+    <link rel="prev" title="1. Getting Started" href="setup.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
@@ -24,13 +24,13 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="dev_notes.html" title="General Notes"
+          <a href="tem_ee1_warming.html" title="2. TEM Warming Experiment (and TEM Introduction)"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tem_ee1_warming.html" title="1. TEM Warming Experiment (and TEM Introduction)"
+          <a href="setup.html" title="1. Getting Started"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Introduction to ELM and workshop scripts</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>  
 
@@ -40,7 +40,7 @@
           <div class="body" role="main">
             
   <section id="introduction-to-elm-and-workshop-scripts">
-<h1><span class="section-number">2. </span>Introduction to ELM and workshop scripts<a class="headerlink" href="#introduction-to-elm-and-workshop-scripts" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">1. </span>Introduction to ELM and workshop scripts<a class="headerlink" href="#introduction-to-elm-and-workshop-scripts" title="Link to this heading">¶</a></h1>
 <p>The E3SM Land Model (ELM) is the land surface component of the coupled E3SM model.
 ELM simulates a wide set of land surface and ecosystem processes, including surface
 energy balance, photosynthesis, carbon allocation, soil and surface hydrology,
@@ -86,13 +86,19 @@ the first step (soil column at liquid saturation, and at a temperature varying b
    -v inputdata:/mnt/inputdata \
    -v output:/mnt/output \
    yuanfornl/ngee-arctic-modex25:models-main-latest \
-   /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=&lt;site_name&gt; --use_arctic_init
+   /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=&lt;site_name&gt; \
+   --use_arctic_init --case_prefix=Arctic_init
 </pre></div>
 </div>
 <p>After these runs are completed, we can compare the impacts of this initialization choice using the visualization containers.</p>
-<p>note:</p>
+<dl class="simple">
+<dt>warning::</dt><dd><p>Note that if you rerun one of these commands, the existing output and case directories for these simulations are removed!
+Therefore, if you want to perform a second simulation on a site, you should also set the <cite>–case_prefix</cite> option so that
+the case has a different name. In this case, we have set it to “Arctic_init” to distinguish it from our control.</p>
+</dd>
+</dl>
 <section id="under-the-hood">
-<h2><span class="section-number">2.1. </span>Under the hood<a class="headerlink" href="#under-the-hood" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Under the hood<a class="headerlink" href="#under-the-hood" title="Link to this heading">¶</a></h2>
 <p>The script we have developed simplifies the interface to the Offline Land Model Testbed (OLMT), developed by
 Dan Ricciuto (ORNL). OLMT itself simplifies the setup of model cases necessary to spin up an ELM simulation from
 a ‘cold start’ condition. (Figure of hierarchy?). OLMT sets up three cases that run consecutively: an ‘accelerated’
@@ -113,8 +119,8 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">2. Introduction to ELM and workshop scripts</a><ul>
-<li><a class="reference internal" href="#under-the-hood">2.1. Under the hood</a></li>
+<li><a class="reference internal" href="#">1. Introduction to ELM and workshop scripts</a><ul>
+<li><a class="reference internal" href="#under-the-hood">1.1. Under the hood</a></li>
 </ul>
 </li>
 </ul>
@@ -122,13 +128,13 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="tem_ee1_warming.html"
-                          title="previous chapter"><span class="section-number">1. </span>TEM Warming Experiment (and TEM Introduction)</a></p>
+    <p class="topless"><a href="setup.html"
+                          title="previous chapter"><span class="section-number">1. </span>Getting Started</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="dev_notes.html"
-                          title="next chapter">General Notes</a></p>
+    <p class="topless"><a href="tem_ee1_warming.html"
+                          title="next chapter"><span class="section-number">2. </span>TEM Warming Experiment (and TEM Introduction)</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -158,13 +164,13 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="dev_notes.html" title="General Notes"
+          <a href="tem_ee1_warming.html" title="2. TEM Warming Experiment (and TEM Introduction)"
              >next</a> |</li>
         <li class="right" >
-          <a href="tem_ee1_warming.html" title="1. TEM Warming Experiment (and TEM Introduction)"
+          <a href="setup.html" title="1. Getting Started"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Introduction to ELM and workshop scripts</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

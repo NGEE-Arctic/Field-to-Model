@@ -55,11 +55,16 @@ the first step (soil column at liquid saturation, and at a temperature varying b
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
     yuanfornl/ngee-arctic-modex25:models-main-latest \
-    /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=<site_name> --use_arctic_init
+    /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=<site_name> \
+    --use_arctic_init --case_prefix=Arctic_init
 
 After these runs are completed, we can compare the impacts of this initialization choice using the visualization containers.
 
-note::
+warning::
+    Note that if you rerun one of these commands, the existing output and case directories for these simulations are removed!
+    Therefore, if you want to perform a second simulation on a site, you should also set the `--case_prefix` option so that
+    the case has a different name. In this case, we have set it to "Arctic_init" to distinguish it from our control.
+
 
 Under the hood
 --------------

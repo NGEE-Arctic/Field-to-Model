@@ -18,9 +18,16 @@ Here you will find resources and documentation needed to follow the workshop exa
   :caption: Modeling Exercises
   :numbered: 3
 
-  tem_ee1_warming
   elm_intro
+  tem_ee1_warming
 
+.. toctree::
+  :maxdepth: 2
+  :caption: Breakout Groups
+
+  Snow/vegetation/interactions
+  Arctic hydrology
+  Disturbance
 
 .. toctree::
   :maxdepth: 1
