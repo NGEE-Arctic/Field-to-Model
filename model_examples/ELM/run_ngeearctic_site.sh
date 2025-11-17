@@ -215,7 +215,7 @@ if [ ${transient_years} != -1 ]; then
 else
   sim_years="--nyears_ad_spinup ${ad_spinup_years} --nyears_final_spinup ${final_spinup_years}"
 fi
-if [ ${use_arctic_init} == True ]; then
+if [ "${use_arctic_init}" == True ]; then
   echo "Using wetter, colder initialization conditions for Arctic runs"
   options="$options --use_arctic_init"
 fi
