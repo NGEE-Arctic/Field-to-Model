@@ -6,7 +6,7 @@
 # Phase 3 availible site names: kougarok, teller, council, beo
 # Phase 4 additional sites: Toolik_Lake, Abisko, Trail_Valley_Creek, Samoylov_Island, Bayelva
 # =======================================================================================
-
+set -euo pipefail
 # Print out options and help statements
 Help()
 {
@@ -27,7 +27,7 @@ Help()
     echo "  -ady, --ad_spinup_yrs     How many years of initial spinup using accelerated decomposition rates"
     echo "                              should be used? (Default: 200)"
     echo "  -fsy, --final_spinup_yrs  How many years should the second stage of spinup run (with normal"
-    echo "                              decomposition rates? (Default: 600)"
+    echo "                              decomposition rates)? (Default: 600)"
     echo "  -try, --transient_yrs     How many years should the transient stage of the sumulation run?"
     echo "                              (Default: -1, which corresponds to 1850-2014 for GSWP3 met data and"
     echo "                              1850-2024 for ERA5)"
@@ -44,7 +44,7 @@ Help()
 }
 
 cwd=$(pwd)
-cd /home/modex_user/tools/OLMT
+cd /home/modex_user/tools/olmt
 
 # =======================================================================================
 # Get the input options from the command line
@@ -157,6 +157,8 @@ ad_spinup_years="${ad_spinup_years:-200}"
 final_spinup_years="${final_spinup_years:-600}"
 transient_years="${transient_years:--1}"
 met_source="${met_source:-era5}"
+use_arctic_init="${use_arctic_init:-False}"
+options="${options:-}"
 # -1 is the default
 timestep="${timestep:-1}"
 # temp and co2 additions:
@@ -220,8 +222,7 @@ if [ ${transient_years} != -1 ]; then
 else
   sim_years="--nyears_ad_spinup ${ad_spinup_years} --nyears_final_spinup ${final_spinup_years}"
 fi
-
-if [ ${use_arctic_init} = True ]; then
+if [ "${use_arctic_init}" == True ]; then
   echo "Using wetter, colder initialization conditions for Arctic runs"
   options="$options --use_arctic_init"
 fi
@@ -242,9 +243,9 @@ met_root_era5="/mnt/inputdata/atm/datm7/era5"
   # - so use srcmods_era5cb for both
   
 if [ ${met_source} = era5 ]; then
-  src_mod_path="/home/modex_user/tools/OLMT/srcmods_era5cb/"
+  src_mod_path="/home/modex_user/tools/olmt/srcmods_era5cb/"
 elif [ ${met_source} = gswp3 ]; then
-  src_mod_path="/home/modex_user/tools/OLMT/srcmods_era5cb/"
+  src_mod_path="/home/modex_user/tools/olmt/srcmods_era5cb/"
 fi
 
 if [ ${site_name} = beo ]; then
@@ -260,10 +261,9 @@ if [ ${site_name} = beo ]; then
 elif [ ${site_name} = council ]; then
   site_code="AK-CLG"
   surf_file="surfdata_1x1pt_council-GRID_simyr1850_c360x720_c171002.nc"
-  landuse_file="MISSING"
+  landuse_file="landuse.timeseries_1x1pt_council-GRID_simyr1850-2015_c180423.nc"
   domain_file="domain.lnd.1x1pt_council-GRID_navy.nc"
   if [ ${met_source} = era5 ]; then
-   # met_path="/mnt/inputdata/atm/datm7/dapper/cnl"
     met_path="${met_root_era5}/cnl"
   elif [ ${met_source} = gswp3 ]; then
     met_path="${met_root_gswp3}/cnl"

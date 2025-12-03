@@ -1,0 +1,51 @@
+name: ELM matrix test
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+jobs:
+    test-era5:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                site_name: [kougarok, teller, council, beo, toolik_lake, trail_valley_creek, abisko, bayelva, samoylov_island]
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v6
+              with:
+                submodules: recursive
+            - name: Create docker volumes
+              run: |
+                docker volume create inputdata
+                docker volume create output
+            - name: Get input data
+              run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+            - name: Run test case for site
+              run: |
+                docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=era5 -ady=1 -fsy=1 -try=1 -tsp=1
+        
+    test-gswp3:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                site_name: [kougarok, teller, council, beo, toolik_lake, trail_valley_creek, abisko, bayelva, samoylov_island]
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v6
+              with:
+                submodules: recursive
+            - name: Create docker volumes
+              run: |
+                docker volume create inputdata
+                docker volume create output
+            - name: Get input data
+              run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+            - name: Run test case for site
+              run: |
+                docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=gswp3 -ady=1 -fsy=1 -try=1 -tsp=1
