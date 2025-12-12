@@ -203,7 +203,7 @@
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/19841117209/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20156115048/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -230,6 +230,389 @@
         ]
       },
       "environment": {
+        "github_actor": "rfiorella",
+        "github_actor_id": "17805542",
+        "github_event_name": "push",
+        "github_event_payload": {
+          "after": "825ff9a3048834dd76b4a61ccabfe156307fcc92",
+          "base_ref": null,
+          "before": "07beaeb724a37ab0de55d1e8f257d9646e2cf7bd",
+          "commits": [
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "1160cbe3bf1b54a93efeaa04a9f96d8cc5ddeebc",
+              "message": "wip - add new ci job to make sure model runs for all sites",
+              "timestamp": "2025-12-02T11:54:03-07:00",
+              "tree_id": "474470d0b80aba3e8e577d8dc96447d9a4057eb9",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/1160cbe3bf1b54a93efeaa04a9f96d8cc5ddeebc"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "a142c368ee976b1e1bcab4295741199bddd0d3e0",
+              "message": "fix unary operator bug",
+              "timestamp": "2025-12-02T11:55:53-07:00",
+              "tree_id": "6ff042a274ff30a3363bd2fe8d306a42cd145584",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/a142c368ee976b1e1bcab4295741199bddd0d3e0"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "a4844248f2cd04b7b1eaad400fb425ac98d1afce",
+              "message": "update inputdata script to make sure paths exist",
+              "timestamp": "2025-12-02T11:55:58-07:00",
+              "tree_id": "ebeb650955f68a0525732b6ed872e9a92792fedd",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/a4844248f2cd04b7b1eaad400fb425ac98d1afce"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "5efdea27678d6a9c4a99f416734a6c00934de0c2",
+              "message": "unzip inputdata by default",
+              "timestamp": "2025-12-02T11:57:11-07:00",
+              "tree_id": "58fdd3ce60fd305bee4ddb9ed7f97d30b92b3bdc",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/5efdea27678d6a9c4a99f416734a6c00934de0c2"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "a44ab4b096a91eea171b8e38469e4963667c4e9f",
+              "message": "add volume mounts to ci",
+              "timestamp": "2025-12-02T12:01:59-07:00",
+              "tree_id": "1b52f8ccc1b3f59602f0a7798a406ecd5fa5ba8e",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/a44ab4b096a91eea171b8e38469e4963667c4e9f"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "0a095c6b83132a186af4d3493d434d417e71d567",
+              "message": "add checkout repo step to mount scripts",
+              "timestamp": "2025-12-02T12:22:48-07:00",
+              "tree_id": "0949924a8cba61acbf91903f2bc4b97ddb0e8954",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/0a095c6b83132a186af4d3493d434d417e71d567"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "6e54a56b1230f157db47a2da680e87f66e971ae2",
+              "message": "modify path, case sensitive on GHA?",
+              "timestamp": "2025-12-02T12:35:50-07:00",
+              "tree_id": "f98745ad5b82662553634eef129df612f275a740",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/6e54a56b1230f157db47a2da680e87f66e971ae2"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "faef43cdd6b186ed94a48a0e1e5acd35c7af30e1",
+              "message": "set script to exit on failure",
+              "timestamp": "2025-12-02T14:28:38-07:00",
+              "tree_id": "d1d472dff5b97daf4af83a6451209766f90804b4",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/faef43cdd6b186ed94a48a0e1e5acd35c7af30e1"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "e5b549733727abeca13c0f393f9f34ab0ac49f8c",
+              "message": "explicitly add OLMT to containers",
+              "timestamp": "2025-12-11T15:54:17-07:00",
+              "tree_id": "55a97637c2c6cc2d7f7cae355a0f57151b443c99",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/e5b549733727abeca13c0f393f9f34ab0ac49f8c"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "noreply@github.com",
+                "name": "GitHub",
+                "username": "web-flow"
+              },
+              "distinct": true,
+              "id": "825ff9a3048834dd76b4a61ccabfe156307fcc92",
+              "message": "Merge pull request #36 from NGEE-Arctic/rich/add-olmt-wout-bind",
+              "timestamp": "2025-12-11T21:17:09-07:00",
+              "tree_id": "55a97637c2c6cc2d7f7cae355a0f57151b443c99",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/825ff9a3048834dd76b4a61ccabfe156307fcc92"
+            }
+          ],
+          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/07beaeb724a3...825ff9a30488",
+          "created": false,
+          "deleted": false,
+          "forced": false,
+          "head_commit": {
+            "author": {
+              "email": "rfiorella@lanl.gov",
+              "name": "Rich Fiorella",
+              "username": "rfiorella"
+            },
+            "committer": {
+              "email": "noreply@github.com",
+              "name": "GitHub",
+              "username": "web-flow"
+            },
+            "distinct": true,
+            "id": "825ff9a3048834dd76b4a61ccabfe156307fcc92",
+            "message": "Merge pull request #36 from NGEE-Arctic/rich/add-olmt-wout-bind",
+            "timestamp": "2025-12-11T21:17:09-07:00",
+            "tree_id": "55a97637c2c6cc2d7f7cae355a0f57151b443c99",
+            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/825ff9a3048834dd76b4a61ccabfe156307fcc92"
+          },
+          "organization": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
+            "description": "",
+            "events_url": "https://api.github.com/orgs/NGEE-Arctic/events",
+            "hooks_url": "https://api.github.com/orgs/NGEE-Arctic/hooks",
+            "id": 184418857,
+            "issues_url": "https://api.github.com/orgs/NGEE-Arctic/issues",
+            "login": "NGEE-Arctic",
+            "members_url": "https://api.github.com/orgs/NGEE-Arctic/members{/member}",
+            "node_id": "O_kgDOCv4CKQ",
+            "public_members_url": "https://api.github.com/orgs/NGEE-Arctic/public_members{/member}",
+            "repos_url": "https://api.github.com/orgs/NGEE-Arctic/repos",
+            "url": "https://api.github.com/orgs/NGEE-Arctic"
+          },
+          "pusher": {
+            "email": "rfiorella@lanl.gov",
+            "name": "rfiorella"
+          },
+          "ref": "refs/heads/main",
+          "repository": {
+            "allow_forking": true,
+            "archive_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/{archive_format}{/ref}",
+            "archived": false,
+            "assignees_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/assignees{/user}",
+            "blobs_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/blobs{/sha}",
+            "branches_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/branches{/branch}",
+            "clone_url": "https://github.com/NGEE-Arctic/Field-to-Model.git",
+            "collaborators_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/collaborators{/collaborator}",
+            "comments_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/comments{/number}",
+            "commits_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/commits{/sha}",
+            "compare_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/compare/{base}...{head}",
+            "contents_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/contents/{+path}",
+            "contributors_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/contributors",
+            "created_at": 1753109952,
+            "custom_properties": {},
+            "default_branch": "main",
+            "deployments_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/deployments",
+            "description": null,
+            "disabled": false,
+            "downloads_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/downloads",
+            "events_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/events",
+            "fork": false,
+            "forks": 1,
+            "forks_count": 1,
+            "forks_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/forks",
+            "full_name": "NGEE-Arctic/Field-to-Model",
+            "git_commits_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/commits{/sha}",
+            "git_refs_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/refs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/tags{/sha}",
+            "git_url": "git://github.com/NGEE-Arctic/Field-to-Model.git",
+            "has_discussions": true,
+            "has_downloads": true,
+            "has_issues": true,
+            "has_pages": true,
+            "has_projects": true,
+            "has_wiki": true,
+            "homepage": null,
+            "hooks_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/hooks",
+            "html_url": "https://github.com/NGEE-Arctic/Field-to-Model",
+            "id": 1023700772,
+            "is_template": false,
+            "issue_comment_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/issues/comments{/number}",
+            "issue_events_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/issues/events{/number}",
+            "issues_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/issues{/number}",
+            "keys_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/keys{/key_id}",
+            "labels_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/labels{/name}",
+            "language": "Shell",
+            "languages_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/languages",
+            "license": null,
+            "master_branch": "main",
+            "merges_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/merges",
+            "milestones_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/milestones{/number}",
+            "mirror_url": null,
+            "name": "Field-to-Model",
+            "node_id": "R_kgDOPQRvJA",
+            "notifications_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/notifications{?since,all,participating}",
+            "open_issues": 17,
+            "open_issues_count": 17,
+            "organization": "NGEE-Arctic",
+            "owner": {
+              "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
+              "email": null,
+              "events_url": "https://api.github.com/users/NGEE-Arctic/events{/privacy}",
+              "followers_url": "https://api.github.com/users/NGEE-Arctic/followers",
+              "following_url": "https://api.github.com/users/NGEE-Arctic/following{/other_user}",
+              "gists_url": "https://api.github.com/users/NGEE-Arctic/gists{/gist_id}",
+              "gravatar_id": "",
+              "html_url": "https://github.com/NGEE-Arctic",
+              "id": 184418857,
+              "login": "NGEE-Arctic",
+              "name": "NGEE-Arctic",
+              "node_id": "O_kgDOCv4CKQ",
+              "organizations_url": "https://api.github.com/users/NGEE-Arctic/orgs",
+              "received_events_url": "https://api.github.com/users/NGEE-Arctic/received_events",
+              "repos_url": "https://api.github.com/users/NGEE-Arctic/repos",
+              "site_admin": false,
+              "starred_url": "https://api.github.com/users/NGEE-Arctic/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/NGEE-Arctic/subscriptions",
+              "type": "Organization",
+              "url": "https://api.github.com/users/NGEE-Arctic",
+              "user_view_type": "public"
+            },
+            "private": false,
+            "pulls_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/pulls{/number}",
+            "pushed_at": 1765513029,
+            "releases_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/releases{/id}",
+            "size": 367,
+            "ssh_url": "git@github.com:NGEE-Arctic/Field-to-Model.git",
+            "stargazers": 0,
+            "stargazers_count": 0,
+            "stargazers_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/stargazers",
+            "statuses_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/statuses/{sha}",
+            "subscribers_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/subscribers",
+            "subscription_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/subscription",
+            "svn_url": "https://github.com/NGEE-Arctic/Field-to-Model",
+            "tags_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/tags",
+            "teams_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/teams",
+            "topics": [],
+            "trees_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/trees{/sha}",
+            "updated_at": "2025-12-01T23:33:12Z",
+            "url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model",
+            "visibility": "public",
+            "watchers": 0,
+            "watchers_count": 0,
+            "web_commit_signoff_required": false
+          },
+          "sender": {
+            "avatar_url": "https://avatars.githubusercontent.com/u/17805542?v=4",
+            "events_url": "https://api.github.com/users/rfiorella/events{/privacy}",
+            "followers_url": "https://api.github.com/users/rfiorella/followers",
+            "following_url": "https://api.github.com/users/rfiorella/following{/other_user}",
+            "gists_url": "https://api.github.com/users/rfiorella/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/rfiorella",
+            "id": 17805542,
+            "login": "rfiorella",
+            "node_id": "MDQ6VXNlcjE3ODA1NTQy",
+            "organizations_url": "https://api.github.com/users/rfiorella/orgs",
+            "received_events_url": "https://api.github.com/users/rfiorella/received_events",
+            "repos_url": "https://api.github.com/users/rfiorella/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/rfiorella/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/rfiorella/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/rfiorella",
+            "user_view_type": "public"
+          }
+        },
+        "github_job": "build",
+        "github_ref": "refs/heads/main",
+        "github_ref_name": "main",
+        "github_ref_protected": "true",
+        "github_ref_type": "branch",
+        "github_repository": "NGEE-Arctic/Field-to-Model",
+        "github_repository_id": "1023700772",
+        "github_repository_owner": "NGEE-Arctic",
+        "github_repository_owner_id": "184418857",
+        "github_run_attempt": "1",
+        "github_run_id": "20156115048",
+        "github_run_number": "48",
+        "github_runner_arch": "X64",
+        "github_runner_environment": "github-hosted",
+        "github_runner_image_os": "ubuntu24",
+        "github_runner_image_version": "20251208.163.1",
+        "github_runner_name": "GitHub Actions 1000000599",
+        "github_runner_os": "Linux",
+        "github_runner_tracking_id": "github_23d00c4a-974a-4bdb-9a80-f7e03d9336c9",
+        "github_server_url": "https://github.com",
+        "github_triggering_actor": "rfiorella",
+        "github_workflow": "Sphinx: Render docs",
+        "github_workflow_ref": "NGEE-Arctic/Field-to-Model/.github/workflows/docs.yml@refs/heads/main",
+        "github_workflow_sha": "825ff9a3048834dd76b4a61ccabfe156307fcc92",
         "platform": "linux/amd64"
       }
     },
@@ -479,21 +862,21 @@
         }
       ],
       "digestMapping": {
-        "sha256:163a904903f29f0b5b15262e0e729a2523ced927fc9aad19150f3b28708be11b": "step3",
-        "sha256:18ea9a7343f4b2a372f2b0bf68b430ab825015cc31ac5c10b5ce94173ba2177d": "step4",
-        "sha256:284adecb9d1807c5fd82383a24fd9574a0713bc82820e7eb5649677f7bc5ef18": "step6",
+        "sha256:1488b99d2a5239c93e6266c57e7f56f4ce6b9ec791c5c0bf75d3303993e30cfd": "step3",
+        "sha256:1ee029173a93df760f48b049e7124dee6d0475849c2fc9a1d1433038dddd18c7": "step1",
+        "sha256:399e2f659f1051c7a8eaaea9686f1851e557bae6b3a413e86743dfc47968db96": "step6",
+        "sha256:3e93b31d7806fa467918e94334ee1da71a60079d231f5142497bcd2765c091bd": "step2",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:4cb4c24fd3ad773f0bcb0ad81dc6f2197b29b575e010bfa63358737ec5312e0b": "step5",
-        "sha256:8c2e5ee870932003414107c041f7195dd82b5242c9c3b7cb2a3a596eb0452404": "step1",
-        "sha256:9e449dcfd0678dc2d34c382f56abde53603844ebbc38718027564623cc99df6e": "step2",
-        "sha256:b6b7049a2b7bdd5f1f0cb4615f57e7747e66f1737bbac3606f8baeb08ba0465d": "step7",
-        "sha256:c48656e7b9fce6405b6c63738682a70f317e7928f3c564052a78b5d23c8e28de": "step8"
+        "sha256:4fde17daaed36f42e0eb18fec39bac242a8f492c825ea899ea19b90206402d31": "step5",
+        "sha256:9e4c5c8c75ea988357fd45e2384a829abe22fa2009acfc489e4033a9ce948463": "step8",
+        "sha256:cfc003907d334f0e4d350cd697d63897a6d25796ff0031a270ead34ba3623a8f": "step4",
+        "sha256:fb6eec81041123bc19d50c5b94d697fcd8f35aabb6fa33557bfbb8a34279a812": "step7"
       }
     },
     "metadata": {
-      "buildInvocationID": "z8woo643wmxdcz3n18obdoow8",
-      "buildStartedOn": "2025-12-01T23:33:21.360688537Z",
-      "buildFinishedOn": "2025-12-01T23:33:32.711624791Z",
+      "buildInvocationID": "prg59glyv80jtug52kzp2bru7",
+      "buildStartedOn": "2025-12-12T04:17:25.469159999Z",
+      "buildFinishedOn": "2025-12-12T04:17:36.597290589Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -504,7 +887,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "07beaeb724a37ab0de55d1e8f257d9646e2cf7bd",
+          "revision": "825ff9a3048834dd76b4a61ccabfe156307fcc92",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -656,8 +1039,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:cbe33c9b79a823edf2f0d4ce7f3d2d725bbe1c9c63b8e8bfe5de581651203478": "step1",
-                "sha256:da0f19aac026a1efbd48e1a672ed5e57637dee1aca34dd88472ec8ee0cc4aff6": "step0"
+                "sha256:0fea9fbd7aa3c73cb569d64cff0a7a94850bd74743f4664e4fbd848ec668a1a8": "step1",
+                "sha256:8ab71bbba3b1c1d84a799f54f003207b7c40926b3ddb2359889768dc23d04501": "step0"
               }
             }
           ]
