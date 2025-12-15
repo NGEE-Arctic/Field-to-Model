@@ -14,7 +14,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Introduction to ELM and workshop scripts" href="elm_intro.html" />
+    <link rel="next" title="2. ModEx Workshop 2025 Agenda" href="modex_agenda_2025.html" />
     <link rel="prev" title="Welcome to the ModEx 2025 Field to Model Workshop" href="index.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
@@ -24,7 +24,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="elm_intro.html" title="1. Introduction to ELM and workshop scripts"
+          <a href="modex_agenda_2025.html" title="2. ModEx Workshop 2025 Agenda"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Welcome to the ModEx 2025 Field to Model Workshop"
@@ -42,23 +42,32 @@
   <section id="getting-started">
 <h1><span class="section-number">1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h1>
 <p>Follow these instructions to set up your environment for the workshop. This
-workshop uses Docker containers to encapsulate the models and visualization
-tools.</p>
+workshop uses Docker containers to simplify installation of models and visualization
+tools. Both the models and visualization tools can have complex dependencies and prerequisites
+that need to be available on your computer. Docker containers allow us to simplify installation
+across computers and operating systems by providing a single “bundle” that contains the models,
+visualization tools, and their dependencies.</p>
 <p>We have pre-built Docker images for the models and visualization tools, which
-can be pulled from Docker Hub. However, if you prefer to build the images
-locally, instructions are provided in the <a class="reference internal" href="dev_notes.html#container-setup"><span class="std std-ref">Container Setup</span></a> section.</p>
+can be pulled from Docker Hub.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you prefer to build the images locally, instructions are provided in the <a class="reference internal" href="dev_notes.html#container-setup"><span class="std std-ref">Container Setup</span></a> section.
+It will take quite some time, and we strongly recommend using the pre-built containers.</p>
+</div>
 <section id="clone-field-to-model-repository-for-the-workshop">
 <h2><span class="section-number">1.1. </span>Clone Field-to-Model repository for the workshop<a class="headerlink" href="#clone-field-to-model-repository-for-the-workshop" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">/</span><span class="n">field</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">model</span>
 <span class="n">cd</span> <span class="n">field</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">model</span>
 </pre></div>
 </div>
+<p>This step downloads all of the scripts and infrastructure we have developed for the workshop,
+it should take a couple minutes to complete.</p>
 </section>
 <section id="download-docker-containers">
 <h2><span class="section-number">1.2. </span>Download Docker containers<a class="headerlink" href="#download-docker-containers" title="Link to this heading">¶</a></h2>
 <p>The workshop uses two Docker containers: one for running the models and another
 for visualization.</p>
-<p>Each the model container has the following models installed:</p>
+<p>The model container has the following models available:</p>
 <ul class="simple">
 <li><p>ELM (Energy Exascale Earth System Land Model)</p></li>
 <li><p>TEM (Terrestrial Ecosystem Model)</p></li>
@@ -110,6 +119,9 @@ platforms (e.g., Windows vs mac).</p>
 <span class="n">inputdata</span>  <span class="n">output</span>
 </pre></div>
 </div>
+<p>Please take a moment to report if you were able to successfully get to this stage, or
+post any issues you are having here: <a class="reference external" href="https://github.com/NGEE-Arctic/Field-to-Model/issues/38">https://github.com/NGEE-Arctic/Field-to-Model/issues/38</a>
+and we will try to have someone from the organizing team help you out before the workshop!</p>
 </section>
 <section id="launch-the-containers">
 <h2><span class="section-number">1.5. </span>Launch the containers<a class="headerlink" href="#launch-the-containers" title="Link to this heading">¶</a></h2>
@@ -177,8 +189,8 @@ the container name at container startup in the docker run commands.</p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="elm_intro.html"
-                          title="next chapter"><span class="section-number">1. </span>Introduction to ELM and workshop scripts</a></p>
+    <p class="topless"><a href="modex_agenda_2025.html"
+                          title="next chapter"><span class="section-number">2. </span>ModEx Workshop 2025 Agenda</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -208,7 +220,7 @@ the container name at container startup in the docker run commands.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="elm_intro.html" title="1. Introduction to ELM and workshop scripts"
+          <a href="modex_agenda_2025.html" title="2. ModEx Workshop 2025 Agenda"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Welcome to the ModEx 2025 Field to Model Workshop"

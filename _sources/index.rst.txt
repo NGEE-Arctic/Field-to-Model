@@ -12,22 +12,30 @@ Here you will find resources and documentation needed to follow the workshop exa
   :numbered: 2
 
   setup
+  modex_agenda_2025
 
 .. toctree::
   :maxdepth: 2
-  :caption: Modeling Exercises
+  :caption: Plenary modeling exercises
   :numbered: 3
 
-  elm_intro
+  plenary/elm_intro
   tem_ee1_warming
+  plenary/ats_intro
 
 .. toctree::
   :maxdepth: 2
   :caption: Breakout Groups
 
-  Snow/vegetation/interactions
-  Arctic hydrology
-  Disturbance
+  breakout/snow_veg_permafrost_interactions
+  breakout/arctic_hydrology
+  breakout/hillslope_biogeochemistry
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Additional resources
+
+  common_issues
 
 .. toctree::
   :maxdepth: 1

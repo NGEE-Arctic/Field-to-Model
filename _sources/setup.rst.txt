@@ -2,12 +2,18 @@ Getting Started
 ====================
 
 Follow these instructions to set up your environment for the workshop. This
-workshop uses Docker containers to encapsulate the models and visualization
-tools.
+workshop uses Docker containers to simplify installation of models and visualization
+tools. Both the models and visualization tools can have complex dependencies and prerequisites
+that need to be available on your computer. Docker containers allow us to simplify installation 
+across computers and operating systems by providing a single "bundle" that contains the models,
+visualization tools, and their dependencies. 
 
 We have pre-built Docker images for the models and visualization tools, which
-can be pulled from Docker Hub. However, if you prefer to build the images
-locally, instructions are provided in the :ref:`container-setup` section.
+can be pulled from Docker Hub.
+
+.. caution:: 
+    If you prefer to build the images locally, instructions are provided in the :ref:`container-setup` section.
+    It will take quite some time, and we strongly recommend using the pre-built containers.
 
 Clone Field-to-Model repository for the workshop
 -------------------------------------------------
@@ -17,13 +23,16 @@ Clone Field-to-Model repository for the workshop
     git clone --recurse-submodules https://github.com/ngee-arctic/field-to-model
     cd field-to-model
 
+This step downloads all of the scripts and infrastructure we have developed for the workshop,
+it should take a couple minutes to complete.
+
 Download Docker containers
 ----------------------------
 
 The workshop uses two Docker containers: one for running the models and another
 for visualization.
 
-Each the model container has the following models installed:
+The model container has the following models available:
 
 - ELM (Energy Exascale Earth System Land Model)    
 - TEM (Terrestrial Ecosystem Model)    
@@ -86,6 +95,11 @@ If you get output that matches the output below, you've setup the container corr
     v0.8.3-42-g77038e0c
     Docker	E3SM  README.md  docs  model_examples  tools
     inputdata  output
+
+Please take a moment to report if you were able to successfully get to this stage, or 
+post any issues you are having here: https://github.com/NGEE-Arctic/Field-to-Model/issues/38
+and we will try to have someone from the organizing team help you out before the workshop!
+
 
 Launch the containers
 ----------------------------

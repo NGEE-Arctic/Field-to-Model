@@ -75,3 +75,10 @@ decomposition spin up that features accelerated biogeochemical cycling, a second
 biogeochemical cycling rates, and finally a transient run that starts in 1850 and continues to near present
 (depending on how long the forcing datasets run). OLMT automates the setup of these cases through the E3SM case
 control system (CIME - Common Infrastructure for Modeling the Earth).
+
+======================
+Additional Resources
+======================
+
+1. What variables are on an ELM surface file? https://ngee-arctic.github.io/dapper/surface-variables.html#all-surface-variables
+ 
