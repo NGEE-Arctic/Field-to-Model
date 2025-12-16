@@ -27,9 +27,9 @@ Here you will find resources and documentation needed to follow the workshop exa
   :maxdepth: 2
   :caption: Breakout Groups
 
-  breakout/snow_veg_permafrost_interactions
-  breakout/arctic_hydrology
-  breakout/hillslope_biogeochemistry
+  breakout/snow_veg_permafrost
+  breakout/permafrost_hydrology
+  breakout/hillslope_bgc
 
 .. toctree::
   :maxdepth: 2
