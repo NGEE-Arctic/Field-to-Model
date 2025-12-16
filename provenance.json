@@ -239,7 +239,7 @@
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20280477874/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20280524805/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -270,9 +270,9 @@
         "github_actor_id": "17805542",
         "github_event_name": "push",
         "github_event_payload": {
-          "after": "575b1e13d355eacd069a1e1a1c11863da6ada118",
+          "after": "8e5f41355636649158ff5a54fd18a5045fce06e7",
           "base_ref": null,
-          "before": "7ef486bcce1bc7fed252e6de3f1b2947bd0405d0",
+          "before": "575b1e13d355eacd069a1e1a1c11863da6ada118",
           "commits": [
             {
               "author": {
@@ -286,14 +286,14 @@
                 "username": "rfiorella"
               },
               "distinct": true,
-              "id": "575b1e13d355eacd069a1e1a1c11863da6ada118",
-              "message": "add daily long tests for ELM to check for bugs",
-              "timestamp": "2025-12-16T12:39:33-07:00",
-              "tree_id": "0d7afe76495823ee2cab16e5a905da3ee688a565",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/575b1e13d355eacd069a1e1a1c11863da6ada118"
+              "id": "8e5f41355636649158ff5a54fd18a5045fce06e7",
+              "message": "update README",
+              "timestamp": "2025-12-16T12:41:21-07:00",
+              "tree_id": "e30fdcd2d0f1557cab578e1ff5cfb336fa1733a2",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/8e5f41355636649158ff5a54fd18a5045fce06e7"
             }
           ],
-          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/7ef486bcce1b...575b1e13d355",
+          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/575b1e13d355...8e5f41355636",
           "created": false,
           "deleted": false,
           "forced": false,
@@ -309,11 +309,11 @@
               "username": "rfiorella"
             },
             "distinct": true,
-            "id": "575b1e13d355eacd069a1e1a1c11863da6ada118",
-            "message": "add daily long tests for ELM to check for bugs",
-            "timestamp": "2025-12-16T12:39:33-07:00",
-            "tree_id": "0d7afe76495823ee2cab16e5a905da3ee688a565",
-            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/575b1e13d355eacd069a1e1a1c11863da6ada118"
+            "id": "8e5f41355636649158ff5a54fd18a5045fce06e7",
+            "message": "update README",
+            "timestamp": "2025-12-16T12:41:21-07:00",
+            "tree_id": "e30fdcd2d0f1557cab578e1ff5cfb336fa1733a2",
+            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/8e5f41355636649158ff5a54fd18a5045fce06e7"
           },
           "organization": {
             "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -419,7 +419,7 @@
             },
             "private": false,
             "pulls_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/pulls{/number}",
-            "pushed_at": 1765913986,
+            "pushed_at": 1765914088,
             "releases_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/releases{/id}",
             "size": 38117,
             "ssh_url": "git@github.com:NGEE-Arctic/Field-to-Model.git",
@@ -434,7 +434,7 @@
             "teams_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/teams",
             "topics": [],
             "trees_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/trees{/sha}",
-            "updated_at": "2025-12-16T19:27:50Z",
+            "updated_at": "2025-12-16T19:39:50Z",
             "url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model",
             "visibility": "public",
             "watchers": 0,
@@ -473,20 +473,20 @@
         "github_repository_owner": "NGEE-Arctic",
         "github_repository_owner_id": "184418857",
         "github_run_attempt": "1",
-        "github_run_id": "20280477874",
-        "github_run_number": "67",
+        "github_run_id": "20280524805",
+        "github_run_number": "68",
         "github_runner_arch": "X64",
         "github_runner_environment": "github-hosted",
         "github_runner_image_os": "ubuntu24",
         "github_runner_image_version": "20251208.163.1",
-        "github_runner_name": "GitHub Actions 1000000865",
+        "github_runner_name": "GitHub Actions 1000000869",
         "github_runner_os": "Linux",
-        "github_runner_tracking_id": "github_eadcb35b-d7b3-41ca-b0f0-73a71cfd14bc",
+        "github_runner_tracking_id": "github_957078e2-49cb-4e9c-9137-69de7b1784b6",
         "github_server_url": "https://github.com",
         "github_triggering_actor": "rfiorella",
         "github_workflow": "Sphinx: Render docs",
         "github_workflow_ref": "NGEE-Arctic/Field-to-Model/.github/workflows/docs.yml@refs/heads/main",
-        "github_workflow_sha": "575b1e13d355eacd069a1e1a1c11863da6ada118",
+        "github_workflow_sha": "8e5f41355636649158ff5a54fd18a5045fce06e7",
         "platform": "linux/amd64"
       }
     },
@@ -736,21 +736,21 @@
         }
       ],
       "digestMapping": {
-        "sha256:18c154d3de7309ac5aa644f65d9a8fa5d7ad18adc9583cee5d3ebb69e1f950ed": "step6",
-        "sha256:3117b1fb06a6d186ba670aef01cd3e3da47fc635c339fcd7e92a3c1b69b76fec": "step8",
+        "sha256:178c15b1cdaaed2256880c32238004961329ad6856841b5b22f288805e67f496": "step2",
+        "sha256:3aa744113ab8d7d1b7ad8a9be402be2648339b5ac910f6beb883d0e779cd00ea": "step7",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:544f666d81e74e1e5d06e60d81e3e0ebc39e8f6007e5f28295a82ed1916eed97": "step3",
-        "sha256:5e35f875b6e2a85183de6916249644491abe1ecf9047ee436c71b65450b81bc0": "step2",
-        "sha256:994198af9827875e50bd0201e9bed5238779513ce4a94b3adee7aed52065caf0": "step1",
-        "sha256:c4db48e2b94bbd05173b8634ac620ad23b093e57b795ed616a85f4b449542f55": "step5",
-        "sha256:d279ca29fdac8d4e2d1af605c629b0ef2f23d6d5dfa4f1496ce988c2f8bc3d7f": "step4",
-        "sha256:ea7a4fae6966f00aec680c74bb6a389a46980f42f4f5f68ff3b66e4acba7cbde": "step7"
+        "sha256:9d62a59893359bd00bd9fccf8eb405f9b44390f424649c7d2a5d039d4b438f7a": "step3",
+        "sha256:ae178f477618a6944907e0054ed9fd5c37aa346e1c29ad31b96e33737544b715": "step8",
+        "sha256:b915b54d4ec9adeedff361f2716e2a5d82a8aa565ed06e74b5a118dd79ae7971": "step4",
+        "sha256:bb09789db739f1757ff08c2f1a28783ed505355a00249040cbc6247621f6c68f": "step5",
+        "sha256:d9f1265aa5fbbe2695014e54d524d20096fb996a5984aea778623d4fcc597340": "step6",
+        "sha256:e643a085cd538cb144f163044d16de3c2265d70acd489b6415c07ab8a4f29f3c": "step1"
       }
     },
     "metadata": {
-      "buildInvocationID": "9wwwgqnxznhh1iwhqs4ejzud3",
-      "buildStartedOn": "2025-12-16T19:46:13.271043841Z",
-      "buildFinishedOn": "2025-12-16T19:46:23.930747963Z",
+      "buildInvocationID": "umjjpvnde2jvdr05mxj0td0bm",
+      "buildStartedOn": "2025-12-16T19:46:23.583226967Z",
+      "buildFinishedOn": "2025-12-16T19:46:34.9130793Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -761,7 +761,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "575b1e13d355eacd069a1e1a1c11863da6ada118",
+          "revision": "8e5f41355636649158ff5a54fd18a5045fce06e7",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -913,8 +913,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:2761029323b9b449b6518b631718e7b680112de0274e4d8208534f36fd0f5a88": "step1",
-                "sha256:3b19db492c3dcccc04ae41252d14898196754192c42bcf1befcb92e48787b329": "step0"
+                "sha256:1dabf7bf258af004bf82dc9dde18d949284d75bdacf0e95469f47bc8f3770f3a": "step1",
+                "sha256:20b6baec779d01c342825bc5df12e9b2e424178ead6827da84a2485c321f0673": "step0"
               }
             }
           ]
