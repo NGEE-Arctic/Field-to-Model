@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="./">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction to ELM and workshop scripts &#8212; ModEx 2025 0.0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=ec756433" />
-    <script src="_static/documentation_options.js?v=d45e8c67"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <title>1. Introduction to ELM and workshop scripts &#8212; ModEx 2025 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=ec756433" />
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. TEM Warming Experiment (and TEM Introduction)" href="../tem_ee1_warming.html" />
+    <link rel="prev" title="2. ModEx Workshop 2025 Agenda" href="../modex_agenda_2025.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Introduction to ELM and workshop scripts</a></li> 
+        <li class="right" >
+          <a href="../tem_ee1_warming.html" title="2. TEM Warming Experiment (and TEM Introduction)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../modex_agenda_2025.html" title="2. ModEx Workshop 2025 Agenda"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>  
 
@@ -32,7 +40,7 @@
           <div class="body" role="main">
             
   <section id="introduction-to-elm-and-workshop-scripts">
-<h1>Introduction to ELM and workshop scripts<a class="headerlink" href="#introduction-to-elm-and-workshop-scripts" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">1. </span>Introduction to ELM and workshop scripts<a class="headerlink" href="#introduction-to-elm-and-workshop-scripts" title="Link to this heading">¶</a></h1>
 <p>The E3SM Land Model (ELM) is the land surface component of the coupled E3SM model.
 ELM simulates a wide set of land surface and ecosystem processes, including surface
 energy balance, photosynthesis, carbon allocation, soil and surface hydrology,
@@ -90,7 +98,7 @@ the case has a different name. In this case, we have set it to “Arctic_init”
 </dd>
 </dl>
 <section id="under-the-hood">
-<h2>Under the hood<a class="headerlink" href="#under-the-hood" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Under the hood<a class="headerlink" href="#under-the-hood" title="Link to this heading">¶</a></h2>
 <p>The script we have developed simplifies the interface to the Offline Land Model Testbed (OLMT), developed by
 Dan Ricciuto (ORNL). OLMT itself simplifies the setup of model cases necessary to spin up an ELM simulation from
 a ‘cold start’ condition. (Figure of hierarchy?). OLMT sets up three cases that run consecutively: an ‘accelerated’
@@ -99,7 +107,7 @@ biogeochemical cycling rates, and finally a transient run that starts in 1850 an
 (depending on how long the forcing datasets run). OLMT automates the setup of these cases through the E3SM case
 control system (CIME - Common Infrastructure for Modeling the Earth).</p>
 <section id="additional-resources">
-<h3>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">1.1.1. </span>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>What variables are on an ELM surface file? <a class="reference external" href="https://ngee-arctic.github.io/dapper/surface-variables.html#all-surface-variables">https://ngee-arctic.github.io/dapper/surface-variables.html#all-surface-variables</a></p></li>
 </ol>
@@ -115,11 +123,11 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="index.html">Table of Contents</a></h3>
+    <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">Introduction to ELM and workshop scripts</a><ul>
-<li><a class="reference internal" href="#under-the-hood">Under the hood</a><ul>
-<li><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
+<li><a class="reference internal" href="#">1. Introduction to ELM and workshop scripts</a><ul>
+<li><a class="reference internal" href="#under-the-hood">1.1. Under the hood</a><ul>
+<li><a class="reference internal" href="#additional-resources">1.1.1. Additional Resources</a></li>
 </ul>
 </li>
 </ul>
@@ -127,17 +135,27 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
 </ul>
 
   </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../modex_agenda_2025.html"
+                          title="previous chapter"><span class="section-number">2. </span>ModEx Workshop 2025 Agenda</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../tem_ee1_warming.html"
+                          title="next chapter"><span class="section-number">2. </span>TEM Warming Experiment (and TEM Introduction)</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/elm_intro.rst.txt"
+      <li><a href="../_sources/plenary/elm_intro.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
+    <form class="search" action="../search.html" method="get">
       <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
@@ -152,10 +170,16 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Introduction to ELM and workshop scripts</a></li> 
+        <li class="right" >
+          <a href="../tem_ee1_warming.html" title="2. TEM Warming Experiment (and TEM Introduction)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../modex_agenda_2025.html" title="2. ModEx Workshop 2025 Agenda"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
