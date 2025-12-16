@@ -18,3 +18,10 @@ div[class*="highlight-"] {
     padding: 2px;
 
 }
+
+.red {
+    color: red;
+}
+.warn {
+    color:red;
+}
