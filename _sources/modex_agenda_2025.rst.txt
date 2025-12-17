@@ -55,7 +55,7 @@ Wednesday, January 14, 2025
 
 *Plenary session will be hybrid.*
 
-Thursday, January 14, 2025
+Thursday, January 15, 2025
 ---------------------------
 
 .. list-table::
@@ -99,7 +99,7 @@ Thursday, January 14, 2025
      - Working Dinner
      - Out on your own
 
-Friday, January 15, 2025
+Friday, January 16, 2025
 ------------------------
 
 .. list-table::

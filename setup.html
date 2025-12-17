@@ -54,8 +54,57 @@ can be pulled from Docker Hub.</p>
 <p>If you prefer to build the images locally, instructions are provided in the <a class="reference internal" href="dev_notes.html#container-setup"><span class="std std-ref">Container Setup</span></a> section.
 It will take quite some time, and we strongly recommend using the pre-built containers.</p>
 </div>
+<section id="required-software">
+<h2><span class="section-number">1.1. </span>Required software:<a class="headerlink" href="#required-software" title="Link to this heading">¶</a></h2>
+<p>You will need the following software:</p>
+<ul class="simple">
+<li><p>Docker Desktop - though note you may need an institutional license.</p></li>
+<li><p>git</p></li>
+</ul>
+<p>Optionally, you will need a 3D visualization tool: one of ParaView or VisIt.  VisIt is a little more intuitive to new users if you have never used either one and is sufficient for 90% of what we will do; ParaView is preferred for viewing complex 3D meshes.
+This will be most useful for the ATS section of this Workshop.</p>
+<section id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://www.docker.com/get-started">Download Docker</a></p>
+<div class="admonition-windows admonition">
+<p class="admonition-title">Windows</p>
+<p>Installation for Windows can be difficult since WSL 2 is required for the current version of Docker Desktop, so it is important to begin this process well before the short-course. If given the choice during installation, choose WSL 2 instead of Hyper-V.</p>
+<p>To manually update WSL 2:</p>
+<ul class="simple">
+<li><p>Open a terminal or Powershell.</p></li>
+<li><p>Update WSL <code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--update</span></code></p></li>
+<li><p>Install WSL <code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--install</span></code>  <a href="#id1"><span class="problematic" id="id2">|nbsp|</span></a> <a href="#id3"><span class="problematic" id="id4">|nbsp|</span></a> <strong>Note: The process will take awhile and prompt you for an account creation</strong></p></li>
+<li><p>Verify install using <code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--list</span></code>. You should see something like “Ubuntu”.</p></li>
+<li><p>Set default WSL <code class="docutils literal notranslate"><span class="pre">wsl</span> <span class="pre">--set-default-version</span> <span class="pre">2</span></code></p></li>
+</ul>
+</div>
+<div class="admonition-macos admonition">
+<p class="admonition-title">macOS</p>
+<p>Download and install the .dmg file for your silicon type, whether Intel (older) or Apple (M1 and newer).</p>
+</div>
+<div class="admonition-linux admonition">
+<p class="admonition-title">Linux</p>
+<p>Docker provides instructions for adding DEB package repositories, then installing through apt-get for Ubuntu, Debian, and related distributions.  They also provide RPMs for RHEL8 &amp; 9 and Fedora, and pacman for Arch.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package">WSL Installation</a></p></li>
+<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#installation-issues">WSL Troubleshooting Guide</a></p></li>
+</ul>
+</div>
+</section>
+<section id="git">
+<h3>Git<a class="headerlink" href="#git" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Mac OSX</strong>: git is included in the <em>command line tools</em>, installed via <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code>, or in XCode itself.</p></li>
+<li><p><strong>Linux</strong>: git is included as a standard package under most package managers, e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p></li>
+<li><p><strong>Windows</strong>: See <a class="reference external" href="https://github.com/git-guides/install-git">Git Downloads</a>. Note that the GitHub Desktop is also an option for Windows users and provides a GUI.</p></li>
+</ul>
+</section>
+</section>
 <section id="clone-field-to-model-repository-for-the-workshop">
-<h2><span class="section-number">1.1. </span>Clone Field-to-Model repository for the workshop<a class="headerlink" href="#clone-field-to-model-repository-for-the-workshop" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">1.2. </span>Clone Field-to-Model repository for the workshop<a class="headerlink" href="#clone-field-to-model-repository-for-the-workshop" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">/</span><span class="n">field</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">model</span>
 <span class="n">cd</span> <span class="n">field</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">model</span>
 </pre></div>
@@ -64,7 +113,7 @@ It will take quite some time, and we strongly recommend using the pre-built cont
 it should take a couple minutes to complete.</p>
 </section>
 <section id="download-docker-containers">
-<h2><span class="section-number">1.2. </span>Download Docker containers<a class="headerlink" href="#download-docker-containers" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">1.3. </span>Download Docker containers<a class="headerlink" href="#download-docker-containers" title="Link to this heading">¶</a></h2>
 <p>The workshop uses two Docker containers: one for running the models and another
 for visualization.</p>
 <p>The model container has the following models available:</p>
@@ -91,7 +140,7 @@ can use to store all of the ELM model input and output in the same places across
 platforms (e.g., Windows vs mac).</p>
 </section>
 <section id="get-the-workshop-data">
-<h2><span class="section-number">1.3. </span>Get the workshop data<a class="headerlink" href="#get-the-workshop-data" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">1.4. </span>Get the workshop data<a class="headerlink" href="#get-the-workshop-data" title="Link to this heading">¶</a></h2>
 <p>E3SM/ELM input data needed for the workshop can be downloaded by:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
     -v $(pwd):/home/modex_user \
@@ -102,7 +151,7 @@ platforms (e.g., Windows vs mac).</p>
 </div>
 </section>
 <section id="test-the-containers">
-<h2><span class="section-number">1.4. </span>Test the containers<a class="headerlink" href="#test-the-containers" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">1.5. </span>Test the containers<a class="headerlink" href="#test-the-containers" title="Link to this heading">¶</a></h2>
 <p>We have included a quick script to test whether the container images work for you:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
     -v $(pwd):/home/modex_user \
@@ -124,7 +173,7 @@ post any issues you are having here: <a class="reference external" href="https:/
 and we will try to have someone from the organizing team help you out before the workshop!</p>
 </section>
 <section id="launch-the-containers">
-<h2><span class="section-number">1.5. </span>Launch the containers<a class="headerlink" href="#launch-the-containers" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">1.6. </span>Launch the containers<a class="headerlink" href="#launch-the-containers" title="Link to this heading">¶</a></h2>
 <p>Then once you have the images you can run them with the following commands
 from the folder containing the field-to-model repo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
@@ -172,11 +221,16 @@ the container name at container startup in the docker run commands.</p>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">1. Getting Started</a><ul>
-<li><a class="reference internal" href="#clone-field-to-model-repository-for-the-workshop">1.1. Clone Field-to-Model repository for the workshop</a></li>
-<li><a class="reference internal" href="#download-docker-containers">1.2. Download Docker containers</a></li>
-<li><a class="reference internal" href="#get-the-workshop-data">1.3. Get the workshop data</a></li>
-<li><a class="reference internal" href="#test-the-containers">1.4. Test the containers</a></li>
-<li><a class="reference internal" href="#launch-the-containers">1.5. Launch the containers</a></li>
+<li><a class="reference internal" href="#required-software">1.1. Required software:</a><ul>
+<li><a class="reference internal" href="#docker">Docker</a></li>
+<li><a class="reference internal" href="#git">Git</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clone-field-to-model-repository-for-the-workshop">1.2. Clone Field-to-Model repository for the workshop</a></li>
+<li><a class="reference internal" href="#download-docker-containers">1.3. Download Docker containers</a></li>
+<li><a class="reference internal" href="#get-the-workshop-data">1.4. Get the workshop data</a></li>
+<li><a class="reference internal" href="#test-the-containers">1.5. Test the containers</a></li>
+<li><a class="reference internal" href="#launch-the-containers">1.6. Launch the containers</a></li>
 </ul>
 </li>
 </ul>

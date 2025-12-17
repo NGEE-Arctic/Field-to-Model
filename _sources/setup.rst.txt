@@ -15,6 +15,55 @@ can be pulled from Docker Hub.
     If you prefer to build the images locally, instructions are provided in the :ref:`container-setup` section.
     It will take quite some time, and we strongly recommend using the pre-built containers.
 
+Required software:
+--------------------------
+
+You will need the following software:
+
+* Docker Desktop - though note you may need an institutional license.
+* git
+
+Optionally, you will need a 3D visualization tool: one of ParaView or VisIt.  VisIt is a little more intuitive to new users if you have never used either one and is sufficient for 90% of what we will do; ParaView is preferred for viewing complex 3D meshes.
+This will be most useful for the ATS section of this Workshop.
+  
+Docker
+^^^^^^
+
+`Download Docker <https://www.docker.com/get-started>`_
+
+.. admonition:: Windows
+
+    Installation for Windows can be difficult since WSL 2 is required for the current version of Docker Desktop, so it is important to begin this process well before the short-course. If given the choice during installation, choose WSL 2 instead of Hyper-V.
+
+    To manually update WSL 2:
+
+    * Open a terminal or Powershell.
+    * Update WSL ``wsl --update``
+    * Install WSL ``wsl --install``  |nbsp| |nbsp| **Note: The process will take awhile and prompt you for an account creation**
+    * Verify install using ``wsl --list``. You should see something like "Ubuntu".
+    * Set default WSL ``wsl --set-default-version 2``
+
+.. admonition:: macOS
+
+    Download and install the .dmg file for your silicon type, whether Intel (older) or Apple (M1 and newer).
+
+.. admonition:: Linux
+
+    Docker provides instructions for adding DEB package repositories, then installing through apt-get for Ubuntu, Debian, and related distributions.  They also provide RPMs for RHEL8 & 9 and Fedora, and pacman for Arch.
+
+.. seealso::
+
+    * `WSL Installation <https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package>`_
+    * `WSL Troubleshooting Guide <https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#installation-issues>`_
+
+Git
+^^^
+
+* **Mac OSX**: git is included in the *command line tools*, installed via ``xcode-select --install``, or in XCode itself.
+* **Linux**: git is included as a standard package under most package managers, e.g. ``sudo apt-get install git``.
+* **Windows**: See `Git Downloads <https://github.com/git-guides/install-git>`_. Note that the GitHub Desktop is also an option for Windows users and provides a GUI.
+
+
 Clone Field-to-Model repository for the workshop
 -------------------------------------------------
 
