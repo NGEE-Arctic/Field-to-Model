@@ -29,6 +29,7 @@ source_suffix = {
 templates_path = ['_templates']
 exclude_patterns = []
 
+html_logo = '_static/NGEE_Arctic_logo_large.png'
 
 
 # -- Options for HTML output -------------------------------------------------
