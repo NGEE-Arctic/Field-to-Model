@@ -5,7 +5,7 @@
 # with Google Earth Engine and GEEmap
 # ----------------------------------------------------------------------
 
-FROM quay.io/jupyter/scipy-notebook:lab-4.4.9
+FROM quay.io/jupyter/scipy-notebook:lab-4.4.10
 
 # install Python packages you often use
 RUN set -ex \
