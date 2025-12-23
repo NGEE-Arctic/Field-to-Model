@@ -6,40 +6,63 @@ Welcome to the ModEx 2025 Field to Model Workshop
 
 Here you will find resources and documentation needed to follow the workshop examples.
 
-.. toctree::
-  :maxdepth: 2
-  :caption: Setup
-  :numbered: 2
+Agenda
+======================
 
-  setup
+.. toctree::
+  :maxdepth: 1 
+  :numbered: 3 
+
   modex_agenda_2025
 
+
+Setup Instructions
+======================
+
 .. toctree::
   :maxdepth: 2
-  :caption: Plenary modeling exercises
+  :numbered: 3
+
+  setup
+
+
+Plenary Modeling Exercises
+=============================
+
+.. toctree::
+  :maxdepth: 2
   :numbered: 3
 
   plenary/elm_intro
   tem_ee1_warming
   plenary/ats_intro
 
+Breakout Groups
+==================
+
 .. toctree::
   :maxdepth: 2
-  :caption: Breakout Groups
+  :numbered: 3
 
   breakout/snow_veg_permafrost
   breakout/permafrost_hydrology
   breakout/hillslope_bgc
 
+Additional Resources
+===================== 
+
 .. toctree::
   :maxdepth: 2
-  :caption: Additional resources
+  :numbered: 3
 
   common_issues
 
+Developer Notes
+==================
+
 .. toctree::
   :maxdepth: 1
-  :caption: Developer Info
+  :numbered: 3
 
   dev_notes
   tem_dev_notes

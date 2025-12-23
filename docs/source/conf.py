@@ -17,7 +17,8 @@ release = '0.0.1'
 extensions = [  
   'sphinx_toolbox.collapse',
   'myst_parser',
-  'sphinx.ext.autosectionlabel'
+  'sphinx.ext.autosectionlabel',
+  'sphinx_multitoc_numbering',
 ]
 
 source_suffix = {
