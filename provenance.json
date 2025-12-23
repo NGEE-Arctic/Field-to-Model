@@ -275,7 +275,7 @@
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20465469313/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20470341444/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -306,27 +306,27 @@
         "github_actor_id": "17805542",
         "github_event_name": "push",
         "github_event_payload": {
-          "after": "202809532047ced0974d87df0562579a5766e5ba",
+          "after": "fda22dc595e954c350be57e969269648580eb04e",
           "base_ref": null,
-          "before": "9303030fae60b91c531b2131a77618a9bac2012f",
+          "before": "202809532047ced0974d87df0562579a5766e5ba",
           "commits": [
             {
               "author": {
-                "email": "jsta@users.noreply.github.com",
-                "name": "Jemma Stachelek",
-                "username": "jsta"
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
               },
               "committer": {
-                "email": "noreply@github.com",
-                "name": "GitHub",
-                "username": "web-flow"
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
               },
               "distinct": false,
-              "id": "fa238129f6a222f2fa151daf08316b5fffbdb3f9",
-              "message": "Update JupyterLab base image to version 4.4.10",
-              "timestamp": "2025-12-23T08:41:42-07:00",
-              "tree_id": "426a4199a9d3ac62047af8c6d61454caed7c006e",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/fa238129f6a222f2fa151daf08316b5fffbdb3f9"
+              "id": "e6d8028a9ceb7b72438d2d8f267d04d9d3e351c1",
+              "message": "initial notebooks",
+              "timestamp": "2025-12-16T12:20:50-07:00",
+              "tree_id": "ebfff794f6666703faf564d4b9b29e5506066a54",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/e6d8028a9ceb7b72438d2d8f267d04d9d3e351c1"
             },
             {
               "author": {
@@ -340,14 +340,14 @@
                 "username": "web-flow"
               },
               "distinct": true,
-              "id": "202809532047ced0974d87df0562579a5766e5ba",
-              "message": "Merge pull request #51 from NGEE-Arctic/vis-fix\n\nUpdate JupyterLab base image to version 4.4.10",
-              "timestamp": "2025-12-23T09:00:24-07:00",
-              "tree_id": "426a4199a9d3ac62047af8c6d61454caed7c006e",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/202809532047ced0974d87df0562579a5766e5ba"
+              "id": "fda22dc595e954c350be57e969269648580eb04e",
+              "message": "Merge pull request #44 from NGEE-Arctic/rich/initial-notebooks\n\n[WIP] add initial notebooks",
+              "timestamp": "2025-12-23T13:00:42-07:00",
+              "tree_id": "96b33442d5e930a9357a7ea3fe42a9e8ec846df9",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/fda22dc595e954c350be57e969269648580eb04e"
             }
           ],
-          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/9303030fae60...202809532047",
+          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/202809532047...fda22dc595e9",
           "created": false,
           "deleted": false,
           "forced": false,
@@ -363,11 +363,11 @@
               "username": "web-flow"
             },
             "distinct": true,
-            "id": "202809532047ced0974d87df0562579a5766e5ba",
-            "message": "Merge pull request #51 from NGEE-Arctic/vis-fix\n\nUpdate JupyterLab base image to version 4.4.10",
-            "timestamp": "2025-12-23T09:00:24-07:00",
-            "tree_id": "426a4199a9d3ac62047af8c6d61454caed7c006e",
-            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/202809532047ced0974d87df0562579a5766e5ba"
+            "id": "fda22dc595e954c350be57e969269648580eb04e",
+            "message": "Merge pull request #44 from NGEE-Arctic/rich/initial-notebooks\n\n[WIP] add initial notebooks",
+            "timestamp": "2025-12-23T13:00:42-07:00",
+            "tree_id": "96b33442d5e930a9357a7ea3fe42a9e8ec846df9",
+            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/fda22dc595e954c350be57e969269648580eb04e"
           },
           "organization": {
             "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -411,8 +411,8 @@
             "downloads_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/downloads",
             "events_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/events",
             "fork": false,
-            "forks": 1,
-            "forks_count": 1,
+            "forks": 2,
+            "forks_count": 2,
             "forks_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/forks",
             "full_name": "NGEE-Arctic/Field-to-Model",
             "git_commits_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/commits{/sha}",
@@ -445,8 +445,8 @@
             "name": "Field-to-Model",
             "node_id": "R_kgDOPQRvJA",
             "notifications_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/notifications{?since,all,participating}",
-            "open_issues": 17,
-            "open_issues_count": 17,
+            "open_issues": 16,
+            "open_issues_count": 16,
             "organization": "NGEE-Arctic",
             "owner": {
               "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -473,9 +473,9 @@
             },
             "private": false,
             "pulls_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/pulls{/number}",
-            "pushed_at": 1766505624,
+            "pushed_at": 1766520043,
             "releases_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/releases{/id}",
-            "size": 39874,
+            "size": 39867,
             "ssh_url": "git@github.com:NGEE-Arctic/Field-to-Model.git",
             "stargazers": 0,
             "stargazers_count": 0,
@@ -488,7 +488,7 @@
             "teams_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/teams",
             "topics": [],
             "trees_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/trees{/sha}",
-            "updated_at": "2025-12-23T05:53:15Z",
+            "updated_at": "2025-12-23T16:00:29Z",
             "url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model",
             "visibility": "public",
             "watchers": 0,
@@ -527,20 +527,20 @@
         "github_repository_owner": "NGEE-Arctic",
         "github_repository_owner_id": "184418857",
         "github_run_attempt": "1",
-        "github_run_id": "20465469313",
-        "github_run_number": "102",
+        "github_run_id": "20470341444",
+        "github_run_number": "103",
         "github_runner_arch": "X64",
         "github_runner_environment": "github-hosted",
         "github_runner_image_os": "ubuntu24",
         "github_runner_image_version": "20251215.174.1",
-        "github_runner_name": "GitHub Actions 1000001730",
+        "github_runner_name": "GitHub Actions 1000001774",
         "github_runner_os": "Linux",
-        "github_runner_tracking_id": "github_703eaa46-a4cc-4050-bae7-d67d1f362af6",
+        "github_runner_tracking_id": "github_219db117-7e88-4319-a119-c4da5de92b93",
         "github_server_url": "https://github.com",
         "github_triggering_actor": "rfiorella",
         "github_workflow": "Sphinx: Render docs",
         "github_workflow_ref": "NGEE-Arctic/Field-to-Model/.github/workflows/docs.yml@refs/heads/main",
-        "github_workflow_sha": "202809532047ced0974d87df0562579a5766e5ba",
+        "github_workflow_sha": "fda22dc595e954c350be57e969269648580eb04e",
         "platform": "linux/amd64"
       }
     },
@@ -790,21 +790,21 @@
         }
       ],
       "digestMapping": {
-        "sha256:0a38ac44e7885f20159562b885638e8f2ab432a2891a0a194ddf19ec3659121d": "step2",
-        "sha256:3dd9f4a182a1243135a6879af55c5ce92b27aab8eca54d840c465e9a8dd9db54": "step3",
+        "sha256:3a5c20caf42f6d7afc42fea235acd6effee25202d31eabb35329f5d26cabbe0e": "step1",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:880e823d8b71b56c8c8dc6fefeb02a98df17bb8e85b7c9d3c1b15c1566718b54": "step4",
-        "sha256:88e86752fb5127b309c324851773f717549ad43084a11ecaa3d7e67398fbdc84": "step6",
-        "sha256:8a2e09e99ce50f8cc5a53bfe1ed8a60095d43a304ff7832c0bb43a5b4ce440b3": "step5",
-        "sha256:d0f35483f382835a84bb72c863f62ee5253d8ce3e7fa7d1b55d6918f2efb3c78": "step7",
-        "sha256:dcbac7ff3ee9d19b9290c96645a7a9994d266d6cc81e13216d4b37cd6dfb7eaa": "step1",
-        "sha256:f9e76cf04b472950f209357d2e9da261968f950edf59f54ba75ccd0009efc2b6": "step8"
+        "sha256:4a6676c9a3be082d7777d07c2368c44f15c26699a761428e36762c841d5cc113": "step5",
+        "sha256:8006e5e413165b2f11e8a40ea36f8adad97bd412c545d5f50486f3c815aba404": "step8",
+        "sha256:8762a1165471e7b2f42b6cfc0dffd9422e9aea089f9c6e76cb0f9e5e513e631d": "step6",
+        "sha256:93e7617d89de50e938e8ce508eb4171e157337792732773abe8d4d0023cfe73f": "step7",
+        "sha256:ad6e45b47f6c268f1c7765a1ac4e2a1e2fa5634585da5c3ed6010aab15fd1282": "step4",
+        "sha256:c36f297018aa5c6558b1935e01322e444d084ca4ce0707010e59965cfc499bc4": "step2",
+        "sha256:cbf1bcd6bdc95da8c1bbf8bb32c74104d90386072a7468cb15662835a7acb66b": "step3"
       }
     },
     "metadata": {
-      "buildInvocationID": "0mvakzkm0gkum641vufs5wgsc",
-      "buildStartedOn": "2025-12-23T16:00:40.05424091Z",
-      "buildFinishedOn": "2025-12-23T16:00:51.235845123Z",
+      "buildInvocationID": "r1libk0w64h5z2tp1i7gkjwz8",
+      "buildStartedOn": "2025-12-23T20:00:56.889764853Z",
+      "buildFinishedOn": "2025-12-23T20:01:08.299810491Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -815,7 +815,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "202809532047ced0974d87df0562579a5766e5ba",
+          "revision": "fda22dc595e954c350be57e969269648580eb04e",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -967,8 +967,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:89d093e6f421d5f239b0e68d0bdaab4c9afcfbf6261815995bf457d51c902fc3": "step0",
-                "sha256:c43400053352079eb7704db65db523b437451dad1b3f158585d848eb7022ae84": "step1"
+                "sha256:87d40b156258c17c3327a33c7437ac7102dc3598d6a63926b1ccac8a8d594aeb": "step1",
+                "sha256:ea6f75f8d625bcca19b536595668958de7c70a256ec93ac0a247947a7a1df759": "step0"
               }
             }
           ]
