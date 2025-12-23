@@ -46,3 +46,12 @@ html_theme_options = {
   # There are no options for the 'nature' theme
 }
 
+html_sidebars = {
+  # 'Pages matching pattern': [list of templates to include...]
+  '**': ['localtoc.html','searchbox.html'],
+  
+  'index': ['globaltoc.html', 'searchbox.html',],
+  # This adds a differently styled TOC, I don't think it looks as good.
+  # But it is global to the whole site....
+  #'**': [ 'globaltoc.html', 'searchbox.html'],
+}
