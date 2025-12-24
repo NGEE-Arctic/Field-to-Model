@@ -17,7 +17,8 @@ release = '0.0.1'
 extensions = [  
   'sphinx_toolbox.collapse',
   'myst_parser',
-  'sphinx.ext.autosectionlabel'
+  'sphinx.ext.autosectionlabel',
+  'sphinx_multitoc_numbering',
 ]
 
 source_suffix = {
@@ -29,6 +30,7 @@ source_suffix = {
 templates_path = ['_templates']
 exclude_patterns = []
 
+html_logo = '_static/NGEE_Arctic_logo_large.png'
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -39,3 +41,17 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
 ]
+
+html_theme_options = {
+  # There are no options for the 'nature' theme
+}
+
+html_sidebars = {
+  # 'Pages matching pattern': [list of templates to include...]
+  '**': ['localtoc.html','searchbox.html'],
+  
+  'index': ['globaltoc.html', 'searchbox.html',],
+  # This adds a differently styled TOC, I don't think it looks as good.
+  # But it is global to the whole site....
+  #'**': [ 'globaltoc.html', 'searchbox.html'],
+}
