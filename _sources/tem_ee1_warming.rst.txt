@@ -477,7 +477,7 @@ in a new container:
       You have to re-install Jupyter each time you start a new container until we
       get it baked into the image.
 
-.. code:: shell
+.. code::shell
 
    docker run -it --rm \
       -p 8888:8888 \
@@ -489,7 +489,7 @@ in a new container:
 
 You should see output like this:
 
-.. code:: python
+.. code::python
 
    [I 2025-12-12 21:31:22.299 ServerApp] jupyter_lsp | extension was successfully linked.
    [I 2025-12-12 21:31:22.305 ServerApp] jupyter_server_terminals | extension was successfully linked.

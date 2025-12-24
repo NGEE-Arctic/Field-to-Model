@@ -4,42 +4,104 @@
 Welcome to the ModEx 2025 Field to Model Workshop
 ===================================================
 
+Welcome to the 2nd NGEE Arctic Field-to-Model Workshop in Santa Fe, NM!
+Following the project's tradition of bringing modelers to the field, our goal
+over this 2.5-day workshop is to bring empiricists to the models. We will be
+providing an introduction to land surface modeling by providing overviews of
+three different land surface models used across the project:
+
+ * the Energy Exascale Earth System (E3SM) Land Model (ELM), 
+ * the Advanced Terrestrial Simulator (ATS), and
+ * DVM-DOS-TEM (Dynamic Vegetation, Dynamic Organic Soil, 
+   Terrestrial Ecosystem Model, often shortened to TEM) 
+  
+that illustrate different design philosophies, approaches, and tradeoffs in
+representing land surface processes. 
+
+We will also introduce the ILAMB (International LAnd Model
+Benchmarking) and DaPPER (Data PreParation for ELM Runs) python packages. ILAMB
+is designed to improve model-data integration and allow for validation of land
+surface models against observations, while DaPPER allows for the generation of
+necessary ELM input data from gridded datasets on Google Earth Engine.
+
+A major component of this workshop will be three breakout groups that will focus
+in greater detail on a specific set of Arctic processes in the models. The
+breakout groups will focus on 
+
+ #. permafrost hydrology
+ #. snow/vegetation/permafrost interactions, and
+ #. hillslope hydrology impacts on biogeochemistry. 
+ 
+We have tried to structure the breakout groups to include experts from at least
+two of these models in each breakout group. Our hope is this structure will help
+facilitate conversations not only between the empiricists and modelers, but also
+to identify and discuss transferable insights across models.
+
+Over the duration of the workshop, you will be running and analyzing example
+cases for all three models, learning more about how you might be able to apply
+these models to your research and what their limitations might be, and hopefully
+finding opportunities for future collaboration and ideas for future
+publications. We hope that you are as excited for the workshop as we are!
+
 Here you will find resources and documentation needed to follow the workshop examples.
 
-.. toctree::
-  :maxdepth: 2
-  :caption: Setup
-  :numbered: 2
+Agenda
+======================
 
-  setup
+.. toctree::
+  :maxdepth: 1 
+  :numbered: 3 
+
   modex_agenda_2025
 
+
+Setup Instructions
+======================
+
 .. toctree::
   :maxdepth: 2
-  :caption: Plenary modeling exercises
+  :numbered: 3
+
+  setup
+
+
+Plenary Modeling Exercises
+=============================
+
+.. toctree::
+  :maxdepth: 2
   :numbered: 3
 
   plenary/elm_intro
   tem_ee1_warming
   plenary/ats_intro
 
+Breakout Groups
+==================
+
 .. toctree::
   :maxdepth: 2
-  :caption: Breakout Groups
+  :numbered: 3
 
   breakout/snow_veg_permafrost
   breakout/permafrost_hydrology
   breakout/hillslope_bgc
 
+Additional Resources
+===================== 
+
 .. toctree::
   :maxdepth: 2
-  :caption: Additional resources
+  :numbered: 3
 
   common_issues
 
+Developer Notes
+==================
+
 .. toctree::
   :maxdepth: 1
-  :caption: Developer Info
+  :numbered: 3
 
   dev_notes
   tem_dev_notes

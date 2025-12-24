@@ -5,17 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Getting Started &#8212; ModEx 2025 0.0.1 documentation</title>
+    <title>2. Getting Started &#8212; ModEx 2025 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=ec756433" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e3f3e722" />
     <script src="_static/documentation_options.js?v=d45e8c67"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. ModEx Workshop 2025 Agenda" href="modex_agenda_2025.html" />
-    <link rel="prev" title="Welcome to the ModEx 2025 Field to Model Workshop" href="index.html" /> 
+    <link rel="next" title="3. Introduction to ELM and workshop scripts" href="plenary/elm_intro.html" />
+    <link rel="prev" title="1. ModEx Workshop 2025 Agenda" href="modex_agenda_2025.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
@@ -24,13 +24,13 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modex_agenda_2025.html" title="2. ModEx Workshop 2025 Agenda"
+          <a href="plenary/elm_intro.html" title="3. Introduction to ELM and workshop scripts"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to the ModEx 2025 Field to Model Workshop"
+          <a href="modex_agenda_2025.html" title="1. ModEx Workshop 2025 Agenda"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Getting Started</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Getting Started</a></li> 
       </ul>
     </div>  
 
@@ -40,7 +40,7 @@
           <div class="body" role="main">
             
   <section id="getting-started">
-<h1><span class="section-number">1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">2. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h1>
 <p>Follow these instructions to set up your environment for the workshop. This
 workshop uses Docker containers to simplify installation of models and visualization
 tools. Both the models and visualization tools can have complex dependencies and prerequisites
@@ -55,7 +55,7 @@ can be pulled from Docker Hub.</p>
 It will take quite some time, and we strongly recommend using the pre-built containers.</p>
 </div>
 <section id="required-software">
-<h2><span class="section-number">1.1. </span>Required software:<a class="headerlink" href="#required-software" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">2.1. </span>Required software:<a class="headerlink" href="#required-software" title="Link to this heading">¶</a></h2>
 <p>You will need the following software:</p>
 <ul class="simple">
 <li><p>Docker Desktop - though note you may need an institutional license.</p></li>
@@ -64,7 +64,7 @@ It will take quite some time, and we strongly recommend using the pre-built cont
 <p>Optionally, you will need a 3D visualization tool: one of ParaView or VisIt.  VisIt is a little more intuitive to new users if you have never used either one and is sufficient for 90% of what we will do; ParaView is preferred for viewing complex 3D meshes.
 This will be most useful for the ATS section of this Workshop.</p>
 <section id="docker">
-<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">2.1.1. </span>Docker<a class="headerlink" href="#docker" title="Link to this heading">¶</a></h3>
 <p><a class="reference external" href="https://www.docker.com/get-started">Download Docker</a></p>
 <div class="admonition-windows admonition">
 <p class="admonition-title">Windows</p>
@@ -95,7 +95,7 @@ This will be most useful for the ATS section of this Workshop.</p>
 </div>
 </section>
 <section id="git">
-<h3>Git<a class="headerlink" href="#git" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">2.1.2. </span>Git<a class="headerlink" href="#git" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Mac OSX</strong>: git is included in the <em>command line tools</em>, installed via <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code>, or in XCode itself.</p></li>
 <li><p><strong>Linux</strong>: git is included as a standard package under most package managers, e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p></li>
@@ -104,7 +104,7 @@ This will be most useful for the ATS section of this Workshop.</p>
 </section>
 </section>
 <section id="clone-field-to-model-repository-for-the-workshop">
-<h2><span class="section-number">1.2. </span>Clone Field-to-Model repository for the workshop<a class="headerlink" href="#clone-field-to-model-repository-for-the-workshop" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">2.2. </span>Clone Field-to-Model repository for the workshop<a class="headerlink" href="#clone-field-to-model-repository-for-the-workshop" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">/</span><span class="n">field</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">model</span>
 <span class="n">cd</span> <span class="n">field</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">model</span>
 </pre></div>
@@ -113,7 +113,7 @@ This will be most useful for the ATS section of this Workshop.</p>
 it should take a couple minutes to complete.</p>
 </section>
 <section id="download-docker-containers">
-<h2><span class="section-number">1.3. </span>Download Docker containers<a class="headerlink" href="#download-docker-containers" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">2.3. </span>Download Docker containers<a class="headerlink" href="#download-docker-containers" title="Link to this heading">¶</a></h2>
 <p>The workshop uses two Docker containers: one for running the models and another
 for visualization.</p>
 <p>The model container has the following models available:</p>
@@ -140,7 +140,7 @@ can use to store all of the ELM model input and output in the same places across
 platforms (e.g., Windows vs mac).</p>
 </section>
 <section id="get-the-workshop-data">
-<h2><span class="section-number">1.4. </span>Get the workshop data<a class="headerlink" href="#get-the-workshop-data" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">2.4. </span>Get the workshop data<a class="headerlink" href="#get-the-workshop-data" title="Link to this heading">¶</a></h2>
 <p>E3SM/ELM input data needed for the workshop can be downloaded by:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
     -v $(pwd):/home/modex_user \
@@ -151,7 +151,7 @@ platforms (e.g., Windows vs mac).</p>
 </div>
 </section>
 <section id="test-the-containers">
-<h2><span class="section-number">1.5. </span>Test the containers<a class="headerlink" href="#test-the-containers" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">2.5. </span>Test the containers<a class="headerlink" href="#test-the-containers" title="Link to this heading">¶</a></h2>
 <p>We have included a quick script to test whether the container images work for you:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
     -v $(pwd):/home/modex_user \
@@ -173,7 +173,7 @@ post any issues you are having here: <a class="reference external" href="https:/
 and we will try to have someone from the organizing team help you out before the workshop!</p>
 </section>
 <section id="launch-the-containers">
-<h2><span class="section-number">1.6. </span>Launch the containers<a class="headerlink" href="#launch-the-containers" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">2.6. </span>Launch the containers<a class="headerlink" href="#launch-the-containers" title="Link to this heading">¶</a></h2>
 <p>Then once you have the images you can run them with the following commands
 from the folder containing the field-to-model repo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
@@ -217,42 +217,28 @@ the container name at container startup in the docker run commands.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2025"/>
+            </a></p>
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">1. Getting Started</a><ul>
-<li><a class="reference internal" href="#required-software">1.1. Required software:</a><ul>
-<li><a class="reference internal" href="#docker">Docker</a></li>
-<li><a class="reference internal" href="#git">Git</a></li>
+<li><a class="reference internal" href="#">2. Getting Started</a><ul>
+<li><a class="reference internal" href="#required-software">2.1. Required software:</a><ul>
+<li><a class="reference internal" href="#docker">2.1.1. Docker</a></li>
+<li><a class="reference internal" href="#git">2.1.2. Git</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#clone-field-to-model-repository-for-the-workshop">1.2. Clone Field-to-Model repository for the workshop</a></li>
-<li><a class="reference internal" href="#download-docker-containers">1.3. Download Docker containers</a></li>
-<li><a class="reference internal" href="#get-the-workshop-data">1.4. Get the workshop data</a></li>
-<li><a class="reference internal" href="#test-the-containers">1.5. Test the containers</a></li>
-<li><a class="reference internal" href="#launch-the-containers">1.6. Launch the containers</a></li>
+<li><a class="reference internal" href="#clone-field-to-model-repository-for-the-workshop">2.2. Clone Field-to-Model repository for the workshop</a></li>
+<li><a class="reference internal" href="#download-docker-containers">2.3. Download Docker containers</a></li>
+<li><a class="reference internal" href="#get-the-workshop-data">2.4. Get the workshop data</a></li>
+<li><a class="reference internal" href="#test-the-containers">2.5. Test the containers</a></li>
+<li><a class="reference internal" href="#launch-the-containers">2.6. Launch the containers</a></li>
 </ul>
 </li>
 </ul>
 
   </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="index.html"
-                          title="previous chapter">Welcome to the ModEx 2025 Field to Model Workshop</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="modex_agenda_2025.html"
-                          title="next chapter"><span class="section-number">2. </span>ModEx Workshop 2025 Agenda</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/setup.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
 <search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -274,13 +260,13 @@ the container name at container startup in the docker run commands.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modex_agenda_2025.html" title="2. ModEx Workshop 2025 Agenda"
+          <a href="plenary/elm_intro.html" title="3. Introduction to ELM and workshop scripts"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Welcome to the ModEx 2025 Field to Model Workshop"
+          <a href="modex_agenda_2025.html" title="1. ModEx Workshop 2025 Agenda"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Getting Started</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Getting Started</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
