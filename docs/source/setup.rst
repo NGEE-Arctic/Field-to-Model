@@ -159,6 +159,7 @@ from the folder containing the field-to-model repo:
 .. code::
 
     docker run -it --rm \
+        --name models-container \
         -v  $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
@@ -167,6 +168,7 @@ from the folder containing the field-to-model repo:
 .. code::
 
     docker run -it --rm \
+        --name vis-container \
         -v  $(pwd):/home/modex_user \
         -v output:/mnt/output \
         -p 8888:8888 \
@@ -183,13 +185,4 @@ You can find the value of ``{CONTAINER_NAME}`` by using:
 .. code:: 
 
     docker ps
-
-.. note:: TODO, write this...
-    
-    issue some kind of run command and get a shell in the container with 
-    volumes mounted to the workshop data and the correct ports open...
-
-    RPF - added information about this, but really what it needs is CONTAINER_NAME
-    which can be determined by `docker ps`. Alternative option would be to specify 
-    the container name at container startup in the docker run commands.
 
