@@ -177,6 +177,7 @@ and we will try to have someone from the organizing team help you out before the
 <p>Then once you have the images you can run them with the following commands
 from the folder containing the field-to-model repo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+    --name models-container \
     -v  $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
@@ -184,6 +185,7 @@ from the folder containing the field-to-model repo:</p>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+    --name vis-container \
     -v  $(pwd):/home/modex_user \
     -v output:/mnt/output \
     -p 8888:8888 \
@@ -197,15 +199,6 @@ from the folder containing the field-to-model repo:</p>
 <p>You can find the value of <code class="docutils literal notranslate"><span class="pre">{CONTAINER_NAME}</span></code> by using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">ps</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>TODO, write this…</p>
-<p>issue some kind of run command and get a shell in the container with
-volumes mounted to the workshop data and the correct ports open…</p>
-<p>RPF - added information about this, but really what it needs is CONTAINER_NAME
-which can be determined by <cite>docker ps</cite>. Alternative option would be to specify
-the container name at container startup in the docker run commands.</p>
 </div>
 </section>
 </section>
