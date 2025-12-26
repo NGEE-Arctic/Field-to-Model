@@ -73,7 +73,7 @@ Plenary Modeling Exercises
   :numbered: 3
 
   plenary/elm_intro
-  tem_ee1_warming
+  plenary/tem_ee1_warming
   plenary/ats_intro
 
 Breakout Groups

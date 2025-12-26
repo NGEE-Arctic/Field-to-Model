@@ -1,6 +1,6 @@
 TEM Warming Experiment (and TEM Introduction)
 =================================================================
-.. include:: colors.rst
+.. include:: ../colors.rst
 
 What are we trying to model?
 -------------------------------------------------------------
