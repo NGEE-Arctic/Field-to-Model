@@ -1,5 +1,5 @@
 Snow, Vegetation, and Permafrost Interactions Breakout Group
-===========================================================
+============================================================
 
 Welcome to the snow–vegetation–permafrost breakout! Please see the agenda
 for our breakout session `<link to agenda>`_.
@@ -8,7 +8,7 @@ ELM Model: Snow, vegetation, and permafrost
 -------------------------------------------
 
 Why do we care about snow, shrubs, and permafrost?
--------------------------------------------------
+--------------------------------------------------
 
 Snow, shrubs, and permafrost are tightly coupled controls on Arctic
 ecosystem function, climate feedbacks, and infrastructure stability.
@@ -85,7 +85,7 @@ Setting Up Model Simulations
 
 Mean annual temperature is projected to increase by up to +8.5 °C at
 NGEE-Arctic sites according to downscaled CMIP6 projections using a
-13-member ensemble (`https://dap.climateinformation.org/dap/`_).
+13-member ensemble (`<https://dap.climateinformation.org/dap/>`_).
 
 Seasonal precipitation changes are represented as percent differences
 from a 1981–2010 climate normal. Temperature perturbations are applied
@@ -176,7 +176,7 @@ Combined temperature and precipitation scaling:
      --case_prefix=scale_rain40_snow60_temp3
 
 Snow Processes in ELM
---------------------
+---------------------
 
 ELM represents snow as a vertically resolved, multi-layer snowpack that
 simulates accumulation, compaction, melt–refreeze, and energy exchange
@@ -208,7 +208,6 @@ Permafrost
 (Description to be completed.)
 
 Snow, Shrubs, and Permafrost in TEM
-----------------------------------
+-----------------------------------
 
 (Text placeholder.)
-
