@@ -45,6 +45,21 @@ publications. We hope that you are as excited for the workshop as we are!
 
 Here you will find resources and documentation needed to follow the workshop examples.
 
+.. note::
+
+  It is highly recommended that you download the workshop containers and input
+  data ahead of time. More information and a log of various setup issues can be
+  found here: `<https://github.com/NGEE-Arctic/Field-to-Model/issues/38>`_
+
+
+.. warning::
+
+  Windows users will have a longer setup procedure than macOS or Linux users. It
+  is even more strongly recommended that attendees hoping to run the models on a
+  Windows computer work through the setup instructions ahead of the workshop!!
+
+
+
 Agenda
 ======================
 
