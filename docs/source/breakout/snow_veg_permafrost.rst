@@ -30,7 +30,8 @@ trajectories.
 
 Under future warming scenarios, some research has indicated that
 precipitation is likely to increase, a phenomenon referred to as Arctic
-Amplification (refs).
+Amplification (e.g., Bintanja et al. 2018, England et al. 2021,
+Rantanen et al. 2022).
 
 In the ELM model, just as we changed temperature in TEM to simulate
 warming, we can also change summer and winter precipitation. In the
@@ -62,23 +63,32 @@ The following variables are examined to understand how changes in
 temperature, precipitation, and vegetation affect snow, soil, and
 permafrost processes.
 
-+-------------------------------+--------------------------+-------------------------+
-| Variable                      | TEM                      | ELM                     |
-+===============================+==========================+=========================+
-| Soil active layer depth (m)   | ALD, yearly              |                         |
-+-------------------------------+--------------------------+-------------------------+
-| Gross primary production      | GPP, monthly             |                         |
-| (g m⁻² time⁻¹)                |                          |                         |
-+-------------------------------+--------------------------+-------------------------+
-| Snow pack thickness (m)       | SNOWTHICK, monthly       | SNOW_DEPTH, daily       |
-+-------------------------------+--------------------------+-------------------------+
-| Snow water equivalent         | SWE, monthly             | H2OSNO, daily           |
-| (kg m⁻²)                      |                          |                         |
-+-------------------------------+--------------------------+-------------------------+
-| Soil layer thickness (m)      | LAYERDZ, monthly         |                         |
-+-------------------------------+--------------------------+-------------------------+
-| Temperature by layer (°C)     | TLAYER, monthly          | TSOIL_10                |
-+-------------------------------+--------------------------+-------------------------+
+.. list-table:: Model variables and temporal resolution
+   :header-rows: 1
+   :widths: 40 30 30
+
+   * - Variable
+     - TEM
+     - ELM
+   * - Soil active layer depth (m)
+     - ALD, yearly
+     - ALT, daily
+   * - Gross primary production (g m⁻² time⁻¹)
+     - GPP, monthly
+     - GPP, daily
+   * - Snow pack thickness (m)
+     - SNOWTHICK, monthly
+     - SNOW_DEPTH, daily
+   * - Snow water equivalent (kg m⁻²)
+     - SWE, monthly
+     - H2OSNO, daily
+   * - Soil layer thickness (m)
+     - LAYERDZ, monthly
+     - levgrnd, static
+   * - Temperature by layer (°C)
+     - TLAYER, monthly
+     - TSOI_10CM, daily (K)
+
 
 Setting Up Model Simulations
 ----------------------------
@@ -91,13 +101,35 @@ Seasonal precipitation changes are represented as percent differences
 from a 1981–2010 climate normal. Temperature perturbations are applied
 as absolute °C offsets.
 
-**Scenario:** SSP245 (2041–2070 minus 1981–2010)
+**Emissions scenario:** Median annual or seasonal (SSP245, 2041–2070,
+difference from 1981–2010)
 
-+----------------------+-----------+---------------------------+------+-------+-------+
-| Site                 | Location  | Lat / Long                | T    | Pjul  | Pjan  |
-+======================+===========+===========================+======+=======+=======+
-| imnaviat_creek       | Alaska    | -149.34047, 68.56066      | 3.05 | 39.97 | 56.93 |
-+----------------------+-----------+---------------------------+------+-------+-------+
++---------------------+----------+-------------------+------+-------+-------+
+| Site Abbreviation   | Location | Lat / Long        | T    | Pjul  | Pjan  |
++=====================+==========+===================+======+=======+=======+
+| beo                 | Alaska   | 71.30 / -156.60   | 4.67 | 31.74 | 44.97 |
++---------------------+----------+-------------------+------+-------+-------+
+| council             | Alaska   | 64.85 / -163.71   | 3.25 | 21.59 | 13.08 |
++---------------------+----------+-------------------+------+-------+-------+
+| kougarok            | Alaska   | 65.16 / -164.83   | 3.43 | 20.68 | 15.41 |
++---------------------+----------+-------------------+------+-------+-------+
+| teller              | Alaska   | 64.74 / -165.95   | 3.56 | 11.99 | 17.92 |
++---------------------+----------+-------------------+------+-------+-------+
+| toolik_lake         | Alaska   | 68.63 / -149.59   | 3.09 | 36.97 | 45.97 |
++---------------------+----------+-------------------+------+-------+-------+
+| imnaviat_creek      | Alaska   | 68.60 / -149.30   | 3.05 | 39.97 | 56.93 |
++---------------------+----------+-------------------+------+-------+-------+
+| upper_kuparuk       | Alaska   | 68.61 / -149.31   | 3.05 | 39.97 | 56.93 |
++---------------------+----------+-------------------+------+-------+-------+
+| trail_valley_creek  | Canada   | 68.74 / -133.50   | 3.82 | 21.76 | 14.83 |
++---------------------+----------+-------------------+------+-------+-------+
+| abisko              | Sweden   | 68.35 / 18.82     | 2.06 | 21.55 |  6.74 |
++---------------------+----------+-------------------+------+-------+-------+
+| bayelva             | Norway   | 78.92 / 11.83     | 3.29 | 19.53 | 15.68 |
++---------------------+----------+-------------------+------+-------+-------+
+| samoylov_island     | Russia   | 72.37 / 126.50    | 3.56 |  9.49 | 33.93 |
++---------------------+----------+-------------------+------+-------+-------+
+
 
 The *imnaviat_creek* site is used as the example below, though any of the
 available Arctic sites may be selected.
@@ -211,3 +243,12 @@ Snow, Shrubs, and Permafrost in TEM
 -----------------------------------
 
 (Text placeholder.)
+
+References
+----------
+
+Bintanja, R., 2018. The impact of Arctic warming on increased rainfall. Scientific Reports, 8(1), p.16001.
+
+England, M.R., Eisenman, I., Lutsko, N.J. and Wagner, T.J., 2021. The recent emergence of Arctic amplification. Geophysical Research Letters, 48(15), p.e2021GL094086.
+
+Rantanen, M., Karpechko, A.Y., Lipponen, A., Nordling, K., Hyvärinen, O., Ruosteenoja, K., Vihma, T. and Laaksonen, A., 2022. The Arctic has warmed nearly four times faster than the globe since 1979. Communications Earth & Environment, 3(1), p.168.
