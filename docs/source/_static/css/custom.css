@@ -1,7 +1,22 @@
 /* Custom CSS for Field-to-Model documentation */
 
+
+@import '../theme/nature.css';
+
+/* 
+Override the styles for the "related" box which is used as the
+header and footer in the pages...
+*/
+div.related {
+  background-color: #346db1; 
+}
+div.related a {
+  color: #eef1f9;
+}
+
+/* Make a nicely styled collapse box for workshop instructions */
 .workshop-collapse {
-    background-color: rgb(196, 230, 159);
+    background-color: rgb(235, 244, 251);
     margin: 0px;
     padding: 10px;
     border: 1px;

@@ -1,8 +1,8 @@
 Snow, Vegetation, and Permafrost Interactions Breakout Group
-============================================================
+================================================================
 
 Welcome to the snow–vegetation–permafrost breakout! Please see the agenda
-for our breakout session `<link to agenda>`_.
+for our breakout session :ref:`Snow, Vegetation, Permafrost (SVP) Breakout Agenda`.
 
 ELM Model: Snow, vegetation, and permafrost 
 -------------------------------------------
