@@ -7,7 +7,7 @@ Analyzing ELM Output in Jupyter Lab
 Running Jupyter-Lab and Analyzing ELM Output
 --------------------------------------------
 
-Step 0. Install the docker pull jupyter/scipy-notebook
+**Step 0. Download the visualization Docker image** 
 
 To download the Jupyter SciPy Notebook image, run the following command:
 
@@ -21,7 +21,7 @@ In this case, Docker retrieves an image called ``jupyter/scipy-notebook`` from a
 
 Running this command only downloads the environment; it does not start it. After the image is pulled, you must run it using a separate command to start Jupyter and open it in a web browser.
 
-Step 1. Start communicating with the Jupyter-Lab environment
+**Step 1. Start communicating with the Jupyter-Lab environment**
 
 Next, run the image to start Jupyter and make it accessible from your local computer.
 
@@ -34,6 +34,16 @@ Next, run the image to start Jupyter and make it accessible from your local comp
 
 When this command runs, Docker starts the container and launches Jupyter. In the terminal output, Docker will display a URL containing a security token.
 
+.. collapse:: More info about the docker run parameters.
+   :class: workshop-collapse
+   :name: docker-run-params-info
+
+   The docker run command looks overwhelming, but it is just specifying a few options
+
+    * ``--rm``: This option tells Docker to automatically remove the container when it stops. This helps keep your system clean by not leaving behind unused containers.
+    * ``-it``: This option allows you to interact with the container via the terminal.
+    * ``-p 8888:8888``: This option maps port 8888 inside the container to port 8888 on your local machine, allowing you to access Jupyter Lab through your web browser.
+    * ``-v "$PWD":/home/jovyan/work``: This option mounts the current directory on your local machine to the :code:`/home/jovyan/work` directory inside the container, enabling you to access your files from within Jupyter Lab.
 
 Jupyter Code Breakdown
 ----------------------
@@ -58,7 +68,7 @@ You should then see a Jupyter-Lab environment in your browser:
    :width: 80%
 
 
-Step 2. Run Jupyter Notebook scripts to look at ELM output
+**Step 2. Run Jupyter Notebook scripts to look at ELM output**
 
 After your notebook environment starts in your browser, you can open and run different notebook scripts. You can find example scripts on the "scripts" folder on the left of the screen, e.g.
 
@@ -90,6 +100,6 @@ Have fun exploring these graphs and don't forget to ask any questions you make h
 
 You can save a csv file of a particular variable by using the to_dataframe.to_csv() method in python - assuming your variable is contained in an array called vardata, you can use vardata.to_dataframe().to_csv("output_filename.csv")
 
-Step 3. Shutting down Jupyter-Lab and freeing up your terminal
+**Step 3. Shutting down Jupyter-Lab and freeing up your terminal**
 
 When you are finished, click on the File menu in the Jupyter-Lab environment and choose "Shut down." This will stop the web-based environment and free up the terminal window where you started it in Step 1.
