@@ -67,7 +67,7 @@ permafrost processes.
      - TSOI_10CM, daily (K)
 
 ELM Introduction
---------------
+-------------------
 
 ELM requires a set of forcing time series to run. In most E3SM
 simulations, ELM receives forcing variables such as temperature,
@@ -85,7 +85,7 @@ compared against a baseline case to evaluate how scaled meteorological
 inputs affect ELM behavior.
 
 Setting Up ELM Model Simulations
-----------------------------
+---------------------------------
 
 Mean annual temperature is projected to increase by up to +8.5 °C at
 NGEE-Arctic sites according to downscaled CMIP6 projections using a
