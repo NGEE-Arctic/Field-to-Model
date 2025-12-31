@@ -3,7 +3,7 @@ Snow, Vegetation, Permafrost (SVP) Breakout Agenda
 
 Santa Fe, New Mexico
 
-SVP Breakout Wednesday, January 14, 2025
+SVP Breakout Wednesday, January 14, 2026
 --------------------------------------------
 
 .. list-table::
@@ -38,7 +38,7 @@ SVP Breakout Wednesday, January 14, 2025
      - Breakout group report out
      - 5 minutes each
 
-SVP Breakout Thursday, January 15, 2025
+SVP Breakout Thursday, January 15, 2026
 --------------------------------------------
 
 .. list-table::
@@ -67,7 +67,7 @@ SVP Breakout Thursday, January 15, 2025
      - Breakout group report out
      - 5 minutes each
 
-SVP Breakout Friday, January 16, 2025
+SVP Breakout Friday, January 16, 2026
 --------------------------------------------
 
 .. list-table::
@@ -77,7 +77,7 @@ SVP Breakout Friday, January 16, 2025
    * - **Time**
      - **Description**
      - **Details**
-   * - 8:45–11:45 am
+   * - 8:45–12:15 pm
      - Breakout writing sessions
      - In groups work
    * - 10:00–10:15 pm

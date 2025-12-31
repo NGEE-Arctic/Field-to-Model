@@ -66,7 +66,7 @@ permafrost processes.
      - TLAYER, monthly
      - TSOI_10CM, daily (K)
 
-ELM Background
+ELM Introduction
 --------------
 
 ELM requires a set of forcing time series to run. In most E3SM
@@ -201,8 +201,30 @@ Combined temperature and precipitation scaling:
      --transient_yrs=25 \
      --case_prefix=scale_rain40_snow60_temp3
 
-Snow Processes in ELM
----------------------
+
+Looking at ELM Results
+----------------------
+
+Here is where we will review how to look at the ELM results in Jupyter Lab notebooks.
+
+Advanced ELM Processing
+-----------------------
+
+The impact of shrubs in ELM :ref:`The impact of shrubs in ELM`.
+Sub-grid variability in ELM :ref:`Sub-grid variability in ELM`.
+Understanding and modifying surface files in ELM :ref:`Understanding and modifying surface files in ELM`.
+
+
+
+
+END OF MATERIALS
+
+
+
+
+
+ELM Background: Snow Processes
+------------------------------
 
 ELM represents snow as a vertically resolved, multi-layer snowpack that
 simulates accumulation, compaction, melt–refreeze, and energy exchange
@@ -223,10 +245,10 @@ Typical thresholds:
 Between these thresholds, precipitation is linearly partitioned between
 rain and snow.
 
-Shrubs in ELM
--------------
-Vegetation and Shrubs in ELM
-===========================
+
+
+ELM Background: Vegetation and Shrubs
+-------------------------------------
 
 In ELM, shrubs and other vegetation are represented using a  
 **plant functional type (PFT)** framework, in which each grid  
@@ -289,8 +311,8 @@ and permafrost dynamics in ELM.
 
 
 
-Permafrost in ELM
------------------
+ELM Background: Permafrost
+--------------------------
 In ELM, permafrost is represented as an emergent property of the  
 prognostic subsurface thermal and hydrologic system rather  
 than as a prescribed or binary state.  
@@ -371,7 +393,6 @@ Together, the prognostic soil thermal structure and its coupling
 to surface energy fluxes allow ELM to simulate permafrost  
 dynamics, active-layer thickness, and their sensitivity to  
 climate forcing in a physically consistent manner.
-
 
 References
 ----------
