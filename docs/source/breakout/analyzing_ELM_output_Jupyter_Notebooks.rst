@@ -1,6 +1,8 @@
 Analyzing ELM Output in Jupyter Lab
 ================================================================
-.. include:: colors.rst
+
+.. include:: /colors.rst
+
 
 Running Jupyter-Lab and Analyzing ELM Output
 --------------------------------------------
@@ -37,19 +39,21 @@ Jupyter Code Breakdown
 ----------------------
 
 Running this command will start a JupyterLab Docker environment and the terminal window will look like this:
-.. image:: _static/svp_breakout/JupyterLab1.jpg
+
+.. image:: /_static/svp_breakout/JupyterLab1.png
    :alt: An image of the Jupyter Lab terminal window when you are starting it up.
    :width: 80%
 
 
 To access the JupyterLab environment, just copy and paste the URL that starts with ``http://127.0.0.1:8888/?token=...`` from the terminal window into your browser and hit enter. Note that each time you start a JupyterLab environment, a unique URL will be generated.
 
-.. image:: _static/svp_breakout/JupyterLab2.jpg
+.. image:: /_static/svp_breakout/JupyterLab2.png
    :alt: An image of the Jupyter Lab terminal window and the line you want to copy.
    :width: 80%
 
 You should then see a Jupyter-Lab environment in your browser:
-.. image:: _static/svp_breakout/JupyterLab3.jpg
+
+.. image:: /_static/svp_breakout/JupyterLab3.png
    :alt: An image of the Jupyter Lab environment.
    :width: 80%
 
@@ -57,7 +61,8 @@ You should then see a Jupyter-Lab environment in your browser:
 Step 2. Run Jupyter Notebook scripts to look at ELM output
 
 After your notebook environment starts in your browser, you can open and run different notebook scripts. You can find example scripts on the "scripts" folder on the left of the screen, e.g.
-.. image:: _static/svp_breakout/JupyterLab4.jpg
+
+.. image:: /_static/svp_breakout/JupyterLab4.png
    :alt: An image of the Jupyter Lab folders where the scripts are found.
    :width: 80%
 
@@ -72,7 +77,8 @@ Blue sidebar (blue arrow): This sidebar shows your current place in the document
 Running code dot (pink arrow): this dot shows up when the code is currently being run. If you hit the run button and it seems like nothing happened, check to see if this dot is still present. If so, give your computer a minute to think. The dot disappears when it is done.
 
 Code box (orange arrow): The text in this box is Python code. Anything with "#" is commented out, ie that text does not "do" anything but provides notes and context for organizing the code. In the active code portions of the text, different text colors are used to differentiate different parts of the code (function types, different kinds of input, etc).
-.. image:: _static/svp_breakout/JupyterLab5.jpg
+
+.. image:: /_static/svp_breakout/JupyterLab5.png
    :alt: An image of the how to interpret a Jupyter Lab code.
    :width: 80%
 
