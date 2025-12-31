@@ -207,6 +207,13 @@ Looking at ELM Results
 
 Here is where we will review how to look at the ELM results in Jupyter Lab notebooks.
 
+
+.. toctree::
+   :maxdepth: 1
+
+   analyzing_ELM_output_Jupyter_Notebooks
+
+
 Advanced ELM Processing
 -----------------------
 
