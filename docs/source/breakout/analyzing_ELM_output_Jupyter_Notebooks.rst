@@ -13,11 +13,12 @@ To download the Jupyter SciPy Notebook image, run the following command:
 
 .. code-block:: bash
 
-   docker pull jupyter/scipy-notebook
+   #docker pull jupyter/scipy-notebook
+   docker pull yuanfornl/ngee-arctic-modex25:vis-main-latest
 
 This command will download a pre-built programming environment to your computer. This environment is packaged using Docker, which allows software to run the same way on different machines without needing to install everything manually.
 
-In this case, Docker retrieves an image called ``jupyter/scipy-notebook`` from an online repository. This image already contains Python, Jupyter Notebook, and commonly used scientific and mathematical libraries such as NumPy, SciPy, and pandas. These tools are often used for data analysis, math, and science projects.
+In this case, Docker retrieves an image called ``yuanfornl/ngee-arctic-modex25:vis-main-latest`` from an online repository. This image already contains Python, Jupyter Lab, and commonly used scientific and mathematical libraries such as NumPy, SciPy, and pandas. These tools are often used for data analysis, math, and science projects.
 
 Running this command only downloads the environment; it does not start it. After the image is pulled, you must run it using a separate command to start Jupyter and open it in a web browser.
 
@@ -28,9 +29,17 @@ Next, run the image to start Jupyter and make it accessible from your local comp
 .. code-block:: bash
 
    docker run --rm -it \
-     -p 8888:8888 \
-     -v "$PWD":/home/jovyan/work \
-     jupyter/scipy-notebook
+      -p 8888:8888 \
+      -v "$PWD":/home/jovyan/work \
+      -v output:/mnt/output \
+      yuanfornl/ngee-arctic-modex25:vis-main-latest jupyter lab
+
+.. note:: :red:`TODO`
+
+   Not sure if this is exactly what we want for volume mounts here...
+   do we want the current working directory to be mounted inside the container?
+   If not, we may want to specify a different path instead of ``$PWD``.
+
 
 When this command runs, Docker starts the container and launches Jupyter. In the terminal output, Docker will display a URL containing a security token.
 
