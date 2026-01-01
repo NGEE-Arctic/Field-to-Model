@@ -1,5 +1,5 @@
 # requirements for building sphinx environment  
 myst-parser==4.0.1
 sphinx-autobuild==2025.8.25
-sphinx-toolbox==4.0.0
+sphinx-toolbox==4.1.0
 sphinx-multitoc-numbering==0.1.3
