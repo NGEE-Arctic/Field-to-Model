@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5.5.1. Analyzing ELM Output in Jupyter Lab &#8212; ModEx 2025 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Permafrost hydrology breakout group" href="permafrost_hydrology.html" />
+    <link rel="prev" title="5. Snow, Vegetation, and Permafrost Interactions Breakout Group" href="snow_veg_permafrost.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="permafrost_hydrology.html" title="6. Permafrost hydrology breakout group"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="snow_veg_permafrost.html" title="5. Snow, Vegetation, and Permafrost Interactions Breakout Group"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" accesskey="U"><span class="section-number">5. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5.5.1. </span>Analyzing ELM Output in Jupyter Lab</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="analyzing-elm-output-in-jupyter-lab">
+<h1><span class="section-number">5.5.1. </span>Analyzing ELM Output in Jupyter Lab<a class="headerlink" href="#analyzing-elm-output-in-jupyter-lab" title="Link to this heading">¶</a></h1>
+<section id="running-jupyter-lab-and-analyzing-elm-output">
+<h2>Running Jupyter-Lab and Analyzing ELM Output<a class="headerlink" href="#running-jupyter-lab-and-analyzing-elm-output" title="Link to this heading">¶</a></h2>
+<p><strong>Step 0. Download the visualization Docker image</strong></p>
+<p>To download the Jupyter SciPy Notebook image, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#docker pull jupyter/scipy-notebook</span>
+docker<span class="w"> </span>pull<span class="w"> </span>yuanfornl/ngee-arctic-modex25:vis-main-latest
+</pre></div>
+</div>
+<p>This command will download a pre-built programming environment to your computer. This environment is packaged using Docker, which allows software to run the same way on different machines without needing to install everything manually.</p>
+<p>In this case, Docker retrieves an image called <code class="docutils literal notranslate"><span class="pre">yuanfornl/ngee-arctic-modex25:vis-main-latest</span></code> from an online repository. This image already contains Python, Jupyter Lab, and commonly used scientific and mathematical libraries such as NumPy, SciPy, and pandas. These tools are often used for data analysis, math, and science projects.</p>
+<p>Running this command only downloads the environment; it does not start it. After the image is pulled, you must run it using a separate command to start Jupyter and open it in a web browser.</p>
+<p><strong>Step 1. Start communicating with the Jupyter-Lab environment</strong></p>
+<p>Next, run the image to start Jupyter and make it accessible from your local computer.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span>:/home/jovyan/work<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>yuanfornl/ngee-arctic-modex25:vis-main-latest<span class="w"> </span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span class="red">TODO</span></p>
+<p>Not sure if this is exactly what we want for volume mounts here…
+do we want the current working directory to be mounted inside the container?
+If not, we may want to specify a different path instead of <code class="docutils literal notranslate"><span class="pre">$PWD</span></code>.</p>
+</div>
+<p>When this command runs, Docker starts the container and launches Jupyter. In the terminal output, Docker will display a URL containing a security token.</p>
+<details name="docker-run-params-info" class="workshop-collapse summary-more-info-about-the-docker-run-parameters">
+<summary>More info about the docker run parameters.</summary><p>The docker run command looks overwhelming, but it is just specifying a few options</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--rm</span></code>: This option tells Docker to automatically remove the container when it stops. This helps keep your system clean by not leaving behind unused containers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-it</span></code>: This option allows you to interact with the container via the terminal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">8888:8888</span></code>: This option maps port 8888 inside the container to port 8888 on your local machine, allowing you to access Jupyter Lab through your web browser.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&quot;$PWD&quot;:/home/jovyan/work</span></code>: This option mounts the current directory on your local machine to the <code class="code docutils literal notranslate"><span class="pre">/home/jovyan/work</span></code> directory inside the container, enabling you to access your files from within Jupyter Lab.</p></li>
+</ul>
+</div></blockquote>
+</details></section>
+<section id="jupyter-code-breakdown">
+<h2>Jupyter Code Breakdown<a class="headerlink" href="#jupyter-code-breakdown" title="Link to this heading">¶</a></h2>
+<p>Running this command will start a JupyterLab Docker environment and the terminal window will look like this:</p>
+<a class="reference internal image-reference" href="../_images/JupyterLab1.png"><img alt="An image of the Jupyter Lab terminal window when you are starting it up." src="../_images/JupyterLab1.png" style="width: 80%;" />
+</a>
+<p>To access the JupyterLab environment, just copy and paste the URL that starts with <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8888/?token=...</span></code> from the terminal window into your browser and hit enter. Note that each time you start a JupyterLab environment, a unique URL will be generated.</p>
+<a class="reference internal image-reference" href="../_images/JupyterLab2.png"><img alt="An image of the Jupyter Lab terminal window and the line you want to copy." src="../_images/JupyterLab2.png" style="width: 80%;" />
+</a>
+<p>You should then see a Jupyter-Lab environment in your browser:</p>
+<a class="reference internal image-reference" href="../_images/JupyterLab3.png"><img alt="An image of the Jupyter Lab environment." src="../_images/JupyterLab3.png" style="width: 80%;" />
+</a>
+<p><strong>Step 2. Run Jupyter Notebook scripts to look at ELM output</strong></p>
+<p>After your notebook environment starts in your browser, you can open and run different notebook scripts. You can find example scripts on the “scripts” folder on the left of the screen, e.g.</p>
+<a class="reference internal image-reference" href="../_images/JupyterLab4.png"><img alt="An image of the Jupyter Lab folders where the scripts are found." src="../_images/JupyterLab4.png" style="width: 80%;" />
+</a>
+<p>In the script folder, find the built-in notebook “plot_ELM_variable.ipynb”. You may need to expand the sidebar menu using your cursor so that you can read the full names of the notebooks listed. You can double-click on the notebook script to open it in the viewer on the right. You will see a document open in the workspace that says “An example of reading in and plotting one variable from ELM output” and features the NGEE Arctic logo.</p>
+<p>At this screen shown below there are a few details worth pointing out a few details to help you navigate this tool. These are highlighted using colored arrows in the screenshot below.</p>
+<p>Run Button (green arrow): Hitting this run button will activate the portion of the document currently selected by the blue sidebar. If the portion of the document is a code box, the code will be run.</p>
+<p>Blue sidebar (blue arrow): This sidebar shows your current place in the document and it will move down each time you hit “run”.</p>
+<p>Running code dot (pink arrow): this dot shows up when the code is currently being run. If you hit the run button and it seems like nothing happened, check to see if this dot is still present. If so, give your computer a minute to think. The dot disappears when it is done.</p>
+<p>Code box (orange arrow): The text in this box is Python code. Anything with “#” is commented out, ie that text does not “do” anything but provides notes and context for organizing the code. In the active code portions of the text, different text colors are used to differentiate different parts of the code (function types, different kinds of input, etc).</p>
+<a class="reference internal image-reference" href="../_images/JupyterLab5.png"><img alt="An image of the how to interpret a Jupyter Lab code." src="../_images/JupyterLab5.png" style="width: 80%;" />
+</a>
+<p>From here, you can follow the tutorial in the Python lab notebook as it takes you through finding model output, choosing a variable from the list of all available, and graphing the model output from the transient period</p>
+<p>Have fun exploring these graphs and don’t forget to ask any questions you make have on the Slack Channel!</p>
+<p>You can save a csv file of a particular variable by using the to_dataframe.to_csv() method in python - assuming your variable is contained in an array called vardata, you can use vardata.to_dataframe().to_csv(“output_filename.csv”)</p>
+<p><strong>Step 3. Shutting down Jupyter-Lab and freeing up your terminal</strong></p>
+<p>When you are finished, click on the File menu in the Jupyter-Lab environment and choose “Shut down.” This will stop the web-based environment and free up the terminal window where you started it in Step 1.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2025"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">5.5.1. Analyzing ELM Output in Jupyter Lab</a><ul>
+<li><a class="reference internal" href="#running-jupyter-lab-and-analyzing-elm-output">Running Jupyter-Lab and Analyzing ELM Output</a></li>
+<li><a class="reference internal" href="#jupyter-code-breakdown">Jupyter Code Breakdown</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="permafrost_hydrology.html" title="6. Permafrost hydrology breakout group"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="snow_veg_permafrost.html" title="5. Snow, Vegetation, and Permafrost Interactions Breakout Group"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" ><span class="section-number">5. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5.5.1. </span>Analyzing ELM Output in Jupyter Lab</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, ModEx Team, LANL, ORNL, UAF, LBNL.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>
