@@ -290,7 +290,7 @@ It should look like this:
    2019, with the warming dataset showing a 2.6C increase during the
    summer months (June-September). It should look something like this:
 
-   .. image:: ../_static/tem_ee1_warming/air_temperature_2019.png
+   .. image:: /_static/tem_ee1_warming/air_temperature_2019.png
       :alt: Air Temperature Time Series for 2019, control and warming
       :width: 600px  
 
