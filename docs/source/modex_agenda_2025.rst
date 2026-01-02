@@ -3,7 +3,7 @@ ModEx Workshop 2025 Agenda
 
 Santa Fe, New Mexico
 
-Wednesday, January 14, 2025
+Wednesday, January 14, 2026
 ---------------------------
 
 .. list-table::
@@ -55,7 +55,7 @@ Wednesday, January 14, 2025
 
 *Plenary session will be hybrid.*
 
-Thursday, January 15, 2025
+Thursday, January 15, 2026
 ---------------------------
 
 .. list-table::
@@ -99,7 +99,7 @@ Thursday, January 15, 2025
      - Working Dinner
      - Out on your own
 
-Friday, January 16, 2025
+Friday, January 16, 2026
 ------------------------
 
 .. list-table::
@@ -115,7 +115,7 @@ Friday, January 16, 2025
    * - 8:30–8:45 am
      - Daily Charge
      - Rich Fiorella
-   * - 8:45–11:45 am
+   * - 8:45–12:15 pm
      - Breakout writing sessions (coffee available around 10:00 am)
      - In groups work
    * - 12:15–12:30 pm
