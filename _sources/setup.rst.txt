@@ -39,7 +39,7 @@ Docker
 
     * Open a terminal or Powershell.
     * Update WSL ``wsl --update``
-    * Install WSL ``wsl --install``  |nbsp| |nbsp| **Note: The process will take awhile and prompt you for an account creation**
+    * Install WSL ``wsl --install`` **Note: The process will take awhile and prompt you for an account creation**
     * Verify install using ``wsl --list``. You should see something like "Ubuntu".
     * Set default WSL ``wsl --set-default-version 2``
 
