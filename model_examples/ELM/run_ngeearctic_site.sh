@@ -392,7 +392,8 @@ runcmd="python3 ./site_fullrun.py \
       --domainfile /mnt/inputdata/E3SM/share/domains/domain.clm/${domain_file} \
       --surffile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${surf_file} \
       --landusefile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file} \
-      --srcmods_loc ${src_mod_path} /
+      --srcmods_loc ${src_mod_path} \
+      --use_onset_gdd_extension \
       ${options} \
       & sleep 10"
 echo ${runcmd}
@@ -423,6 +424,7 @@ if /opt/conda/bin/python ./site_fullrun.py \
       --surffile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${surf_file} \
       --landusefile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file} \
       --srcmods_loc ${src_mod_path} \
+      --use_onset_gdd_extension \
       ${options} \
       & sleep 10
 
