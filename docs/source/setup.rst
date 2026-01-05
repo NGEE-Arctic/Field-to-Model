@@ -22,6 +22,7 @@ You will need the following software:
 
 * Docker Desktop - though note you may need an institutional license.
 * git
+* WSL (Windows Subsystem for Linux) for Windows users
 
 Optionally, you will need a 3D visualization tool: one of ParaView or VisIt.  VisIt is a little more intuitive to new users if you have never used either one and is sufficient for 90% of what we will do; ParaView is preferred for viewing complex 3D meshes.
 This will be most useful for the ATS section of this Workshop.
@@ -43,6 +44,18 @@ Docker
     * Verify install using ``wsl --list``. You should see something like "Ubuntu".
     * Set default WSL ``wsl --set-default-version 2``
 
+    .. warning::
+
+        Take special care installing WSL. It is very importatnt that you run all
+        the Getting Started commands in a WSL terminal (Ubunutu) and NOT in
+        Powershell!!
+
+    .. seealso::
+
+        * `WSL Installation <https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package>`_
+        * `WSL Troubleshooting Guide <https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#installation-issues>`_
+
+
 .. admonition:: macOS
 
     Download and install the .dmg file for your silicon type, whether Intel (older) or Apple (M1 and newer).
@@ -51,10 +64,6 @@ Docker
 
     Docker provides instructions for adding DEB package repositories, then installing through apt-get for Ubuntu, Debian, and related distributions.  They also provide RPMs for RHEL8 & 9 and Fedora, and pacman for Arch.
 
-.. seealso::
-
-    * `WSL Installation <https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package>`_
-    * `WSL Troubleshooting Guide <https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#installation-issues>`_
 
 Git
 ^^^
