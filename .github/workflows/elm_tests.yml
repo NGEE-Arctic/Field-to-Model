@@ -27,10 +27,10 @@ jobs:
             docker volume create inputdata
             docker volume create output
         - name: Get input data
-          run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+          run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
         - name: Run test case for site
           run: |
-            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=era5 -ady=1 -fsy=1 -try=1 -tsp=1
+            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=era5 -ady=1 -fsy=1 -try=1 -tsp=1
         
     test-gswp3:
       if: github.event_name != 'schedule'
@@ -49,10 +49,10 @@ jobs:
             docker volume create inputdata
             docker volume create output
         - name: Get input data
-          run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+          run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
         - name: Run test case for site
           run: |
-            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=gswp3 -ady=1 -fsy=1 -try=1 -tsp=1
+            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=gswp3 -ady=1 -fsy=1 -try=1 -tsp=1
 
 ### LONG TESTS
     long-era5-tests:
@@ -72,10 +72,10 @@ jobs:
             docker volume create inputdata
             docker volume create output
         - name: Get input data
-          run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+          run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
         - name: Run test case for site
           run: |
-            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=era5 -tsp=1
+            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=era5 -tsp=1
         
     long-gswp3-tests:
       if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
@@ -94,7 +94,7 @@ jobs:
             docker volume create inputdata
             docker volume create output
         - name: Get input data
-          run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+          run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
         - name: Run test case for site
           run: |
-            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex25:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=gswp3 -tsp=1
+            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=gswp3 -tsp=1

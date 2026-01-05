@@ -50,7 +50,7 @@ jobs:
       with:
         context: .
         file: ./Docker/Dockerfile-models
-        tags: yuanfornl/ngee-arctic-modex25:models-${{env.WORKSHOP_BRANCH_TAG}}-${{env.ARCH}}-latest
+        tags: yuanfornl/ngee-arctic-modex26:models-${{env.WORKSHOP_BRANCH_TAG}}-${{env.ARCH}}-latest
         push: true
 
   fix-manifest:
@@ -73,13 +73,13 @@ jobs:
           echo "WORKSHOP_BRANCH_TAG=$(echo ${{env.WORKSHOP_BRANCH}} | sed -e 's/\//--/g')" >> $GITHUB_ENV
       - name: Pull images (remove with artifacts??)
         run: |
-          docker pull yuanfornl/ngee-arctic-modex25:models-${{env.WORKSHOP_BRANCH_TAG}}-amd64-latest
-          docker pull yuanfornl/ngee-arctic-modex25:models-${{env.WORKSHOP_BRANCH_TAG}}-arm64-latest
+          docker pull yuanfornl/ngee-arctic-modex26:models-${{env.WORKSHOP_BRANCH_TAG}}-amd64-latest
+          docker pull yuanfornl/ngee-arctic-modex26:models-${{env.WORKSHOP_BRANCH_TAG}}-arm64-latest
       - name: Edit manifest
         run: |
-          docker manifest create yuanfornl/ngee-arctic-modex25:models-${{env.WORKSHOP_BRANCH_TAG}}-latest \
-            --amend yuanfornl/ngee-arctic-modex25:models-${{env.WORKSHOP_BRANCH_TAG}}-arm64-latest \
-            --amend yuanfornl/ngee-arctic-modex25:models-${{env.WORKSHOP_BRANCH_TAG}}-amd64-latest
-          docker manifest push yuanfornl/ngee-arctic-modex25:models-${{env.WORKSHOP_BRANCH_TAG}}-latest
+          docker manifest create yuanfornl/ngee-arctic-modex26:models-${{env.WORKSHOP_BRANCH_TAG}}-latest \
+            --amend yuanfornl/ngee-arctic-modex26:models-${{env.WORKSHOP_BRANCH_TAG}}-arm64-latest \
+            --amend yuanfornl/ngee-arctic-modex26:models-${{env.WORKSHOP_BRANCH_TAG}}-amd64-latest
+          docker manifest push yuanfornl/ngee-arctic-modex26:models-${{env.WORKSHOP_BRANCH_TAG}}-latest
 
 
