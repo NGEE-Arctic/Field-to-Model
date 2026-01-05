@@ -31,7 +31,7 @@ Next, run the image to start Jupyter and make it accessible from your local comp
    docker run --rm -it \
       -p 8888:8888 \
       -v "$PWD":/home/jovyan/work \
-      -v output:/mnt/output \
+      -v output:/home/jovyan/output \
       yuanfornl/ngee-arctic-modex25:vis-main-latest jupyter lab
 
 .. note:: :red:`TODO`
