@@ -1,6 +1,17 @@
 Common Issues/FAQ
 =====================
 
+* If you see the following when running ELM/OLMT, you need to clone the Field-to-Model repository with the `--recurse-submodules` flag:
+
+.. code-block:: 
+
+   **** Running OLMT:
+   /opt/conda/bin/python: can't open file '/home/modex_user/tools/olmt/./site_fullrun.py': [Errno 2] No such file or directory
+
+
+More Information and Links
+=============================
+
 Setup help:
 
   * :ref:`Workshop Setup Instructions <setup>`
