@@ -60,7 +60,7 @@ the first step (soil column at liquid saturation, and at a temperature varying b
 
 After these runs are completed, we can compare the impacts of this initialization choice using the visualization containers.
 
-warning::
+.. warning::
     Note that if you rerun one of these commands, the existing output and case directories for these simulations are removed!
     Therefore, if you want to perform a second simulation on a site, you should also set the `--case_prefix` option so that
     the case has a different name. In this case, we have set it to "Arctic_init" to distinguish it from our control.
