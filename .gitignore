@@ -21,3 +21,6 @@ build
 
 # local testing artifacts
 logs/
+
+# notebook artificats
+*/.ipynb_checkpoints
