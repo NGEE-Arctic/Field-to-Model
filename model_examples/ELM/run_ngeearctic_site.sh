@@ -383,11 +383,14 @@ else
   echo "RUSSIA: samoylov_island"
   exit 0
 fi
+# the following is by default. if reset to empty later on, ELM will run without landuse_timeseries file for transient stage.
+landuse_file="/mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file}"
 
 #sites with surface data including multiple topographicUnits
 if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = True ]]; then
   # currently no landuse.timeseries data available for transient stage.
   landuse_file=""
+  options="$options --nopftdyn"
   if [ ${site_name} = council ]; then
     domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
     surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_C71-GRID.nc"
@@ -420,6 +423,7 @@ fi
 if [ "${terrain_raddownscale}" = True ]; then
   # currently no landuse.timeseries data available for transient stage.
   landuse_file=""
+  options="$options --nopftdyn"
   if [ ${site_name} = council ]; then
     domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
     surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_C71-GRID.nc"
@@ -477,7 +481,7 @@ runcmd="python3 ./site_fullrun.py \
       --metdir ${met_path} \
       --domainfile /mnt/inputdata/E3SM/share/domains/domain.clm/${domain_file} \
       --surffile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${surf_file} \
-      --landusefile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file} \
+      --landusefile ${landuse_file} \
       --srcmods_loc ${src_mod_path} \
       --use_onset_gdd_extension \
       ${options} \
