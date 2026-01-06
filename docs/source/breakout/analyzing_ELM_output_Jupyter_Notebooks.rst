@@ -14,11 +14,11 @@ To download the Jupyter SciPy Notebook image, run the following command:
 .. code-block:: bash
 
    #docker pull jupyter/scipy-notebook
-   docker pull yuanfornl/ngee-arctic-modex25:vis-main-latest
+   docker pull yuanfornl/ngee-arctic-modex26:vis-main-latest
 
 This command will download a pre-built programming environment to your computer. This environment is packaged using Docker, which allows software to run the same way on different machines without needing to install everything manually.
 
-In this case, Docker retrieves an image called ``yuanfornl/ngee-arctic-modex25:vis-main-latest`` from an online repository. This image already contains Python, Jupyter Lab, and commonly used scientific and mathematical libraries such as NumPy, SciPy, and pandas. These tools are often used for data analysis, math, and science projects.
+In this case, Docker retrieves an image called ``yuanfornl/ngee-arctic-modex26:vis-main-latest`` from an online repository. This image already contains Python, Jupyter Lab, and commonly used scientific and mathematical libraries such as NumPy, SciPy, and pandas. These tools are often used for data analysis, math, and science projects.
 
 Running this command only downloads the environment; it does not start it. After the image is pulled, you must run it using a separate command to start Jupyter and open it in a web browser.
 
@@ -32,7 +32,7 @@ Next, run the image to start Jupyter and make it accessible from your local comp
       -p 8888:8888 \
       -v "$PWD":/home/jovyan/work \
       -v output:/home/jovyan/output \
-      yuanfornl/ngee-arctic-modex25:vis-main-latest jupyter lab
+      yuanfornl/ngee-arctic-modex26:vis-main-latest jupyter lab
 
 .. note:: :red:`TODO`
 

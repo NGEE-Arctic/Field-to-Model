@@ -45,8 +45,8 @@ Docker Hub. Attendees (and for the most part developers too) will begin by
 pulling the images from DockerHub:
 
 ```
-docker pull yuanfornl/ngee-arctic-modex25:models-main-latest
-docker pull yuanfornl/ngee-arctic-modex25:vis-main-latest
+docker pull yuanfornl/ngee-arctic-modex26:models-main-latest
+docker pull yuanfornl/ngee-arctic-modex26:vis-main-latest
 ```
 
 The documentation builder image is not published, so to work on the

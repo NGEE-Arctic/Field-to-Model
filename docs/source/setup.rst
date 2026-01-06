@@ -95,8 +95,8 @@ with the following commands:
 
 .. code::
     
-    docker pull yuanfornl/ngee-arctic-modex25:models-main-latest
-    docker pull yuanfornl/ngee-arctic-modex25:vis-main-latest
+    docker pull yuanfornl/ngee-arctic-modex26:models-main-latest
+    docker pull yuanfornl/ngee-arctic-modex26:vis-main-latest
 
 You will also need to set up a few docker volumes for the workshop:
 
@@ -119,7 +119,7 @@ E3SM/ELM input data needed for the workshop can be downloaded by:
     docker run -it --rm \
         -v $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
-        yuanfornl/ngee-arctic-modex25:models-main-latest \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/tools/scripts/get_inputdata.sh
 
 Test the containers
@@ -133,7 +133,7 @@ We have included a quick script to test whether the container images work for yo
         -v $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
-        yuanfornl/ngee-arctic-modex25:models-main-latest \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/tools/scripts/test_container.sh
 
 If you get output that matches the output below, you've setup the container correctly:
@@ -163,7 +163,7 @@ from the folder containing the field-to-model repo:
         -v  $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
-        yuanfornl/ngee-arctic-modex25:models-main-latest /bin/bash
+        yuanfornl/ngee-arctic-modex26:models-main-latest /bin/bash
 
 .. code::
 
@@ -172,7 +172,7 @@ from the folder containing the field-to-model repo:
         -v  $(pwd):/home/modex_user \
         -v output:/mnt/output \
         -p 8888:8888 \
-        yuanfornl/ngee-arctic-modex25:vis-main-latest
+        yuanfornl/ngee-arctic-modex26:vis-main-latest
 
 If you need a shell into the visualization container, you can open one using:
 
