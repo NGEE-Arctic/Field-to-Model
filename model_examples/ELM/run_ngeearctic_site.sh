@@ -33,9 +33,9 @@ Help()
     echo "  --use_polygonal_tundra    Turn on polygonal tundra parameterizations affecting runoff, depression storage, and inundation fraction"
     echo "                            (Requires surface file with polygonal tundra type area fractions specified)"
     echo "  -ady, --ad_spinup_yrs     How many years of initial spinup using accelerated decomposition rates"
-    echo "                              should be used? (Default: 200)"
+    echo "                              should be used? (Default: 200, Skip to normal spinup: 0)"
     echo "  -fsy, --final_spinup_yrs  How many years should the second stage of spinup run (with normal"
-    echo "                              decomposition rates)? (Default: 600)"
+    echo "                              decomposition rates)? (Default: 600, Skip to transient: 0)"
     echo "  -try, --transient_yrs     How many years should the transient stage of the sumulation run?"
     echo "                              (Default: -1, which corresponds to 1850-2014 for GSWP3 met data and"
     echo "                              1850-2024 for ERA5)"
@@ -253,11 +253,18 @@ if [ ${scale_pdep} != 1.0 ]; then
   echo "P deposition scaled by factor of ${scale_pdep} starting on ${startdate_scale_pdep}"
   options="$options --scale_pdep ${scale_pdep} --startdate_scale_pdep ${startdate_scale_pdep}"
 fi
-if [ ${transient_years} != -1 ]; then
-  sim_years="--nyears_ad_spinup ${ad_spinup_years} --nyears_final_spinup ${final_spinup_years} \
-  --nyears_transient ${transient_years}"
+if [ ${ad_spinup_years} == 0 ]; then
+  sim_years="--noad"
 else
-  sim_years="--nyears_ad_spinup ${ad_spinup_years} --nyears_final_spinup ${final_spinup_years}"
+  sim_years="--nyears_ad_spinup ${ad_spinup_years}"
+fi
+if [ ${final_spinup_years} == 0 ]; then
+  sim_years="--nofnsp ${sim_years}"
+else
+  sim_years="${sim_years} --nyears_final_spinup ${final_spinup_years}"
+fi
+if [ ${transient_years} != -1 ]; then
+  sim_years="${sim_years} --nyears_transient ${transient_years}"
 fi
 if [ "${use_arctic_init}" = True ]; then
   echo "Using wetter, colder initialization conditions for Arctic runs"
