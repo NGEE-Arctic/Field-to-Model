@@ -12,10 +12,9 @@
     <script src="../_static/documentation_options.js?v=d45e8c67"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.5.1. Analyzing ELM Output in Jupyter Lab" href="analyzing_ELM_output_Jupyter_Notebooks.html" />
+    <link rel="next" title="7. Permafrost hydrology breakout group" href="permafrost_hydrology.html" />
     <link rel="prev" title="5. ATS Intro" href="../plenary/ats_intro.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
@@ -25,7 +24,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="analyzing_ELM_output_Jupyter_Notebooks.html" title="6.5.1. Analyzing ELM Output in Jupyter Lab"
+          <a href="permafrost_hydrology.html" title="7. Permafrost hydrology breakout group"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../plenary/ats_intro.html" title="5. ATS Intro"
@@ -73,8 +72,8 @@ precipitation to examine impacts on subsurface conditions.</p>
 <p>The following variables are examined to understand how changes in
 temperature, precipitation, and vegetation affect snow, soil, and
 permafrost processes.</p>
-<table class="docutils align-default" id="id1">
-<caption><span class="caption-text">Model variables and temporal resolution</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">Model variables and temporal resolution</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 40.0%" />
 <col style="width: 30.0%" />
@@ -114,26 +113,11 @@ permafrost processes.</p>
 </tbody>
 </table>
 </section>
-<section id="elm-introduction">
-<h2><span class="section-number">6.2. </span>ELM Introduction<a class="headerlink" href="#elm-introduction" title="Link to this heading">¶</a></h2>
-<p>ELM requires a set of forcing time series to run. In most E3SM
-simulations, ELM receives forcing variables such as temperature,
-humidity, precipitation rate, and nutrient deposition from the
-atmospheric model (EAM).</p>
-<p>When running ELM in standalone mode, these time series must be provided
-by the user. OLMT provides several options that automate specification
-and modification of ELM input data.</p>
-<p>Here, we demonstrate a single-pixel OLMT ELM simulation across multiple
-sites using OLMT options to alter temperature and precipitation (summer
-rain and winter snow) separately and in combination. Outputs are
-compared against a baseline case to evaluate how scaled meteorological
-inputs affect ELM behavior.</p>
-</section>
-<section id="setting-up-elm-model-simulations">
-<h2><span class="section-number">6.3. </span>Setting Up ELM Model Simulations<a class="headerlink" href="#setting-up-elm-model-simulations" title="Link to this heading">¶</a></h2>
+<section id="setting-up-model-simulations">
+<h2><span class="section-number">6.2. </span>Setting Up Model Simulations<a class="headerlink" href="#setting-up-model-simulations" title="Link to this heading">¶</a></h2>
 <p>Mean annual temperature is projected to increase by up to +8.5 °C at
 NGEE-Arctic sites according to downscaled CMIP6 projections using a
-13-member ensemble (<a class="reference external" href="https://dap.climateinformation.org/dap/">https://dap.climateinformation.org/dap/</a>).</p>
+15-member ensemble (<a class="reference external" href="https://dap.climateinformation.org/dap/">https://dap.climateinformation.org/dap/</a>).</p>
 <p>Seasonal precipitation changes are represented as percent differences
 from a 1981–2010 climate normal. Temperature perturbations are applied
 as absolute °C offsets.</p>
@@ -232,232 +216,24 @@ difference from 1981–2010)</p>
 <p>The <em>imnaviat_creek</em> site is used as the example below, though any of the
 available Arctic sites may be selected.</p>
 </section>
-<section id="running-elm-cases">
-<h2><span class="section-number">6.4. </span>Running ELM Cases<a class="headerlink" href="#running-elm-cases" title="Link to this heading">¶</a></h2>
-<p>Baseline run (Arctic initialization):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>yuanfornl/ngee-arctic-modex26:models-main-latest<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--case_prefix<span class="o">=</span>Arctic_init
-</pre></div>
-</div>
-<p>Temperature scaled by +3 °C:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>yuanfornl/ngee-arctic-modex26:models-main-latest<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--case_prefix<span class="o">=</span>scale_temp3
-</pre></div>
-</div>
-<p>Precipitation scaling (rain +40%, snow +60%):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>yuanfornl/ngee-arctic-modex26:models-main-latest<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--startdate_scale_rain<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--startdate_scale_snow<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--case_prefix<span class="o">=</span>scale_rain40_snow60
-</pre></div>
-</div>
-<p>Combined temperature and precipitation scaling:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>yuanfornl/ngee-arctic-modex26:models-main-latest<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--case_prefix<span class="o">=</span>scale_rain40_snow60_temp3
-</pre></div>
-</div>
-</section>
-<section id="looking-at-elm-results">
-<h2><span class="section-number">6.5. </span>Looking at ELM Results<a class="headerlink" href="#looking-at-elm-results" title="Link to this heading">¶</a></h2>
-<p>Here is where we will review how to look at the ELM results in Jupyter Lab notebooks.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="analyzing_ELM_output_Jupyter_Notebooks.html">6.5.1. Analyzing ELM Output in Jupyter Lab</a></li>
-</ul>
-</div>
-</section>
-<section id="advanced-elm-processing">
-<h2><span class="section-number">6.6. </span>Advanced ELM Processing<a class="headerlink" href="#advanced-elm-processing" title="Link to this heading">¶</a></h2>
-<p>The impact of shrubs in ELM <a class="reference internal" href="shrub_impacts_ELM.html#the-impact-of-shrubs-in-elm"><span class="std std-ref">The impact of shrubs in ELM</span></a>.
-Sub-grid variability in ELM <a class="reference internal" href="subgrid_variability_ELM.html#sub-grid-variability-in-elm"><span class="std std-ref">Sub-grid variability in ELM</span></a>.
-Understanding and modifying surface files in ELM <a class="reference internal" href="surface_files_ELM.html#understanding-and-modifying-surface-files-in-elm"><span class="std std-ref">Understanding and modifying surface files in ELM</span></a>.</p>
-<p>END OF MATERIALS</p>
-</section>
-<section id="elm-background-snow-processes">
-<h2><span class="section-number">6.7. </span>ELM Background: Snow Processes<a class="headerlink" href="#elm-background-snow-processes" title="Link to this heading">¶</a></h2>
-<p>ELM represents snow as a vertically resolved, multi-layer snowpack that
-simulates accumulation, compaction, melt–refreeze, and energy exchange
-with the atmosphere, vegetation canopy, and soil.</p>
-<p>Precipitation phase is determined from near-surface air temperature
-(<cite>TBOT</cite>) using a mixed rain–snow partitioning scheme:</p>
+<section id="tem-and-elm-models">
+<h2><span class="section-number">6.3. </span>TEM and ELM Models<a class="headerlink" href="#tem-and-elm-models" title="Link to this heading">¶</a></h2>
+<p>In this next few presentations, we will go into more details on ELM and
+TEM, and show you how to run each of these models and look at model
+results for different cases for snow, vegetation, and permafrost model
+outputs.</p>
 <ul class="simple">
-<li><p>Snow if <code class="docutils literal notranslate"><span class="pre">Tair</span> <span class="pre">≤</span> <span class="pre">T_snow</span></code></p></li>
-<li><p>Rain if <code class="docutils literal notranslate"><span class="pre">Tair</span> <span class="pre">≥</span> <span class="pre">T_rain</span></code></p></li>
-<li><p>Mixed phase otherwise</p></li>
+<li><p>ELM Model :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>ELM Model <a href="#id3"><span class="problematic" id="id4">`</span></a>.</p></li>
+<li><p>TEM Model :ref:<a href="#id5"><span class="problematic" id="id6">`</span></a>TEM Model <a href="#id7"><span class="problematic" id="id8">`</span></a>.</p></li>
 </ul>
-<p>Typical thresholds:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">T_snow</span> <span class="pre">≈</span> <span class="pre">273.15</span> <span class="pre">K</span></code> (0 °C)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">T_rain</span> <span class="pre">≈</span> <span class="pre">275.15</span> <span class="pre">K</span></code> (~2 °C)</p></li>
-</ul>
-<p>Between these thresholds, precipitation is linearly partitioned between
-rain and snow.</p>
-</section>
-<section id="elm-background-vegetation-and-shrubs">
-<h2><span class="section-number">6.8. </span>ELM Background: Vegetation and Shrubs<a class="headerlink" href="#elm-background-vegetation-and-shrubs" title="Link to this heading">¶</a></h2>
-<p>In ELM, shrubs and other vegetation are represented using a
-<strong>plant functional type (PFT)</strong> framework, in which each grid
-cell contains fractional coverage of multiple PFTs (e.g.,
-Arctic shrubs), each with its own prognostic carbon, water,
-and energy budgets.</p>
-<p>Vegetation structure is characterized by prognostic variables
-such as <strong>leaf area index (LAI)</strong> and <strong>stem area index (SAI)</strong>,
-which control radiative transfer, canopy interception of
-precipitation (rain and snow), aerodynamic roughness, and
-transpiration.</p>
-<p>Recent improvements following Sulman et al. (2021) expanded
-the Arctic vegetation representation from two PFTs to nine
-Arctic-specific PFTs, including distinct classes of deciduous
-and evergreen shrubs, nitrogen-fixing alder, graminoids,
-forbs, and nonvascular mosses and lichens.</p>
-<p>These PFTs are parameterized using observed traits such as
-belowground biomass allocation, specific leaf area,
-carbon-to-nitrogen ratios, and rooting depth, enabling improved
-representation of tundra trait diversity and spatial
-variability in biomass and productivity.</p>
-<p>This expanded PFT set improves model fidelity in Arctic
-environments by better capturing functional differences among
-vegetation growth forms and their biophysical and
-biogeochemical roles.</p>
-<p>Photosynthesis and stomatal conductance are computed using
-coupled formulations that link carbon uptake to water loss,
-while vegetation carbon pools evolve through allocation,
-turnover, and mortality processes.</p>
-<p>ELM employs Farquhar photosynthesis (Farquhar et al., 1980;
-Leuning et al., 1995) coupled to either the Ball–Berry
-(Ball et al., 1987) or Medlyn (Medlyn et al., 2011) stomatal
-conductance formulations, depending on model configuration.</p>
-<p>Vegetation interacts strongly with snow and soil through
-<strong>canopy masking and interception</strong>, particularly for shrubs,
-which trap wind-blown snow and reduce exposure of high-albedo
-snow surfaces, indirectly warming underlying soils.</p>
-<p>Snow interception by vegetation is typically parameterized as
-a function of canopy structure, for example:</p>
-<div class="math notranslate nohighlight">
-\[M_{\text{snow,int}} = P_{\text{snow}} \left(1 - e^{-k\,\text{LAI}}\right)\]</div>
-<p>where <span class="math notranslate nohighlight">\(P_{\text{snow}}\)</span> is snowfall and <span class="math notranslate nohighlight">\(k\)</span> is an
-extinction coefficient.</p>
-<p>Vegetation also influences the surface energy balance through
-changes in albedo, roughness length, and turbulent heat fluxes,
-making shrub cover a key mediator of land–atmosphere coupling
-and permafrost dynamics in ELM.</p>
-</section>
-<section id="elm-background-permafrost">
-<h2><span class="section-number">6.9. </span>ELM Background: Permafrost<a class="headerlink" href="#elm-background-permafrost" title="Link to this heading">¶</a></h2>
-<p>In ELM, permafrost is represented as an emergent property of the
-prognostic subsurface thermal and hydrologic system rather
-than as a prescribed or binary state.</p>
-<p>ELM solves a vertically discretized soil column with prognostic
-soil temperature, liquid water, and ice content, explicitly
-accounting for freezing and thawing through an enthalpy-based
-(apparent heat capacity) formulation.</p>
-<p>Soil temperature is computed by solving the
-one-dimensional heat diffusion equation through a vertically
-discretized soil column, with explicit representation of
-freezing and thawing processes. The governing equation
-conserves energy within each soil  layer and can be written as:</p>
-<div class="math notranslate nohighlight">
-\[C(T,\theta)\,\frac{\partial T}{\partial t}
-=
-\frac{\partial}{\partial z}
-\left(
-k(T,\theta)\,\frac{\partial T}{\partial z}
-\right)
-+ Q\]</div>
-<p>where <span class="math notranslate nohighlight">\(T\)</span> is soil temperature, <span class="math notranslate nohighlight">\(t\)</span> is time,
-<span class="math notranslate nohighlight">\(z\)</span> is depth, <span class="math notranslate nohighlight">\(C\)</span> is the volumetric heat capacity,
-<span class="math notranslate nohighlight">\(k\)</span> is the thermal conductivity, and <span class="math notranslate nohighlight">\(Q\)</span> represents
-internal heat sources or sinks, which are typically zero for
-soils.</p>
-<p>This approach allows phase change to occur continuously as soil
-temperatures cross the freezing point, conserving energy and
-capturing realistic seasonal freeze–thaw behavior.</p>
-<p>ELM represents phase change using an enthalpy-based or
-apparent heat capacity formulation, in which latent heat
-effects are incorporated directly into the heat capacity term.</p>
-<p>This can be expressed as:</p>
-<div class="math notranslate nohighlight">
-\[C = C_\text{soil} + L_f \frac{\partial \theta_i}{\partial T}\]</div>
-<p>where <span class="math notranslate nohighlight">\(C_\text{soil}\)</span> is the sensible heat capacity of
-soil solids, liquid water, and ice, <span class="math notranslate nohighlight">\(L_f\)</span> is the latent
-heat of fusion, and <span class="math notranslate nohighlight">\(\theta_i\)</span> is the volumetric ice
-content.</p>
-<p>Soil thermal conductivity and heat capacity vary dynamically as
-functions of soil texture, moisture, and ice content, enabling
-simulation of active-layer development, thermal buffering, and
-long-term permafrost stability or degradation. Frozen soils
-generally exhibit higher conductivity than unfrozen soils.</p>
-<p>The subsurface thermal regime is coupled to the land surface
-through boundary conditions imposed by the surface energy
-balance at the top of the soil column and a zero-flux or
-prescribed geothermal heat flux at the lower boundary.</p>
-<p>The heat equation is discretized using a finite-difference
-approach and solved implicitly in time to ensure numerical
-stability under strong temperature gradients and during
-freeze–thaw transitions.</p>
-<p>Snow and vegetation influence permafrost primarily by modifying
-heat exchange between the atmosphere and soil, with snow acting
-as an insulating layer and vegetation altering radiative and
-turbulent fluxes at the surface.</p>
-<p>These surface controls modulate winter soil cooling and summer
-warming, shaping ground temperature profiles and controlling
-the depth and timing of seasonal thaw.</p>
-<p>Together, the prognostic soil thermal structure and its coupling
-to surface energy fluxes allow ELM to simulate permafrost
-dynamics, active-layer thickness, and their sensitivity to
-climate forcing in a physically consistent manner.</p>
 </section>
 <section id="references">
-<h2><span class="section-number">6.10. </span>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.4. </span>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
 <p>Bintanja, R., 2018. The impact of Arctic warming on increased
 rainfall. Scientific Reports, 8(1), p.16001.</p>
 <p>England, M.R., Eisenman, I., Lutsko, N.J. and Wagner, T.J., 2021.
 The recent emergence of Arctic amplification. Geophysical Research
 Letters, 48(15), p.e2021GL094086.</p>
-<p>Sulman, B.N., Salmon, V.G., Iversen, C.M., Breen, A.L., Yuan, F.
-and Thornton, P.E., 2021. Integrating arctic plant functional types
-in a land surface model using above‐and belowground field observations.
-Journal of Advances in Modeling Earth Systems, 13(4), p.e2020MS002396.</p>
 <p>Rantanen, M., Karpechko, A.Y., Lipponen, A., Nordling, K., Hyvärinen, O.,
 Ruosteenoja, K., Vihma, T. and Laaksonen, A., 2022. The Arctic has warmed
 nearly four times faster than the globe since 1979. Communications Earth
@@ -480,15 +256,9 @@ nearly four times faster than the globe since 1979. Communications Earth
     <ul>
 <li><a class="reference internal" href="#">6. Snow, Vegetation, and Permafrost Interactions Breakout Group</a><ul>
 <li><a class="reference internal" href="#variables-of-interest-in-tem-and-elm">6.1. Variables of Interest in TEM and ELM</a></li>
-<li><a class="reference internal" href="#elm-introduction">6.2. ELM Introduction</a></li>
-<li><a class="reference internal" href="#setting-up-elm-model-simulations">6.3. Setting Up ELM Model Simulations</a></li>
-<li><a class="reference internal" href="#running-elm-cases">6.4. Running ELM Cases</a></li>
-<li><a class="reference internal" href="#looking-at-elm-results">6.5. Looking at ELM Results</a></li>
-<li><a class="reference internal" href="#advanced-elm-processing">6.6. Advanced ELM Processing</a></li>
-<li><a class="reference internal" href="#elm-background-snow-processes">6.7. ELM Background: Snow Processes</a></li>
-<li><a class="reference internal" href="#elm-background-vegetation-and-shrubs">6.8. ELM Background: Vegetation and Shrubs</a></li>
-<li><a class="reference internal" href="#elm-background-permafrost">6.9. ELM Background: Permafrost</a></li>
-<li><a class="reference internal" href="#references">6.10. References</a></li>
+<li><a class="reference internal" href="#setting-up-model-simulations">6.2. Setting Up Model Simulations</a></li>
+<li><a class="reference internal" href="#tem-and-elm-models">6.3. TEM and ELM Models</a></li>
+<li><a class="reference internal" href="#references">6.4. References</a></li>
 </ul>
 </li>
 </ul>
@@ -515,7 +285,7 @@ nearly four times faster than the globe since 1979. Communications Earth
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="analyzing_ELM_output_Jupyter_Notebooks.html" title="6.5.1. Analyzing ELM Output in Jupyter Lab"
+          <a href="permafrost_hydrology.html" title="7. Permafrost hydrology breakout group"
              >next</a> |</li>
         <li class="right" >
           <a href="../plenary/ats_intro.html" title="5. ATS Intro"

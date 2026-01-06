@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ELM Model &#8212; ModEx 2026 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ELM Model</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="elm-model">
+<h1>ELM Model<a class="headerlink" href="#elm-model" title="Link to this heading">¶</a></h1>
+<p>ELM requires a set of forcing time series to run. In most E3SM
+simulations, ELM receives forcing variables such as temperature,
+humidity, precipitation rate, and nutrient deposition from the
+atmospheric model (EAM).</p>
+<p>When running ELM in standalone mode, these time series must be provided
+by the user. OLMT provides several options that automate specification
+and modification of ELM input data.</p>
+<p>Here, we demonstrate a single-pixel OLMT ELM simulation across multiple
+sites using OLMT options to alter temperature and precipitation (summer
+rain and winter snow) separately and in combination. Outputs are
+compared against a baseline case to evaluate how scaled meteorological
+inputs affect ELM behavior.</p>
+<section id="running-elm-cases">
+<h2>Running ELM Cases<a class="headerlink" href="#running-elm-cases" title="Link to this heading">¶</a></h2>
+<p>Baseline run (Arctic initialization):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>Arctic_init
+</pre></div>
+</div>
+<p>Temperature scaled by +3 °C:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>scale_temp3
+</pre></div>
+</div>
+<p>Precipitation scaling (rain +40%, snow +60%):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_rain<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_snow<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>scale_rain40_snow60
+</pre></div>
+</div>
+<p>Combined temperature and precipitation scaling:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>scale_rain40_snow60_temp3
+</pre></div>
+</div>
+</section>
+<section id="looking-at-elm-results">
+<h2>Looking at ELM Results<a class="headerlink" href="#looking-at-elm-results" title="Link to this heading">¶</a></h2>
+<p>Here is where we will review how to look at the ELM results in Jupyter Lab notebooks.</p>
+</section>
+<section id="advanced-elm-processing-and-information">
+<h2>Advanced ELM Processing and Information<a class="headerlink" href="#advanced-elm-processing-and-information" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>ELM Background Information on Snow, Vegetation, and Permafrost Processes :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>ELM Background: Snow, Vegetation, and Permafrost Processes <a href="#id3"><span class="problematic" id="id4">`</span></a>.</p></li>
+<li><p>The impact of shrubs in ELM :ref:<a href="#id5"><span class="problematic" id="id6">`</span></a>The impact of shrubs in ELM <a href="#id7"><span class="problematic" id="id8">`</span></a>.</p></li>
+<li><p>Sub-grid variability in ELM :ref:<a href="#id9"><span class="problematic" id="id10">`</span></a>Sub-grid variability in ELM <a href="#id11"><span class="problematic" id="id12">`</span></a>.</p></li>
+<li><p>Understanding and modifying surface files in ELM :ref:<a href="#id13"><span class="problematic" id="id14">`</span></a>Understanding and modifying surface files in ELM <a href="#id15"><span class="problematic" id="id16">`</span></a>.</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2026"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">ELM Model</a><ul>
+<li><a class="reference internal" href="#running-elm-cases">Running ELM Cases</a></li>
+<li><a class="reference internal" href="#looking-at-elm-results">Looking at ELM Results</a></li>
+<li><a class="reference internal" href="#advanced-elm-processing-and-information">Advanced ELM Processing and Information</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ELM Model</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, ModEx Team, LANL, ORNL, UAF, LBNL.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

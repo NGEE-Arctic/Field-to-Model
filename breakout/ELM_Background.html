@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ELM Background: Snow, Vegetation, and Permafrost Processes &#8212; ModEx 2026 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ELM Background: Snow, Vegetation, and Permafrost Processes</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="elm-background-snow-vegetation-and-permafrost-processes">
+<h1>ELM Background: Snow, Vegetation, and Permafrost Processes<a class="headerlink" href="#elm-background-snow-vegetation-and-permafrost-processes" title="Link to this heading">¶</a></h1>
+<section id="elm-background-snow-processes">
+<h2>ELM Background: Snow Processes<a class="headerlink" href="#elm-background-snow-processes" title="Link to this heading">¶</a></h2>
+<p>ELM represents snow as a vertically resolved, multi-layer snowpack that
+simulates accumulation, compaction, melt–refreeze, and energy exchange
+with the atmosphere, vegetation canopy, and soil.</p>
+<p>Precipitation phase is determined from near-surface air temperature
+(<cite>TBOT</cite>) using a mixed rain–snow partitioning scheme:</p>
+<ul class="simple">
+<li><p>Snow if <code class="docutils literal notranslate"><span class="pre">Tair</span> <span class="pre">≤</span> <span class="pre">T_snow</span></code></p></li>
+<li><p>Rain if <code class="docutils literal notranslate"><span class="pre">Tair</span> <span class="pre">≥</span> <span class="pre">T_rain</span></code></p></li>
+<li><p>Mixed phase otherwise</p></li>
+</ul>
+<p>Typical thresholds:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">T_snow</span> <span class="pre">≈</span> <span class="pre">273.15</span> <span class="pre">K</span></code> (0 °C)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">T_rain</span> <span class="pre">≈</span> <span class="pre">275.15</span> <span class="pre">K</span></code> (~2 °C)</p></li>
+</ul>
+<p>Between these thresholds, precipitation is linearly partitioned between
+rain and snow.</p>
+</section>
+<section id="elm-background-vegetation-and-shrubs">
+<h2>ELM Background: Vegetation and Shrubs<a class="headerlink" href="#elm-background-vegetation-and-shrubs" title="Link to this heading">¶</a></h2>
+<p>In ELM, shrubs and other vegetation are represented using a
+<strong>plant functional type (PFT)</strong> framework, in which each grid
+cell contains fractional coverage of multiple PFTs (e.g.,
+Arctic shrubs), each with its own prognostic carbon, water,
+and energy budgets.</p>
+<p>Vegetation structure is characterized by prognostic variables
+such as <strong>leaf area index (LAI)</strong> and <strong>stem area index (SAI)</strong>,
+which control radiative transfer, canopy interception of
+precipitation (rain and snow), aerodynamic roughness, and
+transpiration.</p>
+<p>Recent improvements following Sulman et al. (2021) expanded
+the Arctic vegetation representation from two PFTs to nine
+Arctic-specific PFTs, including distinct classes of deciduous
+and evergreen shrubs, nitrogen-fixing alder, graminoids,
+forbs, and nonvascular mosses and lichens.</p>
+<p>These PFTs are parameterized using observed traits such as
+belowground biomass allocation, specific leaf area,
+carbon-to-nitrogen ratios, and rooting depth, enabling improved
+representation of tundra trait diversity and spatial
+variability in biomass and productivity.</p>
+<p>This expanded PFT set improves model fidelity in Arctic
+environments by better capturing functional differences among
+vegetation growth forms and their biophysical and
+biogeochemical roles.</p>
+<p>Photosynthesis and stomatal conductance are computed using
+coupled formulations that link carbon uptake to water loss,
+while vegetation carbon pools evolve through allocation,
+turnover, and mortality processes.</p>
+<p>ELM employs Farquhar photosynthesis (Farquhar et al., 1980;
+Leuning et al., 1995) coupled to either the Ball–Berry
+(Ball et al., 1987) or Medlyn (Medlyn et al., 2011) stomatal
+conductance formulations, depending on model configuration.</p>
+<p>Vegetation interacts strongly with snow and soil through
+<strong>canopy masking and interception</strong>, particularly for shrubs,
+which trap wind-blown snow and reduce exposure of high-albedo
+snow surfaces, indirectly warming underlying soils.</p>
+<p>Snow interception by vegetation is typically parameterized as
+a function of canopy structure, for example:</p>
+<div class="math notranslate nohighlight">
+\[M_{\text{snow,int}} = P_{\text{snow}} \left(1 - e^{-k\,\text{LAI}}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_{\text{snow}}\)</span> is snowfall and <span class="math notranslate nohighlight">\(k\)</span> is an
+extinction coefficient.</p>
+<p>Vegetation also influences the surface energy balance through
+changes in albedo, roughness length, and turbulent heat fluxes,
+making shrub cover a key mediator of land–atmosphere coupling
+and permafrost dynamics in ELM.</p>
+</section>
+<section id="elm-background-permafrost">
+<h2>ELM Background: Permafrost<a class="headerlink" href="#elm-background-permafrost" title="Link to this heading">¶</a></h2>
+<p>In ELM, permafrost is represented as an emergent property of the
+prognostic subsurface thermal and hydrologic system rather
+than as a prescribed or binary state.</p>
+<p>ELM solves a vertically discretized soil column with prognostic
+soil temperature, liquid water, and ice content, explicitly
+accounting for freezing and thawing through an enthalpy-based
+(apparent heat capacity) formulation.</p>
+<p>Soil temperature is computed by solving the
+one-dimensional heat diffusion equation through a vertically
+discretized soil column, with explicit representation of
+freezing and thawing processes. The governing equation
+conserves energy within each soil  layer and can be written as:</p>
+<div class="math notranslate nohighlight">
+\[C(T,\theta)\,\frac{\partial T}{\partial t}
+=
+\frac{\partial}{\partial z}
+\left(
+k(T,\theta)\,\frac{\partial T}{\partial z}
+\right)
++ Q\]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is soil temperature, <span class="math notranslate nohighlight">\(t\)</span> is time,
+<span class="math notranslate nohighlight">\(z\)</span> is depth, <span class="math notranslate nohighlight">\(C\)</span> is the volumetric heat capacity,
+<span class="math notranslate nohighlight">\(k\)</span> is the thermal conductivity, and <span class="math notranslate nohighlight">\(Q\)</span> represents
+internal heat sources or sinks, which are typically zero for
+soils.</p>
+<p>This approach allows phase change to occur continuously as soil
+temperatures cross the freezing point, conserving energy and
+capturing realistic seasonal freeze–thaw behavior.</p>
+<p>ELM represents phase change using an enthalpy-based or
+apparent heat capacity formulation, in which latent heat
+effects are incorporated directly into the heat capacity term.</p>
+<p>This can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[C = C_\text{soil} + L_f \frac{\partial \theta_i}{\partial T}\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_\text{soil}\)</span> is the sensible heat capacity of
+soil solids, liquid water, and ice, <span class="math notranslate nohighlight">\(L_f\)</span> is the latent
+heat of fusion, and <span class="math notranslate nohighlight">\(\theta_i\)</span> is the volumetric ice
+content.</p>
+<p>Soil thermal conductivity and heat capacity vary dynamically as
+functions of soil texture, moisture, and ice content, enabling
+simulation of active-layer development, thermal buffering, and
+long-term permafrost stability or degradation. Frozen soils
+generally exhibit higher conductivity than unfrozen soils.</p>
+<p>The subsurface thermal regime is coupled to the land surface
+through boundary conditions imposed by the surface energy
+balance at the top of the soil column and a zero-flux or
+prescribed geothermal heat flux at the lower boundary.</p>
+<p>The heat equation is discretized using a finite-difference
+approach and solved implicitly in time to ensure numerical
+stability under strong temperature gradients and during
+freeze–thaw transitions.</p>
+<p>Snow and vegetation influence permafrost primarily by modifying
+heat exchange between the atmosphere and soil, with snow acting
+as an insulating layer and vegetation altering radiative and
+turbulent fluxes at the surface.</p>
+<p>These surface controls modulate winter soil cooling and summer
+warming, shaping ground temperature profiles and controlling
+the depth and timing of seasonal thaw.</p>
+<p>Together, the prognostic soil thermal structure and its coupling
+to surface energy fluxes allow ELM to simulate permafrost
+dynamics, active-layer thickness, and their sensitivity to
+climate forcing in a physically consistent manner.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<p>Sulman, B.N., Salmon, V.G., Iversen, C.M., Breen, A.L., Yuan, F.
+and Thornton, P.E., 2021. Integrating arctic plant functional types
+in a land surface model using above‐and belowground field observations.
+Journal of Advances in Modeling Earth Systems, 13(4), p.e2020MS002396.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2026"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">ELM Background: Snow, Vegetation, and Permafrost Processes</a><ul>
+<li><a class="reference internal" href="#elm-background-snow-processes">ELM Background: Snow Processes</a></li>
+<li><a class="reference internal" href="#elm-background-vegetation-and-shrubs">ELM Background: Vegetation and Shrubs</a></li>
+<li><a class="reference internal" href="#elm-background-permafrost">ELM Background: Permafrost</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ELM Background: Snow, Vegetation, and Permafrost Processes</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, ModEx Team, LANL, ORNL, UAF, LBNL.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>
