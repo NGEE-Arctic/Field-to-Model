@@ -28,6 +28,8 @@ Help()
     echo "                                 (Requires surffile with topounits > 1 to see an impact)"
     echo "  --topounits_atmdownscale  Turn on atm forcing downscaling to subgrids of topounits."
     echo "                                 (Requires surffile with topounits > 1 to see an impact)"
+    echo "  --terrain_raddownscale    Turn on solar radiation downscaling based on terrain features, including slope and aspect"
+    echo "                                 (Requires surffile with properties of SINSL_COSAS, SINSL_SINAS, SKY_VIEW, and TERRAIN_CONFIG)"
     echo "  --use_polygonal_tundra    Turn on polygonal tundra parameterizations affecting runoff, depression storage, and inundation fraction"
     echo "                            (Requires surface file with polygonal tundra type area fractions specified)"
     echo "  -ady, --ad_spinup_yrs     How many years of initial spinup using accelerated decomposition rates"
@@ -165,6 +167,9 @@ case $i in
     --topounits_atmdownscale)
     topounits_atmdownscale=True
     ;;
+    --terrain_raddownscale)
+    terrain_raddownscale=True
+    ;;
     --use_polygonal_tundra)
     use_polygonal_tundra=True
     shift
@@ -189,6 +194,7 @@ met_source="${met_source:-era5}"
 use_arctic_init="${use_arctic_init:-False}"
 use_IM2_hillslope_hydrology="${use_IM2_hillslope_hydrology:-False}"
 topounits_atmdownscale="${topounits_atmdownscale:-False}"
+terrain_raddownscale="${terrain_raddownscale:-False}"
 use_polygonal_tundra="${use_polygonal_tundra:-False}"
 options="${options:-}"
 # -1 is the default
@@ -264,6 +270,10 @@ fi
 if [ "${topounits_atmdownscale}" = True ]; then
   echo "Turning on use_atm_downscaling_to_topunit namelist"
   options="$options --topounits_atmdownscale"
+fi
+if [ "${terrain_raddownscale}" = True ]; then
+  echo "Turning on use_top_solar_rad namelist"
+  options="$options --terrain_raddownscale"
 fi
 if [ "${use_polygonal_tundra}" = True ]; then
   echo "Turning on polygonal tundra parameterizations"
@@ -393,6 +403,38 @@ if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = T
   elif [ ${site_name} = samoylov_island ]; then
     domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_SI-Grid.nc"
     surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_SI-GRID.nc"
+  else
+    echo " "
+    echo "**** EXECUTION HALTED ****"
+    echo "IM2_hillsope_hydrology OR topounits_atmdownscale only available for Site Name as following:"
+    echo "ALASKA: council, toolik_lake"
+    echo "CANADA: trail_valley_creek"
+    echo "NORWAY/SVALBARD: bayelva"
+    echo "RUSSIA: samoylov_island"
+    exit -1
+ fi
+
+fi
+
+#sites with surface data including terrain features, include slope, aspect, sky_view and terrain_config
+if [ "${terrain_raddownscale}" = True ]; then
+  # currently no landuse.timeseries data available for transient stage.
+  landuse_file=""
+  if [ ${site_name} = council ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_C71-GRID.nc"
+  elif [ ${site_name} = toolik_lake ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_TFS-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_TFS-GRID.nc"
+  elif [ ${site_name} = trail_valley_creek ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_TVC-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_TVC-GRID.nc"
+  elif [ ${site_name} = bayelva ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_BS-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_BS-GRID.nc"
+  elif [ ${site_name} = samoylov_island ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_SI-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_SI-GRID.nc"
   else
     echo " "
     echo "**** EXECUTION HALTED ****"
