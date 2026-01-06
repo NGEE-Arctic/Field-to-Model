@@ -26,6 +26,8 @@ Help()
     echo "                            and 274K. Modified condition is at liquid saturation and at 250+40*cos(lat) K)"
     echo "  --use_IM2_hillslope_hydrology  Turn on transfer of water from high elevation topounits to low elevation."
     echo "                                 (Requires surffile with topounits > 1 to see an impact)"
+    echo "  --topounits_atmdownscale  Turn on atm forcing downscaling to subgrids of topounits."
+    echo "                                 (Requires surffile with topounits > 1 to see an impact)"
     echo "  --use_polygonal_tundra    Turn on polygonal tundra parameterizations affecting runoff, depression storage, and inundation fraction"
     echo "                            (Requires surface file with polygonal tundra type area fractions specified)"
     echo "  -ady, --ad_spinup_yrs     How many years of initial spinup using accelerated decomposition rates"
@@ -159,7 +161,10 @@ case $i in
     --use_IM2_hillslope_hydrology)
     use_IM2_hillslope_hydrology=True
     shift
-    ;;    
+    ;;
+    --topounits_atmdownscale)
+    topounits_atmdownscale=True
+    ;;
     --use_polygonal_tundra)
     use_polygonal_tundra=True
     shift
@@ -183,6 +188,7 @@ transient_years="${transient_years:--1}"
 met_source="${met_source:-era5}"
 use_arctic_init="${use_arctic_init:-False}"
 use_IM2_hillslope_hydrology="${use_IM2_hillslope_hydrology:-False}"
+topounits_atmdownscale="${topounits_atmdownscale:-False}"
 use_polygonal_tundra="${use_polygonal_tundra:-False}"
 options="${options:-}"
 # -1 is the default
@@ -254,6 +260,10 @@ fi
 if [ "${use_IM2_hillslope_hydrology}" = True ]; then
   echo "Turning on hillslope hydrology from high-elevation topounits to low-elevation topounits"
   options="$options --use_IM2_hillslope_hydrology"
+fi
+if [ "${topounits_atmdownscale}" = True ]; then
+  echo "Turning on use_atm_downscaling_to_topunit namelist"
+  options="$options --topounits_atmdownscale"
 fi
 if [ "${use_polygonal_tundra}" = True ]; then
   echo "Turning on polygonal tundra parameterizations"
@@ -363,6 +373,40 @@ else
   echo "RUSSIA: samoylov_island"
   exit 0
 fi
+
+#sites with surface data including multiple topographicUnits
+if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = True ]]; then
+  # currently no landuse.timeseries data available for transient stage.
+  landuse_file=""
+  if [ ${site_name} = council ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_C71-GRID.nc"
+  elif [ ${site_name} = toolik_lake ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_TFS-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_TFS-GRID.nc"
+  elif [ ${site_name} = trail_valley_creek ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_TVC-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_TVC-GRID.nc"
+  elif [ ${site_name} = bayelva ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_BS-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_BS-GRID.nc"
+  elif [ ${site_name} = samoylov_island ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_SI-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_SI-GRID.nc"
+  else
+    echo " "
+    echo "**** EXECUTION HALTED ****"
+    echo "IM2_hillsope_hydrology OR topounits_atmdownscale only available for Site Name as following:"
+    echo "ALASKA: council, toolik_lake"
+    echo "CANADA: trail_valley_creek"
+    echo "NORWAY/SVALBARD: bayelva"
+    echo "RUSSIA: samoylov_island"
+    exit -1
+ fi
+
+fi
+
+
 echo "OLMT Site Code: ${site_code}"
 # =======================================================================================
 
