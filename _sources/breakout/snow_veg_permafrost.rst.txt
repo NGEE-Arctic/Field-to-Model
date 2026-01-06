@@ -139,7 +139,7 @@ Baseline run (Arctic initialization):
      -v $(pwd):/home/modex_user \
      -v inputdata:/mnt/inputdata \
      -v output:/mnt/output \
-     yuanfornl/ngee-arctic-modex25:models-main-latest \
+     yuanfornl/ngee-arctic-modex26:models-main-latest \
      /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
      --site_name=imnaviat_creek \
      --use_arctic_init \
@@ -154,7 +154,7 @@ Temperature scaled by +3 °C:
      -v $(pwd):/home/modex_user \
      -v inputdata:/mnt/inputdata \
      -v output:/mnt/output \
-     yuanfornl/ngee-arctic-modex25:models-main-latest \
+     yuanfornl/ngee-arctic-modex26:models-main-latest \
      /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
      --site_name=imnaviat_creek \
      --use_arctic_init \
@@ -171,7 +171,7 @@ Precipitation scaling (rain +40%, snow +60%):
      -v $(pwd):/home/modex_user \
      -v inputdata:/mnt/inputdata \
      -v output:/mnt/output \
-     yuanfornl/ngee-arctic-modex25:models-main-latest \
+     yuanfornl/ngee-arctic-modex26:models-main-latest \
      /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
      --site_name=imnaviat_creek \
      --use_arctic_init \
@@ -190,7 +190,7 @@ Combined temperature and precipitation scaling:
      -v $(pwd):/home/modex_user \
      -v inputdata:/mnt/inputdata \
      -v output:/mnt/output \
-     yuanfornl/ngee-arctic-modex25:models-main-latest \
+     yuanfornl/ngee-arctic-modex26:models-main-latest \
      /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
      --site_name=imnaviat_creek \
      --use_arctic_init \

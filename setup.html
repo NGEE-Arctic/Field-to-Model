@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. Getting Started &#8212; ModEx 2025 0.0.1 documentation</title>
+    <title>2. Getting Started &#8212; ModEx 2026 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e3f3e722" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="modex_agenda_2025.html" title="1. ModEx Workshop 2025 Agenda"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Getting Started</a></li> 
       </ul>
     </div>  
@@ -126,8 +126,8 @@ for visualization.</p>
 ~2.1GB on Docker Hub.</p>
 <p>Once you have the containers downloaded, you can run them on your local machine
 with the following commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex25</span><span class="p">:</span><span class="n">models</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span>
-<span class="n">docker</span> <span class="n">pull</span> <span class="n">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex25</span><span class="p">:</span><span class="n">vis</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex26</span><span class="p">:</span><span class="n">models</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span>
+<span class="n">docker</span> <span class="n">pull</span> <span class="n">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex26</span><span class="p">:</span><span class="n">vis</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span>
 </pre></div>
 </div>
 <p>You will also need to set up a few docker volumes for the workshop:</p>
@@ -145,7 +145,7 @@ platforms (e.g., Windows vs mac).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
     -v $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
-    yuanfornl/ngee-arctic-modex25:models-main-latest \
+    yuanfornl/ngee-arctic-modex26:models-main-latest \
     /home/modex_user/tools/scripts/get_inputdata.sh
 </pre></div>
 </div>
@@ -157,7 +157,7 @@ platforms (e.g., Windows vs mac).</p>
     -v $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
-    yuanfornl/ngee-arctic-modex25:models-main-latest \
+    yuanfornl/ngee-arctic-modex26:models-main-latest \
     /home/modex_user/tools/scripts/test_container.sh
 </pre></div>
 </div>
@@ -181,7 +181,7 @@ from the folder containing the field-to-model repo:</p>
     -v  $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
-    yuanfornl/ngee-arctic-modex25:models-main-latest /bin/bash
+    yuanfornl/ngee-arctic-modex26:models-main-latest /bin/bash
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
@@ -189,7 +189,7 @@ from the folder containing the field-to-model repo:</p>
     -v  $(pwd):/home/modex_user \
     -v output:/mnt/output \
     -p 8888:8888 \
-    yuanfornl/ngee-arctic-modex25:vis-main-latest
+    yuanfornl/ngee-arctic-modex26:vis-main-latest
 </pre></div>
 </div>
 <p>If you need a shell into the visualization container, you can open one using:</p>
@@ -211,7 +211,7 @@ from the folder containing the field-to-model repo:</p>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2025"/>
+              <img class="logo" src="_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2026"/>
             </a></p>
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
@@ -258,12 +258,12 @@ from the folder containing the field-to-model repo:</p>
         <li class="right" >
           <a href="modex_agenda_2025.html" title="1. ModEx Workshop 2025 Agenda"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Getting Started</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-    &#169; Copyright 2025, ModEx Team, LANL, ORNL, UAF, LBNL.
+    &#169; Copyright 2026, ModEx Team, LANL, ORNL, UAF, LBNL.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     </div>
   </body>

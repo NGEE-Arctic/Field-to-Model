@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.5.1. Analyzing ELM Output in Jupyter Lab &#8212; ModEx 2025 0.0.1 documentation</title>
+    <title>6.5.1. Analyzing ELM Output in Jupyter Lab &#8212; ModEx 2026 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="snow_veg_permafrost.html" title="6. Snow, Vegetation, and Permafrost Interactions Breakout Group"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" accesskey="U"><span class="section-number">6. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.5.1. </span>Analyzing ELM Output in Jupyter Lab</a></li> 
       </ul>
@@ -47,11 +47,11 @@
 <p><strong>Step 0. Download the visualization Docker image</strong></p>
 <p>To download the Jupyter SciPy Notebook image, run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#docker pull jupyter/scipy-notebook</span>
-docker<span class="w"> </span>pull<span class="w"> </span>yuanfornl/ngee-arctic-modex25:vis-main-latest
+docker<span class="w"> </span>pull<span class="w"> </span>yuanfornl/ngee-arctic-modex26:vis-main-latest
 </pre></div>
 </div>
 <p>This command will download a pre-built programming environment to your computer. This environment is packaged using Docker, which allows software to run the same way on different machines without needing to install everything manually.</p>
-<p>In this case, Docker retrieves an image called <code class="docutils literal notranslate"><span class="pre">yuanfornl/ngee-arctic-modex25:vis-main-latest</span></code> from an online repository. This image already contains Python, Jupyter Lab, and commonly used scientific and mathematical libraries such as NumPy, SciPy, and pandas. These tools are often used for data analysis, math, and science projects.</p>
+<p>In this case, Docker retrieves an image called <code class="docutils literal notranslate"><span class="pre">yuanfornl/ngee-arctic-modex26:vis-main-latest</span></code> from an online repository. This image already contains Python, Jupyter Lab, and commonly used scientific and mathematical libraries such as NumPy, SciPy, and pandas. These tools are often used for data analysis, math, and science projects.</p>
 <p>Running this command only downloads the environment; it does not start it. After the image is pulled, you must run it using a separate command to start Jupyter and open it in a web browser.</p>
 <p><strong>Step 1. Start communicating with the Jupyter-Lab environment</strong></p>
 <p>Next, run the image to start Jupyter and make it accessible from your local computer.</p>
@@ -59,7 +59,7 @@ docker<span class="w"> </span>pull<span class="w"> </span>yuanfornl/ngee-arctic-
 <span class="w">   </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span>:/home/jovyan/work<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span>output:/home/jovyan/output<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>yuanfornl/ngee-arctic-modex25:vis-main-latest<span class="w"> </span>jupyter<span class="w"> </span>lab
+<span class="w">   </span>yuanfornl/ngee-arctic-modex26:vis-main-latest<span class="w"> </span>jupyter<span class="w"> </span>lab
 </pre></div>
 </div>
 <div class="admonition note">
@@ -120,7 +120,7 @@ If not, we may want to specify a different path instead of <code class="docutils
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2025"/>
+              <img class="logo" src="../_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2026"/>
             </a></p>
   <div>
     <h3><a href="../index.html">Table of Contents</a></h3>
@@ -159,13 +159,13 @@ If not, we may want to specify a different path instead of <code class="docutils
         <li class="right" >
           <a href="snow_veg_permafrost.html" title="6. Snow, Vegetation, and Permafrost Interactions Breakout Group"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2025 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" ><span class="section-number">6. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">6.5.1. </span>Analyzing ELM Output in Jupyter Lab</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-    &#169; Copyright 2025, ModEx Team, LANL, ORNL, UAF, LBNL.
+    &#169; Copyright 2026, ModEx Team, LANL, ORNL, UAF, LBNL.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     </div>
   </body>
