@@ -1,6 +1,6 @@
-TEM Warming Experiment (and TEM Introduction)
+Introduction to TEM and Warming Experiment Example
 =================================================================
-.. include:: colors.rst
+.. include:: ../colors.rst
 
 What are we trying to model?
 -------------------------------------------------------------
@@ -48,7 +48,7 @@ instructions, run the following command to start a shell in the model container:
       -v $(pwd):/home/modex_user \
       -v inputdata:/mnt/inputdata \ 
       -v output:/mnt/output \
-      yuanfornl/ngee-arctic-modex25:models-main-latest /bin/bash
+      yuanfornl/ngee-arctic-modex26:models-main-latest /bin/bash
 
 
 Which should leave you at a shell prompt inside the container, like this:
@@ -290,7 +290,7 @@ It should look like this:
    2019, with the warming dataset showing a 2.6C increase during the
    summer months (June-September). It should look something like this:
 
-   .. image:: ../_static/tem_ee1_warming/air_temperature_2019.png
+   .. image:: /_static/tem_ee1_warming/air_temperature_2019.png
       :alt: Air Temperature Time Series for 2019, control and warming
       :width: 600px  
 
@@ -457,7 +457,7 @@ in a new container:
          -v $(pwd):/home/modex_user \
          -v inputdata:/mnt/inputdata \ 
          -v output:/mnt/output \
-         yuanfornl/ngee-arctic-modex25:models-main-latest /bin/bash
+         yuanfornl/ngee-arctic-modex26:models-main-latest /bin/bash
 
    Then, once inside the container, install Jupyter so it is available:
 
@@ -484,7 +484,7 @@ in a new container:
       -v $(pwd):/home/modex_user \
       -v inputdata:/mnt/inputdata \ 
       -v output:/mnt/output \
-      yuanfornl/ngee-arctic-modex25:models-main-latest \
+      yuanfornl/ngee-arctic-modex26:models-main-latest \
       jupyter notebook --ip=0.0.0.0 --no-browser --port 8888   
 
 You should see output like this:

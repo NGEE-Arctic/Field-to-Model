@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'ModEx 2025'
-copyright = '2025, ModEx Team, LANL, ORNL, UAF, LBNL'
-author = 'ModEx 2025 Developers'
+project = 'ModEx 2026'
+copyright = '2026, ModEx Team, LANL, ORNL, UAF, LBNL'
+author = 'ModEx 2026 Developers'
 release = '0.0.1'
 
 # -- General configuration ---------------------------------------------------

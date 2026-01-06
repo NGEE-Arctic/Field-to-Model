@@ -24,7 +24,7 @@ for site in "${sites[@]}"; do
         -v $(pwd):/home/modex_user \
         -u modex_user \
         -e USER=modex_user \
-        yuanfornl/ngee-arctic-modex25:models-main-latest \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
         --site_name=${site} --case_prefix="cntl" > logs/${site}-cntl.log 2>&1 &
 
@@ -35,7 +35,7 @@ for site in "${sites[@]}"; do
         -v $(pwd):/home/modex_user \
         -u modex_user \
         -e USER=modex_user \
-        yuanfornl/ngee-arctic-modex25:models-main-latest \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
         --site_name=${site} --case_prefix="ArcInit" --use_arctic_init \
         > logs/${site}-arcinit.log 2>&1 &

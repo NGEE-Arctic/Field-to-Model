@@ -21,7 +21,7 @@ see the options that are available for the script by running:
         -v  $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
-        yuanfornl/ngee-arctic-modex25:models-main-latest \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh -h
 
 In the first example, we will run a 'control' case for one of the NGEE Arctic sites where 
@@ -34,7 +34,7 @@ you can choose from and substitute into the command below at <site_name>:
     -v  $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
-    yuanfornl/ngee-arctic-modex25:models-main-latest \
+    yuanfornl/ngee-arctic-modex26:models-main-latest \
     /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=<site_name>
 
 This command will run three ELM cases (Rosenbloom and Thorton, 2004): a) a spinup with accelerated
@@ -54,13 +54,13 @@ the first step (soil column at liquid saturation, and at a temperature varying b
     -v  $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
-    yuanfornl/ngee-arctic-modex25:models-main-latest \
+    yuanfornl/ngee-arctic-modex26:models-main-latest \
     /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=<site_name> \
     --use_arctic_init --case_prefix=Arctic_init
 
 After these runs are completed, we can compare the impacts of this initialization choice using the visualization containers.
 
-warning::
+.. warning::
     Note that if you rerun one of these commands, the existing output and case directories for these simulations are removed!
     Therefore, if you want to perform a second simulation on a site, you should also set the `--case_prefix` option so that
     the case has a different name. In this case, we have set it to "Arctic_init" to distinguish it from our control.

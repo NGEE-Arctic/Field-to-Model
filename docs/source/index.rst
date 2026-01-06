@@ -28,7 +28,7 @@ A major component of this workshop will be three breakout groups that will focus
 in greater detail on a specific set of Arctic processes in the models. The
 breakout groups will focus on 
 
- #. permafrost hydrology
+ #. permafrost hydrology,
  #. snow/vegetation/permafrost interactions, and
  #. hillslope hydrology impacts on biogeochemistry. 
  
@@ -45,64 +45,35 @@ publications. We hope that you are as excited for the workshop as we are!
 
 Here you will find resources and documentation needed to follow the workshop examples.
 
-Agenda
-======================
+.. note::
+
+  It is highly recommended that you download the workshop containers and input
+  data ahead of time. More information and a log of various setup issues can be
+  found here: `<https://github.com/NGEE-Arctic/Field-to-Model/issues/38>`_
+
+
+.. warning::
+
+  Windows users will have a longer setup procedure than macOS or Linux users. It
+  is even more strongly recommended that attendees hoping to run the models on a
+  Windows computer work through the setup instructions ahead of the workshop!!
+
+
+
 
 .. toctree::
-  :maxdepth: 1 
+  :maxdepth: 2 
   :numbered: 3 
 
   modex_agenda_2025
-
-
-Setup Instructions
-======================
-
-.. toctree::
-  :maxdepth: 2
-  :numbered: 3
-
   setup
-
-
-Plenary Modeling Exercises
-=============================
-
-.. toctree::
-  :maxdepth: 2
-  :numbered: 3
-
   plenary/elm_intro
-  tem_ee1_warming
+  plenary/tem_ee1_warming
   plenary/ats_intro
-
-Breakout Groups
-==================
-
-.. toctree::
-  :maxdepth: 2
-  :numbered: 3
-
   breakout/snow_veg_permafrost
   breakout/permafrost_hydrology
   breakout/hillslope_bgc
-
-Additional Resources
-===================== 
-
-.. toctree::
-  :maxdepth: 2
-  :numbered: 3
-
   common_issues
-
-Developer Notes
-==================
-
-.. toctree::
-  :maxdepth: 1
-  :numbered: 3
-
   dev_notes
   tem_dev_notes
 

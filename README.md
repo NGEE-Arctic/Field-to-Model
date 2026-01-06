@@ -1,63 +1,71 @@
 # 2nd NGEE Arctic Field-to-Model Workshop
+<img src=".assets/NGEE Arctic logo_large (002).png" align="right" width="200">
 
-<img src=".assets/NGEE Arctic logo_large (002).png" align="left" width="300">
+Welcome to the 2nd NGEE Arctic Field-to-Model Workshop in Santa Fe, New Mexico!
+Following the project's tradition of bringing modelers to the field, our goal
+over this 2.5-day workshop is to bring empiricists to the models. We will be
+providing an introduction to land surface modeling by providing overviews of
+three different land surface models used across the project.
 
-Welcome to the 2nd NGEE Arctic Field-to-Model Workshop in Santa Fe, NM! Following the project's 
-tradition of bringing modelers to the field, our goal over this 2.5-day workshop is to bring empiricists
-to the models. We will be providing an introduction to land surface modeling by providing overviews of
-three different land surface models used across the project - the Energy Exascale Earth System (E3SM) Land Model (ELM),
-the Advanced Terrestrial Simulator (ATS), and DVM-DOS-TEM (Dynamic Vegetation, Dynamic Organic Soil, Terrestrial
-Ecosystem Model, often shortened to TEM) - that illustrate different design philosophies, approaches, and tradeoffs
-in representing land surface processes. We will also introduce the ILAMB (International LAnd Model Benchmarking) and
-DaPPER (Data PreParation for ELM Runs) python packages. ILAMB is designed to improve model-data integration and 
-allow for validation of land surface models against observations, while DaPPER allows for the generation of 
-necessary ELM input data from gridded datasets on Google Earth Engine. 
-
-A major component of this workshop will be three breakout groups that will focus in greater detail on 
-a specific set of Arctic processes in the models. The breakout groups will focus on 1) permafrost hydrology, 
-2) snow/vegetation/permafrost interactions, and 3) hillslope hydrology impacts on biogeochemistry. We have tried
-to structure the breakout groups to include experts from at least two of these models in each breakout group. Our
-hope is this structure will help facilitate conversations not only between the empiricists and modelers, but also
-to identify and discuss transferable insights across models.
-
-Over the duration of the workshop, you will be running and analyzing example cases for all three models, learning more about how you
-might be able to apply these models to your research and what their limitations might be, and hopefully finding 
-opportunities for future collaboration and ideas for future publications. We hope that you are as excited for the 
-workshop as we are! 
-
-## Key Links:
+**Attendees, please see the [workshop website](https://ngee-arctic.github.io/Field-to-Model/index.html) 
+for all setup instructions, agendas, and information!**
 
 > [!NOTE]
 > It is highly recommended that you download the workshop containers and input data ahead of time.
-> More information can be found [here](https://github.com/NGEE-Arctic/Field-to-Model/issues/38)
+> Setup Instrucitons found [here](https://ngee-arctic.github.io/Field-to-Model/setup.html) and 
+> additional setup information [here](https://github.com/NGEE-Arctic/Field-to-Model/issues/38)
 
 > [!WARNING]
 > Windows users will have a longer setup procedure than macOS or Linux users. It is even more strongly
 > recommended that attendees hoping to run the models on a Windows computer work through the setup instructions
 > ahead of the workshop.
 
-- [Workshop Setup Instructions](https://ngee-arctic.github.io/Field-to-Model/setup.html)
-- [Workshop Agenda](https://ngee-arctic.github.io/Field-to-Model/modex_agenda_2025.html)
-- More information about ELM
-    - [E3SM's ELM Documentation](https://docs.e3sm.org/E3SM/ELM) (note: this is under development)
-    - [CLM 4.5 Technical Note]
-    - [Development repository](https://github.com/E3SM-Project/E3SM/tree/master/components/elm)
-- More information about TEM
-    - [DVM-DOS-TEM documentation](http://uaf-arctic-eco-modeling.github.io/dvm-dos-tem/)
-    - [Development repository](https://github.com/uaf-arctic-eco-modeling/dvm-dos-tem)
-- More information about ATS
-    - [Amanzi-ATS documentation](https://amanzi.github.io)
-    - [Development repository](https://github.com/amanzi/ats)
-- More information about ILAMB
-    - [ILAMB documentation](https://www.ilamb.org)
-    - [Development repository](https://github.com/rubisco-sfa/ILAMB)
-- Breakout groups:
-    - [Permafrost Hydrology](https://ngee-arctic.github.io/Field-to-Model/breakout/permafrost_hydrology.html)
-    - [Snow/Vegetation/Permafrost Interactions](https://ngee-arctic.github.io/Field-to-Model/breakout/snow_veg_permafrost.html)
-    - [Hillslope Hydrology impacts on Biogeochemistry](https://ngee-arctic.github.io/Field-to-Model/breakout/hillslope_bgc.html)
 
-## Additional resources
-- [Introduction to version control using Git](https://swcarpentry.github.io/git-novice/)
+## Developer Info
 
-### Known issues:
+> [!TIP]
+> Attendeeds should be able to ignore this section.
+
+More comprehensive developer information is held in the Developer Notes section
+of the [workshop website](https://ngee-arctic.github.io/Field-to-Model/index.html#developer-notes),
+but for a quick start see these instructions.
+
+There are 3 container images for the project: 
+
+ - a modeling image,
+ - a visualization image, and
+ - a documentation builder image.
+
+The modeling image has all the heavy weight modeling tools installed. The
+visualization image has Jupyter Lab installed, and the documentation builder
+image has the Sphinx tool installed.
+
+The project used Github Actions to automatically build and publish the images to
+Docker Hub. Attendees (and for the most part developers too) will begin by
+pulling the images from DockerHub:
+
+```
+docker pull yuanfornl/ngee-arctic-modex26:models-main-latest
+docker pull yuanfornl/ngee-arctic-modex26:vis-main-latest
+```
+
+The documentation builder image is not published, so to work on the
+documentation, you will need to build the image first:
+
+```
+docker build -t docbuilder --target docbuilder -f Docker/Dockerfile-docs .
+```
+
+and then you can start a "live reload" server that will let you modify the
+documentation and see a a preview of the webpages in your local browser:
+
+```
+docker run --name docbuilder \
+      -p9999:9999 \
+      --mount type=bind,src=$(pwd)/docs,dst=/docs \ # bind mount needs abs path!
+      -it --rm docbuilder make livehtml
+```
+
+## Known issues:
+
 - ERA5 for Bayelva not working currently
