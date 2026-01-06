@@ -46,9 +46,13 @@ Docker
 
     .. warning::
 
-        Take special care installing WSL. It is very importatnt that you run all
-        the Getting Started commands in a WSL terminal (Ubunutu) and NOT in
-        Powershell!!
+        You will have to be mindful of whether your command line interfaces from here on are Windows Powershell kernels
+        or a Linux/WSL kernel. Everything above this comment should be done in PowerShell, everything from here should 
+        be done in Linux/WSL kernel. If you are not sure which you are currently using, try running `uname -a` in your
+        command line window. If you are in PowerShell, you will get an error; if you are in WSL/Linux, you should get output
+        that starts with "Linux" or "Ubuntu". If you are in PowerShell, and need a WSL terminal, you could open one using 
+        the WSL application, a new Ubuntu application if it's been installed or simply typing `wsl` into Powershell at this point.
+        (note, however for this last option: you should change directories to /home/${USER} - `cd /home${USER}`) 
 
     .. seealso::
 
