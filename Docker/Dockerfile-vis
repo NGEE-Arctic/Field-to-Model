@@ -36,10 +36,10 @@ RUN set -ex \
    && fix-permissions "/home/${NB_USER}"
 
 # Make local directories to use with plotting of ELM output
-RUN mkdir "/home/${NB_USER}/scripts" \
+RUN mkdir "/home/${NB_USER}/vis_notebooks" \
    && mkdir "/home/${NB_USER}/inputdata" \
    && mkdir "/home/${NB_USER}/output" \
-   && fix-permissions "/home/${NB_USER}/scripts" \
+   && fix-permissions "/home/${NB_USER}/vis_notebooks" \
    && fix-permissions "/home/${NB_USER}/inputdata" \
    && fix-permissions "/home/${NB_USER}/output" \
    && fix-permissions "/home/${NB_USER}"
