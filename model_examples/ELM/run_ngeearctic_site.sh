@@ -26,12 +26,16 @@ Help()
     echo "                            and 274K. Modified condition is at liquid saturation and at 250+40*cos(lat) K)"
     echo "  --use_IM2_hillslope_hydrology  Turn on transfer of water from high elevation topounits to low elevation."
     echo "                                 (Requires surffile with topounits > 1 to see an impact)"
+    echo "  --topounits_atmdownscale  Turn on atm forcing downscaling to subgrids of topounits."
+    echo "                                 (Requires surffile with topounits > 1 to see an impact)"
+    echo "  --terrain_raddownscale    Turn on solar radiation downscaling based on terrain features, including slope and aspect"
+    echo "                                 (Requires surffile with properties of SINSL_COSAS, SINSL_SINAS, SKY_VIEW, and TERRAIN_CONFIG)"
     echo "  --use_polygonal_tundra    Turn on polygonal tundra parameterizations affecting runoff, depression storage, and inundation fraction"
     echo "                            (Requires surface file with polygonal tundra type area fractions specified)"
     echo "  -ady, --ad_spinup_yrs     How many years of initial spinup using accelerated decomposition rates"
-    echo "                              should be used? (Default: 200)"
+    echo "                              should be used? (Default: 200, Skip to normal spinup: 0)"
     echo "  -fsy, --final_spinup_yrs  How many years should the second stage of spinup run (with normal"
-    echo "                              decomposition rates)? (Default: 600)"
+    echo "                              decomposition rates)? (Default: 600, Skip to transient: 0)"
     echo "  -try, --transient_yrs     How many years should the transient stage of the sumulation run?"
     echo "                              (Default: -1, which corresponds to 1850-2014 for GSWP3 met data and"
     echo "                              1850-2024 for ERA5)"
@@ -159,7 +163,13 @@ case $i in
     --use_IM2_hillslope_hydrology)
     use_IM2_hillslope_hydrology=True
     shift
-    ;;    
+    ;;
+    --topounits_atmdownscale)
+    topounits_atmdownscale=True
+    ;;
+    --terrain_raddownscale)
+    terrain_raddownscale=True
+    ;;
     --use_polygonal_tundra)
     use_polygonal_tundra=True
     shift
@@ -183,6 +193,8 @@ transient_years="${transient_years:--1}"
 met_source="${met_source:-era5}"
 use_arctic_init="${use_arctic_init:-False}"
 use_IM2_hillslope_hydrology="${use_IM2_hillslope_hydrology:-False}"
+topounits_atmdownscale="${topounits_atmdownscale:-False}"
+terrain_raddownscale="${terrain_raddownscale:-False}"
 use_polygonal_tundra="${use_polygonal_tundra:-False}"
 options="${options:-}"
 # -1 is the default
@@ -241,11 +253,18 @@ if [ ${scale_pdep} != 1.0 ]; then
   echo "P deposition scaled by factor of ${scale_pdep} starting on ${startdate_scale_pdep}"
   options="$options --scale_pdep ${scale_pdep} --startdate_scale_pdep ${startdate_scale_pdep}"
 fi
-if [ ${transient_years} != -1 ]; then
-  sim_years="--nyears_ad_spinup ${ad_spinup_years} --nyears_final_spinup ${final_spinup_years} \
-  --nyears_transient ${transient_years}"
+if [ ${ad_spinup_years} == 0 ]; then
+  sim_years="--noad"
 else
-  sim_years="--nyears_ad_spinup ${ad_spinup_years} --nyears_final_spinup ${final_spinup_years}"
+  sim_years="--nyears_ad_spinup ${ad_spinup_years}"
+fi
+if [ ${final_spinup_years} == 0 ]; then
+  sim_years="--nofnsp ${sim_years}"
+else
+  sim_years="${sim_years} --nyears_final_spinup ${final_spinup_years}"
+fi
+if [ ${transient_years} != -1 ]; then
+  sim_years="${sim_years} --nyears_transient ${transient_years}"
 fi
 if [ "${use_arctic_init}" = True ]; then
   echo "Using wetter, colder initialization conditions for Arctic runs"
@@ -254,6 +273,14 @@ fi
 if [ "${use_IM2_hillslope_hydrology}" = True ]; then
   echo "Turning on hillslope hydrology from high-elevation topounits to low-elevation topounits"
   options="$options --use_IM2_hillslope_hydrology"
+fi
+if [ "${topounits_atmdownscale}" = True ]; then
+  echo "Turning on use_atm_downscaling_to_topunit namelist"
+  options="$options --topounits_atmdownscale"
+fi
+if [ "${terrain_raddownscale}" = True ]; then
+  echo "Turning on use_top_solar_rad namelist"
+  options="$options --terrain_raddownscale"
 fi
 if [ "${use_polygonal_tundra}" = True ]; then
   echo "Turning on polygonal tundra parameterizations"
@@ -363,6 +390,76 @@ else
   echo "RUSSIA: samoylov_island"
   exit 0
 fi
+# the following is by default. if reset to empty later on, ELM will run without landuse_timeseries file for transient stage.
+landuse_file="/mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file}"
+
+#sites with surface data including multiple topographicUnits
+if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = True ]]; then
+  # currently no landuse.timeseries data available for transient stage.
+  landuse_file=""
+  options="$options --nopftdyn"
+  if [ ${site_name} = council ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_C71-GRID.nc"
+  elif [ ${site_name} = toolik_lake ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_TFS-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_TFS-GRID.nc"
+  elif [ ${site_name} = trail_valley_creek ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_TVC-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_TVC-GRID.nc"
+  elif [ ${site_name} = bayelva ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_BS-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_BS-GRID.nc"
+  elif [ ${site_name} = samoylov_island ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_SI-Grid.nc"
+    surf_file="topounit_surfdata_0.5x0.5_simyr1850_c20220204_SI-GRID.nc"
+  else
+    echo " "
+    echo "**** EXECUTION HALTED ****"
+    echo "IM2_hillsope_hydrology OR topounits_atmdownscale only available for Site Name as following:"
+    echo "ALASKA: council, toolik_lake"
+    echo "CANADA: trail_valley_creek"
+    echo "NORWAY/SVALBARD: bayelva"
+    echo "RUSSIA: samoylov_island"
+    exit -1
+ fi
+
+fi
+
+#sites with surface data including terrain features, include slope, aspect, sky_view and terrain_config
+if [ "${terrain_raddownscale}" = True ]; then
+  # currently no landuse.timeseries data available for transient stage.
+  landuse_file=""
+  options="$options --nopftdyn"
+  if [ ${site_name} = council ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_C71-GRID.nc"
+  elif [ ${site_name} = toolik_lake ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_TFS-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_TFS-GRID.nc"
+  elif [ ${site_name} = trail_valley_creek ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_TVC-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_TVC-GRID.nc"
+  elif [ ${site_name} = bayelva ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_BS-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_BS-GRID.nc"
+  elif [ ${site_name} = samoylov_island ]; then
+    domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_SI-Grid.nc"
+    surf_file="surfdata_0.5x0.5_simyr1850_c240308_TOP_SI-GRID.nc"
+  else
+    echo " "
+    echo "**** EXECUTION HALTED ****"
+    echo "IM2_hillsope_hydrology OR topounits_atmdownscale only available for Site Name as following:"
+    echo "ALASKA: council, toolik_lake"
+    echo "CANADA: trail_valley_creek"
+    echo "NORWAY/SVALBARD: bayelva"
+    echo "RUSSIA: samoylov_island"
+    exit -1
+ fi
+
+fi
+
+
 echo "OLMT Site Code: ${site_code}"
 # =======================================================================================
 
@@ -391,7 +488,7 @@ runcmd="python3 ./site_fullrun.py \
       --metdir ${met_path} \
       --domainfile /mnt/inputdata/E3SM/share/domains/domain.clm/${domain_file} \
       --surffile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${surf_file} \
-      --landusefile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file} \
+      --landusefile ${landuse_file} \
       --srcmods_loc ${src_mod_path} \
       --use_onset_gdd_extension \
       ${options} \
@@ -422,7 +519,7 @@ if /opt/conda/bin/python ./site_fullrun.py \
       --metdir ${met_path} \
       --domainfile /mnt/inputdata/E3SM/share/domains/domain.clm/${domain_file} \
       --surffile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${surf_file} \
-      --landusefile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file} \
+      --landusefile ${landuse_file} \
       --srcmods_loc ${src_mod_path} \
       --use_onset_gdd_extension \
       ${options} \
