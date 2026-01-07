@@ -442,50 +442,14 @@ treatment affected the soil temperatures.
 To start this notebook, use another terminal to launch a Jupyter Notebook server
 in a new container:
 
-.. warning:: :red:`TODO`
-
-   Until we can get Jupyter installed in the container image,  we need to do
-   this in two steps!! Once installed in the container, you can do this in 
-   a single step, i.e. ``docker run ... jupyter notebook ...`` as shown below.
-
-   Get a shell to the container as above:
-
-   .. code:: shell
-
-      docker run -it --rm \
-         -p 8888:8888 \
-         -v $(pwd):/home/modex_user \
-         -v inputdata:/mnt/inputdata \ 
-         -v output:/mnt/output \
-         yuanfornl/ngee-arctic-modex26:models-main-latest /bin/bash
-
-   Then, once inside the container, install Jupyter so it is available:
-
-   .. code:: shell
-
-      # you could use conda or pip here too...
-      mamba install -y jupyter ipython
-
-   Then you can start the notebook server:
-
-   .. code:: shell
-
-      jupyter notebook --ip=0.0.0.0 --no-browser --port 8888
-
-   .. note:: 
-      
-      You have to re-install Jupyter each time you start a new container until we
-      get it baked into the image.
-
-.. code::shell
+.. code::
 
    docker run -it --rm \
       -p 8888:8888 \
-      -v $(pwd):/home/modex_user \
+      -v $(pwd):/home/jovyan \
       -v inputdata:/mnt/inputdata \ 
       -v output:/mnt/output \
-      yuanfornl/ngee-arctic-modex26:models-main-latest \
-      jupyter notebook --ip=0.0.0.0 --no-browser --port 8888   
+      yuanfornl/ngee-arctic-modex26:vis-main-latest   
 
 You should see output like this:
 
@@ -497,7 +461,7 @@ You should see output like this:
    [I 2025-12-12 21:31:22.317 ServerApp] notebook | extension was successfully linked.
    ...
        To access the server, open this file in a browser:
-        file:///home/modex_user/.local/share/jupyter/runtime/jpserver-360-open.html
+        file:///home/jovyan/.local/share/jupyter/runtime/jpserver-360-open.html
     Or copy and paste one of these URLs:
         http://2aecc7b15434:8888/tree?token=e66b3be47f2b3d7721adeb88992b8b1818901c5d76281678
         http://127.0.0.1:8888/tree?token=e66b3be47f2b3d7721adeb88992b8b1818901c5d76281678
