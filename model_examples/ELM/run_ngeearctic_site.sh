@@ -21,7 +21,7 @@ Help()
     echo "                              workshop this will always be NGEE-Arctic"
     echo "  --case_prefix             What should be appended to the beginning of the casename to distinguish"
     echo "                              between two runs at the same site?"
-    echo "  -ms, --met_source         Select which meteorological forcing you would like to use. ERA5 or GSWP3 (Default: ERA5)"
+    echo "  -ms, --met_source         Select which meteorological forcing you would like to use. ERA5 or GSWP3 (Default: era5, Otherwise: gswp3)"
     echo "  --use_arctic_init         Use modified startup condition for Arctic conditions. (ELM default is soil moisture of 0.15 m3/m3"
     echo "                            and 274K. Modified condition is at liquid saturation and at 250+40*cos(lat) K)"
     echo "  --use_IM2_hillslope_hydrology  Turn on transfer of water from high elevation topounits to low elevation."
@@ -41,7 +41,7 @@ Help()
     echo "                              1850-2024 for ERA5)"
     echo "  -tsp, --timestep          What timestep should the model use? (Default: 1 hour, units of this number"
     echo "                               should be hours)"
-    echo "  --met_source              What met source should be used? (Default: ERA5, can also use GSWP3)"
+    echo "  --no_submit               After case setup and build, don't submit job to run (Default: False)"
     echo "  --add_temperature         Add a constant temperature to the meteorology time series, in K"
     echo "  --startdate_add_temperature   When should the temperature perturbation be initiated?"
     echo "                                (It will continue to the end of the run). YYYYMMDD format"
@@ -160,6 +160,10 @@ case $i in
     use_arctic_init=True
     shift
     ;;   
+    --no_submit)
+    no_submit=True
+    shift
+    ;;
     --use_IM2_hillslope_hydrology)
     use_IM2_hillslope_hydrology=True
     shift
@@ -196,6 +200,7 @@ use_IM2_hillslope_hydrology="${use_IM2_hillslope_hydrology:-False}"
 topounits_atmdownscale="${topounits_atmdownscale:-False}"
 terrain_raddownscale="${terrain_raddownscale:-False}"
 use_polygonal_tundra="${use_polygonal_tundra:-False}"
+no_submit="${no_submit:-False}"
 options="${options:-}"
 # -1 is the default
 timestep="${timestep:-1}"
@@ -286,6 +291,10 @@ if [ "${use_polygonal_tundra}" = True ]; then
   echo "Turning on polygonal tundra parameterizations"
   options="$options --use_polygonal_tundra"
 fi 
+if [ "${no_submit}" = True ]; then
+  echo "After setup/build case, donnot submit"
+  options="$options --no_submit"
+fi
 echo " "
 # =======================================================================================
 
@@ -534,9 +543,11 @@ else
   exit 1
 fi
 # =======================================================================================
+
 # =======================================================================================
 #### Postprocess
 ### Collapse transient simulation output into a single netCDF file
+if [ ! "${no_submit}" = True ]; then
 echo " "
 echo " "
 echo " "
@@ -549,5 +560,7 @@ echo "**** Concatenating netCDF output - Hang tight this can take awhile ****"
 ncrcat --ovr *.h0.*.nc ELM_output.nc
 chmod 666 ELM_output.nc
 echo "**** Concatenating netCDF output: DONE ****"
+fi
+
 sleep 2
 # =======================================================================================
