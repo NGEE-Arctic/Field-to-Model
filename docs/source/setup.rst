@@ -75,9 +75,17 @@ Git
 * **Linux**: git is included as a standard package under most package managers, e.g. ``sudo apt-get install git``.
 * **Windows**: See `Git Downloads <https://github.com/git-guides/install-git>`_. Note that the GitHub Desktop is also an option for Windows users and provides a GUI.
 
+ParaView or VisIt
+^^^^^^^^^^^^^^^^^^^^^^
+* **ParaView**: ParaView can be installed from the KitWare website (or for LANL folks, LANL self service/software center): `Download ParaView <https://www.paraview.org/download/>`_
+* **VisIt**: VisIt can be installed from the LLNL website: `Download VisIt <https://wci.llnl.gov/simulation/computer-codes/visit/downloads>`_
 
 Clone Field-to-Model repository for the workshop
 -------------------------------------------------
+
+.. tip::
+
+    Reminder that Windows users now need to be in a WSL terminal for this step and all subsequent steps.
 
 .. code::
 
@@ -86,6 +94,21 @@ Clone Field-to-Model repository for the workshop
 
 This step downloads all of the scripts and infrastructure we have developed for the workshop,
 it should take a couple minutes to complete.
+
+.. warning::
+
+    Depending on how your system is setup and the details of your GitHub account if you have one,
+    you may get several errors about SSH keys when cloning the submodules. If this happens,
+    try these steps:
+
+    .. code::
+
+        git config --add url."https://github.com/".insteadOf "git@github.com:"
+        git config --add url."https://github.com/".insteadOf "ssh://git@github.com/"
+        git submodule update --init --recursive
+
+    If you are still seeing errors at this step, we will have alternate instructions for you 
+    to run ELM in this workshop.
 
 Download Docker containers
 ----------------------------
@@ -124,7 +147,7 @@ platforms (e.g., Windows vs mac).
 Get the workshop data
 ------------------------------
 
-E3SM/ELM input data needed for the workshop can be downloaded by:
+E3SM/ELM and TEM input data needed for the workshop can be downloaded by:
 
 .. code::
 
