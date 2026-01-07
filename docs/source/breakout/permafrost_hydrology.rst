@@ -3,7 +3,7 @@ Permafrost hydrology breakout group
 
 In this breakout group, we will be investigating different options for representing permafrost hydrology in ELM and ATS.
 The main goals of this breakout group will be to demonstrate the sensitivity of model simulations to choices in model physics
-and surface boudary conditions, using a field site of Utqiagvik, Alaska as the test case.
+and surface boundary conditions, using a field site of Utqiagvik, Alaska as the test case.
 
 If you don't still have a visualization container running, please start one now:
 
@@ -19,7 +19,7 @@ If you don't still have a visualization container running, please start one now:
 Background on ELM subsurface hydrology and soil column layer
 -----------------------------------------------------------
 
-ELM's vertical discritization
+ELM's vertical discretization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ELM represents the subsurface using a vertically discretized soil column designed to resolve strong near-surface gradients while still extending deep enough to capture deep soil temperature responses. The standard configuration uses 15 soil layers with exponentially increasing thickness with depth, placing many thin layers near the surface where temperature, moisture, and freeze–thaw gradients are sharp, and fewer, thicker layers at depth where changes are slower. Importantly, ELM only computes hydrology on the top 10 layers, which extends to ~3.8 meters depth. The remaining five layers below this depth are only used for thermal calculations and do not participate in water storage or flow.
@@ -38,7 +38,7 @@ When ice forms in the pore space, it does not simply remove water—it blocks fl
 
 .. note::TODO
 
-    add ice impedence equation from Oleson et al. 2013 here
+    add ice impedance equation from Oleson et al. 2013 here
 
 
 Perched drainage and runoff above frozen layers
@@ -84,3 +84,11 @@ Impacts of cryosuction (ATS)
 
 
 Note: Generative AI was used to help draft and revise portions of this text. The authors reviewed and edited the content as needed and take full responsibility for the accuracy and appropriateness of the final document.
+
+
+
+
+
+Full runs
+^^^^^^^^^
+The full simulation, including the spinup stages can be run as follows:
