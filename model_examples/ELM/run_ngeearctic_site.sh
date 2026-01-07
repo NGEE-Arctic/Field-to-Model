@@ -519,7 +519,7 @@ if /opt/conda/bin/python ./site_fullrun.py \
       --metdir ${met_path} \
       --domainfile /mnt/inputdata/E3SM/share/domains/domain.clm/${domain_file} \
       --surffile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${surf_file} \
-      --landusefile /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file} \
+      --landusefile ${landuse_file} \
       --srcmods_loc ${src_mod_path} \
       --use_onset_gdd_extension \
       ${options} \
