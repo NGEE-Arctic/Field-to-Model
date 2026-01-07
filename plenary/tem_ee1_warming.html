@@ -399,35 +399,13 @@ us to interactively explore the data and create plots to see how the warming
 treatment affected the soil temperatures.</p>
 <p>To start this notebook, use another terminal to launch a Jupyter Notebook server
 in a new container:</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><span class="red">TODO</span></p>
-<p>Until we can get Jupyter installed in the container image,  we need to do
-this in two steps!! Once installed in the container, you can do this in
-a single step, i.e. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">...</span> <span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">...</span></code> as shown below.</p>
-<p>Get a shell to the container as above:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>yuanfornl/ngee-arctic-modex26:models-main-latest<span class="w"> </span>/bin/bash
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+   -p 8888:8888 \
+   -v $(pwd):/home/jovyan \
+   -v inputdata:/mnt/inputdata \
+   -v output:/mnt/output \
+   yuanfornl/ngee-arctic-modex26:vis-main-latest
 </pre></div>
-</div>
-<p>Then, once inside the container, install Jupyter so it is available:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># you could use conda or pip here too...</span>
-mamba<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jupyter<span class="w"> </span>ipython
-</pre></div>
-</div>
-<p>Then you can start the notebook server:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--ip<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="w"> </span><span class="m">8888</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You have to re-install Jupyter each time you start a new container until we
-get it baked into the image.</p>
-</div>
 </div>
 <p>You should see output like this:</p>
 <p>Once the server is running, you should see a URL printed out in the terminal

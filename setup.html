@@ -172,35 +172,6 @@ platforms (e.g., Windows vs mac).</p>
 post any issues you are having here: <a class="reference external" href="https://github.com/NGEE-Arctic/Field-to-Model/issues/38">https://github.com/NGEE-Arctic/Field-to-Model/issues/38</a>
 and we will try to have someone from the organizing team help you out before the workshop!</p>
 </section>
-<section id="launch-the-containers">
-<h2><span class="section-number">2.6. </span>Launch the containers<a class="headerlink" href="#launch-the-containers" title="Link to this heading">¶</a></h2>
-<p>Then once you have the images you can run them with the following commands
-from the folder containing the field-to-model repo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
-    --name models-container \
-    -v  $(pwd):/home/modex_user \
-    -v inputdata:/mnt/inputdata \
-    -v output:/mnt/output \
-    yuanfornl/ngee-arctic-modex26:models-main-latest /bin/bash
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
-    --name vis-container \
-    -v  $(pwd):/home/modex_user \
-    -v output:/mnt/output \
-    -p 8888:8888 \
-    yuanfornl/ngee-arctic-modex26:vis-main-latest
-</pre></div>
-</div>
-<p>If you need a shell into the visualization container, you can open one using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="p">{</span><span class="n">CONTAINER_NAME</span><span class="p">}</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
-</pre></div>
-</div>
-<p>You can find the value of <code class="docutils literal notranslate"><span class="pre">{CONTAINER_NAME}</span></code> by using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">ps</span>
-</pre></div>
-</div>
-</section>
 </section>
 
 
@@ -226,7 +197,6 @@ from the folder containing the field-to-model repo:</p>
 <li><a class="reference internal" href="#download-docker-containers">2.3. Download Docker containers</a></li>
 <li><a class="reference internal" href="#get-the-workshop-data">2.4. Get the workshop data</a></li>
 <li><a class="reference internal" href="#test-the-containers">2.5. Test the containers</a></li>
-<li><a class="reference internal" href="#launch-the-containers">2.6. Launch the containers</a></li>
 </ul>
 </li>
 </ul>
