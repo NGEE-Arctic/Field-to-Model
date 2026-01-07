@@ -119,8 +119,8 @@ TEM, and show you how to run each of these models and look at model
 results for different cases for snow, vegetation, and permafrost model
 outputs. 
 
-* ELM Model :ref:`ELM Model `.
-* TEM Model :ref:`TEM Model `.
+* ELM Model run example: :ref:`ELM Model`.
+* TEM Model run example: :ref:`TEM Model`.
 
 
 References
