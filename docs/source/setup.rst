@@ -24,8 +24,7 @@ You will need the following software:
 * git
 * WSL (Windows Subsystem for Linux) for Windows users
 
-Optionally, you will need a 3D visualization tool: one of ParaView or VisIt.  VisIt is a little more intuitive to new users if you have never used either one and is sufficient for 90% of what we will do; ParaView is preferred for viewing complex 3D meshes.
-This will be most useful for the ATS section of this Workshop.
+Optionally, you will need a 3D visualization tool: one of ParaView or VisIt for the ATS section of this workshop.  VisIt is a little more intuitive to new users if you have never used either one and is sufficient for 90% of what we will do; ParaView is preferred for viewing complex 3D meshes.
   
 Docker
 ^^^^^^
@@ -48,11 +47,11 @@ Docker
 
         You will have to be mindful of whether your command line interfaces from here on are Windows Powershell kernels
         or a Linux/WSL kernel. Everything above this comment should be done in PowerShell, everything from here should 
-        be done in Linux/WSL kernel. If you are not sure which you are currently using, try running `uname -a` in your
+        be done in Linux/WSL kernel. If you are not sure which you are currently using, try running ``uname -a`` in your
         command line window. If you are in PowerShell, you will get an error; if you are in WSL/Linux, you should get output
         that starts with "Linux" or "Ubuntu". If you are in PowerShell, and need a WSL terminal, you could open one using 
-        the WSL application, a new Ubuntu application if it's been installed or simply typing `wsl` into Powershell at this point.
-        (note, however for this last option: you should change directories to /home/${USER} - `cd /home${USER}`) 
+        the WSL application, a new Ubuntu application if it's been installed or simply typing ``wsl`` into Powershell at this point.
+        (note, however for this last option: you should change directories to /home/${USER} - ``cd /home/${USER}``) 
 
     .. seealso::
 
