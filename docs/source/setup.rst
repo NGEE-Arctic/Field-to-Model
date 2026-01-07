@@ -151,7 +151,7 @@ E3SM/ELM and TEM input data needed for the workshop can be downloaded by:
 
 .. code::
 
-    docker run -it --rm \
+    docker run -it --pull always--rm \
         -v $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
@@ -164,7 +164,7 @@ We have included a quick script to test whether the container images work for yo
 
 .. code::
 
-    docker run -it --rm \
+    docker run -it --pull always --rm \
         -v $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
@@ -179,6 +179,44 @@ If you get output that matches the output below, you've setup the container corr
     v0.8.3-42-g77038e0c
     Docker	E3SM  README.md  docs  model_examples  tools
     inputdata  output
+
+
+Let's also test the visualization container:
+
+.. code::
+
+    docker run -it --pull always --rm \
+        -p 8888:8888 \
+        -v $(pwd):/home/jovyan \
+        -v inputdata:/mnt/inputdata \
+        -v output:/mnt/output \
+        yuanfornl/ngee-arctic-modex26:vis-main-latest
+
+You should get output to your terminal window that looks something like this:
+
+.. code-block::bash
+
+    [I 2026-01-07 18:34:13.827 ServerApp] nbclassic | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.850 ServerApp] nbdime | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.852 ServerApp] notebook | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.852 ServerApp] panel.io.jupyter_server_extension | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.856 ServerApp] solara.server.jupyter.server_extension | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.858 ServerApp] voila.server_extension | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.858 ServerApp] Serving notebooks from local directory: /home/jovyan
+    [I 2026-01-07 18:34:13.858 ServerApp] Jupyter Server 2.17.0 is running at:
+    [I 2026-01-07 18:34:13.858 ServerApp] http://localhost:8888/lab?token=5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+    [I 2026-01-07 18:34:13.858 ServerApp]     http://127.0.0.1:8888/lab?token=5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+    [I 2026-01-07 18:34:13.858 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+    [C 2026-01-07 18:34:13.862 ServerApp] 
+        
+        To access the server, open this file in a browser:
+            file:///home/jovyan/.local/share/jupyter/runtime/jpserver-7-open.html
+        Or copy and paste one of these URLs:
+            http://localhost:8888/lab?token=5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+            http://127.0.0.1:8888/lab?token=5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+
+If you do, copy one of the bottom two links into a web browser and it should open a JupyterLab interface.
+
 
 Please take a moment to report if you were able to successfully get to this stage, or 
 post any issues you are having here: https://github.com/NGEE-Arctic/Field-to-Model/issues/38

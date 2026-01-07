@@ -22,7 +22,7 @@ the port mapping in case you want to run a Jupyter notebook server or similar
 
   docker volume create inputdata
   docker volume create output
-  docker run -it --rm \
+  docker run -it --pull always --rm \
          --port 9999:9999 \
          -v inputdata:/mnt/inputdata \
          -v output:/mnt/output \

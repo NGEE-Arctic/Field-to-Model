@@ -24,7 +24,7 @@ Baseline run (Arctic initialization):
 
 .. code-block:: bash
 
-   docker run -it --rm \
+   docker run -it --pull always --rm \
      -v $(pwd):/home/modex_user \
      -v inputdata:/mnt/inputdata \
      -v output:/mnt/output \
@@ -39,7 +39,7 @@ Temperature scaled by +3 °C:
 
 .. code-block:: bash
 
-   docker run -it --rm \
+   docker run -it --pull always --rm \
      -v $(pwd):/home/modex_user \
      -v inputdata:/mnt/inputdata \
      -v output:/mnt/output \
@@ -56,7 +56,7 @@ Precipitation scaling (rain +40%, snow +60%):
 
 .. code-block:: bash
 
-   docker run -it --rm \
+   docker run -it --pull always --rm \
      -v $(pwd):/home/modex_user \
      -v inputdata:/mnt/inputdata \
      -v output:/mnt/output \
@@ -75,7 +75,7 @@ Combined temperature and precipitation scaling:
 
 .. code-block:: bash
 
-   docker run -it --rm \
+   docker run -it --pull always --rm \
      -v $(pwd):/home/modex_user \
      -v inputdata:/mnt/inputdata \
      -v output:/mnt/output \
