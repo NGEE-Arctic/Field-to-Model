@@ -53,7 +53,7 @@ sites using a shell script. Several of the new parameterizations added in phase 
 the NGEE Arctic project are accessible through this script, as are several ways of
 testing the sensitivity of model results to changes in forcing conditions. You can
 see the options that are available for the script by running:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always --rm \
     -v  $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
@@ -64,7 +64,7 @@ see the options that are available for the script by running:</p>
 <p>In the first example, we will run a ‘control’ case for one of the NGEE Arctic sites where
 none of the new capabilities developed for NGEE Arctic have been turned on. There are 9 sites
 you can choose from and substitute into the command below at &lt;site_name&gt;:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always --rm \
    -v  $(pwd):/home/modex_user \
    -v inputdata:/mnt/inputdata \
    -v output:/mnt/output \
@@ -81,7 +81,7 @@ forcing from dapper will be used, but GSWP3 is available as an option for compar
 let’s change the initial conditions of the first spinup case. By default, ELM initializes at 274K and at fairly dry
 soil conditions. A new initialization option, <code class="docutils literal notranslate"><span class="pre">--use_arctic_init</span></code>, sets wetter and colder initial conditions for
 the first step (soil column at liquid saturation, and at a temperature varying between 290K and 250K based on <cite>cos(lat)</cite>).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always --rm \
    -v  $(pwd):/home/modex_user \
    -v inputdata:/mnt/inputdata \
    -v output:/mnt/output \

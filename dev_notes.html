@@ -78,7 +78,7 @@ the docs.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>docbuilder<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-p9999:9999<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,src<span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/docs,dst<span class="o">=</span>/docs<span class="w"> </span><span class="se">\ </span><span class="c1"># bind mount wants abs path</span>
-<span class="w">    </span>-it<span class="w"> </span>--rm<span class="w"> </span>docbuilder<span class="w"> </span>make<span class="w"> </span>livehtml
+<span class="w">    </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span>docbuilder<span class="w"> </span>make<span class="w"> </span>livehtml
 </pre></div>
 </div>
 <div class="admonition warning">

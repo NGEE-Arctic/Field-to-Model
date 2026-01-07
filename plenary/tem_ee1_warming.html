@@ -70,7 +70,7 @@ etc.</p>
 <h3><span class="section-number">4.2.1. </span>Starting the container<a class="headerlink" href="#starting-the-container" title="Link to this heading">¶</a></h3>
 <p>Assuming you have completed all the step in the <a class="reference internal" href="../setup.html#getting-started"><span class="std std-ref">Getting Started</span></a>
 instructions, run the following command to start a shell in the model container:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
@@ -399,7 +399,7 @@ us to interactively explore the data and create plots to see how the warming
 treatment affected the soil temperatures.</p>
 <p>To start this notebook, use another terminal to launch a Jupyter Notebook server
 in a new container:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always --rm \
    -p 8888:8888 \
    -v $(pwd):/home/jovyan \
    -v inputdata:/mnt/inputdata \

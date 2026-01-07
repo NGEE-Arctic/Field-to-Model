@@ -176,7 +176,7 @@ platforms (e.g., Windows vs mac).</p>
 <section id="get-the-workshop-data">
 <h2><span class="section-number">2.4. </span>Get the workshop data<a class="headerlink" href="#get-the-workshop-data" title="Link to this heading">¶</a></h2>
 <p>E3SM/ELM and TEM input data needed for the workshop can be downloaded by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always--rm \
     -v $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     yuanfornl/ngee-arctic-modex26:models-main-latest \
@@ -187,7 +187,7 @@ platforms (e.g., Windows vs mac).</p>
 <section id="test-the-containers">
 <h2><span class="section-number">2.5. </span>Test the containers<a class="headerlink" href="#test-the-containers" title="Link to this heading">¶</a></h2>
 <p>We have included a quick script to test whether the container images work for you:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always --rm \
     -v $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
@@ -202,6 +202,17 @@ platforms (e.g., Windows vs mac).</p>
 <span class="n">inputdata</span>  <span class="n">output</span>
 </pre></div>
 </div>
+<p>Let’s also test the visualization container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always --rm \
+    -p 8888:8888 \
+    -v $(pwd):/home/jovyan \
+    -v inputdata:/mnt/inputdata \
+    -v output:/mnt/output \
+    yuanfornl/ngee-arctic-modex26:vis-main-latest
+</pre></div>
+</div>
+<p>You should get output to your terminal window that looks something like this:</p>
+<p>If you do, copy one of the bottom two links into a web browser and it should open a JupyterLab interface.</p>
 <p>Please take a moment to report if you were able to successfully get to this stage, or
 post any issues you are having here: <a class="reference external" href="https://github.com/NGEE-Arctic/Field-to-Model/issues/38">https://github.com/NGEE-Arctic/Field-to-Model/issues/38</a>
 and we will try to have someone from the organizing team help you out before the workshop!</p>

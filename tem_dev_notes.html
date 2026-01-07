@@ -51,7 +51,7 @@ the port mapping in case you want to run a Jupyter notebook server or similar
 (not installed by default).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker volume create inputdata
 docker volume create output
-docker run -it --rm \
+docker run -it --pull always --rm \
        --port 9999:9999 \
        -v inputdata:/mnt/inputdata \
        -v output:/mnt/output \

@@ -41,6 +41,71 @@
             
   <section id="permafrost-hydrology-breakout-group">
 <h1><span class="section-number">7. </span>Permafrost hydrology breakout group<a class="headerlink" href="#permafrost-hydrology-breakout-group" title="Link to this heading">¶</a></h1>
+<p>In this breakout group, we will be investigating different options for representing permafrost hydrology in ELM and ATS.
+The main goals of this breakout group will be to demonstrate the sensitivity of model simulations to choices in model physics
+and surface boundary conditions, using a field site of Utqiagvik, Alaska as the test case.</p>
+<p>If you don’t still have a visualization container running, please start one now:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/jovyan<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>yuanfornl/ngee-arctic-modex26:vis-main-latest
+</pre></div>
+</div>
+<section id="background-on-elm-subsurface-hydrology-and-soil-column-layer">
+<h2><span class="section-number">7.1. </span>Background on ELM subsurface hydrology and soil column layer<a class="headerlink" href="#background-on-elm-subsurface-hydrology-and-soil-column-layer" title="Link to this heading">¶</a></h2>
+<section id="elm-s-vertical-discretization">
+<h3><span class="section-number">7.1.1. </span>ELM’s vertical discretization<a class="headerlink" href="#elm-s-vertical-discretization" title="Link to this heading">¶</a></h3>
+<p>ELM represents the subsurface using a vertically discretized soil column designed to resolve strong near-surface gradients while still extending deep enough to capture deep soil temperature responses. The standard configuration uses 15 soil layers with exponentially increasing thickness with depth, placing many thin layers near the surface where temperature, moisture, and freeze–thaw gradients are sharp, and fewer, thicker layers at depth where changes are slower. Importantly, ELM only computes hydrology on the top 10 layers, which extends to ~3.8 meters depth. The remaining five layers below this depth are only used for thermal calculations and do not participate in water storage or flow.</p>
+</section>
+<section id="freezing-physics-in-elm-heat-phase-change-and-supercooled-water">
+<h3><span class="section-number">7.1.2. </span>Freezing physics in ELM: heat, phase change, and “supercooled” water<a class="headerlink" href="#freezing-physics-in-elm-heat-phase-change-and-supercooled-water" title="Link to this heading">¶</a></h3>
+<p>ELM treats soil freezing as a fully coupled thermal–hydrologic process rather than as a binary of frozen or thawed. Soil temperatures are computed by solving the heat conduction equation through a vertically layered soil  column, accounting for heat capacity and thermal conductivity that depend on soil moisture, ice, and organic matter (Oleson et al. 2013). Once temperatures are updated, the model checks whether conditions allow phase change—freezing or melting of soil water—and adjusts liquid water, ice content, and temperature in a way that conserves energy (latent heat effects are explicitly included).</p>
+<p>A key feature is the treatment of supercooled soil water. Even below 0°C, not all pore water freezes immediately. Instead, ELM uses a freezing-point-depression relationship tied to soil matric potential (based on Clapp–Hornberger parameters) to allow liquid water and ice to coexist over a range of subfreezing temperatures. This is physically important: fine-textured soils can retain unfrozen water well below 0 °C, which allows limited flow and transport to continue in cold conditions.</p>
+</section>
+<section id="ice-impedance-how-frozen-soil-restricts-water-movement">
+<h3><span class="section-number">7.1.3. </span>Ice impedance: how frozen soil restricts water movement<a class="headerlink" href="#ice-impedance-how-frozen-soil-restricts-water-movement" title="Link to this heading">¶</a></h3>
+<p>When ice forms in the pore space, it does not simply remove water—it blocks flow pathways. ELM represents this using an ice impedance factor, which reduces hydraulic conductivity as a function of the fraction of pore space filled with ice. This reduction follows a strong power-law relationship, meaning that even moderate ice contents can dramatically lower permeability. In practice, partially frozen layers can behave almost like impermeable barriers.</p>
+</section>
+<section id="perched-drainage-and-runoff-above-frozen-layers">
+<h3><span class="section-number">7.1.4. </span>Perched drainage and runoff above frozen layers<a class="headerlink" href="#perched-drainage-and-runoff-above-frozen-layers" title="Link to this heading">¶</a></h3>
+<p>Because frozen soil layers strongly restrict downward flow, ELM allows for the formation of perched saturated zones. These occur when unfrozen, wet soil overlies an ice-rich layer that impedes drainage. Water accumulates above the frozen layer until the soil becomes nearly saturated. Once this perched zone forms, ELM parameterizes lateral drainage (runoff) from it, representing flow downslope along the frozen barrier.</p>
+<p>The strength of this perched drainage depends on several factors: the thickness of the saturated zone, the (ice-reduced) hydraulic conductivity, and the grid-cell mean slope. The model explicitly identifies the frost table (the top of the frozen barrier) and the depth of the perched water table, then removes water laterally from the intervening layers.</p>
+</section>
+<section id="additional-notes">
+<h3><span class="section-number">7.1.5. </span>Additional notes<a class="headerlink" href="#additional-notes" title="Link to this heading">¶</a></h3>
+<p>Key differences to keep in mind between the two models used in this breakout session:
+- ELM at ATS use different soil water retention models. ELM uses Clapp and Hornberger, while ATS uses van Genuchten.
+- ATS has cryosuction physics implemented, while ELM does not.</p>
+</section>
+</section>
+<section id="impact-of-initialization-conditions-and-vertical-layer-structure-on-permafrost-hydrology">
+<h2><span class="section-number">7.2. </span>Impact of initialization conditions and vertical layer structure on permafrost hydrology<a class="headerlink" href="#impact-of-initialization-conditions-and-vertical-layer-structure-on-permafrost-hydrology" title="Link to this heading">¶</a></h2>
+<p>The ice impedance parameterization can cause results to be very sensitive to the choices of initial conditions. This sensitivity arises from the lack of permeability in the top frozen layer. Because soil columns in the high-Arctic freeze rapidly after initialization, this can rapidly cause a lens to form that prohibits any additional drainage through that layer. If the initial conditions before this layer freezes are too dry, this can cause a subsurface that is unrealistically dry below the first frozen layer. By default, ELM initializes its soil column at 15% of liquid saturation and at 274K, which for many Arctic simulations leads to this condition where the subsurface is quite dry below the active layer. An alternative initialization scheme that is implemented in ELM is to initialize the soil column at 100% liquid saturation and at a more appropriate approximated temeperature than using 274K globally - we have chosen to use 250 + 40 * cos(latitude) for this initialization option.</p>
+<p>To help speed up the simulations in these breakout groups, we have provided restart files from the end of the two spinup stages in OLMT.</p>
+</section>
+<section id="polygonal-tundra-landscapes">
+<h2><span class="section-number">7.3. </span>Polygonal tundra landscapes<a class="headerlink" href="#polygonal-tundra-landscapes" title="Link to this heading">¶</a></h2>
+<p>Networks of subsurface ice wedges can create polygonal tundra landscapes. The ice wedges alter Arctic hydrology both by promoting microtopographic variations at the surface that affects surface water storage capacity and by acting as subsurface barriers to lateral flow.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/AboltYoungPolygons.png"><img alt="Example of polygonal tundra landscape" src="../_images/AboltYoungPolygons.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">DEM (a) and polygon classification (b) of a landscape south of Prudhoe Bay, Alaska (Abolt and Young, 2020). In (b), high-centered polygons are shown in red, flat-centered polygons are closer to white, and low-centered polygons are shown in blue.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>In Phase 3 of NGEE Arctic, a new parameterization to represent these polygonal landscapes was introduced to try to capture these effects in ELM (Demir et al. in preparation). This parameterization was developed using intermediate-scale ATS simulations of polygonal tundra to inform new functional relationships between microtopography and surface and subsurface hydrology in ELM.</p>
+<p>We’ve provided surface files that we can investigate the impacts of this parameterization against the simulations we created above.</p>
+</section>
+<section id="impacts-of-cryosuction-ats">
+<h2><span class="section-number">7.4. </span>Impacts of cryosuction (ATS)<a class="headerlink" href="#impacts-of-cryosuction-ats" title="Link to this heading">¶</a></h2>
+<p>Note: Generative AI was used to help draft and revise portions of this text. The authors reviewed and edited the content as needed and take full responsibility for the accuracy and appropriateness of the final document.</p>
+<section id="full-runs">
+<h3><span class="section-number">7.4.1. </span>Full runs<a class="headerlink" href="#full-runs" title="Link to this heading">¶</a></h3>
+<p>The full simulation, including the spinup stages can be run as follows:</p>
+</section>
+</section>
 </section>
 
 
@@ -53,6 +118,29 @@
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2026"/>
             </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">7. Permafrost hydrology breakout group</a><ul>
+<li><a class="reference internal" href="#background-on-elm-subsurface-hydrology-and-soil-column-layer">7.1. Background on ELM subsurface hydrology and soil column layer</a><ul>
+<li><a class="reference internal" href="#elm-s-vertical-discretization">7.1.1. ELM’s vertical discretization</a></li>
+<li><a class="reference internal" href="#freezing-physics-in-elm-heat-phase-change-and-supercooled-water">7.1.2. Freezing physics in ELM: heat, phase change, and “supercooled” water</a></li>
+<li><a class="reference internal" href="#ice-impedance-how-frozen-soil-restricts-water-movement">7.1.3. Ice impedance: how frozen soil restricts water movement</a></li>
+<li><a class="reference internal" href="#perched-drainage-and-runoff-above-frozen-layers">7.1.4. Perched drainage and runoff above frozen layers</a></li>
+<li><a class="reference internal" href="#additional-notes">7.1.5. Additional notes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#impact-of-initialization-conditions-and-vertical-layer-structure-on-permafrost-hydrology">7.2. Impact of initialization conditions and vertical layer structure on permafrost hydrology</a></li>
+<li><a class="reference internal" href="#polygonal-tundra-landscapes">7.3. Polygonal tundra landscapes</a></li>
+<li><a class="reference internal" href="#impacts-of-cryosuction-ats">7.4. Impacts of cryosuction (ATS)</a><ul>
+<li><a class="reference internal" href="#full-runs">7.4.1. Full runs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
 <search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
