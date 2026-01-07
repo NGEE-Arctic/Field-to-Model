@@ -22,9 +22,9 @@ You will need the following software:
 
 * Docker Desktop - though note you may need an institutional license.
 * git
+* WSL (Windows Subsystem for Linux) for Windows users
 
-Optionally, you will need a 3D visualization tool: one of ParaView or VisIt.  VisIt is a little more intuitive to new users if you have never used either one and is sufficient for 90% of what we will do; ParaView is preferred for viewing complex 3D meshes.
-This will be most useful for the ATS section of this Workshop.
+Optionally, you will need a 3D visualization tool: one of ParaView or VisIt for the ATS section of this workshop.  VisIt is a little more intuitive to new users if you have never used either one and is sufficient for 90% of what we will do; ParaView is preferred for viewing complex 3D meshes.
   
 Docker
 ^^^^^^
@@ -43,6 +43,22 @@ Docker
     * Verify install using ``wsl --list``. You should see something like "Ubuntu".
     * Set default WSL ``wsl --set-default-version 2``
 
+    .. warning::
+
+        You will have to be mindful of whether your command line interfaces from here on are Windows Powershell kernels
+        or a Linux/WSL kernel. Everything above this comment should be done in PowerShell, everything from here should 
+        be done in Linux/WSL kernel. If you are not sure which you are currently using, try running ``uname -a`` in your
+        command line window. If you are in PowerShell, you will get an error; if you are in WSL/Linux, you should get output
+        that starts with "Linux" or "Ubuntu". If you are in PowerShell, and need a WSL terminal, you could open one using 
+        the WSL application, a new Ubuntu application if it's been installed or simply typing ``wsl`` into Powershell at this point.
+        (note, however for this last option: you should change directories to /home/${USER} - ``cd /home/${USER}``) 
+
+    .. seealso::
+
+        * `WSL Installation <https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package>`_
+        * `WSL Troubleshooting Guide <https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#installation-issues>`_
+
+
 .. admonition:: macOS
 
     Download and install the .dmg file for your silicon type, whether Intel (older) or Apple (M1 and newer).
@@ -51,10 +67,6 @@ Docker
 
     Docker provides instructions for adding DEB package repositories, then installing through apt-get for Ubuntu, Debian, and related distributions.  They also provide RPMs for RHEL8 & 9 and Fedora, and pacman for Arch.
 
-.. seealso::
-
-    * `WSL Installation <https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package>`_
-    * `WSL Troubleshooting Guide <https://learn.microsoft.com/en-us/windows/wsl/troubleshooting#installation-issues>`_
 
 Git
 ^^^
@@ -63,9 +75,17 @@ Git
 * **Linux**: git is included as a standard package under most package managers, e.g. ``sudo apt-get install git``.
 * **Windows**: See `Git Downloads <https://github.com/git-guides/install-git>`_. Note that the GitHub Desktop is also an option for Windows users and provides a GUI.
 
+ParaView or VisIt
+^^^^^^^^^^^^^^^^^^^^^^
+* **ParaView**: ParaView can be installed from the KitWare website (or for LANL folks, LANL self service/software center): `Download ParaView <https://www.paraview.org/download/>`_
+* **VisIt**: VisIt can be installed from the LLNL website: `Download VisIt <https://wci.llnl.gov/simulation/computer-codes/visit/downloads>`_
 
 Clone Field-to-Model repository for the workshop
 -------------------------------------------------
+
+.. tip::
+
+    Reminder that Windows users now need to be in a WSL terminal for this step and all subsequent steps.
 
 .. code::
 
@@ -74,6 +94,21 @@ Clone Field-to-Model repository for the workshop
 
 This step downloads all of the scripts and infrastructure we have developed for the workshop,
 it should take a couple minutes to complete.
+
+.. warning::
+
+    Depending on how your system is setup and the details of your GitHub account if you have one,
+    you may get several errors about SSH keys when cloning the submodules. If this happens,
+    try these steps:
+
+    .. code::
+
+        git config --add url."https://github.com/".insteadOf "git@github.com:"
+        git config --add url."https://github.com/".insteadOf "ssh://git@github.com/"
+        git submodule update --init --recursive
+
+    If you are still seeing errors at this step, we will have alternate instructions for you 
+    to run ELM in this workshop.
 
 Download Docker containers
 ----------------------------
@@ -112,7 +147,7 @@ platforms (e.g., Windows vs mac).
 Get the workshop data
 ------------------------------
 
-E3SM/ELM input data needed for the workshop can be downloaded by:
+E3SM/ELM and TEM input data needed for the workshop can be downloaded by:
 
 .. code::
 

@@ -161,7 +161,7 @@
     {
       "name": "_sources/setup.rst.txt",
       "digest": {
-        "sha256": "fa9962a70afdcefb13463467a52a046ecb277906f48d3b5e381ead99aeb382b6"
+        "sha256": "276ef023cdefe84a765ed98e7f019eeddce2b81549e58a447353f095d220b65c"
       }
     },
     {
@@ -401,7 +401,7 @@
     {
       "name": "objects.inv",
       "digest": {
-        "sha256": "4e862963ea2bac0370388150c8e898753317e42b566fd06b5aeb7a0ecc6baa17"
+        "sha256": "888bfc159f9e7de77291ce70a82cfc629d67dd028b4744c27a7fb6dbddac22f4"
       }
     },
     {
@@ -431,13 +431,13 @@
     {
       "name": "searchindex.js",
       "digest": {
-        "sha256": "397bb9d18904b0502473c50bc67876572b068d5f3e76f8aed45648241aaf409c"
+        "sha256": "8464609d3545f2c8ccdfd1b14f2c2c37fdfefd7da446963a73f8f9f470d39fe1"
       }
     },
     {
       "name": "setup.html",
       "digest": {
-        "sha256": "269696bfeae658097b29bf645ed1703e9b05b425da6c1181ebd78b7e46537077"
+        "sha256": "d293af0ca5ebc056730becbc88846d16a33f35608b70acf0078a8bfedd1494ae"
       }
     },
     {
@@ -461,7 +461,7 @@
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20790493867/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20791335364/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -488,37 +488,55 @@
         ]
       },
       "environment": {
-        "github_actor": "jsta",
-        "github_actor_id": "7844578",
+        "github_actor": "rfiorella",
+        "github_actor_id": "17805542",
         "github_event_name": "push",
         "github_event_payload": {
-          "after": "88daff3877c9584a9fccb4224cf30971ce0e5209",
+          "after": "d84e9f026bb848a580ecc7edc487afa44d2b4166",
           "base_ref": null,
-          "before": "07dbd81356e8de8e1023147594f3bca77212106f",
+          "before": "88daff3877c9584a9fccb4224cf30971ce0e5209",
           "commits": [
             {
               "author": {
                 "email": "tcarman2@alaska.edu",
-                "name": "tobey",
+                "name": "Tobey Carman",
                 "username": "tobeycarman"
               },
               "committer": {
-                "email": "noreply@github.com",
-                "name": "GitHub",
-                "username": "web-flow"
-              },
-              "distinct": false,
-              "id": "944341e4cd51b23f6bb75bc7d95712c589128390",
-              "message": "Fix links in snow veg permafrost write up",
-              "timestamp": "2026-01-06T23:13:20-09:00",
-              "tree_id": "462f6d732afd68dfd9aa38433072761f50a2bda4",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/944341e4cd51b23f6bb75bc7d95712c589128390"
-            },
-            {
-              "author": {
                 "email": "tcarman2@alaska.edu",
-                "name": "tobey",
+                "name": "Tobey Carman",
                 "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "edf18f7e348f2928ff2cab0762ee8dc82913c80b",
+              "message": "Add more notes for windows getting started.",
+              "timestamp": "2026-01-05T13:19:24-09:00",
+              "tree_id": "72de739d2e81ddd9c00df119fc9e3f5100ae3ed2",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/edf18f7e348f2928ff2cab0762ee8dc82913c80b"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "85708396bd4d5f4cb9e2cdf0ec466c6d3d1e7717",
+              "message": "update windows powershell/wsl notes",
+              "timestamp": "2026-01-06T16:59:18-07:00",
+              "tree_id": "79a85323040ad1a66c45c32219bbb7f2e942db06",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/85708396bd4d5f4cb9e2cdf0ec466c6d3d1e7717"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
               },
               "committer": {
                 "email": "noreply@github.com",
@@ -526,17 +544,35 @@
                 "username": "web-flow"
               },
               "distinct": false,
-              "id": "f6d12b02f25cac8b315e2a24079e82d13a5511f5",
-              "message": "Change from plain links to a full Table of Contents\n\nAdded a table of contents for ELM and TEM model examples.",
-              "timestamp": "2026-01-06T23:22:43-09:00",
-              "tree_id": "10781247a3ee7aed1f6415d3edb12d29778fef6e",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/f6d12b02f25cac8b315e2a24079e82d13a5511f5"
+              "id": "383c3e07fa84dcfc3b0a93aa74089b32acbebc77",
+              "message": "Fix inline code callouts.",
+              "timestamp": "2026-01-07T10:15:29-07:00",
+              "tree_id": "0abd9bc9e4f87d8cb04b6b5c1ba6357d64518ea2",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/383c3e07fa84dcfc3b0a93aa74089b32acbebc77"
             },
             {
               "author": {
-                "email": "jsta@users.noreply.github.com",
-                "name": "Jemma Stachelek",
-                "username": "jsta"
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "f05eea8f7f9dc494bec17a84ea83b42f6a73f168",
+              "message": "additional windows hints",
+              "timestamp": "2026-01-07T10:59:11-07:00",
+              "tree_id": "0b0f08a3c9cb0e0c827c97763fb3da99f5bf6128",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/f05eea8f7f9dc494bec17a84ea83b42f6a73f168"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
               },
               "committer": {
                 "email": "noreply@github.com",
@@ -544,22 +580,22 @@
                 "username": "web-flow"
               },
               "distinct": true,
-              "id": "88daff3877c9584a9fccb4224cf30971ce0e5209",
-              "message": "Merge pull request #71 from NGEE-Arctic/tobeycarman-patch-1\n\nFix links in snow veg permafrost write up",
-              "timestamp": "2026-01-07T10:32:25-07:00",
-              "tree_id": "10781247a3ee7aed1f6415d3edb12d29778fef6e",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/88daff3877c9584a9fccb4224cf30971ce0e5209"
+              "id": "d84e9f026bb848a580ecc7edc487afa44d2b4166",
+              "message": "Merge pull request #63 from NGEE-Arctic/windows-warning\n\nAdd more notes for windows getting started.",
+              "timestamp": "2026-01-07T11:00:27-07:00",
+              "tree_id": "e621f8787860ac6af13d068df0e72e22b6ccda91",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/d84e9f026bb848a580ecc7edc487afa44d2b4166"
             }
           ],
-          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/07dbd81356e8...88daff3877c9",
+          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/88daff3877c9...d84e9f026bb8",
           "created": false,
           "deleted": false,
           "forced": false,
           "head_commit": {
             "author": {
-              "email": "jsta@users.noreply.github.com",
-              "name": "Jemma Stachelek",
-              "username": "jsta"
+              "email": "rfiorella@lanl.gov",
+              "name": "Rich Fiorella",
+              "username": "rfiorella"
             },
             "committer": {
               "email": "noreply@github.com",
@@ -567,11 +603,11 @@
               "username": "web-flow"
             },
             "distinct": true,
-            "id": "88daff3877c9584a9fccb4224cf30971ce0e5209",
-            "message": "Merge pull request #71 from NGEE-Arctic/tobeycarman-patch-1\n\nFix links in snow veg permafrost write up",
-            "timestamp": "2026-01-07T10:32:25-07:00",
-            "tree_id": "10781247a3ee7aed1f6415d3edb12d29778fef6e",
-            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/88daff3877c9584a9fccb4224cf30971ce0e5209"
+            "id": "d84e9f026bb848a580ecc7edc487afa44d2b4166",
+            "message": "Merge pull request #63 from NGEE-Arctic/windows-warning\n\nAdd more notes for windows getting started.",
+            "timestamp": "2026-01-07T11:00:27-07:00",
+            "tree_id": "e621f8787860ac6af13d068df0e72e22b6ccda91",
+            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/d84e9f026bb848a580ecc7edc487afa44d2b4166"
           },
           "organization": {
             "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -588,8 +624,8 @@
             "url": "https://api.github.com/orgs/NGEE-Arctic"
           },
           "pusher": {
-            "email": "jsta@users.noreply.github.com",
-            "name": "jsta"
+            "email": "rfiorella@lanl.gov",
+            "name": "rfiorella"
           },
           "ref": "refs/heads/main",
           "repository": {
@@ -649,8 +685,8 @@
             "name": "Field-to-Model",
             "node_id": "R_kgDOPQRvJA",
             "notifications_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/notifications{?since,all,participating}",
-            "open_issues": 16,
-            "open_issues_count": 16,
+            "open_issues": 15,
+            "open_issues_count": 15,
             "organization": "NGEE-Arctic",
             "owner": {
               "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -677,7 +713,7 @@
             },
             "private": false,
             "pulls_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/pulls{/number}",
-            "pushed_at": 1767807145,
+            "pushed_at": 1767808827,
             "releases_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/releases{/id}",
             "size": 42781,
             "ssh_url": "git@github.com:NGEE-Arctic/Field-to-Model.git",
@@ -692,7 +728,7 @@
             "teams_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/teams",
             "topics": [],
             "trees_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/trees{/sha}",
-            "updated_at": "2026-01-07T05:24:58Z",
+            "updated_at": "2026-01-07T17:32:30Z",
             "url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model",
             "visibility": "public",
             "watchers": 0,
@@ -700,24 +736,24 @@
             "web_commit_signoff_required": false
           },
           "sender": {
-            "avatar_url": "https://avatars.githubusercontent.com/u/7844578?v=4",
-            "events_url": "https://api.github.com/users/jsta/events{/privacy}",
-            "followers_url": "https://api.github.com/users/jsta/followers",
-            "following_url": "https://api.github.com/users/jsta/following{/other_user}",
-            "gists_url": "https://api.github.com/users/jsta/gists{/gist_id}",
+            "avatar_url": "https://avatars.githubusercontent.com/u/17805542?v=4",
+            "events_url": "https://api.github.com/users/rfiorella/events{/privacy}",
+            "followers_url": "https://api.github.com/users/rfiorella/followers",
+            "following_url": "https://api.github.com/users/rfiorella/following{/other_user}",
+            "gists_url": "https://api.github.com/users/rfiorella/gists{/gist_id}",
             "gravatar_id": "",
-            "html_url": "https://github.com/jsta",
-            "id": 7844578,
-            "login": "jsta",
-            "node_id": "MDQ6VXNlcjc4NDQ1Nzg=",
-            "organizations_url": "https://api.github.com/users/jsta/orgs",
-            "received_events_url": "https://api.github.com/users/jsta/received_events",
-            "repos_url": "https://api.github.com/users/jsta/repos",
+            "html_url": "https://github.com/rfiorella",
+            "id": 17805542,
+            "login": "rfiorella",
+            "node_id": "MDQ6VXNlcjE3ODA1NTQy",
+            "organizations_url": "https://api.github.com/users/rfiorella/orgs",
+            "received_events_url": "https://api.github.com/users/rfiorella/received_events",
+            "repos_url": "https://api.github.com/users/rfiorella/repos",
             "site_admin": false,
-            "starred_url": "https://api.github.com/users/jsta/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/jsta/subscriptions",
+            "starred_url": "https://api.github.com/users/rfiorella/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/rfiorella/subscriptions",
             "type": "User",
-            "url": "https://api.github.com/users/jsta",
+            "url": "https://api.github.com/users/rfiorella",
             "user_view_type": "public"
           }
         },
@@ -731,20 +767,20 @@
         "github_repository_owner": "NGEE-Arctic",
         "github_repository_owner_id": "184418857",
         "github_run_attempt": "1",
-        "github_run_id": "20790493867",
-        "github_run_number": "167",
+        "github_run_id": "20791335364",
+        "github_run_number": "170",
         "github_runner_arch": "X64",
         "github_runner_environment": "github-hosted",
         "github_runner_image_os": "ubuntu24",
         "github_runner_image_version": "20251215.174.1",
-        "github_runner_name": "GitHub Actions 1000003433",
+        "github_runner_name": "GitHub Actions 1000003481",
         "github_runner_os": "Linux",
-        "github_runner_tracking_id": "github_57b0cfc4-e0ab-4b26-921f-6b85f9fe9866",
+        "github_runner_tracking_id": "github_499274ee-1de4-4d83-bffe-bbc2d0dbb6c1",
         "github_server_url": "https://github.com",
-        "github_triggering_actor": "jsta",
+        "github_triggering_actor": "rfiorella",
         "github_workflow": "Sphinx: Render docs",
         "github_workflow_ref": "NGEE-Arctic/Field-to-Model/.github/workflows/docs.yml@refs/heads/main",
-        "github_workflow_sha": "88daff3877c9584a9fccb4224cf30971ce0e5209",
+        "github_workflow_sha": "d84e9f026bb848a580ecc7edc487afa44d2b4166",
         "platform": "linux/amd64"
       }
     },
@@ -1068,23 +1104,23 @@
         }
       ],
       "digestMapping": {
-        "sha256:0273f55d3ead614340d5f9360544a72ad12b3ec596fa396b64143c94760061cd": "step5",
-        "sha256:2deb1def1e4437a335dd3c207911924eb0cf04a4736ab1d4a54e30b6c5565f36": "step8",
+        "sha256:1316dab45cd6d531cada4ecb696b344fc1d9ac641bc3d2a3d8fea1ce6101e283": "step10",
+        "sha256:1ee288168baa705caa4c6682a4c5c9c445e1c4bdb4cdc59a8c5ddc6f86c83b85": "step2",
+        "sha256:34fe5faea36d4ac43f81d4b101ff3dc1d42a3c949fdf7fa040e93d51ac572d9a": "step4",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:55bfdc9a97304a28fe37679213dde0208546c3aff078a67ad118ddd1cbada439": "step4",
-        "sha256:7cb412d57b9d3c6e4aa9f3d1f147e8fad1cd11d0d385cbbba6f98149b6bd903c": "step9",
-        "sha256:801a82f250ff418f5ae1f53ce8276e4e03cd7884929674bdaca0e0fbcff7a0c7": "step3",
-        "sha256:88deb6cdee437529fd40204cf8295cacfdfb185ae0a593137374797cafb189a5": "step7",
-        "sha256:ad8b60421631fc12c65dc574281ee3b3c246c25ce1572ed35db6f2cb03fe0707": "step2",
-        "sha256:da87cf82fca234031684f917e666946a972ede84c37ca189ec2b977f1bae9ea4": "step1",
-        "sha256:dc02b10b08514eee9494522760c795682955f3e4f36a4611f3bd3ffed4ef61ac": "step10",
-        "sha256:e4f00f9c9a7dc3634269aefbc1cff9bc57af740e4465d622c8215c065a5b0bdb": "step6"
+        "sha256:5f217d1becec8e2fa4d093372a668e3444688396998abc03fd1bfa5fd47d4624": "step5",
+        "sha256:71ed0ef99465f40fcb8305b91fd1d594443b1b4d930dbfd29ca44d1f45276267": "step1",
+        "sha256:a419d9286580a0a87e3fcb345247cd0723d8c5b1ae9cbf5db362e6b851d2d4c8": "step6",
+        "sha256:a4ab42bed094f64451ca6cb5e8bec6d3edf741faf695b53689b3954088d63f04": "step3",
+        "sha256:ad2b4a769a9a66df12be2bbb38ccdb3dd41d005f6e8c31875f01ea1a84c05fc3": "step8",
+        "sha256:b1d98bbb26a31220b823f79cf32c19cc75592eeea3842a75fb5d856c39acef09": "step9",
+        "sha256:ded39561f537ce0e4dfd2b9c2f3a0d02b4122380700bc5798cbd5f2daed40a5f": "step7"
       }
     },
     "metadata": {
-      "buildInvocationID": "hc1s60caqn299tdar6sf9zyg6",
-      "buildStartedOn": "2026-01-07T17:32:41.941797737Z",
-      "buildFinishedOn": "2026-01-07T17:33:03.361945726Z",
+      "buildInvocationID": "zvx8536atnofc0kuszt3jkphh",
+      "buildStartedOn": "2026-01-07T18:08:18.791652328Z",
+      "buildFinishedOn": "2026-01-07T18:08:42.282193501Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -1095,7 +1131,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "88daff3877c9584a9fccb4224cf30971ce0e5209",
+          "revision": "d84e9f026bb848a580ecc7edc487afa44d2b4166",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -1295,8 +1331,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:35fcb2831b6dc8d27f84f26432edf612589e890fde627c642cd51ef6e13ab2e4": "step1",
-                "sha256:4e68e4da047f55e1d5a70847b60c822b299a8d5efadcb0a648ec4c7bd5c962ba": "step0"
+                "sha256:0cf90f8a19a6eccb073eb21933b4b173d4273e4f0f4c8190359ac016502a3add": "step1",
+                "sha256:cfb6a5a94695d8f598d291e8f5e6b76d19ae4e4c7723d794182178e71f535cce": "step0"
               }
             }
           ]
