@@ -46,7 +46,7 @@ the docs.
   docker run --name docbuilder \
       -p9999:9999 \
       --mount type=bind,src=$(pwd)/docs,dst=/docs \ # bind mount wants abs path
-      -it --rm docbuilder make livehtml
+      -it --pull always --rm docbuilder make livehtml
 
 .. warning::
     

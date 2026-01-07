@@ -17,7 +17,7 @@ see the options that are available for the script by running:
 
 .. code:: 
 
-    docker run -it --rm \
+    docker run -it --pull always --rm \
         -v  $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
@@ -30,7 +30,7 @@ you can choose from and substitute into the command below at <site_name>:
 
 .. code::
 
- docker run -it --rm \
+ docker run -it --pull always --rm \
     -v  $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
@@ -50,7 +50,7 @@ the first step (soil column at liquid saturation, and at a temperature varying b
 
 .. code::
 
- docker run -it --rm \
+ docker run -it --pull always --rm \
     -v  $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
