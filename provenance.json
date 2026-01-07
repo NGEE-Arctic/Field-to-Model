@@ -461,7 +461,7 @@
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20761855541/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20769960633/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -492,57 +492,117 @@
         "github_actor_id": "17805542",
         "github_event_name": "push",
         "github_event_payload": {
-          "after": "0be6bc302a23d7ce7a1e888ddbad62aadb288b59",
+          "after": "e0dcacf6a8c6a4c511a44e7000f4d3cf87d9b15d",
           "base_ref": null,
-          "before": "ee85366f1ec4e1760188c2326bd1ca24b2b5121c",
+          "before": "0be6bc302a23d7ce7a1e888ddbad62aadb288b59",
           "commits": [
             {
               "author": {
-                "email": "kbennett@pn2306201.lanl.gov",
-                "name": "Katrina Bennett"
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
               },
               "committer": {
-                "email": "kbennett@pn2306201.lanl.gov",
-                "name": "Katrina Bennett"
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
               },
               "distinct": false,
-              "id": "692eba5366c7a5812be60637b5edf21306dce2f0",
-              "message": "Separate pages for TEM/ELM in the snow-veg-permafrost breakout groups.",
-              "timestamp": "2026-01-06T10:26:22-07:00",
-              "tree_id": "10941b1de3703c35ed6c5daf44e67bb12f774745",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/692eba5366c7a5812be60637b5edf21306dce2f0"
+              "id": "545d7db3f84c1e943fa74fd6ecadef16afe550fd",
+              "message": "Add options of OLMT for configuring and running ELM with topounits-included surface data.",
+              "timestamp": "2026-01-06T17:06:10-05:00",
+              "tree_id": "97d2754d73485c2cfd857b06d1dac88c0e80539b",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/545d7db3f84c1e943fa74fd6ecadef16afe550fd"
             },
             {
               "author": {
-                "email": "kbennett@pn2306201.lanl.gov",
-                "name": "Katrina Bennett"
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
               },
               "committer": {
-                "email": "kbennett@pn2306201.lanl.gov",
-                "name": "Katrina Bennett"
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
               },
               "distinct": false,
-              "id": "830754561f12d0246aedd095acbf73771c6a57dd",
-              "message": "Merge branch 'main' of https://github.com/ngee-arctic/field-to-model into katrina-f2m",
-              "timestamp": "2026-01-06T10:35:56-07:00",
-              "tree_id": "bf2e6e9f8cfe35a9b95411dce36d598d3f673490",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/830754561f12d0246aedd095acbf73771c6a57dd"
+              "id": "00d30deab69d1e9448bec6b5c7226c5cb9b8df10",
+              "message": "Add options of OLMT for configuring and running ELM with terrain features included surface data.",
+              "timestamp": "2026-01-06T17:06:10-05:00",
+              "tree_id": "d0b38a0f39957be35274a5729ff221308bd126a7",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/00d30deab69d1e9448bec6b5c7226c5cb9b8df10"
             },
             {
               "author": {
-                "email": "kbennett@pn2306201.lanl.gov",
-                "name": "Katrina Bennett"
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
               },
               "committer": {
-                "email": "kbennett@pn2306201.lanl.gov",
-                "name": "Katrina Bennett"
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
               },
               "distinct": false,
-              "id": "e846c7766d2027e16c5ac85bb205bce2b113bf36",
-              "message": "Update the main page to seperate out into ELM and TEM pages.",
-              "timestamp": "2026-01-06T10:44:33-07:00",
-              "tree_id": "7eba90fe0d4fc091b8a7ddab7c803e361a8136ca",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/e846c7766d2027e16c5ac85bb205bce2b113bf36"
+              "id": "63724fe5686214e2fc4891ebf2f16f57e57ad743",
+              "message": "allow 'landuse_file' to be empty, i.e. no flanduse_timeseries for transient stage simulation.",
+              "timestamp": "2026-01-06T17:06:10-05:00",
+              "tree_id": "a72dc09ad69864fcec4c9a937346e3608379eca4",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/63724fe5686214e2fc4891ebf2f16f57e57ad743"
+            },
+            {
+              "author": {
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
+              },
+              "committer": {
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
+              },
+              "distinct": false,
+              "id": "5b3f20f5936f624d980296266177ce6974d6ae46",
+              "message": "Transient-only running in OLMT, using default ad-spinup and spinup configuration (i.e. from restart file), will be allowed if both 'ad_spinup_years' and 'final_spinup_years' are zero.",
+              "timestamp": "2026-01-06T17:06:10-05:00",
+              "tree_id": "b7501142c20d237e61bda29da78c54bfd65f7ceb",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/5b3f20f5936f624d980296266177ce6974d6ae46"
+            },
+            {
+              "author": {
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
+              },
+              "committer": {
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
+              },
+              "distinct": false,
+              "id": "1dc5a8273d5c299f13ed5a35c74000813d6e5c3e",
+              "message": "One missing change in commit: allow 'landuse_file' to be empty, i.e. no flanduse_timeseries for transient stage simulation.",
+              "timestamp": "2026-01-06T20:05:20-05:00",
+              "tree_id": "e0337bd3feafb4d6340957f024f18428ef8fd3ce",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/1dc5a8273d5c299f13ed5a35c74000813d6e5c3e"
+            },
+            {
+              "author": {
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
+              },
+              "committer": {
+                "email": "fmyuan@gmail.com",
+                "name": "Fengming Yuan",
+                "username": "fmyuan"
+              },
+              "distinct": false,
+              "id": "3c38af292620ef1d11b9b0acb64c67d56c0f03a2",
+              "message": "move olmt pointer.",
+              "timestamp": "2026-01-06T22:14:19-05:00",
+              "tree_id": "7ad236ce75087ab678f8ab7d1f099f72501ceef9",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/3c38af292620ef1d11b9b0acb64c67d56c0f03a2"
             },
             {
               "author": {
@@ -556,14 +616,14 @@
                 "username": "web-flow"
               },
               "distinct": true,
-              "id": "0be6bc302a23d7ce7a1e888ddbad62aadb288b59",
-              "message": "Merge pull request #66 from NGEE-Arctic/katrina-f2m\n\nUpdates to separate out TEM and ELM into two separate pages.",
-              "timestamp": "2026-01-06T13:57:05-07:00",
-              "tree_id": "7eba90fe0d4fc091b8a7ddab7c803e361a8136ca",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/0be6bc302a23d7ce7a1e888ddbad62aadb288b59"
+              "id": "e0dcacf6a8c6a4c511a44e7000f4d3cf87d9b15d",
+              "message": "Merge pull request #67 from NGEE-Arctic/fmyuan/hillslope_hydro_bgc",
+              "timestamp": "2026-01-06T20:48:52-07:00",
+              "tree_id": "7ad236ce75087ab678f8ab7d1f099f72501ceef9",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/e0dcacf6a8c6a4c511a44e7000f4d3cf87d9b15d"
             }
           ],
-          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/ee85366f1ec4...0be6bc302a23",
+          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/0be6bc302a23...e0dcacf6a8c6",
           "created": false,
           "deleted": false,
           "forced": false,
@@ -579,11 +639,11 @@
               "username": "web-flow"
             },
             "distinct": true,
-            "id": "0be6bc302a23d7ce7a1e888ddbad62aadb288b59",
-            "message": "Merge pull request #66 from NGEE-Arctic/katrina-f2m\n\nUpdates to separate out TEM and ELM into two separate pages.",
-            "timestamp": "2026-01-06T13:57:05-07:00",
-            "tree_id": "7eba90fe0d4fc091b8a7ddab7c803e361a8136ca",
-            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/0be6bc302a23d7ce7a1e888ddbad62aadb288b59"
+            "id": "e0dcacf6a8c6a4c511a44e7000f4d3cf87d9b15d",
+            "message": "Merge pull request #67 from NGEE-Arctic/fmyuan/hillslope_hydro_bgc",
+            "timestamp": "2026-01-06T20:48:52-07:00",
+            "tree_id": "7ad236ce75087ab678f8ab7d1f099f72501ceef9",
+            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/e0dcacf6a8c6a4c511a44e7000f4d3cf87d9b15d"
           },
           "organization": {
             "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -661,8 +721,8 @@
             "name": "Field-to-Model",
             "node_id": "R_kgDOPQRvJA",
             "notifications_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/notifications{?since,all,participating}",
-            "open_issues": 15,
-            "open_issues_count": 15,
+            "open_issues": 17,
+            "open_issues_count": 17,
             "organization": "NGEE-Arctic",
             "owner": {
               "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -689,9 +749,9 @@
             },
             "private": false,
             "pulls_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/pulls{/number}",
-            "pushed_at": 1767733026,
+            "pushed_at": 1767757732,
             "releases_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/releases{/id}",
-            "size": 41974,
+            "size": 42000,
             "ssh_url": "git@github.com:NGEE-Arctic/Field-to-Model.git",
             "stargazers": 0,
             "stargazers_count": 0,
@@ -704,7 +764,7 @@
             "teams_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/teams",
             "topics": [],
             "trees_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/trees{/sha}",
-            "updated_at": "2026-01-06T01:57:48Z",
+            "updated_at": "2026-01-06T20:57:10Z",
             "url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model",
             "visibility": "public",
             "watchers": 0,
@@ -743,20 +803,20 @@
         "github_repository_owner": "NGEE-Arctic",
         "github_repository_owner_id": "184418857",
         "github_run_attempt": "1",
-        "github_run_id": "20761855541",
-        "github_run_number": "150",
+        "github_run_id": "20769960633",
+        "github_run_number": "158",
         "github_runner_arch": "X64",
         "github_runner_environment": "github-hosted",
         "github_runner_image_os": "ubuntu24",
         "github_runner_image_version": "20251215.174.1",
-        "github_runner_name": "GitHub Actions 1000003060",
+        "github_runner_name": "GitHub Actions 1000003269",
         "github_runner_os": "Linux",
-        "github_runner_tracking_id": "github_1190ccc1-2860-46e3-94b2-86d943728a7d",
+        "github_runner_tracking_id": "github_48db9ce5-77c3-46e0-8997-cbe29d8dedb5",
         "github_server_url": "https://github.com",
         "github_triggering_actor": "rfiorella",
         "github_workflow": "Sphinx: Render docs",
         "github_workflow_ref": "NGEE-Arctic/Field-to-Model/.github/workflows/docs.yml@refs/heads/main",
-        "github_workflow_sha": "0be6bc302a23d7ce7a1e888ddbad62aadb288b59",
+        "github_workflow_sha": "e0dcacf6a8c6a4c511a44e7000f4d3cf87d9b15d",
         "platform": "linux/amd64"
       }
     },
@@ -1080,23 +1140,23 @@
         }
       ],
       "digestMapping": {
-        "sha256:0039d1fa0b9b5405aac558aa1e02e065887f4b220d505491be0bab8b1f12e1a3": "step9",
-        "sha256:0591481d82bb46c3ba96c62744c198dabbc4a5cef9def334c7bdb601a30b0b9d": "step7",
-        "sha256:090bf0215ade8f11fd5b170159ab8438bd9f31b3c29d385b5e1e08f5f99ebb1a": "step1",
-        "sha256:47e3cb832dbb3053e87704385240f1ff24c1a05ab0c5cb21a544c3e8580b0082": "step5",
+        "sha256:035e6c0c1734acf20030608da812e95392e27587997b85b90647fbe4564c9dc5": "step7",
+        "sha256:0e2df29be5dbf55b35249654a90a5ef9111d46c7626d8f82908289d7f3295f1f": "step6",
+        "sha256:3d536353bec95a6bf4dee2dda4c4e54a62eeca574d253285b481580e79b0c95e": "step2",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:54a4b80166091bef71c359e93096befa52c35f11d15e2ca98e38206dbcd58bc3": "step2",
-        "sha256:8d8876c517b6f7d77e240bc2b719e057a26e996bfb8bb6ff42bdebdb42a13cfa": "step3",
-        "sha256:9486fdb46da30ea7eefe000e980f42a60d42ac93b81e84594a4c47d3d0201353": "step6",
-        "sha256:ba45f6ada6875f91977199062976d25e59d3c269631ab122371ad5aff08df9bd": "step8",
-        "sha256:d80097d97ccda9aaa7726f926b50e32085bb89b401b221074d086ff642e9d925": "step10",
-        "sha256:e9440444d2a7980f8e1a0ceb74a5a4d0ae54fb277691b85baaec62a1cebbc5e6": "step4"
+        "sha256:4d2ab670507e32447f7162997b5665b9339d6af74120058f8a56d3728358a615": "step9",
+        "sha256:87649f58d1fae720739bf5babe43317a09a825fa99fea2693d7b2c4e93dffc8f": "step5",
+        "sha256:9da7e113e2db9fa53296f47556fd809ee45a6b12c1eb22666e1b11b00e299fea": "step10",
+        "sha256:b20c8221e5b2beec8661c5cb644a90be96113b09f07e5af19e5e77368b6584f9": "step1",
+        "sha256:bbd6f3879445c6bc385d351a6bc937ddb8b77ff7c75f783b54612357b673c580": "step3",
+        "sha256:c7581ec091a2f4a04c8e87a3ad5c316448839b0eecb05a2a8fef87e0e5e3d0e3": "step4",
+        "sha256:f9290f219bcd71a80d32013fe3714f3b4b8a2e5718cf3064250e249f61cf110d": "step8"
       }
     },
     "metadata": {
-      "buildInvocationID": "4ue9i89adsazo3giw6ync2adk",
-      "buildStartedOn": "2026-01-06T20:57:24.794899003Z",
-      "buildFinishedOn": "2026-01-06T20:57:48.939005819Z",
+      "buildInvocationID": "kauhjz6uwf9vpso4cavnfxw7i",
+      "buildStartedOn": "2026-01-07T03:49:11.481476226Z",
+      "buildFinishedOn": "2026-01-07T03:49:35.792106206Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -1107,7 +1167,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "0be6bc302a23d7ce7a1e888ddbad62aadb288b59",
+          "revision": "e0dcacf6a8c6a4c511a44e7000f4d3cf87d9b15d",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -1307,8 +1367,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:4e14dedf06a885c8ba2ab93b6350a2b92b06c083c256dcfe7e4df3feae47f321": "step1",
-                "sha256:65f57a5c29d571ea35aeef1ac407430f43a2d67f2e15f0b0a9ed94ba874061c9": "step0"
+                "sha256:6cfef90c94e719abf699da25f68c495140f63b23a611f25f65ff0b0fc65e49e7": "step0",
+                "sha256:8ba1ad255ea59ef1eb6430372c93ab41f718a63f33aaa750f407f3f59b140f6f": "step1"
               }
             }
           ]
