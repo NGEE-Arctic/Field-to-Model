@@ -405,7 +405,7 @@ landuse_file="/mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file}"
 #sites with surface data including multiple topographicUnits
 if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = True ]]; then
   # currently no landuse.timeseries data available for transient stage.
-  landuse_file=""
+  landuse_file="''"
   options="$options --nopftdyn"
   if [ ${site_name} = council ]; then
     domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
@@ -438,7 +438,7 @@ fi
 #sites with surface data including terrain features, include slope, aspect, sky_view and terrain_config
 if [ "${terrain_raddownscale}" = True ]; then
   # currently no landuse.timeseries data available for transient stage.
-  landuse_file=""
+  landuse_file="''"
   options="$options --nopftdyn"
   if [ ${site_name} = council ]; then
     domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
