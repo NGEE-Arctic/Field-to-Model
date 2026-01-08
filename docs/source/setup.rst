@@ -151,7 +151,7 @@ E3SM/ELM and TEM input data needed for the workshop can be downloaded by:
 
 .. code::
 
-    docker run -it --pull always--rm \
+    docker run -it --pull always --rm \
         -v $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
