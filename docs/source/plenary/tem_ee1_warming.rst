@@ -14,21 +14,24 @@ and thus how adequate the model is for predicting future ecosystem changes.
 At Utqiagvik, the chambers were deployed over a single season in multiple locations from 2017-2021 from mid-June through to mid-September (Ely et al. 2024). 
 In this example, we model the 2019 summer warming experiment and compare the modeled and measured soil temperatures at 10cm depth 
 for the warmed and control site. The 2019 experiment focused on *Eriophorum angustifolium*, a common sedge species in Arctic tundra which 
-in the model DVM-DOS-TEM is represented by the sedge plant functional type (PFT) and grows for example in the wet sedge tundra 
-community type (CMT). We model the warming experiment at a single pixel representing the wet sedge tundra CMT at Utqiagvik and compare the 
+in the model DVM-DOS-TEM is represented by the sedge 
+`plant functional type (PFT) <https://uaf-arctic-eco-modeling.github.io/dvm-dos-tem/model_overview.html#vegetation-types-pfts>`_ 
+and grows for example in the wet sedge tundra 
+`community type (CMT) <https://uaf-arctic-eco-modeling.github.io/dvm-dos-tem/model_overview.html#community-types-cmts>`_. We model 
+the warming experiment at a single pixel representing the wet sedge tundra CMT at Utqiagvik and compare the 
 soil temperature at 10cm depth between the control and warmed runs to the observed soil temperatures at the site (Ely et al. 2024).
 
+.. note:: 
+
+   For the purposes of this workshop, DVM-DOS-TEM, dvmdostem, dvm-dos-tem and
+   TEM synonymously refer to the "Dynamic Vegetation Model, Dynamic Organic
+   Soil Terrestrial Ecosystem Model" which is the coupled vegetation and
+   ecosystem model.
+   
 
 Lewin, K. F., McMahon, A. M., Ely, K. S., Serbin, S. P., & Rogers, A. (2017). A zero-power warming chamber for investigating plant responses to rising temperature. Biogeosciences, 14(18), 4071-4083.
 
 Ely, Kim, Anderson, Jeremiah, Serbin, Shawn, & Rogers, Alistair (2024). Vegetation Warming Experiment: Thaw depth and dGPS locations, Utqiagvik, Alaska, 2019. https://doi.org/10.5440/1887568
-
-
-.. note:: :red:`TODO`
-
-   Add some links to the text above into the relevant sections of the TEM 
-   User Guide. For example linking to the description of Community Types, PFTs, 
-   etc.
 
 
 
