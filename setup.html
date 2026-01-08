@@ -176,7 +176,7 @@ platforms (e.g., Windows vs mac).</p>
 <section id="get-the-workshop-data">
 <h2><span class="section-number">2.4. </span>Get the workshop data<a class="headerlink" href="#get-the-workshop-data" title="Link to this heading">¶</a></h2>
 <p>E3SM/ELM and TEM input data needed for the workshop can be downloaded by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always--rm \
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always --rm \
     -v $(pwd):/home/modex_user \
     -v inputdata:/mnt/inputdata \
     yuanfornl/ngee-arctic-modex26:models-main-latest \
