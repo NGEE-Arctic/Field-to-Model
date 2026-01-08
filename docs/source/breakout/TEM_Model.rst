@@ -21,14 +21,14 @@ two different functions:
 * modify_precipitation_percent.py , which allows us to modify precipitation by a specified percentage for specific months.
 
 In addition to the changes to the input climate data files, we can also alter the community type that we look at, which
-determines the plant funtional types (PFTs) that are present in the model simulation. For the model site that we are looking at in this example (Imnavait creek), 
+determines the plant functional types (PFTs) that are present in the model simulation. For the model site that we are looking at in this example (Imnavait creek), 
 the three community types that we can select from are:
 
 * Tussock tundra (contains the PFTs betula shrubs, other decidious shrubs, evergreen shrubs, sedges, forbs, lichen, feathermoss, sphagnum moss)
 * Wet sedge tundra (contains the PFTs deciduous shrubs, sedges, grasses, forbs, lichen, feathermoss, sphagnum moss)
 * Heath tundra (contains the PFTs deciduous shrubs, evergreen shrubs, forbs, lichen, grasses, moss)
 
-Whithin each community type, the PFTs have different characteristics that influence how they interact with snow and permafrost processes, 
+Within each community type, the PFTs have different characteristics that influence how they interact with snow and permafrost processes, 
 as well as capability for dynamic changes over time including competition for light and nutrients. For more information, 
 see the TEM background for Snow, Vegetation, and Permafrost section at the end of this document.
 
@@ -190,7 +190,7 @@ Precipitation scaling (rain +40%, snow +60%):
 
 #. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/precip_imnavait_tussock`
 
-#. Adjust the input climate data with the :code:`modify_precipitation_percent.py` script. Since in TEM, precipitation falls as rain or snow depending on the avarage monthly air temperature, we will modify rain and snow separately assuming that rain occurs in the summer months (June, July, August, September) and snow in the winter months (October, November, December, January, February, March, April, May). 
+#. Adjust the input climate data with the :code:`modify_precipitation_percent.py` script. Since in TEM, precipitation falls as rain or snow depending on the average monthly air temperature, we will modify rain and snow separately assuming that rain occurs in the summer months (June, July, August, September) and snow in the winter months (October, November, December, January, February, March, April, May). 
 
    .. code:: shell
 
