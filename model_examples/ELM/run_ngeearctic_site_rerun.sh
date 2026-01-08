@@ -38,7 +38,8 @@ Help()
     echo "  --merged_ncfile           user-provided file name for TR20 hists merged"
     echo "                            (Default:blanketed. Example: --merged_ncfile=MasterE3SM_subgrid.out.nc "
     echo "  --user_namelist           user-provided additional ELM namelist to re-run a case"
-    echo "                            (in comma-separated strings, e.g. topounit, topounit_atm_downscaling, topounit_IM2, or exactly ELM namelist if you know.)"
+    echo "                            (in comma-separated string double-quotated, e.g. "
+    echo "                             topounit, topounit_atm_downscaling, topounit_IM2 or use_IM2_hillslope_hydrology)"
     exit 0
 }
 
