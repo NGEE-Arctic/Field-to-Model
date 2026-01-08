@@ -206,6 +206,7 @@ RUN mamba install -y python=3.11 \
 	  cftime \
 	  configparser \
 	  h5py \
+	  ilamb>=2.7.3 \
   && conda clean -afy
 
 ENV mpi_version=5.0.8

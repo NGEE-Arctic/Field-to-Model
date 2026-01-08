@@ -1,7 +1,7 @@
 # The image for building and serving the sphinx docs.
 # Build with: 
 #     docker build --tag docbuilder -o type=local,dest=build -f Docker/Dockerfile-docs .
-FROM sphinxdoc/sphinx AS docbuilder
+FROM docker.io/sphinxdoc/sphinx AS docbuilder
 
 COPY docs/requirements.txt /tmp/requirements.txt
 
