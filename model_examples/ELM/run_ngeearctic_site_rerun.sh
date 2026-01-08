@@ -260,13 +260,6 @@ elif [ ${run_type} = "branch" ]; then
     ./xmlchange GET_REFCASE=TRUE
  
     ./xmlchange CONTINUE_RUN=FALSE
-
-    # additional outputs, non-grid-aggregated, by adding namelist into user_nl_elm
-    # NOTE: 'branch' run can modify output vars and options.
-    echo "
-          hist_fincl2 = 'SOILWATER_10CM','GPP','CH4PROD','QRUNOFF','FINUNDATED','FH2OSFC','H2OSFC'
-          hist_dov2xy = .true.,.false.
-    ">>user_nl_elm
  
     # a possible bug: finidat already in user_nl_elm
     #if [ ! ${ncfile_init} = " " ]; then
@@ -285,16 +278,39 @@ else
   
   # make sure continue run is off
   ./xmlchange CONTINUE_RUN=FALSE
-
-  # additional outputs, non-grid-aggregated, by adding namelist into user_nl_elm
-  # NOTE: this can only be done with a fresh run
-  echo "
-   hist_fincl2 = 'SOILWATER_10CM','GPP','CH4PROD','QRUNOFF','FINUNDATED','FH2OSFC','H2OSFC'
-   hist_dov2xy = .true.,.false.
-  ">>user_nl_elm
-
 fi
 
+# example adding of output list and flag
+case_continue_run=$(./xmlquery --value CONTINUE_RUN)
+echo "CONINUE_RUN: "${case_continue_run}
+echo "re-run type: "${run_type}
+subgrid_hid=" "
+if ! [[ "${run_type}" = "restart" || "${case_continue_run}" = "TRUE" ]]; then
+  # additional outputs, non-grid-aggregated, by adding namelist into user_nl_elm
+  # NOTE: this can only be done with a fresh run
+  if grep -q "hist_fincl1" "user_nl_elm" || ! grep -q "hist_empty_htapes" "user_nl_elm"; then
+    echo "
+      hist_fincl2 = 'SOILWATER_10CM','GPP','CH4PROD','QRUNOFF','FINUNDATED','FH2OSFC','H2OSFC'
+      hist_dov2xy = .true.,.false.
+    ">>user_nl_elm
+    echo " Adding output var list or flag as hist_fincl2! "
+    subgrid_hid="h1"
+    rm -f ${case_run_dir}/*.elm.${subgrid_hid}.*.nc
+
+  elif grep -q "hist_empty_htapes" "user_nl_elm"; then
+    echo "
+      hist_fincl1 = 'SOILWATER_10CM','GPP','CH4PROD','QRUNOFF','FINUNDATED','FH2OSFC','H2OSFC'
+      hist_dov2xy = .false.
+    ">>user_nl_elm
+  
+    echo " Adding output var list or flag as hist_fincl1! "
+    subgrid_hid="h0"
+    rm -f ${case_run_dir}/*.elm.${subgrid_hid}.*.nc
+
+  fi
+fi
+
+#
 if [[ $stop_years -gt 0 ]]; then
   echo "changing STOP_N to "$((stop_years+0))
   ./xmlchange STOP_N=$((stop_years))
@@ -384,16 +400,19 @@ echo " "
 cd ${case_run_dir}
 
 echo "**** Concatenating netCDF output - Hang tight this can take awhile ****"
+
+if [ ! ${subgrid_hid} = " " ]; then
+  echo "subgrid/patch output files: elm.${subgrid_hid}"
+  ncrcat --ovr *.elm.${subgrid_hid}.*.nc ELM_output_PFT.nc
+  chmod 666 ELM_output_PFT.nc
+  # rename merged output files for convenience
+  if [ ! ${merged_ncfile} = " " ]; then
+    mv ELM_output_PFT.nc ${merged_ncfile}
+  fi
+fi
+
 ncrcat --ovr *.h0.*.nc ELM_output.nc
 chmod 666 ELM_output.nc
-
-ncrcat --ovr *.elm.h1.*.nc ELM_output_PFT.nc
-chmod 666 ELM_output_PFT.nc
-
-# rename merged output files for convenience
-if [ ! ${merged_ncfile} = " " ]; then
-  mv ELM_output_PFT.nc ${merged_ncfile}
-fi
 
 echo "**** Concatenating netCDF output: DONE ****"
 sleep 2
