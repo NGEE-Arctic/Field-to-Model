@@ -12,8 +12,15 @@ different coupling configurations of E3SM. In addition, ELM can be run in point
 For this workshop, we have simplified the process of running ELM for several Arctic 
 sites using a shell script. Several of the new parameterizations added in phase 3 of 
 the NGEE Arctic project are accessible through this script, as are several ways of 
-testing the sensitivity of model results to changes in forcing conditions. You can 
-see the options that are available for the script by running:
+testing the sensitivity of model results to changes in forcing conditions. 
+
+If you just completed 'Step 2. Getting Started', first open a new Terminal window (Terminal, Cmd + N) and navigate to your field-to-model folder with the following code. For any code blocks starting with 'docker run', you should be in your field-to-model directory. 
+
+.. code:: 
+
+    cd field-to-model
+
+You can see the options that are available for the script by running:
 
 .. code:: 
 
@@ -26,7 +33,7 @@ see the options that are available for the script by running:
 
 In the first example, we will run a 'control' case for one of the NGEE Arctic sites where 
 none of the new capabilities developed for NGEE Arctic have been turned on. There are 9 sites
-you can choose from and substitute into the command below at <site_name>:
+you can choose from and substitute into the command below at <site_name> (must delete angle brackets):
 
 .. code::
 
@@ -43,10 +50,7 @@ normal biogeochemical cycling rates, and c) a transient run with time-varying CO
 from 1850 to near present (2024 for ERA5, 2014 for GSWP3). In this default configuration, ERA5 meteorological
 forcing from dapper will be used, but GSWP3 is available as an option for comparison.
 
-We can open a second shell window and run a second set of cases while this first case is running. As an example,
-let's change the initial conditions of the first spinup case. By default, ELM initializes at 274K and at fairly dry
-soil conditions. A new initialization option, ``--use_arctic_init``, sets wetter and colder initial conditions for
-the first step (soil column at liquid saturation, and at a temperature varying between 290K and 250K based on `cos(lat)`).
+We can open a second shell window (Terminal, Cmd + N for a new window, or Cmd + T for a new tab) and run a second set of cases while this first case is running. As an example, let's change the initial conditions of the first spinup case. By default, ELM initializes at 274K and at fairly dry soil conditions. A new initialization option, ``--use_arctic_init``, sets wetter and colder initial conditions for the first step (soil column at liquid saturation, and at a temperature varying between 290K and 250K based on `cos(lat)`).
 
 .. code::
 
