@@ -263,8 +263,8 @@ elif [ ${run_type} = "branch" ]; then
     if [ ${case_prefix} = "topounit" ]; then
       echo " create_crop_landunit = .true. " >>user_nl_elm
       #remove -topounit from ELM_NML_OPTS. Now it's hard-coded, but needs a flexible way (TODO)
-      ./xmlquery --value ELM_NML_OPTS
-      ./xmlchange ELM_NML_OPTS = " -bgc bgc -nutrient cnp -nutrient_comp_pathway rd  -soil_decomp ctc -methane"
+      ./xmlquery --value ELM_BLDNML_OPTS
+      ./xmlchange ELM_BLDNML_OPTS="-bgc bgc -nutrient cnp -nutrient_comp_pathway rd  -soil_decomp ctc -methane"
       
     fi
   
