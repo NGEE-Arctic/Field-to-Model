@@ -224,7 +224,7 @@ Now that we have the configuration file set up, you can run the study using the 
 analysis. By default the analysis will conducted over the entire time
 series contained within the model and reference data files.
 * ``--define_regions`` is optional and defines the spatial region of
-analysis and by default analysis is conducted on the entired spatial
+analysis. By default analysis is conducted on the entire spatial
 extent contained within the model/obs data. 
 
 ``ILAMB_region_CAVM_NO_GREENLAND.nc`` is a custom defined region limited
