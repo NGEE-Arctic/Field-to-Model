@@ -37,6 +37,9 @@ Help()
     echo "  --restart_date            restart date/time"
     echo "  --merged_ncfile           user-provided file name for TR20 hists merged"
     echo "                            (Default:blanketed. Example: --merged_ncfile=MasterE3SM_subgrid.out.nc "
+    echo "  --user_namelist           user-provided additional ELM namelist to re-run a case"
+    echo "                            (in comma-separated string double-quotated, e.g. "
+    echo "                             topounit, topounit_atm_downscaling, topounit_IM2 or use_IM2_hillslope_hydrology)"
     exit 0
 }
 
@@ -105,6 +108,10 @@ case $i in
     restart_date="${i#*=}"
     shift
     ;;
+    --user_namelist=*)  # in format,e.g. topounit, topounit_atm_downscaling, topounit_IM2, or exactly ELM namelist if you know
+    user_namelist="${i#*=}"
+    shift
+    ;;
     --merged_ncfile=*)
     merged_ncfile="${i#*=}"
     shift
@@ -134,6 +141,9 @@ options="${options:-}"
 restart_path="${restart_path:-/mnt/inputdata/E3SM/lnd/clm2/inidata/council/}"
 restart_case="${restart_case:-topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC}"
 restart_date="${restart_date:-2005-01-01}"
+
+# user provided additional namelist
+user_namelist="${user_namelist:-""}"
 
 merged_ncfile="${merged_ncfile:-""}"
 
@@ -197,6 +207,11 @@ echo "Restart ref case date = ${restart_date}"
 fi
 echo "Number of Continue Simulation Years = ${stop_years}"
 echo "frequency of restart file saving (Years) = ${rest_years}"
+
+if ! [ "${user_namelist}" = " " ]; then
+  echo "Additional namelist = ${user_namelist}"
+fi
+
 echo " "
 # =======================================================================================
 
@@ -218,9 +233,11 @@ mkdir -p /mnt/output/cime_run_dirs
 
 # go to case directory
 cd ${case_dirs}/${case_name}
-./xmlquery RUNDIR
-case_run_dir=/mnt/output/cime_run_dirs/${case_name}/run
+case_run_dir=$(./xmlquery --value RUNDIR)
 
+case_elm_bldnml=$(./xmlquery --value ELM_BLDNML_OPTS)
+echo "case ELM_BLDNML_OPTS: "${case_elm_bldnml}
+    
 if [ ${run_type} = "restart" ]; then
   # no matter what RUN_TYPE (startup, branch, or hybrid)
 
@@ -244,13 +261,6 @@ elif [ ${run_type} = "branch" ]; then
     ./xmlchange GET_REFCASE=TRUE
  
     ./xmlchange CONTINUE_RUN=FALSE
-
-    # additional outputs, non-grid-aggregated, by adding namelist into user_nl_elm
-    # NOTE: 'branch' run can modify output vars and options.
-    echo "
-          hist_fincl2 = 'SOILWATER_10CM','GPP','CH4PROD','QRUNOFF','FINUNDATED','FH2OSFC','H2OSFC'
-          hist_dov2xy = .true.,.false.
-    ">>user_nl_elm
  
     # a possible bug: finidat already in user_nl_elm
     #if [ ! ${ncfile_init} = " " ]; then
@@ -258,15 +268,6 @@ elif [ ${run_type} = "branch" ]; then
     #      finidat = '${ncfile_init}'
     #  ">>user_nl_elm
     #fi
-
-    # the following is hard-weired now, because OLMT cannot setup a case with surfdata of topounit only
-    if [ ${case_prefix} = "topounit" ]; then
-      echo " create_crop_landunit = .true. " >>user_nl_elm
-      #remove -topounit from ELM_NML_OPTS. Now it's hard-coded, but needs a flexible way (TODO)
-      ./xmlquery --value ELM_BLDNML_OPTS
-      ./xmlchange ELM_BLDNML_OPTS="-bgc bgc -nutrient cnp -nutrient_comp_pathway rd  -soil_decomp ctc -methane"
-      
-    fi
   
   else
     echo "NO REFCASE for branch type run!"
@@ -278,16 +279,39 @@ else
   
   # make sure continue run is off
   ./xmlchange CONTINUE_RUN=FALSE
-
-  # additional outputs, non-grid-aggregated, by adding namelist into user_nl_elm
-  # NOTE: this can only be done with a fresh run
-  echo "
-   hist_fincl2 = 'SOILWATER_10CM','GPP','CH4PROD','QRUNOFF','FINUNDATED','FH2OSFC','H2OSFC'
-   hist_dov2xy = .true.,.false.
-  ">>user_nl_elm
-
 fi
 
+# example adding of output list and flag
+case_continue_run=$(./xmlquery --value CONTINUE_RUN)
+echo "CONINUE_RUN: "${case_continue_run}
+echo "re-run type: "${run_type}
+subgrid_hid=" "
+if ! [[ "${run_type}" = "restart" || "${case_continue_run}" = "TRUE" ]]; then
+  # additional outputs, non-grid-aggregated, by adding namelist into user_nl_elm
+  # NOTE: this can only be done with a fresh run
+  if grep -q "hist_fincl1" "user_nl_elm" || ! grep -q "hist_empty_htapes" "user_nl_elm"; then
+    echo "
+      hist_fincl2 = 'SOILWATER_10CM','GPP','CH4PROD','QRUNOFF','FINUNDATED','FH2OSFC','H2OSFC'
+      hist_dov2xy = .true.,.false.
+    ">>user_nl_elm
+    echo " Adding output var list or flag as hist_fincl2! "
+    subgrid_hid="h1"
+    rm -f ${case_run_dir}/*.elm.${subgrid_hid}.*.nc
+
+  elif grep -q "hist_empty_htapes" "user_nl_elm"; then
+    echo "
+      hist_fincl1 = 'SOILWATER_10CM','GPP','CH4PROD','QRUNOFF','FINUNDATED','FH2OSFC','H2OSFC'
+      hist_dov2xy = .false.
+    ">>user_nl_elm
+  
+    echo " Adding output var list or flag as hist_fincl1! "
+    subgrid_hid="h0"
+    rm -f ${case_run_dir}/*.elm.${subgrid_hid}.*.nc
+
+  fi
+fi
+
+#
 if [[ $stop_years -gt 0 ]]; then
   echo "changing STOP_N to "$((stop_years+0))
   ./xmlchange STOP_N=$((stop_years))
@@ -297,6 +321,60 @@ fi
 if ((rest_years > 0)); then
   echo "changing RESt_N to "$((rest_years+0))
   ./xmlchange REST_N=$((rest_years))
+fi
+
+# namelist if provided by a string, separated by comma.
+if ! [ "${user_namelist}" = " " ]; then
+    
+  # the following is hard-weired now, because OLMT cannot setup a case with surfdata of topounit only
+  # any namelist string, starting with 'topounit'
+  if [[ "${user_namelist}" == "topounit"* ]]; then
+      # since topounit included surfdata separates 17 natpfts into 15 natpfts and 2 generic cfts
+      # 'create_crop_landunit' must set to .true.
+      if grep -q "create_crop_landunit" "user_nl_elm"; then
+        echo " "
+      else
+        echo " create_crop_landunit = .true. " >>user_nl_elm
+      fi
+      
+      # setting namelist: use_atmdownscaling_to_topounit, which is actually configured by ELM_BLDNML_OPTS '-topounit'
+      if [[ "${user_namelist}" == *"topounit_atm_downscaling"* ]]; then
+        #adding -topounit to ELM_NML_OPTS, if not there
+        if ! [[ "${case_elm_bldnml}" == *" -topounit"* ]]; then
+          echo "appending? "
+          ./xmlchange --append --id ELM_BLDNML_OPTS --val " -topounit"
+        fi
+      else
+        #remove -topounit from ELM_NML_OPTS, if in there already
+        if [[ ${case_elm_bldnml} == *" -topounit"* ]]; then
+          echo "removing? "
+          case_elm_bldnml=${case_elm_bldnml//" -topounit"/}
+          echo "new: "${case_elm_bldnml}
+          ./xmlchange ELM_BLDNML_OPTS="${case_elm_bldnml}"
+        fi
+      fi
+      
+      echo "topounit changed case ELM_BLDNML_OPTS: "$(./xmlquery --value ELM_BLDNML_OPTS)
+  fi
+  # setting namelist: use_IM2_hillslope_hydrology (in user_nl_elm)
+  if [[ "${user_namelist}" == *"use_IM2_hillslope_hydrology"* || "${user_namelist}" == *"topounit_IM2"* ]]; then
+      # since topounit included surfdata separates 17 natpfts into 15 natpfts and 2 generic cfts
+      # 'create_crop_landunit' must set to .true.
+      if grep -q "create_crop_landunit" "user_nl_elm"; then
+        echo " INFO: topounit included surfdata is used already! "
+      else
+        echo " create_crop_landunit = .true. " >>user_nl_elm
+      fi
+
+      if grep -q "use_IM2_hillslope_hydrology" "user_nl_elm"; then
+        echo " INFO: use_IM2_hillslope_hydrology is True already!"
+      else
+        echo " use_IM2_hillslope_hydrology = .true. " >>user_nl_elm
+      fi
+  fi
+  
+  # expert-level namelist adding (exactly namelist) (TODO)
+  
 fi
 
 # if not yet built (TODO)
@@ -323,16 +401,19 @@ echo " "
 cd ${case_run_dir}
 
 echo "**** Concatenating netCDF output - Hang tight this can take awhile ****"
+
+if [ ! ${subgrid_hid} = " " ]; then
+  echo "subgrid/patch output files: elm.${subgrid_hid}"
+  ncrcat --ovr *.elm.${subgrid_hid}.*.nc ELM_output_PFT.nc
+  chmod 666 ELM_output_PFT.nc
+  # rename merged output files for convenience
+  if [ ! ${merged_ncfile} = " " ]; then
+    mv ELM_output_PFT.nc ${merged_ncfile}
+  fi
+fi
+
 ncrcat --ovr *.h0.*.nc ELM_output.nc
 chmod 666 ELM_output.nc
-
-ncrcat --ovr *.elm.h1.*.nc ELM_output_PFT.nc
-chmod 666 ELM_output_PFT.nc
-
-# rename merged output files for convenience
-if [ ! ${merged_ncfile} = " " ]; then
-  mv ELM_output_PFT.nc ${merged_ncfile}
-fi
 
 echo "**** Concatenating netCDF output: DONE ****"
 sleep 2
