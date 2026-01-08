@@ -80,7 +80,7 @@ ParaView or VisIt
 * **ParaView**: ParaView can be installed from the KitWare website (or for LANL folks, LANL self service/software center): `Download ParaView <https://www.paraview.org/download/>`_
 * **VisIt**: VisIt can be installed from the LLNL website: `Download VisIt <https://wci.llnl.gov/simulation/computer-codes/visit/downloads>`_
 
-Terminal for Mac Users
+Terminal Tips
 -------------------------------------------------
 We will be using Terminal to access the Command Line. You can open Terminal by clicking the Spotlight Search magnifying glass at the top right of your computer and typing "Terminal." 
 
