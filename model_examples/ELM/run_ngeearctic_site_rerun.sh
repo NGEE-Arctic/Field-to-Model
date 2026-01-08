@@ -37,6 +37,8 @@ Help()
     echo "  --restart_date            restart date/time"
     echo "  --merged_ncfile           user-provided file name for TR20 hists merged"
     echo "                            (Default:blanketed. Example: --merged_ncfile=MasterE3SM_subgrid.out.nc "
+    echo "  --user_namelist           user-provided additional ELM namelist to re-run a case"
+    echo "                            (in comma-separated strings, e.g. topounit, topounit_atm_downscaling, topounit_IM2, or exactly ELM namelist if you know.)"
     exit 0
 }
 
@@ -105,6 +107,10 @@ case $i in
     restart_date="${i#*=}"
     shift
     ;;
+    --user_namelist=*)  # in format,e.g. topounit, topounit_atm_downscaling, topounit_IM2, or exactly ELM namelist if you know
+    user_namelist="${i#*=}"
+    shift
+    ;;
     --merged_ncfile=*)
     merged_ncfile="${i#*=}"
     shift
@@ -134,6 +140,9 @@ options="${options:-}"
 restart_path="${restart_path:-/mnt/inputdata/E3SM/lnd/clm2/inidata/council/}"
 restart_case="${restart_case:-topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC}"
 restart_date="${restart_date:-2005-01-01}"
+
+# user provided additional namelist
+user_namelist="${user_namelist:-""}"
 
 merged_ncfile="${merged_ncfile:-""}"
 
@@ -197,6 +206,11 @@ echo "Restart ref case date = ${restart_date}"
 fi
 echo "Number of Continue Simulation Years = ${stop_years}"
 echo "frequency of restart file saving (Years) = ${rest_years}"
+
+if ! [ "${user_namelist}" = " " ]; then
+  echo "Additional namelist = ${user_namelist}"
+fi
+
 echo " "
 # =======================================================================================
 
@@ -260,26 +274,6 @@ elif [ ${run_type} = "branch" ]; then
     #      finidat = '${ncfile_init}'
     #  ">>user_nl_elm
     #fi
-
-    # the following is hard-weired now, because OLMT cannot setup a case with surfdata of topounit only
-
-    if [[ ${case_prefix} == *"topounit"* ]]; then
-      # since topounit included surfdata separates 17 natpfts into 15 natpfts and 2 generic cfts
-      # 'create_crop_landunit' must set to .true.
-      if grep -q "create_crop_landunit" "user_nl_elm"; then
-        echo " "
-      else
-        echo " create_crop_landunit = .true. " >>user_nl_elm
-      fi
-      
-      if [[ "${case_prefix}" == "topounit" ]]; then
-        #remove -topounit from ELM_NML_OPTS, if in it for not setting use_atmdownscaling_to_topounit
-        if [[ ${elm_case_nml} == *" -topounit"* ]]; then
-          elm_case_nml=${elm_case_nml}
-          ./xmlchange ELM_BLDNML_OPTS=${elm_case_nml}
-        fi
-	  fi
-    fi
   
   else
     echo "NO REFCASE for branch type run!"
@@ -310,6 +304,60 @@ fi
 if ((rest_years > 0)); then
   echo "changing RESt_N to "$((rest_years+0))
   ./xmlchange REST_N=$((rest_years))
+fi
+
+# namelist if provided by a string, separated by comma.
+if ! [ "${user_namelist}" = " " ]; then
+    
+  # the following is hard-weired now, because OLMT cannot setup a case with surfdata of topounit only
+  # any namelist string, starting with 'topounit'
+  if [[ "${user_namelist}" == "topounit"* ]]; then
+      # since topounit included surfdata separates 17 natpfts into 15 natpfts and 2 generic cfts
+      # 'create_crop_landunit' must set to .true.
+      if grep -q "create_crop_landunit" "user_nl_elm"; then
+        echo " "
+      else
+        echo " create_crop_landunit = .true. " >>user_nl_elm
+      fi
+      
+      # setting namelist: use_atmdownscaling_to_topounit, which is actually configured by ELM_BLDNML_OPTS '-topounit'
+      if [[ "${user_namelist}" == *"topounit_atm_downscaling"* ]]; then
+        #adding -topounit to ELM_NML_OPTS, if not there
+        if ! [[ "${case_elm_bldnml}" == *" -topounit"* ]]; then
+          echo "appending? "
+          ./xmlchange --append --id ELM_BLDNML_OPTS --val " -topounit"
+        fi
+      else
+        #remove -topounit from ELM_NML_OPTS, if in there already
+        if [[ ${case_elm_bldnml} == *" -topounit"* ]]; then
+          echo "removing? "
+          case_elm_bldnml=${case_elm_bldnml//" -topounit"/}
+          echo "new: "${case_elm_bldnml}
+          ./xmlchange ELM_BLDNML_OPTS="${case_elm_bldnml}"
+        fi
+      fi
+      
+      echo "topounit changed case ELM_BLDNML_OPTS: "$(./xmlquery --value ELM_BLDNML_OPTS)
+  fi
+  # setting namelist: use_IM2_hillslope_hydrology (in user_nl_elm)
+  if [[ "${user_namelist}" == *"use_IM2_hillslope_hydrology"* || "${user_namelist}" == *"topounit_IM2"* ]]; then
+      # since topounit included surfdata separates 17 natpfts into 15 natpfts and 2 generic cfts
+      # 'create_crop_landunit' must set to .true.
+      if grep -q "create_crop_landunit" "user_nl_elm"; then
+        echo " INFO: topounit included surfdata is used already! "
+      else
+        echo " create_crop_landunit = .true. " >>user_nl_elm
+      fi
+
+      if grep -q "use_IM2_hillslope_hydrology" "user_nl_elm"; then
+        echo " INFO: use_IM2_hillslope_hydrology is True already!"
+      else
+        echo " use_IM2_hillslope_hydrology = .true. " >>user_nl_elm
+      fi
+  fi
+  
+  # expert-level namelist adding (exactly namelist) (TODO)
+  
 fi
 
 # if not yet built (TODO)
