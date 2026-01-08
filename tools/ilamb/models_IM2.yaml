@@ -4,16 +4,16 @@
 ELM_Panarctic_Baseline_GSWP3:
   modelname: 1.Base.GSWP3
   color: "#1f78b4"    # GSWP3 baseline (blue, medium)
-  path: /home/modex_user/DATA/NGEEA-Workshop/models/MasterE3SM_pan-arctic-CAVM0.5deg_GSWP3_RERUN.longitude.fix_2D
+  path: /mnt/inputdata/ILAMB/DATA/NGEEA-Workshop/models/MasterE3SM_pan-arctic-CAVM0.5deg_GSWP3_RERUN.longitude.fix_2D
 
 ELM_Panarctic_TopoUnits_GSWP3:
   modelname: 2.+Topo.GSWP3.NoDS
   color: "#9ecae1"    # GSWP3 +Topo (blue, lighter)
-  path: /home/modex_user/DATA/NGEEA-Workshop/models/MasterE3SM_test-topounit-surf-v2_pan-arctic-CAVM0.5deg_GSWP3
+  path: /mnt/inputdata/ILAMB/DATA/NGEEA-Workshop/models/MasterE3SM_test-topounit-surf-v2_pan-arctic-CAVM0.5deg_GSWP3
 
 ELM_Panarctic_HillslopeHydro_GSWP3:
   modelname: 3.+IM2.GSWP3.withDS
   color: "#0b559f"    # GSWP3 +IM2 (blue, darker)
-  path: /home/modex_user/DATA/NGEEA-Workshop/models/MasterE3SM_IM-2-no-phen_pan-arctic-CAVM0.5deg_gswp3
+  path: /mnt/inputdata/ILAMB/DATA/NGEEA-Workshop/models/MasterE3SM_IM-2-no-phen_pan-arctic-CAVM0.5deg_gswp3
 
 

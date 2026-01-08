@@ -14,10 +14,10 @@ fi
 
 # Download ILAMB Data
 if [ -d "/mnt/inputdata/ILAMB/DATA" ]; then
- ilamb-fetch --local_root=/mnt/inputdata/ILAMB/DATA/ --remote_root=https://data.ngee-arctic.ornl.gov/ilamb/DATA --collection=NGEEA-Workshop --no-check-certificate
+ ilamb-fetch --local_root=/mnt/inputdata/ILAMB/DATA --remote_root=https://data.ngee-arctic.ornl.gov/ilamb/DATA --collection=NGEEA-Workshop --no-check-certificate
 else
  mkdir -p /mnt/inputdata/ILAMB
  mkdir -p /mnt/inputdata/ILAMB/DATA
- ilamb-fetch --local_root=/mnt/inputdata/ILAMB/DATA/ --remote_root=https://data.ngee-arctic.ornl.gov/ilamb/DATA --collection=NGEEA-Workshop --no-check-certificate
+ ilamb-fetch --local_root=/mnt/inputdata/ILAMB/DATA --remote_root=https://data.ngee-arctic.ornl.gov/ilamb/DATA --collection=NGEEA-Workshop --no-check-certificate
 fi
 
