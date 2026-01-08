@@ -1,7 +1,7 @@
 .. Modex2025 documentation master file, created by
    sphinx-quickstart on Sat Oct 11 21:15:10 2025.
 
-Welcome to the ModEx 2025 Field to Model Workshop
+Welcome to the ModEx 2026 Field to Model Workshop
 ===================================================
 
 Welcome to the 2nd NGEE Arctic Field-to-Model Workshop in Santa Fe, NM!
@@ -65,7 +65,7 @@ Here you will find resources and documentation needed to follow the workshop exa
   :maxdepth: 2 
   :numbered: 3 
 
-  modex_agenda_2025
+  modex_agenda_2026
   setup
   plenary/elm_intro
   plenary/tem_ee1_warming
