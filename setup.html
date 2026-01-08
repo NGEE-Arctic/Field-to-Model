@@ -132,18 +132,10 @@ the WSL application, a new Ubuntu application if it’s been installed or simply
 </div>
 <p>This step downloads all of the scripts and infrastructure we have developed for the workshop,
 it should take a couple minutes to complete.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Depending on how your system is setup and the details of your GitHub account if you have one,
-you may get several errors about SSH keys when cloning the submodules. If this happens,
-try these steps:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">add</span> <span class="n">url</span><span class="o">.</span><span class="s2">&quot;https://github.com/&quot;</span><span class="o">.</span><span class="n">insteadOf</span> <span class="s2">&quot;git@github.com:&quot;</span>
-<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">add</span> <span class="n">url</span><span class="o">.</span><span class="s2">&quot;https://github.com/&quot;</span><span class="o">.</span><span class="n">insteadOf</span> <span class="s2">&quot;ssh://git@github.com/&quot;</span>
-<span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
-</pre></div>
-</div>
-<p>If you are still seeing errors at this step, we will have alternate instructions for you
-to run ELM in this workshop.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will likely see some SSH errors if you don’t have an SSH key setup -
+this should be okay, these submodules are not needed for the workshop.</p>
 </div>
 </section>
 <section id="download-docker-containers">
@@ -171,7 +163,41 @@ with the following commands:</p>
 </div>
 <p>Docker volumes act as additional ‘drives’ available on your computer that we
 can use to store all of the ELM model input and output in the same places across
-platforms (e.g., Windows vs mac).</p>
+platforms (e.g., Windows vs Mac).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you happen to still have the volumes from the 2022 workshop in
+Chattanooga, you are likely to encounter errors. There are two options to resolve that:</p>
+<ol class="arabic">
+<li><p>You could delete these volumes and make new ones:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>volume<span class="w"> </span>delete<span class="w"> </span>inputdata
+docker<span class="w"> </span>volume<span class="w"> </span>delete<span class="w"> </span>output
+docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>inputdata
+docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>output
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>If you want to keep these volumes, you could give them different names, e.g.,</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>inputdata26
+docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>output26
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<p>However, note if you choose the second option, you won’t be able to copy and paste
+the container commands from the rest of the documentation. Instead, you’ll have to change
+the volume mounts for input and output data to:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-v<span class="w"> </span>inputdata26:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>output26:/mnt/output
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </section>
 <section id="get-the-workshop-data">
 <h2><span class="section-number">2.4. </span>Get the workshop data<a class="headerlink" href="#get-the-workshop-data" title="Link to this heading">¶</a></h2>
@@ -212,6 +238,26 @@ platforms (e.g., Windows vs mac).</p>
 </pre></div>
 </div>
 <p>You should get output to your terminal window that looks something like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.827<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>nbclassic<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>loaded.
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.850<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>nbdime<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>loaded.
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.852<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>notebook<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>loaded.
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.852<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>panel.io.jupyter_server_extension<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>loaded.
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.856<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>solara.server.jupyter.server_extension<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>loaded.
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.858<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>voila.server_extension<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>loaded.
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.858<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>Serving<span class="w"> </span>notebooks<span class="w"> </span>from<span class="w"> </span><span class="nb">local</span><span class="w"> </span>directory:<span class="w"> </span>/home/jovyan
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.858<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>Jupyter<span class="w"> </span>Server<span class="w"> </span><span class="m">2</span>.17.0<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>at:
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.858<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>http://localhost:8888/lab?token<span class="o">=</span>5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.858<span class="w"> </span>ServerApp<span class="o">]</span><span class="w">     </span>http://127.0.0.1:8888/lab?token<span class="o">=</span>5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+<span class="o">[</span>I<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.858<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>Use<span class="w"> </span>Control-C<span class="w"> </span>to<span class="w"> </span>stop<span class="w"> </span>this<span class="w"> </span>server<span class="w"> </span>and<span class="w"> </span>shut<span class="w"> </span>down<span class="w"> </span>all<span class="w"> </span>kernels<span class="w"> </span><span class="o">(</span>twice<span class="w"> </span>to<span class="w"> </span>skip<span class="w"> </span>confirmation<span class="o">)</span>.
+<span class="o">[</span>C<span class="w"> </span><span class="m">2026</span>-01-07<span class="w"> </span><span class="m">18</span>:34:13.862<span class="w"> </span>ServerApp<span class="o">]</span>
+
+<span class="w">    </span>To<span class="w"> </span>access<span class="w"> </span>the<span class="w"> </span>server,<span class="w"> </span>open<span class="w"> </span>this<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>browser:
+<span class="w">        </span>file:///home/jovyan/.local/share/jupyter/runtime/jpserver-7-open.html
+<span class="w">    </span>Or<span class="w"> </span>copy<span class="w"> </span>and<span class="w"> </span>paste<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>these<span class="w"> </span>URLs:
+<span class="w">        </span>http://localhost:8888/lab?token<span class="o">=</span>5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+<span class="w">        </span>http://127.0.0.1:8888/lab?token<span class="o">=</span>5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+</pre></div>
+</div>
 <p>If you do, copy one of the bottom two links into a web browser and it should open a JupyterLab interface.</p>
 <p>Please take a moment to report if you were able to successfully get to this stage, or
 post any issues you are having here: <a class="reference external" href="https://github.com/NGEE-Arctic/Field-to-Model/issues/38">https://github.com/NGEE-Arctic/Field-to-Model/issues/38</a>

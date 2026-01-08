@@ -95,20 +95,10 @@ Clone Field-to-Model repository for the workshop
 This step downloads all of the scripts and infrastructure we have developed for the workshop,
 it should take a couple minutes to complete.
 
-.. warning::
+.. note:: 
 
-    Depending on how your system is setup and the details of your GitHub account if you have one,
-    you may get several errors about SSH keys when cloning the submodules. If this happens,
-    try these steps:
-
-    .. code::
-
-        git config --add url."https://github.com/".insteadOf "git@github.com:"
-        git config --add url."https://github.com/".insteadOf "ssh://git@github.com/"
-        git submodule update --init --recursive
-
-    If you are still seeing errors at this step, we will have alternate instructions for you 
-    to run ELM in this workshop.
+    You will likely see some SSH errors if you don't have an SSH key setup - 
+    this should be okay, these submodules are not needed for the workshop.
 
 Download Docker containers
 ----------------------------
@@ -142,7 +132,40 @@ You will also need to set up a few docker volumes for the workshop:
 
 Docker volumes act as additional 'drives' available on your computer that we
 can use to store all of the ELM model input and output in the same places across
-platforms (e.g., Windows vs mac). 
+platforms (e.g., Windows vs Mac). 
+
+.. warning::
+
+    If you happen to still have the volumes from the 2022 workshop in 
+    Chattanooga, you are likely to encounter errors. There are two options to resolve that:
+
+    1) You could delete these volumes and make new ones:
+
+        .. code:: bash
+
+            docker volume delete inputdata
+            docker volume delete output
+            docker volume create inputdata
+            docker volume create output
+
+    2) If you want to keep these volumes, you could give them different names, e.g.,
+
+        .. code:: bash
+
+            docker volume create inputdata26
+            docker volume create output26
+
+    However, note if you choose the second option, you won't be able to copy and paste
+    the container commands from the rest of the documentation. Instead, you'll have to change
+    the volume mounts for input and output data to:
+
+        .. code:: bash
+
+            -v inputdata26:/mnt/inputdata \
+            -v output26:/mnt/output
+
+
+
 
 Get the workshop data
 ------------------------------
@@ -194,7 +217,7 @@ Let's also test the visualization container:
 
 You should get output to your terminal window that looks something like this:
 
-.. code-block::bash
+.. code-block:: bash
 
     [I 2026-01-07 18:34:13.827 ServerApp] nbclassic | extension was successfully loaded.
     [I 2026-01-07 18:34:13.850 ServerApp] nbdime | extension was successfully loaded.
