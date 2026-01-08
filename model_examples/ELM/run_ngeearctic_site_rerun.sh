@@ -218,9 +218,11 @@ mkdir -p /mnt/output/cime_run_dirs
 
 # go to case directory
 cd ${case_dirs}/${case_name}
-./xmlquery RUNDIR
-case_run_dir=/mnt/output/cime_run_dirs/${case_name}/run
+case_run_dir=$(./xmlquery --value RUNDIR)
 
+case_elm_bldnml=$(./xmlquery --value ELM_BLDNML_OPTS)
+echo "case ELM_BLDNML_OPTS: "${case_elm_bldnml}
+    
 if [ ${run_type} = "restart" ]; then
   # no matter what RUN_TYPE (startup, branch, or hybrid)
 
@@ -260,12 +262,23 @@ elif [ ${run_type} = "branch" ]; then
     #fi
 
     # the following is hard-weired now, because OLMT cannot setup a case with surfdata of topounit only
-    if [ ${case_prefix} = "topounit" ]; then
-      echo " create_crop_landunit = .true. " >>user_nl_elm
-      #remove -topounit from ELM_NML_OPTS. Now it's hard-coded, but needs a flexible way (TODO)
-      ./xmlquery --value ELM_BLDNML_OPTS
-      ./xmlchange ELM_BLDNML_OPTS="-bgc bgc -nutrient cnp -nutrient_comp_pathway rd  -soil_decomp ctc -methane"
+
+    if [[ ${case_prefix} == *"topounit"* ]]; then
+      # since topounit included surfdata separates 17 natpfts into 15 natpfts and 2 generic cfts
+      # 'create_crop_landunit' must set to .true.
+      if grep -q "create_crop_landunit" "user_nl_elm"; then
+        echo " "
+      else
+        echo " create_crop_landunit = .true. " >>user_nl_elm
+      fi
       
+      if [[ "${case_prefix}" == "topounit" ]]; then
+        #remove -topounit from ELM_NML_OPTS, if in it for not setting use_atmdownscaling_to_topounit
+        if [[ ${elm_case_nml} == *" -topounit"* ]]; then
+          elm_case_nml=${elm_case_nml}
+          ./xmlchange ELM_BLDNML_OPTS=${elm_case_nml}
+        fi
+	  fi
     fi
   
   else
