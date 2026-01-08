@@ -15,7 +15,7 @@ for all setup instructions, agendas, and information!**
 
 > [!NOTE]
 > It is highly recommended that you download the workshop containers and input data ahead of time.
-> Setup Instrucitons found [here](https://ngee-arctic.github.io/Field-to-Model/setup.html) and 
+> Setup Instructions found [here](https://ngee-arctic.github.io/Field-to-Model/setup.html) and 
 > additional setup information [here](https://github.com/NGEE-Arctic/Field-to-Model/issues/38)
 
 > [!WARNING]
