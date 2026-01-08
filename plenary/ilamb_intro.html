@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6. International Land Model Benchmarking (ILAMB) &#8212; ModEx 2026 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Snow, Vegetation, and Permafrost Interactions Breakout Group" href="../breakout/snow_veg_permafrost.html" />
+    <link rel="prev" title="5. ATS Intro" href="ats_intro.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../breakout/snow_veg_permafrost.html" title="7. Snow, Vegetation, and Permafrost Interactions Breakout Group"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ats_intro.html" title="5. ATS Intro"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6. </span>International Land Model Benchmarking (ILAMB)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="international-land-model-benchmarking-ilamb">
+<h1><span class="section-number">6. </span>International Land Model Benchmarking (ILAMB)<a class="headerlink" href="#international-land-model-benchmarking-ilamb" title="Link to this heading">¶</a></h1>
+<p>The ILAMB is a python package which provides systematic assessment and
+benchmarking of land surface models by confronting them with reference
+datasets. ILAMB works with CF-compliant NetCDF files, such as outputs
+from CMIP models distributed by ESGF.</p>
+<p>ILAMB can also read outputs from ELM in their native format and supports
+both structured and unstructured grids for gridded or point scale
+simulations. As part of this workshop we will explore features of ILAMB using a
+series of Pan-Arctic scale gridded simulations conducted using ELM.</p>
+<section id="get-the-ilamb-model-and-observation-data">
+<h2><span class="section-number">6.1. </span>Get the ILAMB model and observation data<a class="headerlink" href="#get-the-ilamb-model-and-observation-data" title="Link to this heading">¶</a></h2>
+<p>Skip if you have completed this step before</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+    -v $(pwd):/home/modex_user \
+    -v inputdata:/mnt/inputdata \
+    yuanfornl/ngee-arctic-modex26:models-main-latest \
+    /home/modex_user/tools/scripts/get_inputdata.sh
+</pre></div>
+</div>
+<p>ILAMB includes <code class="docutils literal notranslate"><span class="pre">ilamb-fetch</span></code> tool to get data from ILAMB data servers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ilamb-fetch -h
+usage: ilamb-fetch [-h] [--local_root PATH] [--remote_root PATH] [-k COLLECTION] [-c] [--no-check-certificate] [-y]
+
+options:
+  -h, --help            show this help message and exit
+  --local_root PATH     Location on your system.
+  --remote_root PATH    Location on the remote system.
+  -k, --collection COLLECTION
+                        Data collection to download. [Options: ILAMB-Data (default); ABoVE-Data; NGEEA-Data;]
+  -c, --create          Enable to create a sha1sum check file of the contents of the local root
+  --no-check-certificate
+                        Enable to skip checking authenticity of the downloaded certificate
+  -y                    Enable to automatically accept the query to download files
+</pre></div>
+</div>
+<p>ILAMB data <em>collections</em> offer thematic collection of reference
+datasets. This workshop will use <code class="docutils literal notranslate"><span class="pre">NGEEA-Workshop</span></code> collection hosted on
+NGEE Arctic data servers and can be downloaded using <code class="docutils literal notranslate"><span class="pre">ilamb-fetch</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ilamb</span><span class="o">-</span><span class="n">fetch</span> <span class="o">--</span><span class="n">local_root</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">inputdata</span><span class="o">/</span><span class="n">ILAMB</span><span class="o">/</span><span class="n">DATA</span> <span class="o">--</span><span class="n">remote_root</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">.</span><span class="n">ornl</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">ilamb</span><span class="o">/</span><span class="n">DATA</span> <span class="o">--</span><span class="n">collection</span><span class="o">=</span><span class="n">NGEEA</span><span class="o">-</span><span class="n">Workshop</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">certificate</span>
+</pre></div>
+</div>
+<p>Data in ILAMB collection are organized in following hierarchy tree.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── biomass
+│   └── ESACCI
+│       └── biomass.nc
+├── ch4
+│   └── FluxnetANN
+│       └── FCH4_F_ANN_monthly_wetland_tier1.nc
+├── cSoil
+│   └── HWSD2
+│       ├── cSoilAbove1m_fx_HWSD2_19600101-20220101.nc
+│       └── cSoil_fx_HWSD2_19600101-20220101.nc
+</pre></div>
+</div>
+</section>
+<section id="models-yaml-files">
+<h2><span class="section-number">6.2. </span>Models yaml Files<a class="headerlink" href="#models-yaml-files" title="Link to this heading">¶</a></h2>
+<p>Model simulations to be included in the benchmarking analysis can be
+described via a simple YAML file. YAML file to be used in this workshop
+is available in <em>Field-to-Model</em> repository at
+<code class="docutils literal notranslate"><span class="pre">Field-to-Model/tools/ilamb</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Model simulations to be analyzed from IM2</span>
+<span class="c1">## Simulations below were forced using GSWP3</span>
+
+<span class="n">ELM_Panarctic_Baseline_GSWP3</span><span class="p">:</span>
+  <span class="n">modelname</span><span class="p">:</span> <span class="mf">1.</span><span class="n">Base</span><span class="o">.</span><span class="n">GSWP3</span>
+  <span class="n">color</span><span class="p">:</span> <span class="s2">&quot;#1f78b4&quot;</span>    <span class="c1"># GSWP3 baseline (blue, medium)</span>
+  <span class="n">path</span><span class="p">:</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">inputdata</span><span class="o">/</span><span class="n">ILAMB</span><span class="o">/</span><span class="n">DATA</span><span class="o">/</span><span class="n">NGEEA</span><span class="o">-</span><span class="n">Workshop</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">MasterE3SM_pan</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">CAVM0</span><span class="mf">.5</span><span class="n">deg_GSWP3_RERUN</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">fix_2D</span>
+
+<span class="n">ELM_Panarctic_TopoUnits_GSWP3</span><span class="p">:</span>
+  <span class="n">modelname</span><span class="p">:</span> <span class="mf">2.</span><span class="o">+</span><span class="n">Topo</span><span class="o">.</span><span class="n">GSWP3</span><span class="o">.</span><span class="n">NoDS</span>
+  <span class="n">color</span><span class="p">:</span> <span class="s2">&quot;#9ecae1&quot;</span>    <span class="c1"># GSWP3 +Topo (blue, lighter)</span>
+  <span class="n">path</span><span class="p">:</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">inputdata</span><span class="o">/</span><span class="n">ILAMB</span><span class="o">/</span><span class="n">DATA</span><span class="o">/</span><span class="n">NGEEA</span><span class="o">-</span><span class="n">Workshop</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">MasterE3SM_test</span><span class="o">-</span><span class="n">topounit</span><span class="o">-</span><span class="n">surf</span><span class="o">-</span><span class="n">v2_pan</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">CAVM0</span><span class="mf">.5</span><span class="n">deg_GSWP3</span>
+
+<span class="n">ELM_Panarctic_HillslopeHydro_GSWP3</span><span class="p">:</span>
+  <span class="n">modelname</span><span class="p">:</span> <span class="mf">3.</span><span class="o">+</span><span class="n">IM2</span><span class="o">.</span><span class="n">GSWP3</span><span class="o">.</span><span class="n">withDS</span>
+  <span class="n">color</span><span class="p">:</span> <span class="s2">&quot;#0b559f&quot;</span>    <span class="c1"># GSWP3 +IM2 (blue, darker)</span>
+  <span class="n">path</span><span class="p">:</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">inputdata</span><span class="o">/</span><span class="n">ILAMB</span><span class="o">/</span><span class="n">DATA</span><span class="o">/</span><span class="n">NGEEA</span><span class="o">-</span><span class="n">Workshop</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">MasterE3SM_IM</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">phen_pan</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">CAVM0</span><span class="mf">.5</span><span class="n">deg_gswp3</span>
+</pre></div>
+</div>
+<p><strong>ELM_Panarctic_Baseline_GSWP3</strong> – Pan-Arctic scale 0.5 degree resolution baseline ELM simulation forced using GSWP3.</p>
+<p><strong>ELM_Panarctic_TopoUnits_GSWP3</strong> – Pan-Arctic scale simulation with
+elevation-based topounits to capture subgrid scale topographic
+variability. Topography based downscaling of atmospheric forcings turned
+OFF.</p>
+<p><strong>ELM_Panarctic_HillslopeHydro_GSWP3</strong> – Pan-Arctic scale simulation
+with elevation-based topounits, downscaling of atmospheric forcings ON,
+and IM1 - Hill Slope hydrology module ON.</p>
+</section>
+<section id="ilamb-configure-files">
+<h2><span class="section-number">6.3. </span>ILAMB Configure Files<a class="headerlink" href="#ilamb-configure-files" title="Link to this heading">¶</a></h2>
+<p>Model variables to be benchmarked and reference datasets to confront
+them with are defined using a simple configuration file.</p>
+<p>Evaluations can be grouped in logical groups as desired. For example,
+below defines <strong>“Ecosystem and Carbon Cycle”</strong> group.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h1</span><span class="p">:</span> <span class="n">Ecosystem</span> <span class="ow">and</span> <span class="n">Carbon</span> <span class="n">Cycle</span><span class="p">]</span>
+<span class="n">bgcolor</span> <span class="o">=</span> <span class="s2">&quot;#86DE6A&quot;</span>
+</pre></div>
+</div>
+<p>Variables to be part of the group can be then defined as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h2</span><span class="p">:</span> <span class="n">Biomass</span><span class="p">]</span>
+<span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;biomass&quot;</span>
+<span class="n">alternate_vars</span> <span class="o">=</span> <span class="s2">&quot;TOTVEGC&quot;</span><span class="p">,</span><span class="s2">&quot;cVeg&quot;</span>
+<span class="n">weight</span>         <span class="o">=</span> <span class="mi">5</span>
+<span class="n">skip_rmse</span>      <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mass_weighting</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">variable</span></code> defines the model variable of interest.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alternate_vars</span></code> allow definition of synonymous variable names, since the models and observations may use different variable name for the same quantity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weight</span></code> is optional and is used by ILAMB to calculate aggregated overall scores. All variables/observations has equal weight by default.</p></li>
+</ul>
+<dl class="simple">
+<dt>Each variable can be benchmarked against one (or many) reference data,</dt><dd><p>which can be defined as:</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">ESACCI</span><span class="p">]</span>
+<span class="n">source</span>   <span class="o">=</span> <span class="s2">&quot;DATA/NGEEA-Workshop/biomass/ESACCI/biomass.nc&quot;</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">[ESACCI]</span></code> is the name of the reference dataset, and <code class="docutils literal notranslate"><span class="pre">source</span></code>
+is the path to the reference data files relative from <code class="docutils literal notranslate"><span class="pre">$ILAMB_ROOT</span></code>.</p>
+<p>However, it is possible that your dataset has no direct analog in the
+list of variables which models output and some manipulation is needed.
+We have support for when your dataset corresponds to an algebraic
+function of model variables. An example evapotranspiration can be
+calculated as sum of canopy evaporation (<code class="docutils literal notranslate"><span class="pre">QVEGE</span></code>), canopy transpiration
+(<code class="docutils literal notranslate"><span class="pre">QVEGT</span></code>) and ground evaporation (<code class="docutils literal notranslate"><span class="pre">QSOIL</span></code>) to compare against the
+reference dataset. An equation to calculate the derived variable can be
+defined using <code class="docutils literal notranslate"><span class="pre">derived</span></code> tag.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h2</span><span class="p">:</span> <span class="n">Evapotranspiration</span><span class="p">]</span>
+<span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;evspsbl&quot;</span>
+<span class="n">alternate_vars</span> <span class="o">=</span> <span class="s2">&quot;et&quot;</span>
+<span class="n">derived</span> <span class="o">=</span> <span class="s2">&quot;QVEGE+QVEGT+QSOIL&quot;</span>
+</pre></div>
+</div>
+<section id="point-based-data-for-benchmarking">
+<h3><span class="section-number">6.3.1. </span>Point based data for benchmarking<a class="headerlink" href="#point-based-data-for-benchmarking" title="Link to this heading">¶</a></h3>
+<p>While its common to benchmark models using gridded reference datasets,
+ILAMB is also able to leverge point based datasets, such as those from
+FLUX towers, for benchmarking. Following is an example of using
+towers-based FLUXNET-CH4 datasets for benchmarking of methane (CH4)
+fluxes from the ELM model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h2</span><span class="p">:</span> <span class="n">CH4</span><span class="p">]</span>
+<span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;FCH4&quot;</span>
+
+<span class="p">[</span><span class="n">FLUXNET</span><span class="o">-</span><span class="n">CH4</span><span class="p">]</span>
+<span class="n">source</span> <span class="o">=</span> <span class="s2">&quot;DATA/NGEEA-Workshop/ch4/FluxnetANN/FCH4_F_ANN_monthly_wetland_tier1.nc&quot;</span>
+</pre></div>
+</div>
+<p>No specific instructions are needed, and ILAMB is able to detect the
+data being in point formats and conducts necessary metrics calculations
+automatically.</p>
+</section>
+<section id="variable-to-variable-relationships">
+<h3><span class="section-number">6.3.2. </span>Variable to variable relationships<a class="headerlink" href="#variable-to-variable-relationships" title="Link to this heading">¶</a></h3>
+<p>While most often individual variables are compared against reference
+dataset to benchmark the model, equally important is to ensure that
+model (and observations) preserve functional relationships among
+interacting processes and variables. ILAMB allows calculation of
+pair-wise variable to variable relationships that can be defined via the
+configuration file. Below is an example configuration to analyze
+relationship between GPP vs Evapotranspiration, GPP vs Precipitation,
+GPP vs Surface Downward SW Radiation, and GPP vs Surface
+Air Temperature.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">FLUXCOM</span><span class="p">]</span>
+<span class="n">source</span>        <span class="o">=</span> <span class="s2">&quot;DATA/NGEEA-Workshop/gpp/FLUXCOM/gpp.nc&quot;</span>
+<span class="n">weight</span>        <span class="o">=</span> <span class="mi">15</span>
+<span class="n">table_unit</span>    <span class="o">=</span> <span class="s2">&quot;Pg yr-1&quot;</span>
+<span class="n">plot_unit</span>     <span class="o">=</span> <span class="s2">&quot;g m-2 d-1&quot;</span>
+<span class="n">space_mean</span>    <span class="o">=</span> <span class="kc">False</span>
+<span class="n">skip_iav</span>      <span class="o">=</span> <span class="kc">True</span>
+<span class="n">relationships</span> <span class="o">=</span> <span class="s2">&quot;Evapotranspiration/GLEAMv3.3a&quot;</span><span class="p">,</span><span class="s2">&quot;Precipitation/GPCPv2.3&quot;</span><span class="p">,</span><span class="s2">&quot;SurfaceDownwardSWRadiation/CERESed4.2&quot;</span><span class="p">,</span><span class="s2">&quot;SurfaceAirTemperature/CRU4.02&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-ilamb">
+<h2><span class="section-number">6.4. </span>Running ILAMB<a class="headerlink" href="#running-ilamb" title="Link to this heading">¶</a></h2>
+<p>Now that we have the configuration file set up, you can run the study using the ilamb-run script. Executing the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ilamb</span><span class="o">-</span><span class="n">run</span> <span class="o">--</span><span class="n">config</span> <span class="n">hostdir</span><span class="o">/</span><span class="n">Field</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">Model</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">ilamb</span><span class="o">/</span><span class="mi">1</span><span class="n">_config_IM2</span><span class="o">.</span><span class="n">cfg</span> \
+<span class="o">--</span><span class="n">model_setup</span> <span class="n">hostdir</span><span class="o">/</span><span class="n">Field</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">Model</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">ilamb</span><span class="o">/</span><span class="n">models_IM2</span><span class="o">.</span><span class="n">yaml</span> \
+<span class="o">--</span><span class="n">build_dir</span> <span class="n">ilamb_builds</span><span class="o">/</span><span class="n">build_IM2_20260115_1</span> \
+<span class="o">--</span><span class="n">study_limits</span> <span class="mi">2000</span> <span class="mi">2014</span> \
+<span class="o">--</span><span class="n">define_regions</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">inputdata</span><span class="o">/</span><span class="n">ILAMB</span><span class="o">/</span><span class="n">DATA</span><span class="o">/</span><span class="n">NGEEA</span><span class="o">-</span><span class="n">Workshop</span><span class="o">/</span><span class="n">regions</span><span class="o">/</span><span class="n">ILAMB_region_CAVM_NO_GREENLAND</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--config</span></code> defined the ILAMB configuration file to use</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--model_setup</span></code> defines model simulations to benchmark</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--build_dir</span></code> defines the path where the ILAMB outputs should be saved</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--study_limits</span></code> is optional and defines the temporal period of the</p></li>
+</ul>
+<p>analysis. By default the analysis will conducted over the entire time
+series contained within the model and reference data files.
+* <code class="docutils literal notranslate"><span class="pre">--define_regions</span></code> is optional and defines the spatial region of
+analysis. By default analysis is conducted on the entire spatial
+extent contained within the model/obs data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ILAMB_region_CAVM_NO_GREENLAND.nc</span></code> is a custom defined region limited
+to the extent of Arctic vegetation as defined by Circumpolar Arctic
+Vegetation Map.</p>
+</section>
+<section id="visualize-ilamb-results">
+<h2><span class="section-number">6.5. </span>Visualize ILAMB Results<a class="headerlink" href="#visualize-ilamb-results" title="Link to this heading">¶</a></h2>
+<p>ILAMB results are prepared as a set of html files that can be viewed in
+any browser. Relevant statistics and data are also stored in set of
+NetCDF files, all in the directory defined by <code class="docutils literal notranslate"><span class="pre">--build_dir</span></code>.</p>
+<p>To view the results, start an http server with port forwarding within
+your container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span> <span class="mi">8000</span>
+</pre></div>
+</div>
+<p>Now open your browser and access <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/</span></code> to view the
+ILAMB results.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/NGEE_Arctic_logo_large.png" alt="Logo of ModEx 2026"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">6. International Land Model Benchmarking (ILAMB)</a><ul>
+<li><a class="reference internal" href="#get-the-ilamb-model-and-observation-data">6.1. Get the ILAMB model and observation data</a></li>
+<li><a class="reference internal" href="#models-yaml-files">6.2. Models yaml Files</a></li>
+<li><a class="reference internal" href="#ilamb-configure-files">6.3. ILAMB Configure Files</a><ul>
+<li><a class="reference internal" href="#point-based-data-for-benchmarking">6.3.1. Point based data for benchmarking</a></li>
+<li><a class="reference internal" href="#variable-to-variable-relationships">6.3.2. Variable to variable relationships</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-ilamb">6.4. Running ILAMB</a></li>
+<li><a class="reference internal" href="#visualize-ilamb-results">6.5. Visualize ILAMB Results</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../breakout/snow_veg_permafrost.html" title="7. Snow, Vegetation, and Permafrost Interactions Breakout Group"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ats_intro.html" title="5. ATS Intro"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6. </span>International Land Model Benchmarking (ILAMB)</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, ModEx Team, LANL, ORNL, UAF, LBNL.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

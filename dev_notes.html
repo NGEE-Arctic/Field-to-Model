@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. General Notes &#8212; ModEx 2026 0.0.1 documentation</title>
+    <title>14. General Notes &#8212; ModEx 2026 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e3f3e722" />
@@ -14,8 +14,8 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="16. TEM Setup Details" href="tem_dev_notes.html" />
-    <link rel="prev" title="9. Common Issues/FAQ" href="common_issues.html" /> 
+    <link rel="next" title="17. TEM Setup Details" href="tem_dev_notes.html" />
+    <link rel="prev" title="10. Common Issues/FAQ" href="common_issues.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
@@ -24,13 +24,13 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="tem_dev_notes.html" title="16. TEM Setup Details"
+          <a href="tem_dev_notes.html" title="17. TEM Setup Details"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="common_issues.html" title="9. Common Issues/FAQ"
+          <a href="common_issues.html" title="10. Common Issues/FAQ"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">13. </span>General Notes</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">14. </span>General Notes</a></li> 
       </ul>
     </div>  
 
@@ -40,7 +40,7 @@
           <div class="body" role="main">
             
   <section id="general-notes">
-<h1><span class="section-number">13. </span>General Notes<a class="headerlink" href="#general-notes" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">14. </span>General Notes<a class="headerlink" href="#general-notes" title="Link to this heading">¶</a></h1>
 <blockquote>
 <div><ul class="simple">
 <li><p>This Sphinx project is configured to use MyST parser to allow writing in
@@ -58,19 +58,19 @@ borders, etc. See the comments in the CSS file for more details.</p></li>
 </div></blockquote>
 </section>
 <section id="working-with-sphinx-docs">
-<h1><span class="section-number">14. </span>Working with Sphinx Docs<a class="headerlink" href="#working-with-sphinx-docs" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">15. </span>Working with Sphinx Docs<a class="headerlink" href="#working-with-sphinx-docs" title="Link to this heading">¶</a></h1>
 <p>The Dockerfile-docs file contains instructions to build a Docker image that can
 build and serve the Sphinx docs.</p>
 <p>There are a number of ways you can use this, but for working on content and
 editing the docs, the easiest is to use the live reloading server shown below.</p>
 <section id="building-the-docker-image">
-<h2><span class="section-number">14.1. </span>Building the Docker Image<a class="headerlink" href="#building-the-docker-image" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.1. </span>Building the Docker Image<a class="headerlink" href="#building-the-docker-image" title="Link to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>docbuilder<span class="w"> </span>--target<span class="w"> </span>docbuilder<span class="w"> </span>-f<span class="w"> </span>Docker/Dockerfile-docs<span class="w"> </span>.
 </pre></div>
 </div>
 </section>
 <section id="running-the-container-with-live-reload">
-<h2><span class="section-number">14.2. </span>Running the container with Live Reload<a class="headerlink" href="#running-the-container-with-live-reload" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.2. </span>Running the container with Live Reload<a class="headerlink" href="#running-the-container-with-live-reload" title="Link to this heading">¶</a></h2>
 <p>Run the container! This starts a live-reloading server on port 9999 that is
 watching the docs folder for changes. When it encounters changes, it rebuilds
 the docs. On your host system you can open a browser to localhost:9999 to see
@@ -90,9 +90,9 @@ worked with the bind mount!!</p>
 </section>
 </section>
 <section id="working-with-the-modeling-and-visualization-docker-images">
-<h1><span class="section-number">15. </span>Working with the Modeling and Visualization Docker Images<a class="headerlink" href="#working-with-the-modeling-and-visualization-docker-images" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">16. </span>Working with the Modeling and Visualization Docker Images<a class="headerlink" href="#working-with-the-modeling-and-visualization-docker-images" title="Link to this heading">¶</a></h1>
 <section id="container-setup">
-<span id="id1"></span><h2><span class="section-number">15.1. </span>Container Setup<a class="headerlink" href="#container-setup" title="Link to this heading">¶</a></h2>
+<span id="id1"></span><h2><span class="section-number">16.1. </span>Container Setup<a class="headerlink" href="#container-setup" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># # data
 git clone --recurse-submodules https://github.com/NGEE-Arctic/field-to-model
 cd field-to-model
@@ -122,7 +122,7 @@ docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-visualization:mai
 </div>
 </section>
 <section id="usage">
-<h2><span class="section-number">15.2. </span>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">16.2. </span>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
 <p>These examples show</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># # model image
 
@@ -154,15 +154,15 @@ docker run -it --init \
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">13. General Notes</a></li>
-<li><a class="reference internal" href="#working-with-sphinx-docs">14. Working with Sphinx Docs</a><ul>
-<li><a class="reference internal" href="#building-the-docker-image">14.1. Building the Docker Image</a></li>
-<li><a class="reference internal" href="#running-the-container-with-live-reload">14.2. Running the container with Live Reload</a></li>
+<li><a class="reference internal" href="#">14. General Notes</a></li>
+<li><a class="reference internal" href="#working-with-sphinx-docs">15. Working with Sphinx Docs</a><ul>
+<li><a class="reference internal" href="#building-the-docker-image">15.1. Building the Docker Image</a></li>
+<li><a class="reference internal" href="#running-the-container-with-live-reload">15.2. Running the container with Live Reload</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#working-with-the-modeling-and-visualization-docker-images">15. Working with the Modeling and Visualization Docker Images</a><ul>
-<li><a class="reference internal" href="#container-setup">15.1. Container Setup</a></li>
-<li><a class="reference internal" href="#usage">15.2. Usage</a></li>
+<li><a class="reference internal" href="#working-with-the-modeling-and-visualization-docker-images">16. Working with the Modeling and Visualization Docker Images</a><ul>
+<li><a class="reference internal" href="#container-setup">16.1. Container Setup</a></li>
+<li><a class="reference internal" href="#usage">16.2. Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -189,13 +189,13 @@ docker run -it --init \
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="tem_dev_notes.html" title="16. TEM Setup Details"
+          <a href="tem_dev_notes.html" title="17. TEM Setup Details"
              >next</a> |</li>
         <li class="right" >
-          <a href="common_issues.html" title="9. Common Issues/FAQ"
+          <a href="common_issues.html" title="10. Common Issues/FAQ"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">13. </span>General Notes</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">14. </span>General Notes</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
