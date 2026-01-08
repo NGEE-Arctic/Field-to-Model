@@ -1,7 +1,8 @@
 #!/bin/sh -f
 
 if [ -d "/mnt/inputdata/.git" ]; then
-  git -C /mnt/inputdata pull --ff-only
+  git -C /mnt/inputdata fetch
+  git -C /mnt/inputdata reset --hard origin/main
 else
   git clone --depth=1 --single-branch -b main https://github.com/ngee-arctic/field-to-model-inputdata /mnt/inputdata || true
   # unpack zipped data
