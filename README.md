@@ -7,6 +7,9 @@ over this 2.5-day workshop is to bring empiricists to the models. We will be
 providing an introduction to land surface modeling by providing overviews of
 three different land surface models used across the project.
 
+Location: Drury Hotel, Santa Fe
+Dates: January 14-16, 2026
+
 **Attendees, please see the [workshop website](https://ngee-arctic.github.io/Field-to-Model/index.html) 
 for all setup instructions, agendas, and information!**
 
