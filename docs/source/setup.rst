@@ -80,6 +80,31 @@ ParaView or VisIt
 * **ParaView**: ParaView can be installed from the KitWare website (or for LANL folks, LANL self service/software center): `Download ParaView <https://www.paraview.org/download/>`_
 * **VisIt**: VisIt can be installed from the LLNL website: `Download VisIt <https://wci.llnl.gov/simulation/computer-codes/visit/downloads>`_
 
+Terminal Tips
+-------------------------------------------------
+We will be using Terminal to access the Command Line. You can open Terminal by clicking the Spotlight Search magnifying glass at the top right of your computer and typing "Terminal." 
+
+
+Each time you see code in the box below, copy and paste the contents of it into your Terminal window and hit Enter for the code to run. Some common commands are as follows:
+
+.. code::
+
+    ls
+    cd
+    pwd
+    history
+    exit
+    
+
+where
+    * ls means 'list' and provides a list of the files within your current directory (folder)
+    * cd means 'change directory' and allows you to move from one directory to another
+    * pwd means "print working directory" and outputs the filepath of the directory where you are currently located
+    * history prints a history of the commands you have already run
+    * exit allows you to leave your Docker session and return to your home directory 
+    * Ctrl + C will cancel a command (useful if you want to cancel a model run)
+    * Tab will autocomplete a command or file name
+
 Clone Field-to-Model repository for the workshop
 -------------------------------------------------
 
@@ -200,7 +225,7 @@ If you get output that matches the output below, you've setup the container corr
 
     ATS version 1.6.0_9f6f117d
     v0.8.3-42-g77038e0c
-    Docker	E3SM  README.md  docs  model_examples  tools
+    Docker	E3SM  README.md  docs  model_examples  tools  vis_notebooks
     inputdata  output
 
 
