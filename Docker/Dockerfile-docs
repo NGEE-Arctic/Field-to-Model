@@ -16,7 +16,7 @@ WORKDIR /docs
 
 COPY docs /docs
 
-RUN make html
+RUN make html "-W --keep-going"
 
 FROM scratch
 
