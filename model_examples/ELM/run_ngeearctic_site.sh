@@ -306,6 +306,7 @@ fi
 if [ "${no_submit}" = True ]; then
   echo "After setup/build case, do not submit"
   options="$options --no_submit"
+fi 
 if [ "${use_allshrubs}" = True]; then
   if [ "${site_name}" == "imnaviat_creek" ]; then
     echo "Running with a surface file with all shrubs"
@@ -411,16 +412,6 @@ elif [ ${site_name} = imnaviat_creek ]; then
   elif [ ${met_source} = gswp3 ]; then
     met_path="${met_root}/tfs" # use same site data as toolik
   fi
-  if [ ${use_allshrubs} = True ]; then
-    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_shrubs.nc"
-    landuse_file="''"
-  elif [ ${use_noshrubs} = True ]; then
-    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_noshrubs.nc"
-    landuse_file="''"
-  else
-    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609.nc"
-    landuse_file="landuse.timeseries_1x1pt_ImnaviatCreek-GRID_simyr1850-2015_c250609.nc"
-  fi
 else 
   echo " "
   echo "**** EXECUTION HALTED ****"
@@ -466,6 +457,20 @@ if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = T
     exit -1
  fi
 
+fi
+
+if [ "${site_name}" = imnaviat_creek ]; then
+  # imnaviat creek surface data options
+  if [ ${use_allshrubs} = True ]; then
+    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_shrubs.nc"
+    landuse_file="''"
+  elif [ ${use_noshrubs} = True ]; then
+    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_noshrubs.nc"
+    landuse_file="''"
+  else
+    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609.nc"
+    landuse_file="landuse.timeseries_1x1pt_ImnaviatCreek-GRID_simyr1850-2015_c250609.nc"
+  fi
 fi
 
 #sites with surface data including terrain features, include slope, aspect, sky_view and terrain_config
