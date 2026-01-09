@@ -1,6 +1,6 @@
 
-ELM Background: Snow, Vegetation, and Permafrost Processes
-============================================================
+ELM Background
+===============
 
 
 ELM Background: Snow Processes
