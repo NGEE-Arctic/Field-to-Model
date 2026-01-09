@@ -38,7 +38,8 @@ jobs:
 
 
 ### SMOKE TESTS
-    tem-warming:
+    tem-warming-quick-basic-demo:
+      needs: prepare-inputdata
       runs-on: ubuntu-latest
       steps:
         - name: Checkout repo
@@ -91,6 +92,7 @@ jobs:
 
     tem-new-inputs-matrix:
       if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      needs: prepare-inputdata
       runs-on: ubuntu-latest
       strategy:
         fail-fast: false
