@@ -60,6 +60,8 @@ Help()
     echo "  --startdate_scale_pdep    When should the phosphorus deposition scaling begin? (It will continue to the end of the transient run)"
     echo "                            YYYYMMDD format"
     echo "  --mod_parm_file           Use a modified PFT parameter file (Note, requires full path)"
+    echo "  --use_shrubs              Use a modified surface file with 100% Broadleaf deciduous shrub – boreal (Note, requires full path)"
+    echo "  --use_noshrubs            Use a modified surface file with 100% C3 arctic grass (Note, requires full path)"
     exit 0
 }
 
@@ -178,6 +180,14 @@ case $i in
     use_polygonal_tundra=True
     shift
     ;;
+    --use_shrubs)
+    use_shrubs=True
+    shift
+    ;;
+    --use_noshrubs)
+    use_noshrubs=True
+    shift
+    ;;
     *)
         # unknown option
     ;;
@@ -201,6 +211,8 @@ topounits_atmdownscale="${topounits_atmdownscale:-False}"
 terrain_raddownscale="${terrain_raddownscale:-False}"
 use_polygonal_tundra="${use_polygonal_tundra:-False}"
 no_submit="${no_submit:-False}"
+use_shrubs="${use_shrubs:-False}"
+use_noshrubs="${use_noshrubs:-False}"
 options="${options:-}"
 # -1 is the default
 timestep="${timestep:-1}"
@@ -387,7 +399,14 @@ elif [ ${site_name} = imnaviat_creek ]; then
     met_path="${met_root}/ImC_wshed"
   elif [ ${met_source} = gswp3 ]; then
     met_path="${met_root}/tfs" # use same site data as toolik
-  fi  
+  fi
+  if [ ${use_shrubs} = true ]; then
+    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_shrubs.nc"
+    landuse_file=""
+  elif [ ${use_noshrubs} = true ]; then
+    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_noshrubs.nc"
+    landuse_file=""
+  fi
 else 
   echo " "
   echo "**** EXECUTION HALTED ****"
