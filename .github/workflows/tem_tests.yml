@@ -27,7 +27,7 @@ jobs:
         - name: Copy input data to host for artifact storage
           run: |
             mkdir -p ./inputdata-cache
-            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest cp -r /mnt/inputdata/* /host/cache/
+            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest sh -c 'cp -r /mnt/inputdata/* /host/cache/'
         - name: Upload input data as artifact
           uses: actions/upload-artifact@v4
           with:
