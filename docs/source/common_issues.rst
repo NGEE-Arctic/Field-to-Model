@@ -8,6 +8,18 @@ Common Issues/FAQ
    **** Running OLMT:
    /opt/conda/bin/python: can't open file '/home/modex_user/tools/olmt/./site_fullrun.py': [Errno 2] No such file or directory
 
+* If you try to run two instances of the Docker containers at the same time,
+  with the same port mappings you may see an error like this:
+
+  .. code:: 
+
+    docker: Error response from daemon: failed to set up container networking:
+    driver failed programming external connectivity on endpoint friendly_shirley
+    (a9108d46d0ece39a56496506b75135a04c4669eb8c1f1018d832c71e64eb4941): Bind for
+    0.0.0.0:8888 failed: port is already allocated
+
+
+
 
 More Information and Links
 =============================
