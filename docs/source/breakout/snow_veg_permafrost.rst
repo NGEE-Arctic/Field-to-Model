@@ -2,8 +2,13 @@ Snow, Vegetation, and Permafrost Interactions Breakout Group
 ================================================================
 
 Welcome to the snow–vegetation–permafrost breakout! Please see the agenda
-for our breakout session :ref:`breakout/snow_veg_permafrost_agenda:Snow, Vegetation, Permafrost (SVP) 
-Breakout Agenda`.
+for our breakout session .
+
+.. toctree::
+  :maxdepth: 2
+
+  snow_veg_permafrost_agenda
+
 
 Snow, shrubs, and permafrost are tightly coupled controls on Arctic
 ecosystem function, climate feedbacks, and infrastructure stability.
@@ -126,10 +131,9 @@ outputs.
    TEM_Model
   
 .. toctree::
-   :hidden:
+  :hidden:
 
-   snow_veg_permafrost_agenda
-   subgrid_variability_ELM
+  subgrid_variability_ELM
 
 
 References
