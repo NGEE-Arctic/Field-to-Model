@@ -1,7 +1,7 @@
 Common Issues/FAQ
 =====================
 
-* There are two potential causes if you an error that looks like this you need to clone the Field-to-Model repository with the `--recurse-submodules` flag:
+* If you see the following when running ELM/OLMT, you need to clone the Field-to-Model repository with the `--recurse-submodules` flag:
 
 .. code-block:: 
 
