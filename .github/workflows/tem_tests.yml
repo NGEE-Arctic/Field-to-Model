@@ -9,6 +9,31 @@ on:
     workflow_dispatch:
 
 jobs:
+### SHARED INPUT DATA PREPARATION
+    prepare-inputdata:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v6
+        - name: Create docker volumes
+          run: |
+            docker volume create inputdata
+        - name: Get input data
+          run: |
+            docker run --rm -v "$(pwd):/home/modex_user" -v inputdata:/mnt/inputdata yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+        - name: Copy input data to host for artifact storage
+          run: |
+            mkdir -p ./inputdata-cache
+            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest cp -r /mnt/inputdata/* /host/cache/
+        - name: Upload input data as artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: inputdata
+            path: ./inputdata-cache
+            retention-days: 1
+
+
+
 ### SMOKE TESTS
     tem-warming:
       runs-on: ubuntu-latest
@@ -19,9 +44,14 @@ jobs:
           run: |
             docker volume create inputdata
             docker volume create output
-        - name: Get input data
+        - name: Download input data artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: inputdata
+            path: ./inputdata-cache
+        - name: Load input data into docker volume
           run: |
-            docker run --rm -v "$(pwd):/home/modex_user" -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest cp -r /host/cache/* /mnt/inputdata/
         - name: Run test case for site
           run: |
             docker run -i --rm -v "$(pwd):/home/modex_user" \
@@ -70,9 +100,14 @@ jobs:
           run: |
             docker volume create inputdata
             docker volume create output
-        - name: Get input data
+        - name: Download input data artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: inputdata
+            path: ./inputdata-cache
+        - name: Load input data into docker volume
           run: |
-            docker run --rm -v "$(pwd):/home/modex_user" -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest cp -r /host/cache/* /mnt/inputdata/
 
         - name: Run warming experiment for inputdata set
           run: |
