@@ -99,7 +99,7 @@ Here is where we will review how to look at the ELM results in Jupyter Lab noteb
 Advanced ELM Processing and Information
 ---------------------------------------
 
-* ELM Background Information :ref:`ELM Background `.
+* ELM Background Information :ref:`ELM Background`.
 
-* The impact of shrubs in ELM :ref:`The impact of shrubs in ELM `.
-* Understanding and modifying surface files in ELM :ref:`Understanding and modifying surface files in ELM `.
+* The impact of shrubs in ELM :ref:`The impact of shrubs in ELM`.
+* Understanding and modifying surface files in ELM :ref:`Understanding and modifying surface files in ELM`.
