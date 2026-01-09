@@ -76,5 +76,4 @@ Here you will find resources and documentation needed to follow the workshop exa
   breakout/hillslope_bgc
   common_issues
   dev_notes
-  tem_dev_notes
 

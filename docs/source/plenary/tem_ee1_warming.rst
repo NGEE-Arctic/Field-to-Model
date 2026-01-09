@@ -42,7 +42,7 @@ Setup
 Starting the container 
 *************************
 
-Assuming you have completed all the step in the :ref:`Getting Started` 
+Assuming you have completed all the step in the :ref:`setup:Getting Started` 
 instructions, run the following command to start a shell in the model container:
 
 .. code:: shell
