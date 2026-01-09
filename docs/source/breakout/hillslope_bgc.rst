@@ -4,7 +4,7 @@ Hillslope hydrology and BGC impacts breakout group
 Objectives of the workshop breakout
 -----------------------------------
 Objectives of this workshop breakout is learn how to set up and run ELM
-simulations to explore a set of four ELM confgurations:
+simulations to explore a set of four ELM configurations:
 
 +---------------------------+------------------+---------------------+------------------------------+
 | Features                  | Spatial Extent   | Spatial Resolutions | Configuration name (CODE)    |
@@ -195,7 +195,7 @@ A quick test of ensential topounit enabled ELM run
 
 The option, --topounits_atmdownscale, will turn on a function, downscaling air temperature and precipitation by topounit.
 
-This function may significantly impact hydrology and may have consequent impacts on biogeochemical cycle, if mulitple topounits are properly created in ELM surface data.
+This function may significantly impact hydrology and may have consequent impacts on biogeochemical cycle, if multiple topounits are properly created in ELM surface data.
 
 Create a new transient case and build it.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
