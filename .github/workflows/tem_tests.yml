@@ -63,7 +63,7 @@ jobs:
         fail-fast: false
         matrix:
           INPUT_DATASET: [modex26_1x1_AK-UTQ]
-
+        steps:
         - name: Checkout repo
           uses: actions/checkout@v6
         - name: Create docker volumes
