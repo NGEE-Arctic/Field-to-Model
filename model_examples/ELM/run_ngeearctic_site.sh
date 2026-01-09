@@ -413,10 +413,10 @@ elif [ ${site_name} = imnaviat_creek ]; then
   fi
   if [ ${use_allshrubs} = True ]; then
     surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_shrubs.nc"
-    landuse_file=""
+    landuse_file="''"
   elif [ ${use_noshrubs} = True ]; then
     surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_noshrubs.nc"
-    landuse_file=""
+    landuse_file="''"
   else
     surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609.nc"
     landuse_file="landuse.timeseries_1x1pt_ImnaviatCreek-GRID_simyr1850-2015_c250609.nc"
