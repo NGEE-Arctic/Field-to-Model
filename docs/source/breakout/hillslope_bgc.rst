@@ -80,7 +80,23 @@ merge strategy to create the topounits.
 
 Atmospheric Downscaling Scheme
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Elevation Range with Maximum elevation Method (ERMM) 
+Elevation Range with Maximum elevation Method (ERMM) devveloped by Tesfa
+et. al. 2020 is used to downscale atmospheric forcings from gridcell to
+topounits. The ERMM method uses only the topographic characteristics of the grid and the TGUs to disaggregate grid-level precipitation to the TGUs of the grid.
+
+  ::
+
+    Tesfa, T. K., Leung, L. R., & Ghan, S. J. (2020). Exploring topography-based methods for downscaling subgrid precipitation for use in Earth System Models. Journal of Geophysical Research: Atmospheres, 125, e2019JD031456. https://doi.org/10.1029/2019JD031456
+
+
+
+.. figure:: ../_static/hillslope_bgc/ERWMM_precip_ds.png
+   :alt: ERWMM precipitation downscaling 
+
+
+.. figure:: ../_static/hillslope_bgc/ERWMM_temp_ds.png
+   :alt: ERWMM temperature downscaling 
+
 
 IM2 Hillslope Hydrology
 ~~~~~~~~~~~~~~~~~~~~~~~
