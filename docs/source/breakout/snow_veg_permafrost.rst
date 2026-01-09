@@ -124,6 +124,11 @@ outputs.
 
    ELM_Model
    TEM_Model
+  
+.. toctree::
+   :hidden:
+
+   snow_veg_permafrost_agenda
 
 
 References

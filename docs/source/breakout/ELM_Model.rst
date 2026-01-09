@@ -103,3 +103,11 @@ Advanced ELM Processing and Information
 
 * The impact of shrubs in ELM :ref:`The impact of shrubs in ELM`.
 * Understanding and modifying surface files in ELM :ref:`Understanding and modifying surface files in ELM`.
+
+.. toctree::
+    :hidden:
+
+    analyzing_ELM_output_Jupyter_Notebooks
+    ELM_Background
+    shrub_impacts_ELM
+    surface_files_ELM
