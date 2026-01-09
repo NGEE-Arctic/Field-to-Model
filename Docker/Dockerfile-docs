@@ -16,7 +16,7 @@ WORKDIR /docs
 
 COPY docs /docs
 
-RUN make html "-W --keep-going"
+RUN make -e SPHINXOPTS="-W --keep-going" html
 
 FROM scratch
 
