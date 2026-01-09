@@ -38,7 +38,8 @@ jobs:
           set +e
           codespell docs source \
             -S "*.po,*.pot,build,_build,*.png,*.jpg,*.gif,*.svg" \
-            -f > codespell-report.txt
+            -f > codespell-report.txt \
+            -L matric
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
           set -e
 

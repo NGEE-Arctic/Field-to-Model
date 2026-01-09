@@ -28,7 +28,7 @@ RUN set -ex \
    'earthengine-api' \
    'geemap' \
    'pygis' \
-   'ilamb' \
+   ilamb>=2.7.3 \
    && mamba clean --all -f -y \
    && rm -rf "/home/${NB_USER}/.cache/yarn" \
    && rm -rf "/home/${NB_USER}/.node-gyp" \

@@ -1,4 +1,4 @@
-ModEx Workshop 2025 Agenda
+ModEx Workshop 2026 Agenda
 ==========================
 
 Santa Fe, New Mexico
@@ -19,12 +19,9 @@ Wednesday, January 14, 2026
    * - 8:30–9:00 am*
      - Introduction, Agenda Overview, Daily Charge, modeling exercise
      - Rich Fiorella
-   * - 9:00–9:30 am*
-     - ELM Introduction
-     - Katrina Bennett
-   * - 9:30–10:15 am*
-     - ELM Hands-on exercises
-     - Rich Fiorella
+   * - 9:00–10:15 am*
+     - ELM and FATES Introduction
+     - Katrina Bennett, Jennifer Holm, Rich Fiorella
    * - 10:15–10:30 am
      - Coffee break, troubleshooting
      - 
@@ -32,12 +29,15 @@ Wednesday, January 14, 2026
      - TEM Introduction and hands-on exercises
      - Eugenie Euskirchen, Hannah Mevenkamp, Tobey Carman
    * - 12:00–1:30 pm*
-     - Lunch, break / Dapper Introduction and Hands-On tutorial
+     - Lunch, break / Dapper Introduction and tutorial
      - Jon Schwenk
    * - 1:30–1:45 pm
-     - Introduction and charges for breakout sessions
+     - AI-Enabled Calibration Reveals Carbon-Nutrient Regulation on Arctic Vegetation
+     - Jing Tao
+   * - 1:45-1:50 pm
+     - Intro to Breakout Groups
      - Rich Fiorella
-   * - 1:45–3:15 pm
+   * - 1:50–3:15 pm
      - Breakout group work
      - In groups work
    * - 3:15–3:30 pm

@@ -80,6 +80,31 @@ ParaView or VisIt
 * **ParaView**: ParaView can be installed from the KitWare website (or for LANL folks, LANL self service/software center): `Download ParaView <https://www.paraview.org/download/>`_
 * **VisIt**: VisIt can be installed from the LLNL website: `Download VisIt <https://wci.llnl.gov/simulation/computer-codes/visit/downloads>`_
 
+Terminal Tips
+-------------------------------------------------
+We will be using Terminal to access the Command Line. You can open Terminal by clicking the Spotlight Search magnifying glass at the top right of your computer and typing "Terminal." 
+
+
+Each time you see code in the box below, copy and paste the contents of it into your Terminal window and hit Enter for the code to run. Some common commands are as follows:
+
+.. code::
+
+    ls
+    cd
+    pwd
+    history
+    exit
+    
+
+where
+    * ls means 'list' and provides a list of the files within your current directory (folder)
+    * cd means 'change directory' and allows you to move from one directory to another
+    * pwd means "print working directory" and outputs the filepath of the directory where you are currently located
+    * history prints a history of the commands you have already run
+    * exit allows you to leave your Docker session and return to your home directory 
+    * Ctrl + C will cancel a command (useful if you want to cancel a model run)
+    * Tab will autocomplete a command or file name
+
 Clone Field-to-Model repository for the workshop
 -------------------------------------------------
 
@@ -95,20 +120,10 @@ Clone Field-to-Model repository for the workshop
 This step downloads all of the scripts and infrastructure we have developed for the workshop,
 it should take a couple minutes to complete.
 
-.. warning::
+.. note:: 
 
-    Depending on how your system is setup and the details of your GitHub account if you have one,
-    you may get several errors about SSH keys when cloning the submodules. If this happens,
-    try these steps:
-
-    .. code::
-
-        git config --add url."https://github.com/".insteadOf "git@github.com:"
-        git config --add url."https://github.com/".insteadOf "ssh://git@github.com/"
-        git submodule update --init --recursive
-
-    If you are still seeing errors at this step, we will have alternate instructions for you 
-    to run ELM in this workshop.
+    You will likely see some SSH errors if you don't have an SSH key setup - 
+    this should be okay, these submodules are not needed for the workshop.
 
 Download Docker containers
 ----------------------------
@@ -142,7 +157,40 @@ You will also need to set up a few docker volumes for the workshop:
 
 Docker volumes act as additional 'drives' available on your computer that we
 can use to store all of the ELM model input and output in the same places across
-platforms (e.g., Windows vs mac). 
+platforms (e.g., Windows vs Mac). 
+
+.. warning::
+
+    If you happen to still have the volumes from the 2022 workshop in 
+    Chattanooga, you are likely to encounter errors. There are two options to resolve that:
+
+    1) You could delete these volumes and make new ones:
+
+        .. code:: bash
+
+            docker volume delete inputdata
+            docker volume delete output
+            docker volume create inputdata
+            docker volume create output
+
+    2) If you want to keep these volumes, you could give them different names, e.g.,
+
+        .. code:: bash
+
+            docker volume create inputdata26
+            docker volume create output26
+
+    However, note if you choose the second option, you won't be able to copy and paste
+    the container commands from the rest of the documentation. Instead, you'll have to change
+    the volume mounts for input and output data to:
+
+        .. code:: bash
+
+            -v inputdata26:/mnt/inputdata \
+            -v output26:/mnt/output
+
+
+
 
 Get the workshop data
 ------------------------------
@@ -151,7 +199,7 @@ E3SM/ELM and TEM input data needed for the workshop can be downloaded by:
 
 .. code::
 
-    docker run -it --rm \
+    docker run -it --pull always --rm \
         -v $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
@@ -164,7 +212,7 @@ We have included a quick script to test whether the container images work for yo
 
 .. code::
 
-    docker run -it --rm \
+    docker run -it --pull always --rm \
         -v $(pwd):/home/modex_user \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
@@ -177,8 +225,46 @@ If you get output that matches the output below, you've setup the container corr
 
     ATS version 1.6.0_9f6f117d
     v0.8.3-42-g77038e0c
-    Docker	E3SM  README.md  docs  model_examples  tools
+    Docker	E3SM  README.md  docs  model_examples  tools  vis_notebooks
     inputdata  output
+
+
+Let's also test the visualization container:
+
+.. code::
+
+    docker run -it --pull always --rm \
+        -p 8888:8888 \
+        -v $(pwd):/home/jovyan \
+        -v inputdata:/mnt/inputdata \
+        -v output:/mnt/output \
+        yuanfornl/ngee-arctic-modex26:vis-main-latest
+
+You should get output to your terminal window that looks something like this:
+
+.. code-block:: bash
+
+    [I 2026-01-07 18:34:13.827 ServerApp] nbclassic | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.850 ServerApp] nbdime | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.852 ServerApp] notebook | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.852 ServerApp] panel.io.jupyter_server_extension | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.856 ServerApp] solara.server.jupyter.server_extension | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.858 ServerApp] voila.server_extension | extension was successfully loaded.
+    [I 2026-01-07 18:34:13.858 ServerApp] Serving notebooks from local directory: /home/jovyan
+    [I 2026-01-07 18:34:13.858 ServerApp] Jupyter Server 2.17.0 is running at:
+    [I 2026-01-07 18:34:13.858 ServerApp] http://localhost:8888/lab?token=5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+    [I 2026-01-07 18:34:13.858 ServerApp]     http://127.0.0.1:8888/lab?token=5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+    [I 2026-01-07 18:34:13.858 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+    [C 2026-01-07 18:34:13.862 ServerApp] 
+        
+        To access the server, open this file in a browser:
+            file:///home/jovyan/.local/share/jupyter/runtime/jpserver-7-open.html
+        Or copy and paste one of these URLs:
+            http://localhost:8888/lab?token=5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+            http://127.0.0.1:8888/lab?token=5418c0dfba4d91815397d3ca582be0f905541d7ffbc0ae09
+
+If you do, copy one of the bottom two links into a web browser and it should open a JupyterLab interface.
+
 
 Please take a moment to report if you were able to successfully get to this stage, or 
 post any issues you are having here: https://github.com/NGEE-Arctic/Field-to-Model/issues/38
