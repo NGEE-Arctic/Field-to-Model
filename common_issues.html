@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. Common Issues/FAQ &#8212; ModEx 2026 (updated: Jan 09 23:15:06 UTC) documentation</title>
+    <title>10. Common Issues/FAQ &#8212; ModEx 2026 (updated: Jan 09 23:26:41 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e3f3e722" />
-    <script src="_static/documentation_options.js?v=53d30335"></script>
+    <script src="_static/documentation_options.js?v=ba3d24e7"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="breakout/hillslope_bgc.html" title="9. Hillslope hydrology and BGC impacts breakout group"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 09 23:15:06 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 09 23:26:41 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">10. </span>Common Issues/FAQ</a></li> 
       </ul>
     </div>  
@@ -41,24 +41,22 @@
             
   <section id="common-issues-faq">
 <h1><span class="section-number">10. </span>Common Issues/FAQ<a class="headerlink" href="#common-issues-faq" title="Link to this heading">¶</a></h1>
-<ul class="simple">
-<li><p>If you see the following when running ELM/OLMT, you need to clone the Field-to-Model repository with the <cite>–recurse-submodules</cite> flag:</p></li>
-</ul>
+<ul>
+<li><p>If you see the following when running ELM/OLMT, you need to clone the Field-to-Model repository with the <code class="code docutils literal notranslate"><span class="pre">--recurse-submodules</span></code> flag:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">****</span> <span class="n">Running</span> <span class="n">OLMT</span><span class="p">:</span>
 <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t open file &#39;</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">modex_user</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">olmt</span><span class="o">/./</span><span class="n">site_fullrun</span><span class="o">.</span><span class="n">py</span><span class="s1">&#39;: [Errno 2] No such file or directory</span>
 </pre></div>
 </div>
-<ul class="simple">
+</li>
 <li><p>A similar looking error can occur if you try to run ELM/OLMT from the wrong directory. Make sure you are in the Field-to-Model directory, if you are not,
-you will see an error that looks like this:</p></li>
-</ul>
+you will see an error that looks like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span><span class="p">:</span> <span class="n">Pulling</span> <span class="kn">from</span><span class="w"> </span><span class="nn">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex26</span>
 <span class="n">Digest</span><span class="p">:</span> <span class="n">sha256</span><span class="p">:</span><span class="mi">3</span><span class="n">a96539f34d532d5a85b6ab496e1b57c34e51a553318b19ea181d9ba0fd5effc</span>
 <span class="n">Status</span><span class="p">:</span> <span class="n">Image</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">for</span> <span class="n">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex26</span><span class="p">:</span><span class="n">models</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span>
 <span class="n">docker</span><span class="p">:</span> <span class="n">Error</span> <span class="n">response</span> <span class="kn">from</span><span class="w"> </span><span class="nn">daemon</span><span class="p">:</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">create</span> <span class="n">task</span> <span class="k">for</span> <span class="n">container</span><span class="p">:</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">create</span> <span class="n">shim</span> <span class="n">task</span><span class="p">:</span> <span class="n">OCI</span> <span class="n">runtime</span> <span class="n">create</span> <span class="n">failed</span><span class="p">:</span> <span class="n">runc</span> <span class="n">create</span> <span class="n">failed</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">start</span> <span class="n">container</span> <span class="n">process</span><span class="p">:</span> <span class="n">error</span> <span class="n">during</span> <span class="n">container</span> <span class="n">init</span><span class="p">:</span> <span class="n">exec</span><span class="p">:</span> <span class="s2">&quot;/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh&quot;</span><span class="p">:</span> <span class="n">stat</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">modex_user</span><span class="o">/</span><span class="n">model_examples</span><span class="o">/</span><span class="n">ELM</span><span class="o">/</span><span class="n">run_ngeearctic_site</span><span class="o">.</span><span class="n">sh</span><span class="p">:</span> <span class="n">no</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
 </pre></div>
 </div>
-<ul>
+</li>
 <li><p>If you try to run two instances of the Docker visualization container at the same time,
 with the same port mappings you may see an error like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="p">:</span> <span class="n">Error</span> <span class="n">response</span> <span class="kn">from</span><span class="w"> </span><span class="nn">daemon</span><span class="p">:</span> <span class="n">failed</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">container</span> <span class="n">networking</span><span class="p">:</span>
@@ -81,9 +79,9 @@ with the same port mappings you may see an error like this:</p>
 <p>Setup help:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference internal" href="tem_ee3_fire.html#setup"><span class="std std-ref">Workshop Setup Instructions</span></a></p></li>
+<li><p><a class="reference internal" href="setup.html"><span class="doc">Workshop Setup Instructions</span></a></p></li>
 <li><p><a class="reference external" href="https://github.com/NGEE-Arctic/Field-to-Model/issues/38">Github Issue for Setup Notes</a></p></li>
-<li><p><span class="xref std std-ref">Workshop Agenda</span></p></li>
+<li><p><a class="reference internal" href="modex_agenda_2026.html"><span class="doc">Workshop Agenda</span></a></p></li>
 </ul>
 </div></blockquote>
 <p>More information about ELM</p>
@@ -225,7 +223,7 @@ with the same port mappings you may see an error like this:</p>
         <li class="right" >
           <a href="breakout/hillslope_bgc.html" title="9. Hillslope hydrology and BGC impacts breakout group"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 09 23:15:06 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 09 23:26:41 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">10. </span>Common Issues/FAQ</a></li> 
       </ul>
     </div>

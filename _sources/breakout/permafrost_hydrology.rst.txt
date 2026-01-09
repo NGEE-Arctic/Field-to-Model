@@ -17,7 +17,7 @@ If you don't still have a visualization container running, please start one now:
         yuanfornl/ngee-arctic-modex26:vis-main-latest
 
 Background on ELM subsurface hydrology and soil column layer
------------------------------------------------------------
+------------------------------------------------------------
 
 ELM's vertical discretization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -29,7 +29,7 @@ Freezing physics in ELM: heat, phase change, and “supercooled” water
 
 ELM treats soil freezing as a fully coupled thermal–hydrologic process rather than as a binary of frozen or thawed. Soil temperatures are computed by solving the heat conduction equation through a vertically layered soil  column, accounting for heat capacity and thermal conductivity that depend on soil moisture, ice, and organic matter (Oleson et al. 2013). Once temperatures are updated, the model checks whether conditions allow phase change—freezing or melting of soil water—and adjusts liquid water, ice content, and temperature in a way that conserves energy (latent heat effects are explicitly included).
 
-A key feature is the treatment of supercooled soil water. Even below 0°C, not all pore water freezes immediately. Instead, ELM uses a freezing-point-depression relationship tied to soil matric potential (based on Clapp–Hornberger parameters) to allow liquid water and ice to coexist over a range of subfreezing temperatures. This is physically important: fine-textured soils can retain unfrozen water well below 0 °C, which allows limited flow and transport to continue in cold conditions.
+A key feature is the treatment of supercooled soil water. Even below 0°C, not all pore water freezes immediately. Instead, ELM uses a freezing-point-depression relationship tied to soil matric potential (based on Clapp–Hornberger parameters) to allow liquid water and ice to coexist over a range of subfreezing temperatures. This is physically important: fine-textured soils can retain unfrozen water well below 0°C, which allows limited flow and transport to continue in cold conditions.
 
 Ice impedance: how frozen soil restricts water movement
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

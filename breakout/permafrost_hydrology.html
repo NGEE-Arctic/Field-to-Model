@@ -5,17 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Permafrost hydrology breakout group &#8212; ModEx 2026 (updated: Jan 09 23:15:06 UTC) documentation</title>
+    <title>8. Permafrost hydrology breakout group &#8212; ModEx 2026 (updated: Jan 09 23:26:41 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=53d30335"></script>
+    <script src="../_static/documentation_options.js?v=ba3d24e7"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="9. Hillslope hydrology and BGC impacts breakout group" href="hillslope_bgc.html" />
-    <link rel="prev" title="7.3.2. TEM Model" href="TEM_Model.html" /> 
+    <link rel="prev" title="7.4.3. Sub-grid variability in ELM" href="subgrid_variability_ELM.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
@@ -27,9 +27,9 @@
           <a href="hillslope_bgc.html" title="9. Hillslope hydrology and BGC impacts breakout group"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="TEM_Model.html" title="7.3.2. TEM Model"
+          <a href="subgrid_variability_ELM.html" title="7.4.3. Sub-grid variability in ELM"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 09 23:15:06 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 09 23:26:41 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>Permafrost hydrology breakout group</a></li> 
       </ul>
     </div>  
@@ -62,7 +62,7 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
 <section id="freezing-physics-in-elm-heat-phase-change-and-supercooled-water">
 <h3><span class="section-number">8.1.2. </span>Freezing physics in ELM: heat, phase change, and “supercooled” water<a class="headerlink" href="#freezing-physics-in-elm-heat-phase-change-and-supercooled-water" title="Link to this heading">¶</a></h3>
 <p>ELM treats soil freezing as a fully coupled thermal–hydrologic process rather than as a binary of frozen or thawed. Soil temperatures are computed by solving the heat conduction equation through a vertically layered soil  column, accounting for heat capacity and thermal conductivity that depend on soil moisture, ice, and organic matter (Oleson et al. 2013). Once temperatures are updated, the model checks whether conditions allow phase change—freezing or melting of soil water—and adjusts liquid water, ice content, and temperature in a way that conserves energy (latent heat effects are explicitly included).</p>
-<p>A key feature is the treatment of supercooled soil water. Even below 0°C, not all pore water freezes immediately. Instead, ELM uses a freezing-point-depression relationship tied to soil matric potential (based on Clapp–Hornberger parameters) to allow liquid water and ice to coexist over a range of subfreezing temperatures. This is physically important: fine-textured soils can retain unfrozen water well below 0 °C, which allows limited flow and transport to continue in cold conditions.</p>
+<p>A key feature is the treatment of supercooled soil water. Even below 0°C, not all pore water freezes immediately. Instead, ELM uses a freezing-point-depression relationship tied to soil matric potential (based on Clapp–Hornberger parameters) to allow liquid water and ice to coexist over a range of subfreezing temperatures. This is physically important: fine-textured soils can retain unfrozen water well below 0°C, which allows limited flow and transport to continue in cold conditions.</p>
 </section>
 <section id="ice-impedance-how-frozen-soil-restricts-water-movement">
 <h3><span class="section-number">8.1.3. </span>Ice impedance: how frozen soil restricts water movement<a class="headerlink" href="#ice-impedance-how-frozen-soil-restricts-water-movement" title="Link to this heading">¶</a></h3>
@@ -207,9 +207,9 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
           <a href="hillslope_bgc.html" title="9. Hillslope hydrology and BGC impacts breakout group"
              >next</a> |</li>
         <li class="right" >
-          <a href="TEM_Model.html" title="7.3.2. TEM Model"
+          <a href="subgrid_variability_ELM.html" title="7.4.3. Sub-grid variability in ELM"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 09 23:15:06 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 09 23:26:41 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>Permafrost hydrology breakout group</a></li> 
       </ul>
     </div>
