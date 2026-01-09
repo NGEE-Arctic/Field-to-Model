@@ -6,23 +6,25 @@ Objectives of the workshop breakout
 Objectives of this workshop breakout is learn how to set up and run ELM
 simulations to explore a set of four ELM confgurations:
 
-+-----------------------+------------------+---------------------+---------------------+
-| Configuration         | Spatial Extent   | Spatial Resolutions | Features            |
-+=======================+==================+=====================+=====================+
-| Baseline              | Panarctic        | 0.5 deg             | ELM Baseline        |
-+-----------------------+------------------+---------------------+---------------------+
-| Baseline              | Panarctic        | 0.5 deg             | ELM Baseline +      |
-| + Topounits           |                  |                     |   topounits - ON    |
-+-----------------------+------------------+---------------------+---------------------+
-| Baseline              | Panarctic        | 0.5 deg             | ELM Baseline +      |
-| + Topounits           |                  |                     |   topounits = ON    |
-| + Downscaling         |                  |                     |   downscaling = ON  |
-+-----------------------+------------------+---------------------+---------------------+
-| Baseline              | Panarctic        | 0.5 deg             | ELM Baseline +      |
-| + topounits           |                  |                     |   topounits = ON    |    
-| + Downscaling         |                  |                     |   downscaling = ON  |
-| + Hillslope hydrology |                  |                     |   IM1 = ON          |      
-+-----------------------+------------------+---------------------+---------------------+
++----------------+------------------+---------------------+----------------------------+
+| Simulation #   | Spatial Extent   | Spatial Resolutions | Features                   |
++================+==================+=====================+============================+
+| 1              | Panarctic        | 0.5 deg             | Topounits = **ON**         |
+|                |                  |                     | Downscaling = OFF          |
+|                |                  |                     | IM2 Hillslope Hyd = OFF    |
++----------------+------------------+---------------------+----------------------------+
+| 2              | Panarctic        | 0.5 deg             | Topounits = **ON**         |
+|                |                  |                     | Downscaling = OFF          |
+|                |                  |                     | IM2 Hillslope Hyd = **ON** |
++----------------+------------------+---------------------+----------------------------+
+| 3              | Panarctic        | 0.5 deg             | Topounits = **ON**         |
+|                |                  |                     | Downscaling = **ON**       |
+|                |                  |                     | IM2 Hillslope Hyd = OFF    |
++----------------+------------------+---------------------+----------------------------+
+| 4              | Panarctic        | 0.5 deg             | Topounits = **ON**         |
+|                |                  |                     | Downscaling = **ON**       |
+|                |                  |                     | IM2 Hillslope Hyd = **ON** |
++----------------+------------------+---------------------+----------------------------+
 
 Background on ELM features we will explore
 ------------------------------------------
