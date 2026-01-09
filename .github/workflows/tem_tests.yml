@@ -55,7 +55,7 @@ jobs:
             path: ./inputdata-cache
         - name: Load input data into docker volume
           run: |
-            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest cp -r /host/cache/* /mnt/inputdata/
+            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest sh -c 'cp -r /host/cache/* /mnt/inputdata/'
         - name: Run test case for site
           run: |
             docker run -i --rm -v "$(pwd):/home/modex_user" \
@@ -112,7 +112,7 @@ jobs:
             path: ./inputdata-cache
         - name: Load input data into docker volume
           run: |
-            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest cp -r /host/cache/* /mnt/inputdata/
+            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest sh -c 'cp -r /host/cache/* /mnt/inputdata/'
 
         - name: Run warming experiment for inputdata set
           run: |
