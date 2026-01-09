@@ -21,6 +21,9 @@ jobs:
         - name: Get input data
           run: |
             docker run --rm -v "$(pwd):/home/modex_user" -v inputdata:/mnt/inputdata yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+        - name: Check whats in volume
+          run: |
+            docker run --rm -v inputdata:/mnt/inputdata alpine:latest ls -la /mnt/inputdata/
         - name: Copy input data to host for artifact storage
           run: |
             mkdir -p ./inputdata-cache
