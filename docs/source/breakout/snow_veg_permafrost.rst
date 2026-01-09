@@ -129,6 +129,7 @@ outputs.
    :hidden:
 
    snow_veg_permafrost_agenda
+   subgrid_variability_ELM
 
 
 References
