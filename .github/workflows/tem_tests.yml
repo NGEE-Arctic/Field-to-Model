@@ -76,4 +76,4 @@ jobs:
 
         - name: Run warming experiment for inputdata set
           run: |
-            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/auto_test_run_warming_experiment.sh ${{matrix.INPUT_DATASET}}
+            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/TEM/auto_test_run_warming_experiment.sh ${{matrix.INPUT_DATASET}}
