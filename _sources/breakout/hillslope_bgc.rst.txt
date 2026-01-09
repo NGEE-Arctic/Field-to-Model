@@ -80,6 +80,23 @@ merge strategy to create the topounits.
 
 Atmospheric Downscaling Scheme
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Elevation Range with Maximum elevation Method (ERMM) devveloped by Tesfa
+et. al. 2020 is used to downscale atmospheric forcings from gridcell to
+topounits. The ERMM method uses only the topographic characteristics of the grid and the TGUs to disaggregate grid-level precipitation to the TGUs of the grid.
+
+  ::
+
+    Tesfa, T. K., Leung, L. R., & Ghan, S. J. (2020). Exploring topography-based methods for downscaling subgrid precipitation for use in Earth System Models. Journal of Geophysical Research: Atmospheres, 125, e2019JD031456. https://doi.org/10.1029/2019JD031456
+
+
+
+.. figure:: ../_static/hillslope_bgc/ERWMM_precip_ds.png
+   :alt: ERWMM precipitation downscaling 
+
+
+.. figure:: ../_static/hillslope_bgc/ERWMM_temp_ds.png
+   :alt: ERWMM temperature downscaling 
+
 
 IM2 Hillslope Hydrology
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -399,11 +416,57 @@ NOTE:
 ELM run results visualizing and/or analysis
 -------------------------------------------
 
+Running jupyter notebook container in Docker Desktop App
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The recent version of Docker Desktop App is very handy to run jupyter notebook container.
+
+  (1) After startup Docker Desktop App, click Left panel's 'Images', showing the images pulled (or in pulling)
+
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter1.png
+       :alt: Docker Desktop App - image pulling
+
+  (2) Click the Triangle run button of image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' to start
+
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter2.png
+       :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN setting page
+
+  (3) It will pop up a option setting page, click and pull the drawdown button, and edit as following.
+  
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter3.png
+       :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN setting editing
+
+  (4) Click Run button in above, it will load Jupyter notebook, like following. Notice those https links, and click anyone to pop up a browser window.
+
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter4.png
+       :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN jupyter notebook loading
+   
+  (5) In the pop-up browser window, it would show the landing page like following.
+
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter5.png
+       :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN jupyter notebook landing page
+
+
+
 Visualizing results using jupyter notebook container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Click the left explorer window, and click-open the folder: /vis_notebooks/hillslope-bgc/
 
-Analysing Hillslope hydrology over topounits: soil moisture, GPP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Click open file: plot_ELM_output.ipynb file. We will run this script to open a ELM output nc file, and check a few variables (visualizing)
+
+  .. figure:: ../_static/hillslope_bgc/docker_run_jupyter_plotELMoutput.png
+     :alt: jupyter notebook PlotELMoutput visualization tool
+
+
+Analysing hillslope hydrology over topounits impacts: soil moisture, GPP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Again, from the left explorer window, click-open file: topounit_run_analysis.ipynb. We will run this script to open 4 simulations' merged netcdf files, generated from this breakout session model exercise, and do some analysis on topounit-enabled ELM runs.
+
+We're going to focus on two variables: top-10cm soil moisture and GPP. 
+
+  .. figure:: ../_static/hillslope_bgc/docker_run_jupyter_hillslopeTool.png
+     :alt: jupyter notebook ELM outputs analysis tool
 
 
