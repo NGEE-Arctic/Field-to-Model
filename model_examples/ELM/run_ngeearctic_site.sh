@@ -60,8 +60,8 @@ Help()
     echo "  --startdate_scale_pdep    When should the phosphorus deposition scaling begin? (It will continue to the end of the transient run)"
     echo "                            YYYYMMDD format"
     echo "  --mod_parm_file           Use a modified PFT parameter file (Note, requires full path)"
-    echo "  --use_shrubs              Use a modified surface file with 100% Broadleaf deciduous shrub – boreal (Note, requires full path)"
-    echo "  --use_noshrubs            Use a modified surface file with 100% C3 arctic grass (Note, requires full path)"
+    echo "  --use_allshrubs           Use a modified surface file with 100% Broadleaf deciduous shrub – boreal"
+    echo "  --use_noshrubs            Use a modified surface file with 100% C3 arctic grass"
     exit 0
 }
 
@@ -180,8 +180,8 @@ case $i in
     use_polygonal_tundra=True
     shift
     ;;
-    --use_shrubs)
-    use_shrubs=True
+    --use_allshrubs)
+    use_allshrubs=True
     shift
     ;;
     --use_noshrubs)
@@ -210,9 +210,9 @@ use_IM2_hillslope_hydrology="${use_IM2_hillslope_hydrology:-False}"
 topounits_atmdownscale="${topounits_atmdownscale:-False}"
 terrain_raddownscale="${terrain_raddownscale:-False}"
 use_polygonal_tundra="${use_polygonal_tundra:-False}"
-no_submit="${no_submit:-False}"
-use_shrubs="${use_shrubs:-False}"
+use_allshrubs="${use_allshrubs:-False}"
 use_noshrubs="${use_noshrubs:-False}"
+no_submit="${no_submit:-False}"
 options="${options:-}"
 # -1 is the default
 timestep="${timestep:-1}"
@@ -304,8 +304,21 @@ if [ "${use_polygonal_tundra}" = True ]; then
   options="$options --use_polygonal_tundra"
 fi 
 if [ "${no_submit}" = True ]; then
-  echo "After setup/build case, donnot submit"
+  echo "After setup/build case, do not submit"
   options="$options --no_submit"
+if [ "${use_allshrubs}" = True]; then
+  if [ "${site_name}" == "imnaviat_creek" ]; then
+    echo "Running with a surface file with all shrubs"
+  else
+    echo "--use_allshrubs only works with site_name=imnaviat_creek"
+  fi
+fi
+if [ "${use_noshrubs}" = True ]; then
+  if [ "${site_name}" == "imnaviat_creek" ]; then
+    echo "Running with a surface file with all shrubs"
+  else
+    echo "--use_noshrubs only works with site_name=imnaviat_creek"
+  fi
 fi
 echo " "
 # =======================================================================================
@@ -392,20 +405,21 @@ elif [ ${site_name} = upper_kuparuk ]; then
   fi   
 elif [ ${site_name} = imnaviat_creek ]; then
   site_code="AK-TFS-IMC"
-  surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609.nc"
-  landuse_file="landuse.timeseries_1x1pt_ImnaviatCreek-GRID_simyr1850-2015_c250609.nc"
   domain_file="domain.lnd.1x1pt_ImnaviatCreek-GRID.nc"
   if [ ${met_source} = era5 ]; then
     met_path="${met_root}/ImC_wshed"
   elif [ ${met_source} = gswp3 ]; then
     met_path="${met_root}/tfs" # use same site data as toolik
   fi
-  if [ ${use_shrubs} = true ]; then
+  if [ ${use_allshrubs} = True ]; then
     surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_shrubs.nc"
     landuse_file=""
-  elif [ ${use_noshrubs} = true ]; then
+  elif [ ${use_noshrubs} = True ]; then
     surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_noshrubs.nc"
     landuse_file=""
+  else
+    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609.nc"
+    landuse_file="landuse.timeseries_1x1pt_ImnaviatCreek-GRID_simyr1850-2015_c250609.nc"
   fi
 else 
   echo " "
