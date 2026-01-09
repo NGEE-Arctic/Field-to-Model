@@ -38,25 +38,14 @@ jobs:
 
 
 ### SMOKE TESTS
-      needs: prepare-inputdata
     tem-run-check:
+      #needs: prepare-inputdata
       runs-on: ubuntu-latest
       steps:
         - name: Checkout repo
           uses: actions/checkout@v6
-        - name: Create docker volumes
-          run: |
-            docker volume create inputdata
-            docker volume create output
-        - name: Download input data artifact
-          uses: actions/download-artifact@v4
-          with:
-            name: inputdata
-            path: ./inputdata-cache
-        - name: Load input data into docker volume
-          run: |
-            docker run --rm -v inputdata:/mnt/inputdata -v "$(pwd)/inputdata-cache:/host/cache" alpine:latest sh -c 'cp -r /host/cache/* /mnt/inputdata/'
-        - name: Run test case for site
+
+        - name: Test transient scenario glue script
           run: |
             docker run -i --rm -v "$(pwd):/home/modex_user" \
               -v inputdata:/mnt/inputdata \
@@ -64,33 +53,18 @@ jobs:
               yuanfornl/ngee-arctic-modex26:models-main-latest \
               bash -s <<'EOF'
               set -euo pipefail
-              # Hmmm maybe not needed to copy anymore from instal directory 
-              # now that the other repo with input data is setup and we have
-              # populated the volume...
-              #cp -r /opt/dvmdostem/demo-data/* /mnt/inputdata/TEM/
-              /home/modex_user/model_examples/TEM/glue_transient_scenario.py /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
-              cp -r /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10 /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019
-              /home/modex_user/model_examples/TEM/modify_air_temperature.py \
-                --input-file /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/historic-climate.nc \
-                --months 6 7 8 9 \
-                --years 2019 \
-                --deviation 2.6
-              mv /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/modified_historic-climate.nc \
-                /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/historic-climate.nc
-              mkdir -p /mnt/output/tem/tem_ee1_warming
-              cd /mnt/output/tem/tem_ee1_warming
-              pyddt-swd --input-data \
-                /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10 \
-                control
-              pyddt-swd --input-data \
-                /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019 \
-                warming_2.6C_JJAS_2019
-              cd control
-              pyddt-runmask --reset --yx 0 0 run-mask.nc
+              mkdir -p /tmp/TEM-tests
+              pyddt-swd --input-data /opt/dvmdostem/demo-data/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10/ --copy-inputs /tmp/TEM-tests/run_A
+              cd /tmp/TEM-tests/run_A
+              /home/modex_user/model_examples/TEM/glue_transient_scenario.py inputs/
+              # Should confirm existence of stock-*.nc files
+              TRANSIENT_YRS=$(python -c "import xarray; ds = xarray.open_dataset('inputs/historic-climate.nc'); print(int(ds.sizes['time']/12))")
+              echo "Glued file is $TRANSIENT_YRS years long..."
+              pyddt-runmask --reset --yx 0 0 inputs/run-mask.nc
               pyddt-outspec config/output_spec.csv --on GPP m p
               pyddt-outspec config/output_spec.csv --on LAYERDZ m l
               pyddt-outspec config/output_spec.csv --on TLAYER m l
-              dvmdostem -f config/config.js -p 15 -e 10 -s 10 -t 150 -n 0 -l monitor
+              dvmdostem -f config/config.js -p 15 -e 10 -s 10 -t $TRANSIENT_YRS -n 0 -l monitor
             EOF
 
     tem-inputs-matrix:
