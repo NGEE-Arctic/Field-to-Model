@@ -47,7 +47,7 @@ instructions, run the following command to start a shell in the model container:
 
 .. code:: shell
 
-   docker run -it --rm \
+   docker run -it --pull always --rm \
       --name models-container \
       -v $(pwd):/home/modex_user \
       -v inputdata:/mnt/inputdata \ 
@@ -571,7 +571,7 @@ in a new container:
 
 .. code::
 
-   docker run -it --rm \
+   docker run -it --pull always --rm \
       --name vis-container \
       -p 8888:8888 \
       -v $(pwd):/home/jovyan \
