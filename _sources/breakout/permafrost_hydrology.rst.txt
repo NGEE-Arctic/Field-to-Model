@@ -83,12 +83,67 @@ Impacts of cryosuction (ATS)
 
 
 
+
+
+
+
+
 Note: Generative AI was used to help draft and revise portions of this text. The authors reviewed and edited the content as needed and take full responsibility for the accuracy and appropriateness of the final document.
-
-
-
-
 
 Full runs
 ^^^^^^^^^
-The full simulation, including the spinup stages can be run as follows:
+The full simulations, including the spinup stages can be run as follows:
+
+Initial condition comparison:
+
+Default:
+
+.. code:: 
+
+    docker run -it --pull always --rm \
+        -v  $(pwd):/home/modex_user \
+        -v inputdata:/mnt/inputdata \
+        -v output:/mnt/output \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
+        /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo
+
+Wet/icy spinup:
+
+.. code::
+    
+    docker run -it --pull always --rm \
+        -v  $(pwd):/home/modex_user \
+        -v inputdata:/mnt/inputdata \
+        -v output:/mnt/output \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
+        /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
+        --use_arctic_init --case_prefix=ArcticInit
+
+
+More layers + wet spinup:
+
+
+Polygonal tundra:
+
+.. code::
+
+    docker run -it --pull always --rm \
+        -v  $(pwd):/home/modex_user \
+        -v inputdata:/mnt/inputdata \
+        -v output:/mnt/output \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
+        /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
+        --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --MISSING_SURFACE_FILE ARG
+
+Polygonal tundra warming experiment:
+
+.. code::
+
+    docker run -it --pull always --rm \
+        -v  $(pwd):/home/modex_user \
+        -v inputdata:/mnt/inputdata \
+        -v output:/mnt/output \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
+        /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
+        --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --MISSING_SURFACE_FILE ARG \
+        --add_temperature 5.0
