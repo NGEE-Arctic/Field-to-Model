@@ -55,4 +55,25 @@ jobs:
               pyddt-outspec config/output_spec.csv --on TLAYER m l
               dvmdostem -f config/config.js -p 15 -e 10 -s 10 -t 150 -n 0 -l monitor
             EOF
-   
+
+    tem-new-inputs-matrix:
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      runs-on: ubuntu-latest
+      strategy:
+        fail-fast: false
+        matrix:
+          INPUT_DATASET: [modex26_1x1_AK-UTQ]
+
+        - name: Checkout repo
+          uses: actions/checkout@v6
+        - name: Create docker volumes
+          run: |
+            docker volume create inputdata
+            docker volume create output
+        - name: Get input data
+          run: |
+            docker run --rm -v "$(pwd):/home/modex_user" -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
+
+        - name: Run warming experiment for inputdata set
+          run: |
+            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/auto_test_run_warming_experiment.sh ${{matrix.INPUT_DATASET}}
