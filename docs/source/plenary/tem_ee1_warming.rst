@@ -94,18 +94,15 @@ Check to see what datasets are available for TEM in the inputdata volume:
    cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
    modex26_1x1_AK-UTQ
 
-.. note:: :red:`TODO`
-
-   Make sure to add datasets for modex26-UTQ and test the commands...
 
 These are the prepared input datasets for the TEM model. The following warming
 experiment (and any other experiments) can be applied to any of these datasets -
 just make sure to adjust the commands accordingly. For the purpose of this
-exercise we will focus on the Utqiagvik site.
+exercise we will focus on the Utqiagvik site (AK-UTQ).
 
-.. collapse:: Advanced - transient and scenario runs
+.. collapse:: About the input datasets...
    :class: workshop-collapse
-   :name: other-datasets
+   :name: input-dataset-info
 
    TEM is in the process of re-vamping the input dataset production process. The
    demo dataset that ships with the model is relatively old at this point (CRU
@@ -115,9 +112,50 @@ exercise we will focus on the Utqiagvik site.
    stand alone tool named ``temds`` which is being developed in this repo:
    https://github.com/uaf-arctic-eco-modeling/Input_production  
 
-   If you are using the demo dataset you will find that is has both historic and
-   projected climate data files (though the "projected data" covers the
-   2015-present time range - these are old projections).
+
+   The (:code:`cru-ts40_ar5_rcp85_*_10x10/`) datasets are the standard (old)
+   datasets that ship with the TEM model. Each dataset is a small 10x10 pixel
+   dataset that was made using the CRU TS4.0 climate data for historic climate
+   and the AR5 RCP8.5 projections from the NCAR CCSM4 model or MRI-CGCM3 for
+   future climate. These data were prepared originally for the IEM project but
+   have not been updated to more recent versions of CRU, so the historic data
+   ends in 2015.
+
+   The MODEX26 datasets (:code:`modex26_1x1_*`) are single pixel datasets
+   prepared for the NGEE Arctic Modex workshop. These data were prepared from
+   recent CRU-JRA data, and downscaled with the delta method using WorldClim for
+   baseline and corrections. The projected (CMIP) data have not been processed,
+   though you will find placeholder files in the dataset folder. The historic
+   data goes from 1901-2023.
+
+If you want to run some of the other datasets, you will probably want to read 
+this info on run stages:
+
+.. collapse:: More info on TEM run stages...
+   :class: workshop-collapse
+   :name: tem-run-stages
+
+   TEM typically runs in multiple stages to cover the full historical and future
+   periods. The typical stages are:
+
+   * Equilibrium (EQ): Run model to reach a steady state using pre-industrial climate data.
+   * Spinup (SP): Further spin-up using historical climate data.
+   * Transient (TR): Run model with historical climate data from 1901 to present.
+   * Scenario (SC): Run model with future climate projections from present to 2100.
+   
+   By gluing the transient and scenario datasets together, we can simplify the
+   run process into a single stage covering 1901-2100.
+
+And this section on how to glue together transient and scenario datasets.
+
+.. collapse:: Advanced - gluing transient and scenario stages...
+   :class: workshop-collapse
+   :name: other-datasets
+
+   If you are using the ``cru-ts40_ar5_rcp85_*_10x10/`` datasets you will find
+   that they have both historic and projected climate data files (though the
+   "projected data" covers the 2015-present time range - these are old
+   projections).
 
    If you would like to use these files for the warming experiment and see what 
    a run that projects into the future looks like you will need an additional step
@@ -129,21 +167,6 @@ exercise we will focus on the Utqiagvik site.
    This will allow us to run the model in a single stage from 1901-2100 rather than
    having to do a transient run followed by a scenario run. Use the helper script
    in the :code:`model_examples/TEM` directory to do this:
-
-   .. collapse:: More info on TEM run stages...
-      :class: workshop-collapse
-      :name: tem-run-stages
-
-      TEM typically runs in multiple stages to cover the full historical and future
-      periods. The typical stages are:
-
-      * Equilibrium (EQ): Run model to reach a steady state using pre-industrial climate data.
-      * Spinup (SP): Further spin-up using historical climate data.
-      * Transient (TR): Run model with historical climate data from 1901 to present.
-      * Scenario (SC): Run model with future climate projections from present to 2100.
-      
-      By gluing the transient and scenario datasets together, we can simplify the
-      run process into a single stage covering 1901-2100.
 
    .. code:: shell
 
@@ -192,6 +215,9 @@ exercise we will focus on the Utqiagvik site.
       This will show you the dimensions and variables in the file, including the
       time dimension which should now span from 1901 to 2100.
    
+
+
+
 
 Setting up the run folders
 **********************************************
