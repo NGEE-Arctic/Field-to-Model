@@ -38,8 +38,8 @@ jobs:
 
 
 ### SMOKE TESTS
-    tem-warming-quick-basic-demo:
       needs: prepare-inputdata
+    tem-run-check:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout repo
@@ -93,7 +93,7 @@ jobs:
               dvmdostem -f config/config.js -p 15 -e 10 -s 10 -t 150 -n 0 -l monitor
             EOF
 
-    tem-new-inputs-matrix:
+    tem-inputs-matrix:
       if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
       needs: prepare-inputdata
       runs-on: ubuntu-latest
