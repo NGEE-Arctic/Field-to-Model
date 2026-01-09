@@ -92,10 +92,7 @@ Check to see what datasets are available for TEM in the inputdata volume:
 
    modex_user@40bc0d780707:~$ ls /mnt/inputdata/TEM/
    cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
-   modex26-AK-BEO
-   modex26-AK-UTQ
-   modex26-AK-TFS-IMC
-   modex26-AK-TFS
+   modex26_1x1_AK-UTQ
 
 .. note:: :red:`TODO`
 
@@ -105,9 +102,6 @@ These are the prepared input datasets for the TEM model. The following warming
 experiment (and any other experiments) can be applied to any of these datasets -
 just make sure to adjust the commands accordingly. For the purpose of this
 exercise we will focus on the Utqiagvik site.
-
-
-
 
 .. collapse:: Advanced - transient and scenario runs
    :class: workshop-collapse
@@ -224,15 +218,11 @@ switch into it:
    mkdir -p /mnt/output/tem/tem_ee1_warming
    cd /mnt/output/tem/tem_ee1_warming
 
-   pyddt-swd --input-data \
+   pyddt-swd \
+      --input-data-path /mnt/inputdata/TEM/modex26_1x1_AK-UTQ \
       --copy-inputs \
-      --input-data-path /mnt/inputdata/TEM/modex26-AK-UTQ \
       control
 
-   pyddt-swd --input-data \
-      --copy-inputs \
-      --input-data-path /mnt/inputdata/TEM/modex26-AK-UTQ \
-      warming_2.6C_JJAS_2019
 
 .. hint:: 
 
@@ -245,9 +235,8 @@ You should now have two run folders set up for the control and treatment runs:
 .. code:: shell
 
    modex_user@b86337d9ef42:/mnt/output/tem/tem_ee1_warming$ ls -l
-   total 8
+   total 4
    drwxr-xr-x 6 modex_user modex_user 4096 Dec 12 19:41 control
-   drwxr-xr-x 6 modex_user modex_user 4096 Dec 12 19:41 warming_2.6C_JJAS_2019
 
 .. note::
    
@@ -306,21 +295,25 @@ control run.
    by hand but it's easier to use the :code:`pyddt-outspec` utility to add the
    variables you want. There are many variables to choose from - for this
    example, we will output GPP (Gross Primary Productivity), LAYERDZ (layer
-   thickness), and TLAYER (temperature by layer).
+   thickness), and TLAYER (temperature by layer). We will also enable the CMTNUM
+   variable to help identify the community type in the generated outputs. This 
+   is 
 
    .. code::
 
       pyddt-outspec config/output_spec.csv --on GPP m p
       pyddt-outspec config/output_spec.csv --on LAYERDZ m l
       pyddt-outspec config/output_spec.csv --on TLAYER m l
+      pyddt-outspec config/output_spec.csv --on CMTNUM y
 
       # Print it out to confirm what vars we have at what resolution...
+      # Hint: you need a wide terminal for this to look good!
       pyddt-outspec config/output_spec.csv -s
-               Name                Units       Yearly      Monthly        Daily          PFT Compartments       Layers    Data Type     Description
-                GPP            g/m2/time            y                   invalid                                invalid       double     GPP
-            LAYERDZ                    m            y            m      invalid      invalid      invalid            l       double     Thickness of layer
-             TLAYER             degree_C            y            m      invalid      invalid      invalid            l       double     Temperature by layer
-
+             Name                Units       Yearly      Monthly        Daily          PFT Compartments       Layers    Data Type     Description
+           CMTNUM                    m            y      invalid      invalid      invalid      invalid      invalid          int     Community Type Number
+              GPP            g/m2/time            y            m      invalid            p                   invalid       double     GPP
+          LAYERDZ                    m            y            m      invalid      invalid      invalid            l       double     Thickness of layer
+           TLAYER             degree_C            y            m      invalid      invalid      invalid            l       double     Temperature by layer
 
 #. Optional - config file settings.
 
@@ -359,7 +352,19 @@ control run.
 
    .. code:: shell
 
-      dvmdostem -f config/config.js -p 100 -e 1000 -s 250 -t 123 -n 0 -l monitor
+      dvmdostem -f config/config.js -p 100 -e 1000 -s 250 -t 123 -n 0 --force-cmt 6 -l monitor
+
+   When you run this command you should eventually see the following output:
+
+   .. code:: shell
+
+      .. Setting up logging...
+      [monitor] [EQ] Equilibrium Initial Year Count: 1000
+      [monitor] [EQ] Running Equilibrium, 1000 years.
+      [monitor] [SP] Running Spinup, 250 years.
+      [monitor] [TR] Running Transient, 123 years
+      cell 0, 0 complete.
+      Total Seconds: 155
 
    .. collapse:: Explanation of the dvmdostem command line options
       :class: workshop-collapse
@@ -373,9 +378,14 @@ control run.
       * ``-s 250``: number of years of spinup to run (30 year repeating climate).
       * ``-t 123``: number of transient years to run (historic climate data, generally 1901 onward).
       * ``-n 0``: number of scenario years to run (projected climate).
+      * ``--force-cmt 6``: force all pixels to use community type 6 (wet sedge tundra).
       * ``-l monitor``: log level (monitor is a moderate level of logging).   
 
-
+      The number of years for each stage can be adjusted as needed. For this 
+      single pixel run, the way the input data is generated, the pixel gets classified
+      as community type 0 (water/ice/rock/snow) so it would not run by default, 
+      but we can force it to use community type 6 (wet sedge tundra) with the 
+      ``--force-cmt`` flag.
 
 
 Do the warming/treatment run
@@ -383,6 +393,24 @@ Do the warming/treatment run
 
 There are a few more setup steps that need to be done before starting the
 control run.
+
+#. Change directories up to the main experiment folder:
+
+   .. code:: shell
+
+      cd /mnt/output/tem/tem_ee1_warming
+
+#. Make a new run folder for the warming treatment if you have not already done
+   so. Here we name it with a descriptive name indicating the treatment:
+
+   .. code:: shell
+
+      pyddt-swd \
+         --input-data-path /mnt/inputdata/TEM/modex26_1x1_AK-UTQ \
+         --copy-inputs \
+         warming_2.6C_JJAS_2019
+
+
 
 #. Change into the run folder, e.g. :code:`cd /mnt/output/tem/tem_ee1_warming/warming_2.6C_JJAS_2019`.
 
@@ -394,8 +422,8 @@ control run.
 
    .. code:: shell
 
-      python home/modex_user/model_examples/TEM/modify_air_temperature.py \
-      --input-file input/historic-climate.nc \
+      python /home/modex_user/model_examples/TEM/modify_air_temperature.py \
+      --input-file inputs/modex26_1x1_AK-UTQ/historic-climate.nc \
       --months 6 7 8 9 \
       --years 2019 \
       --deviation 2.6
@@ -420,7 +448,7 @@ control run.
 
    .. code:: shell
 
-      mv input/modified_historic-climate.nc input/historic-climate.nc
+      mv inputs/modex26_1x1_AK-UTQ/modified_historic-climate.nc inputs/modex26_1x1_AK-UTQ/historic-climate.nc
 
    .. note:: 
 
@@ -448,10 +476,10 @@ control run.
 
          # Load the modified dataset
          ds_control = xr.open_dataset(
-            '/mnt/output/tem/control/input/historic-climate.nc'
+            '/mnt/output/tem/tem_ee1_warming/control/inputs/modex26_1x1_AK-UTQ/historic-climate.nc'
          )
          ds_warming = xr.open_dataset(
-            '/mnt/output/tem/warming_2.6C_JJAS_2019/input/historic-climate.nc'
+            '/mnt/output/tem/tem_ee1_warming/warming_2.6C_JJAS_2019/inputs/modex26_1x1_AK-UTQ/historic-climate.nc'
          )
 
          # Select the air temperature variable (assuming it's called 'tair')
@@ -501,7 +529,7 @@ control run.
 
    .. code:: shell
 
-      dvmdostem -f config/config.js -p 100 -e 1000 -s 250 -t 123 -n 0 -l monitor
+      dvmdostem -f config/config.js -p 100 -e 1000 -s 250 -t 123 -n 0 -l monitor --force-cmt 6
 
 
 Analysis
