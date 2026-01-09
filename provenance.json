@@ -125,7 +125,7 @@
     {
       "name": "_sources/common_issues.rst.txt",
       "digest": {
-        "sha256": "6fc5bf00649a1a918e87655ccb998bb37235378f87eb3a16831e63a952f7b813"
+        "sha256": "70b80fc566c8a637a5b62a7a35a1d6013bcb95aa38d13adf0cbb202e310d5c75"
       }
     },
     {
@@ -167,7 +167,7 @@
     {
       "name": "_sources/plenary/tem_ee1_warming.rst.txt",
       "digest": {
-        "sha256": "9f737bc5915de48248dd195408b60412739a0a5f8faf480a8e650ee8d89e6181"
+        "sha256": "e562303f6f59278117597c56ca66629373367f2285606f3eb91c3ecea487a784"
       }
     },
     {
@@ -389,7 +389,7 @@
     {
       "name": "common_issues.html",
       "digest": {
-        "sha256": "5bb5139cd84ab3b7584f502ac81e07eabb32beac068f969604fe696fa717d4c7"
+        "sha256": "3bfbdd713341075d26684b6be6cfb5022a625c0678dc5170c970b7e7132b7e6a"
       }
     },
     {
@@ -419,7 +419,7 @@
     {
       "name": "objects.inv",
       "digest": {
-        "sha256": "652230e4ae50b41949ba7364bd3dc791d2727cb96ff2cc7ad2e3afbd70455b15"
+        "sha256": "6f0856da43585d8f50df0692aec04ce561acc4f2368c3b9b3a704c95ce13a7e7"
       }
     },
     {
@@ -443,7 +443,7 @@
     {
       "name": "plenary/tem_ee1_warming.html",
       "digest": {
-        "sha256": "8442b309b4d52b315f0f42d23b84508d7409548fe4a375d8dc7bd21922ea29b7"
+        "sha256": "bfd39f2a988f66a171146df7e30a6d36e9505908a868ae833c06bcc6e7c59e4b"
       }
     },
     {
@@ -455,7 +455,7 @@
     {
       "name": "searchindex.js",
       "digest": {
-        "sha256": "0ec51d2b1d1cc926f07c444d2b9f99968cb96334d3a00319097f5392320799c9"
+        "sha256": "a741f8d30cecbfed6d7e0be5c7504df67be1b250660bdcd5918f22a2a5264cb8"
       }
     },
     {
@@ -485,7 +485,7 @@
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20835668158/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20856398580/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -516,81 +516,351 @@
         "github_actor_id": "17805542",
         "github_event_name": "push",
         "github_event_payload": {
-          "after": "87f29e6e01af9ec4559bda8e81de7a7865ef691c",
+          "after": "cb0961c6fc7b74f79db92b241fc4fe59dad9ff9b",
           "base_ref": null,
-          "before": "df241ab4a1d17bc7329b07e849fa595577939881",
+          "before": "87f29e6e01af9ec4559bda8e81de7a7865ef691c",
           "commits": [
             {
               "author": {
-                "email": "fmyuan@gmail.com",
-                "name": "Fengming Yuan",
-                "username": "fmyuan"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "fmyuan@gmail.com",
-                "name": "Fengming Yuan",
-                "username": "fmyuan"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "4b85a3b23223d3d1b21c2bbcc8489519b4a6fe56",
-              "message": "specific edits for topounit included ELM case re-run.",
-              "timestamp": "2026-01-08T17:30:51-05:00",
-              "tree_id": "7a8fff940dd5df02315bbd2d9bc5f3d612cb211c",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/4b85a3b23223d3d1b21c2bbcc8489519b4a6fe56"
+              "id": "77a2373dbe7b89222913e197dd570ac457fdfc38",
+              "message": "fix indentation (another yml error)",
+              "timestamp": "2026-01-08T15:20:47-09:00",
+              "tree_id": "25b56c23d846471f3aeda22f910bfbc234915213",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/77a2373dbe7b89222913e197dd570ac457fdfc38"
             },
             {
               "author": {
-                "email": "fmyuan@gmail.com",
-                "name": "Fengming Yuan",
-                "username": "fmyuan"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "fmyuan@gmail.com",
-                "name": "Fengming Yuan",
-                "username": "fmyuan"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "7d9f120ec1ddb004918a91e2aef0b06ad07aa00c",
-              "message": "ELM namelists for topounit relevant data and functionality.",
-              "timestamp": "2026-01-08T17:30:51-05:00",
-              "tree_id": "17476a8435b053805b71998239e6462f6c5e16ad",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/7d9f120ec1ddb004918a91e2aef0b06ad07aa00c"
+              "id": "f593121cde6e55e80fd75ee548a2714b318ddf3a",
+              "message": "fix file that was comitted in the wrong place",
+              "timestamp": "2026-01-08T15:25:18-09:00",
+              "tree_id": "8b45f036d2b65bf4bd0a79bd3959825de52b40e4",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/f593121cde6e55e80fd75ee548a2714b318ddf3a"
             },
             {
               "author": {
-                "email": "fmyuan@gmail.com",
-                "name": "Fengming Yuan",
-                "username": "fmyuan"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "fmyuan@gmail.com",
-                "name": "Fengming Yuan",
-                "username": "fmyuan"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "15a0126a1a704e063774c546af8d0e70173cdc87",
-              "message": "subgrid- or patch-level output, i.e. this is non-aggregated var output,  if needed.",
-              "timestamp": "2026-01-08T17:30:51-05:00",
-              "tree_id": "654c82a77cb36f240fe70954a0d2391570496d3e",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/15a0126a1a704e063774c546af8d0e70173cdc87"
+              "id": "a21f680010add7c7c803acfc2bea2c6a4a8bf686",
+              "message": "add force flag to auto run test, fix command path in yml file",
+              "timestamp": "2026-01-08T15:31:59-09:00",
+              "tree_id": "8689234bcfa9de749216b761bff36f464b2a99f9",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/a21f680010add7c7c803acfc2bea2c6a4a8bf686"
             },
             {
               "author": {
-                "email": "fmyuan@gmail.com",
-                "name": "Fengming Yuan",
-                "username": "fmyuan"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "fmyuan@gmail.com",
-                "name": "Fengming Yuan",
-                "username": "fmyuan"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "4efa237a0675ba4d58deac639f2bca99d68b2be3",
-              "message": "edit '--help' message for user_namelist option",
-              "timestamp": "2026-01-08T17:30:51-05:00",
-              "tree_id": "5704caeb18124d12831efa0ad7575983fb8c4082",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/4efa237a0675ba4d58deac639f2bca99d68b2be3"
+              "id": "99169823bb41f94d1ce8248d469fda30c59dfaeb",
+              "message": "fix permissions on test script, add shared get data step\n\nGetting the input data (clone from other repo) is super slow - this\nchanges things so that it downloads once and shares between jobs.",
+              "timestamp": "2026-01-08T15:49:01-09:00",
+              "tree_id": "fb1149bbdac4b341c231fd914ce85ad695280730",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/99169823bb41f94d1ce8248d469fda30c59dfaeb"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "798e418b1f3bc53ed25618bf5459643261b7f312",
+              "message": "revert change to shared input data in test file\n\nworkflow seems to hang on github - maybe exceeded some usage limit? or\ntype in the file?",
+              "timestamp": "2026-01-08T16:03:07-09:00",
+              "tree_id": "c53eff537c028bb1d7290c9ff547f875126da123",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/798e418b1f3bc53ed25618bf5459643261b7f312"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "c6ffe605320181fde4180f9fe224668dc9f575bd",
+              "message": "strip TODO, re-organize some collapse boxes",
+              "timestamp": "2026-01-08T16:28:53-09:00",
+              "tree_id": "29fbb4f845848eb721e9bc5b56693412d27092c0",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/c6ffe605320181fde4180f9fe224668dc9f575bd"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "4a6c1dd8fc5a57826b2c19544fdc8c0b49a00490",
+              "message": "Revert \"revert change to shared input data in test file\"\n\nThis reverts commit 798e418b1f3bc53ed25618bf5459643261b7f312.\n\nThe workflow was hanging and I thought it might be this, but then later\nsucceded...maybe a resources issue due to scheduled runs??",
+              "timestamp": "2026-01-08T16:29:37-09:00",
+              "tree_id": "3983d0213597a037eb28ee12df3749b6d27ec3ed",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/4a6c1dd8fc5a57826b2c19544fdc8c0b49a00490"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "39c1774d30e59de5d8b8f73355109de196f5d6be",
+              "message": "Add check to see why no data is in mounted volume",
+              "timestamp": "2026-01-08T20:37:00-09:00",
+              "tree_id": "62371a1aa2bdc1886cf01aac3b1b942f1a77a6fd",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/39c1774d30e59de5d8b8f73355109de196f5d6be"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "e1c069890d5314676131ccc8037a90be26c2e9fb",
+              "message": "Fix copy command in caching/copying step\n\nProblem was shell glob expansion was happening in the wrong place. This\nmakes it happen in the container.",
+              "timestamp": "2026-01-08T20:44:02-09:00",
+              "tree_id": "1bb49652e135d155358b1e6c85a4077e043f7c36",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/e1c069890d5314676131ccc8037a90be26c2e9fb"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "45f357cab4df5c00ea8d791b350e682fedb855f3",
+              "message": "add dependencies, change test name",
+              "timestamp": "2026-01-08T20:52:59-09:00",
+              "tree_id": "aa6270afef459bd67b5168189901664211c39080",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/45f357cab4df5c00ea8d791b350e682fedb855f3"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "052b0e3794f78dded94abc9eb4926aa0da992612",
+              "message": "Fix same shell expansion in wrong context on the unpack from cache operation...",
+              "timestamp": "2026-01-08T20:58:43-09:00",
+              "tree_id": "fb34f81b132f050f9d12fc2c099d5ca8dab63101",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/052b0e3794f78dded94abc9eb4926aa0da992612"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "7d4bc9b2d4e2453c6baf10541f38749efa020faa",
+              "message": "Generalize auto test runner to be able to handle...\n\n... automatic discovery of the length of the transient data.",
+              "timestamp": "2026-01-08T21:36:07-09:00",
+              "tree_id": "2b900c15ea738b78885081a1e6721deb6cba759b",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/7d4bc9b2d4e2453c6baf10541f38749efa020faa"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "691e3c37f9d0d19b6fa9c2c97526d0ce621a765b",
+              "message": "Add the other test dataset to the test matrix, comment out uneeded copy",
+              "timestamp": "2026-01-08T21:37:12-09:00",
+              "tree_id": "a7c103ec5560ef0735caa715f005b95becf01f32",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/691e3c37f9d0d19b6fa9c2c97526d0ce621a765b"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "95888615197d54dd8c97ed210056651aa89b94bd",
+              "message": "rename tests",
+              "timestamp": "2026-01-08T22:44:29-09:00",
+              "tree_id": "6415f472dc73055b618ebbc386b56327238dcd6b",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/95888615197d54dd8c97ed210056651aa89b94bd"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "f5ed1ee5981c1b793301bc800824a71c22bf1726",
+              "message": "Revise tests: the original test that rich implemented based ...\n\n...on the warming is no longer pertinent...the warming part is now\ntested in the other matrix, and this test becomes a test simply of\n1) the ability to run TEM in the container and\n2) the gluing script that can be used to stitch together historic and\nprojected data.\n\nAlso after all that work, turns out this now doesn;t even need the\nvolumes. We put the run in /tmp to avoid permissions issues when\nwriting the glued file. And grab the demo data that is shipped with\nthe model.",
+              "timestamp": "2026-01-08T22:48:42-09:00",
+              "tree_id": "a68e24e028d1e2b93b377507649d40ec1f99e217",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/f5ed1ee5981c1b793301bc800824a71c22bf1726"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "40bedcbe48350b94f0515b569fed1ef8a4ba1b8d",
+              "message": "comments",
+              "timestamp": "2026-01-08T23:07:07-09:00",
+              "tree_id": "65ef0c826dc5a17d7bb3c9cc592ebd98497ba28f",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/40bedcbe48350b94f0515b569fed1ef8a4ba1b8d"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "c6709d95858b8b10b43d8649de4dca3c91227061",
+              "message": "Add pull always flag to docker run commands.\n\nhopefully will prevent merge conflict with the PR",
+              "timestamp": "2026-01-08T23:25:18-09:00",
+              "tree_id": "45f62b11ff074ca01f132b75996098e51b73b720",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/c6709d95858b8b10b43d8649de4dca3c91227061"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "5a98622ff56e3c6959e8ba98658e8e4a7aa0209a",
+              "message": "Remove explicitly named containers in reccomended commands",
+              "timestamp": "2026-01-08T23:32:36-09:00",
+              "tree_id": "d2585f44576caef6cf2474e31ce4d23155b78267",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/5a98622ff56e3c6959e8ba98658e8e4a7aa0209a"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "7df475d06418b01a08a15ff274ff31b5a5279d72",
+              "message": "fix code block, change test event trigger",
+              "timestamp": "2026-01-08T23:56:33-09:00",
+              "tree_id": "93ae736f7a095952a4477c834210f226a6073c4c",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/7df475d06418b01a08a15ff274ff31b5a5279d72"
             },
             {
               "author": {
@@ -604,14 +874,14 @@
                 "username": "web-flow"
               },
               "distinct": true,
-              "id": "87f29e6e01af9ec4559bda8e81de7a7865ef691c",
-              "message": "Merge pull request #84 from NGEE-Arctic/fmyuan/topounit-specific\n\nnamelist and output options for topounit and functionality",
-              "timestamp": "2026-01-08T16:38:06-07:00",
-              "tree_id": "aa4f0ee81b87a7c42d83869cb1a076672ab24090",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/87f29e6e01af9ec4559bda8e81de7a7865ef691c"
+              "id": "cb0961c6fc7b74f79db92b241fc4fe59dad9ff9b",
+              "message": "Merge pull request #90 from NGEE-Arctic/revamp-tem-demo\n\nRevamp tem demo",
+              "timestamp": "2026-01-09T08:15:24-07:00",
+              "tree_id": "2f790bee84ab1ed56d93281442863b5722d9628e",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/cb0961c6fc7b74f79db92b241fc4fe59dad9ff9b"
             }
           ],
-          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/df241ab4a1d1...87f29e6e01af",
+          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/87f29e6e01af...cb0961c6fc7b",
           "created": false,
           "deleted": false,
           "forced": false,
@@ -627,11 +897,11 @@
               "username": "web-flow"
             },
             "distinct": true,
-            "id": "87f29e6e01af9ec4559bda8e81de7a7865ef691c",
-            "message": "Merge pull request #84 from NGEE-Arctic/fmyuan/topounit-specific\n\nnamelist and output options for topounit and functionality",
-            "timestamp": "2026-01-08T16:38:06-07:00",
-            "tree_id": "aa4f0ee81b87a7c42d83869cb1a076672ab24090",
-            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/87f29e6e01af9ec4559bda8e81de7a7865ef691c"
+            "id": "cb0961c6fc7b74f79db92b241fc4fe59dad9ff9b",
+            "message": "Merge pull request #90 from NGEE-Arctic/revamp-tem-demo\n\nRevamp tem demo",
+            "timestamp": "2026-01-09T08:15:24-07:00",
+            "tree_id": "2f790bee84ab1ed56d93281442863b5722d9628e",
+            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/cb0961c6fc7b74f79db92b241fc4fe59dad9ff9b"
           },
           "organization": {
             "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -709,8 +979,8 @@
             "name": "Field-to-Model",
             "node_id": "R_kgDOPQRvJA",
             "notifications_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/notifications{?since,all,participating}",
-            "open_issues": 14,
-            "open_issues_count": 14,
+            "open_issues": 15,
+            "open_issues_count": 15,
             "organization": "NGEE-Arctic",
             "owner": {
               "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -737,9 +1007,9 @@
             },
             "private": false,
             "pulls_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/pulls{/number}",
-            "pushed_at": 1767915487,
+            "pushed_at": 1767971724,
             "releases_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/releases{/id}",
-            "size": 44131,
+            "size": 44204,
             "ssh_url": "git@github.com:NGEE-Arctic/Field-to-Model.git",
             "stargazers": 0,
             "stargazers_count": 0,
@@ -752,7 +1022,7 @@
             "teams_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/teams",
             "topics": [],
             "trees_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/trees{/sha}",
-            "updated_at": "2026-01-08T23:37:47Z",
+            "updated_at": "2026-01-08T23:38:12Z",
             "url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model",
             "visibility": "public",
             "watchers": 0,
@@ -791,20 +1061,20 @@
         "github_repository_owner": "NGEE-Arctic",
         "github_repository_owner_id": "184418857",
         "github_run_attempt": "1",
-        "github_run_id": "20835668158",
-        "github_run_number": "216",
+        "github_run_id": "20856398580",
+        "github_run_number": "238",
         "github_runner_arch": "X64",
         "github_runner_environment": "github-hosted",
         "github_runner_image_os": "ubuntu24",
         "github_runner_image_version": "20260105.202.1",
-        "github_runner_name": "GitHub Actions 1000004365",
+        "github_runner_name": "GitHub Actions 1000004590",
         "github_runner_os": "Linux",
-        "github_runner_tracking_id": "github_9001cd9e-2b8b-4c4d-8cc2-32dac4521c1c",
+        "github_runner_tracking_id": "github_843b2af7-42f2-40b0-a589-ecde708e66c5",
         "github_server_url": "https://github.com",
         "github_triggering_actor": "rfiorella",
         "github_workflow": "Sphinx: Render docs",
         "github_workflow_ref": "NGEE-Arctic/Field-to-Model/.github/workflows/docs.yml@refs/heads/main",
-        "github_workflow_sha": "87f29e6e01af9ec4559bda8e81de7a7865ef691c",
+        "github_workflow_sha": "cb0961c6fc7b74f79db92b241fc4fe59dad9ff9b",
         "platform": "linux/amd64"
       }
     },
@@ -1128,23 +1398,23 @@
         }
       ],
       "digestMapping": {
-        "sha256:0bcca772c39e5dd281d55438cace40cc438c5ba2ccb631fa9c8e2cce3f2d535b": "step4",
-        "sha256:0d21372d2743f951ff12e008b27c6649f42574a85391ffb17b51c7cd783ec96a": "step2",
-        "sha256:3848f5e0efc281fdf13722b00fa2ee76ceb0c7cd8f53dd657b099abb60aa8a10": "step3",
+        "sha256:0d6f42ebcab9d2e369b9be4803eb83444856dab46fe6ae1fb3933e6a762b3421": "step1",
+        "sha256:2611edc006829ffec88c3ba67b01474000ec3ea8b339862e10cbfa735c92dfe5": "step4",
+        "sha256:29f017e4609be79ed9fa223141f70fb4db47dc576036274bab53358e33e65e77": "step10",
+        "sha256:3899e49b25421f18f1d0e0180379544155b366934ba4d80f5615e3972a7853f3": "step7",
+        "sha256:3c1afd622bc74be0b45df925cd68892924fe4b211ef223a5ccf10206d03b7c85": "step9",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:75d21e7b1e89fc73ee6e342755a21128658ecab6d0b17ebca2d5d69de626fbd5": "step8",
-        "sha256:7da9e6ae37d6d084f78e7220e1b8473bc18c3d78c2d7fbeb6f962add27a838ac": "step1",
-        "sha256:aee2dd4f368fb06e94f1e0cc85740ce6650dfcdb693663b3387c751e1588eefd": "step10",
-        "sha256:c62d69acb555b5675cea33b43087b197e6ba6b0df3a38570aafaaf1b53a0ca10": "step6",
-        "sha256:cfbb493b6ff7b0364b53fec2e508ffc748c0fb6d5d23864095b53c62b2d32e2e": "step9",
-        "sha256:ddb0316ebd6e40f029f023ae85b916059274709eefadb452ec727f67b8c8ceb2": "step5",
-        "sha256:fa7066c7ed33ecdf791588c3dfb02480d9e8f4dfab68959b28066fae3aaa1b35": "step7"
+        "sha256:7d53b639c8e73d1f6cc5937a8a67175b653ec1ce17a2b2615a25730f36b2f24a": "step8",
+        "sha256:82d27080ffb2c105d7eb38fe768ed671a8418970da779034d0f63f9f28069a14": "step2",
+        "sha256:93d696ebaecd6e223ff970b20c499a0593dfb7422eaf952b9166ed7cb61edccd": "step6",
+        "sha256:96fc76faa20c2c5e48a725a6bef3f0018ef7a95d5184291ee5e54952d3ecfbc0": "step5",
+        "sha256:ab7d7e9820eadcd5753c906d718e1623c9ea73b6fb34f7de7122de2f8c0cebc1": "step3"
       }
     },
     "metadata": {
-      "buildInvocationID": "us7rfh2to9qh3djmjzm99cs2i",
-      "buildStartedOn": "2026-01-08T23:46:48.731082481Z",
-      "buildFinishedOn": "2026-01-08T23:47:10.253689543Z",
+      "buildInvocationID": "94yo45yzt37hs1etdqzhmtoec",
+      "buildStartedOn": "2026-01-09T15:15:46.785090555Z",
+      "buildFinishedOn": "2026-01-09T15:16:08.62613803Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -1155,7 +1425,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "87f29e6e01af9ec4559bda8e81de7a7865ef691c",
+          "revision": "cb0961c6fc7b74f79db92b241fc4fe59dad9ff9b",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -1355,8 +1625,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:39b57ff7b7c9b46f8fb89a1a2335a95271af62caf4fa54f138416938c11a3bf7": "step1",
-                "sha256:af3517556eb2f7d0c09daf0520f67c4af1904d4c408c9595c71629ab5c72aaee": "step0"
+                "sha256:0b640ca322d4acde8fbfa26309f97074625787f7754f9d445350206bde223d53": "step1",
+                "sha256:2d441fd1d2d61b9fe3e1fd93d2bb82f068c2f1c6633f18ac0236384d0b56ba25": "step0"
               }
             }
           ]

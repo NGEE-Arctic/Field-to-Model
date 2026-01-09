@@ -48,6 +48,17 @@
 <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t open file &#39;</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">modex_user</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">olmt</span><span class="o">/./</span><span class="n">site_fullrun</span><span class="o">.</span><span class="n">py</span><span class="s1">&#39;: [Errno 2] No such file or directory</span>
 </pre></div>
 </div>
+<ul>
+<li><p>If you try to run two instances of the Docker containers at the same time,
+with the same port mappings you may see an error like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="p">:</span> <span class="n">Error</span> <span class="n">response</span> <span class="kn">from</span><span class="w"> </span><span class="nn">daemon</span><span class="p">:</span> <span class="n">failed</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">container</span> <span class="n">networking</span><span class="p">:</span>
+<span class="n">driver</span> <span class="n">failed</span> <span class="n">programming</span> <span class="n">external</span> <span class="n">connectivity</span> <span class="n">on</span> <span class="n">endpoint</span> <span class="n">friendly_shirley</span>
+<span class="p">(</span><span class="n">a9108d46d0ece39a56496506b75135a04c4669eb8c1f1018d832c71e64eb4941</span><span class="p">):</span> <span class="n">Bind</span> <span class="k">for</span>
+<span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8888</span> <span class="n">failed</span><span class="p">:</span> <span class="n">port</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">allocated</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </section>
 <section id="more-information-and-links">
 <h1><span class="section-number">11. </span>More Information and Links<a class="headerlink" href="#more-information-and-links" title="Link to this heading">¶</a></h1>

@@ -51,18 +51,21 @@ and thus how adequate the model is for predicting future ecosystem changes.</p>
 <p>At Utqiagvik, the chambers were deployed over a single season in multiple locations from 2017-2021 from mid-June through to mid-September (Ely et al. 2024).
 In this example, we model the 2019 summer warming experiment and compare the modeled and measured soil temperatures at 10cm depth
 for the warmed and control site. The 2019 experiment focused on <em>Eriophorum angustifolium</em>, a common sedge species in Arctic tundra which
-in the model DVM-DOS-TEM is represented by the sedge plant functional type (PFT) and grows for example in the wet sedge tundra
-community type (CMT). We model the warming experiment at a single pixel representing the wet sedge tundra CMT at Utqiagvik and compare the
+in the model DVM-DOS-TEM is represented by the sedge
+<a class="reference external" href="https://uaf-arctic-eco-modeling.github.io/dvm-dos-tem/model_overview.html#vegetation-types-pfts">plant functional type (PFT)</a>
+and grows for example in the wet sedge tundra
+<a class="reference external" href="https://uaf-arctic-eco-modeling.github.io/dvm-dos-tem/model_overview.html#community-types-cmts">community type (CMT)</a>. We model
+the warming experiment at a single pixel representing the wet sedge tundra CMT at Utqiagvik and compare the
 soil temperature at 10cm depth between the control and warmed runs to the observed soil temperatures at the site (Ely et al. 2024).</p>
-<p>Lewin, K. F., McMahon, A. M., Ely, K. S., Serbin, S. P., &amp; Rogers, A. (2017). A zero-power warming chamber for investigating plant responses to rising temperature. Biogeosciences, 14(18), 4071-4083.</p>
-<p>Ely, Kim, Anderson, Jeremiah, Serbin, Shawn, &amp; Rogers, Alistair (2024). Vegetation Warming Experiment: Thaw depth and dGPS locations, Utqiagvik, Alaska, 2019. <a class="reference external" href="https://doi.org/10.5440/1887568">https://doi.org/10.5440/1887568</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><span class="red">TODO</span></p>
-<p>Add some links to the text above into the relevant sections of the TEM
-User Guide. For example linking to the description of Community Types, PFTs,
-etc.</p>
+<p>For the purposes of this workshop, DVM-DOS-TEM, dvmdostem, dvm-dos-tem and
+TEM synonymously refer to the “Dynamic Vegetation Model, Dynamic Organic
+Soil Terrestrial Ecosystem Model” which is the coupled vegetation and
+ecosystem model.</p>
 </div>
+<p>Lewin, K. F., McMahon, A. M., Ely, K. S., Serbin, S. P., &amp; Rogers, A. (2017). A zero-power warming chamber for investigating plant responses to rising temperature. Biogeosciences, 14(18), 4071-4083.</p>
+<p>Ely, Kim, Anderson, Jeremiah, Serbin, Shawn, &amp; Rogers, Alistair (2024). Vegetation Warming Experiment: Thaw depth and dGPS locations, Utqiagvik, Alaska, 2019. <a class="reference external" href="https://doi.org/10.5440/1887568">https://doi.org/10.5440/1887568</a></p>
 </section>
 <section id="setup">
 <h2><span class="section-number">4.2. </span>Setup<a class="headerlink" href="#setup" title="Link to this heading">¶</a></h2>
@@ -81,66 +84,86 @@ instructions, run the following command to start a shell in the model container:
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modex_user@40bc0d780707:~$
 </pre></div>
 </div>
+<p>This is your prompt and it will be shown in some of the following examples and
+omitted in others. Note that your prompt shows your user name (<code class="docutils literal notranslate"><span class="pre">modex_user</span></code>),
+and your current directory (the <code class="docutils literal notranslate"><span class="pre">~</span></code> symbol indicates your home directory). If
+your prompt is shown in the examples, then you don’t need to type it - it’s just
+there to show you where you are in the container.</p>
 <p>Unless otherwise specified, all following commands should be run inside this
-container. You can run the <code class="code docutils literal notranslate"><span class="pre">ls</span></code> command explore the content of the
+container. You can run the <code class="code docutils literal notranslate"><span class="pre">ls</span></code> command to explore the contents of the
 mounted volumes:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modex_user@40bc0d780707:~$<span class="w"> </span>ls<span class="w"> </span>/mnt/inputdata
-atm<span class="w">  </span>lnd<span class="w">  </span>share
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modex_user@1c2cffece04d:~$<span class="w"> </span>ls<span class="w"> </span>/mnt/
+inputdata<span class="w">  </span>output
 </pre></div>
 </div>
+<p>If you are able to see these two folders, then you have successfully mounted the
+volumes and are ready to proceed.</p>
 </section>
 <section id="inputs">
 <h3><span class="section-number">4.2.2. </span>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h3>
 <p>Browse the data in the mounted <code class="docutils literal notranslate"><span class="pre">/mnt/inputdata</span></code> volume to see what is
 available. You can think of the volume as hard drive that you have plugged in to
 the container.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><span class="red">TODO</span></p>
-<p>Waiting for new inputs to be prepared for the workshop.</p>
-<p>For development purposes, copy the demo data from the tem installation directory
-into the inputdata volume now.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/inputdata/TEM/
-cp<span class="w"> </span>-r<span class="w"> </span>/opt/dvmdostem/demo-data/*<span class="w"> </span>/mnt/inputdata/TEM/
-</pre></div>
-</div>
-<p>Once we have inputs prepared for the workshop you can skip this step and
-just browse the input data folder to find data you want to use.</p>
-</div>
 <p>Check to see what datasets are available for TEM in the inputdata volume:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modex_user@40bc0d780707:~$<span class="w"> </span>ls<span class="w"> </span>/mnt/inputdata/TEM/
 cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
+modex26_1x1_AK-UTQ
 </pre></div>
 </div>
 <p>These are the prepared input datasets for the TEM model. The following warming
 experiment (and any other experiments) can be applied to any of these datasets -
 just make sure to adjust the commands accordingly. For the purpose of this
-exercise we will focus on the Utqiagvik site.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><span class="red">TODO</span></p>
-<p>Maybe we can pre-glue the files before the workshop and put them in the input
-data directory.</p>
-</div>
-<p>Next, to make the experiment and analysis easier, we will glue together the
-historic and projected (scenario) climate data into a single continuous dataset.
-This will allow us to run the model in a single stage from 1901-2100 rather than
-having to do a transient run followed by a scenario run. Use the helper script
-in the <code class="code docutils literal notranslate"><span class="pre">model_examples/TEM</span></code> directory to do this:</p>
+exercise we will focus on the Utqiagvik site (AK-UTQ).</p>
+<details name="input-dataset-info" class="workshop-collapse summary-about-the-input-datasets">
+<summary>About the input datasets...</summary><p>TEM is in the process of re-vamping the input dataset production process. The
+demo dataset that ships with the model is relatively old at this point (CRU
+TS4.0; historic data only goes through 2015), and we are working on updating
+it. This workshop will be the first test run of newly generated inputs that
+are coming out of the new process. The new process is being developed as a
+stand alone tool named <code class="docutils literal notranslate"><span class="pre">temds</span></code> which is being developed in this repo:
+<a class="reference external" href="https://github.com/uaf-arctic-eco-modeling/Input_production">https://github.com/uaf-arctic-eco-modeling/Input_production</a></p>
+<p>The (<code class="code docutils literal notranslate"><span class="pre">cru-ts40_ar5_rcp85_*_10x10/</span></code>) datasets are the standard (old)
+datasets that ship with the TEM model. Each dataset is a small 10x10 pixel
+dataset that was made using the CRU TS4.0 climate data for historic climate
+and the AR5 RCP8.5 projections from the NCAR CCSM4 model or MRI-CGCM3 for
+future climate. These data were prepared originally for the IEM project but
+have not been updated to more recent versions of CRU, so the historic data
+ends in 2015.</p>
+<p>The MODEX26 datasets (<code class="code docutils literal notranslate"><span class="pre">modex26_1x1_*</span></code>) are single pixel datasets
+prepared for the NGEE Arctic Modex workshop. These data were prepared from
+recent CRU-JRA data, and downscaled with the delta method using WorldClim for
+baseline and corrections. The projected (CMIP) data have not been processed,
+though you will find placeholder files in the dataset folder. The historic
+data goes from 1901-2023.</p>
+</details><p>If you want to run some of the other datasets, you will probably want to read
+this info on run stages:</p>
 <details name="tem-run-stages" class="workshop-collapse summary-more-info-on-tem-run-stages">
 <summary>More info on TEM run stages...</summary><p>TEM typically runs in multiple stages to cover the full historical and future
 periods. The typical stages are:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>Equilibrium (EQ): Run model to reach a steady state using pre-industrial climate data.</p></li>
 <li><p>Spinup (SP): Further spin-up using historical climate data.</p></li>
 <li><p>Transient (TR): Run model with historical climate data from 1901 to present.</p></li>
 <li><p>Scenario (SC): Run model with future climate projections from present to 2100.</p></li>
 </ul>
-</div></blockquote>
 <p>By gluing the transient and scenario datasets together, we can simplify the
 run process into a single stage covering 1901-2100.</p>
-</details><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modex_user@09d39c83b7b9:~$<span class="w"> </span>./model_examples/TEM/glue_transient_scenario.py<span class="w"> </span><span class="se">\</span>
+</details><p>And this section on how to glue together transient and scenario datasets.</p>
+<details name="other-datasets" class="workshop-collapse summary-advanced-gluing-transient-and-scenario-stages">
+<summary>Advanced - gluing transient and scenario stages...</summary><p>If you are using the <code class="docutils literal notranslate"><span class="pre">cru-ts40_ar5_rcp85_*_10x10/</span></code> datasets you will find
+that they have both historic and projected climate data files (though the
+“projected data” covers the 2015-present time range - these are old
+projections).</p>
+<p>If you would like to use these files for the warming experiment and see what
+a run that projects into the future looks like you will need an additional step
+to glue the historic and projected datasets together. See the instructions
+in the next section for how to do this.</p>
+<p>To make the experiment and analysis easier, we will glue together the
+historic and projected (scenario) climate data into a single continuous dataset.
+This will allow us to run the model in a single stage from 1901-2100 rather than
+having to do a transient run followed by a scenario run. Use the helper script
+in the <code class="code docutils literal notranslate"><span class="pre">model_examples/TEM</span></code> directory to do this:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./model_examples/TEM/glue_transient_scenario.py<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
 </pre></div>
 </div>
@@ -176,123 +199,30 @@ netCDF file. Pass the <code class="docutils literal notranslate"><span class="pr
 </div>
 <p>This will show you the dimensions and variables in the file, including the
 time dimension which should now span from 1901 to 2100.</p>
-</details></section>
-<section id="creating-the-warming-treatment-dataset">
-<h3><span class="section-number">4.2.3. </span>Creating the Warming Treatment Dataset<a class="headerlink" href="#creating-the-warming-treatment-dataset" title="Link to this heading">¶</a></h3>
-<p>Now we are going to make copy of this dataset to create our “treatment” or
-“warming” dataset. We will then modify this copy to increase the air temperatures
-by 2.6 degrees Celsius during the summer months (June, July, August, September)
-for the year 2019.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>-r<span class="w"> </span>/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><span class="red">TODO</span></p>
-<p>Consider simplifying the folder names  here for ease of use during the.
-workshop. Would need fix all subsequent commands too.</p>
-</div>
-<p>Now we will run the helper script to modify the air temperatures in the new
-dataset:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./model_examples/TEM/modify_air_temperature.py<span class="w"> </span><span class="se">\</span>
---input-file<span class="w"> </span>/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/historic-climate.nc<span class="w"> </span><span class="se">\</span>
---months<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
---years<span class="w"> </span><span class="m">2019</span><span class="w"> </span><span class="se">\</span>
---deviation<span class="w"> </span><span class="m">2</span>.6
-</pre></div>
-</div>
-<details name="modify-script-details" class="workshop-collapse summary-details-about-the-modification-script">
-<summary>Details about the modification script</summary><p>The modification script uses <code class="code docutils literal notranslate"><span class="pre">xarray</span></code> under the hood to manipulate
-the netCDF data. It creates a boolean mask for the time dimension based
-on the specified years and months, and then applies the temperature deviation
-only to those selected time points.</p>
-<p>The modification script can take additional arguments to modify multiple
-years and different months as needed. See the help message for details.</p>
-</details><p>As you will see in the statements that are printed out from this script it will
-actually create an new file (<code class="code docutils literal notranslate"><span class="pre">modified_historic-climate.nc</span></code>) alongside the
-existing one (<code class="code docutils literal notranslate"><span class="pre">historic-climate.nc</span></code>). Here we throw out the original file
-and rename the modified version to clean things up.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/modified_historic-climate.nc<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/historic-climate.nc
-</pre></div>
-</div>
-<p>Now we have two datasets:</p>
-<ul class="simple">
-<li><p>the control dataset: <code class="code docutils literal notranslate"><span class="pre">/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10</span></code></p></li>
-<li><p>the warming treatment dataset: <code class="code docutils literal notranslate"><span class="pre">/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019</span></code></p></li>
-</ul>
-<p>You can confirm this by listing the contents of the <code class="docutils literal notranslate"><span class="pre">inputdata</span></code> folder.
-It should look like this:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modex_user@b86337d9ef42:~$<span class="w"> </span>ls<span class="w"> </span>-1<span class="w"> </span>/mnt/inputdata/TEM
-cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
-cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019
-</pre></div>
-</div>
-<details name="examine-modified-data" class="workshop-collapse summary-examining-the-modified-data">
-<summary>Examining the modified data</summary><p>You can make a plot of the air temperature variable to confirm that the
-modification worked as expected. Use the <code class="code docutils literal notranslate"><span class="pre">xarray</span></code> library in a Python
-session to load the modified dataset and plot the air temperature time series.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><span class="red">TODO</span></p>
-<p>Address the issue of using notebook? or saving plots so user can see it
-on host machine??</p>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="c1"># Load the modified dataset</span>
-<span class="n">ds_control</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
-   <span class="s1">&#39;/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10/historic-climate.nc&#39;</span>
-<span class="p">)</span>
-<span class="n">ds_warming</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
-   <span class="s1">&#39;/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019/historic-climate.nc&#39;</span>
-<span class="p">)</span>
-
-<span class="c1"># Select the air temperature variable (assuming it&#39;s called &#39;tair&#39;)</span>
-<span class="n">tair_control</span> <span class="o">=</span> <span class="n">ds_control</span><span class="p">[</span><span class="s1">&#39;tair&#39;</span><span class="p">]</span>
-<span class="n">tair_warming</span> <span class="o">=</span> <span class="n">ds_warming</span><span class="p">[</span><span class="s1">&#39;tair&#39;</span><span class="p">]</span>
-
-<span class="c1"># Plot the time series for 2019</span>
-<span class="k">for</span> <span class="n">ds</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">tair_control</span><span class="p">,</span> <span class="n">tair_warming</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">,</span> <span class="s1">&#39;warming&#39;</span><span class="p">]):</span>
-    <span class="n">ds_2019</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-12-31&#39;</span><span class="p">))</span>
-    <span class="n">ds_2019</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Air Temperature Time Series for 2019, control and warming)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Air Temperature (C)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;air_temperature_2019.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This should produce a plot showing the air temperature time series for
-2019, with the warming dataset showing a 2.6C increase during the
-summer months (June-September). It should look something like this:</p>
-<a class="reference internal image-reference" href="../_images/air_temperature_2019.png"><img alt="Air Temperature Time Series for 2019, control and warming" src="../_images/air_temperature_2019.png" style="width: 600px;" />
-</a>
-</details></section>
+</details></details></section>
 <section id="setting-up-the-run-folders">
-<h3><span class="section-number">4.2.4. </span>Setting up the run folders<a class="headerlink" href="#setting-up-the-run-folders" title="Link to this heading">¶</a></h3>
-<p>Now that we have the datasets set up, we can create two run folders using the
-<code class="code docutils literal notranslate"><span class="pre">pyddt-swd</span></code> utility helper tool. These run folders will contain the necessary
-files and configurations for running the model, as well as the outputs that are created.
-For this we will create a new folder in the <code class="code docutils literal notranslate"><span class="pre">/mnt/output/</span></code> directory and switch into it:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><span class="red">TODO</span></p>
-<p>note inconsistency here - above we showed the user’s modex shell prompt. Here
-we don’t…</p>
-</div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/output/tem/tem_ee1_warming
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/mnt/output/tem/tem_ee1_warming
+<h3><span class="section-number">4.2.3. </span>Setting up the run folders<a class="headerlink" href="#setting-up-the-run-folders" title="Link to this heading">¶</a></h3>
+<p>We are going to need two folders for this experiment - one for the control run
+and one for the warming treatment run. Each run folder will contain the necessary
+configuration files and output locations for the model to run.</p>
+<p>We will use the <code class="docutils literal notranslate"><span class="pre">pyddt-swd</span></code> utility to create these run folders. This tool
+sets up a “standard” run folder structure for the model, including copying over
+necessary input files from the input dataset (see the <code class="docutils literal notranslate"><span class="pre">--copy-inputs</span></code> flag
+below). Omit this flag if you want to link to the input files instead of copying
+them. The way the files are linked is by setting the paths in the config file to
+point to the absolute path of the source inputs. If you specify the
+<code class="docutils literal notranslate"><span class="pre">--copy-inputs</span></code> flag, the input files are physically copied into the run
+folder. Copying is safer in case the input dataset gets modified later, but it
+does take more disk space.</p>
+<p>For this we will create a new folder in the <code class="code docutils literal notranslate"><span class="pre">/mnt/output/</span></code> directory and
+switch into it:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/output/tem/tem_ee1_warming
+<span class="nb">cd</span><span class="w"> </span>/mnt/output/tem/tem_ee1_warming
 
-$<span class="w"> </span>pyddt-swd<span class="w"> </span>--input-data<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10<span class="w"> </span><span class="se">\</span>
+pyddt-swd<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--input-data-path<span class="w"> </span>/mnt/inputdata/TEM/modex26_1x1_AK-UTQ<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--copy-inputs<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>control
-
-$<span class="w"> </span>pyddt-swd<span class="w"> </span>--input-data<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>/mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>warming_2.6C_JJAS_2019
 </pre></div>
 </div>
 <div class="admonition hint">
@@ -303,62 +233,78 @@ commands, or provide the <code class="docutils literal notranslate"><span class=
 </div>
 <p>You should now have two run folders set up for the control and treatment runs:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>modex_user@b86337d9ef42:/mnt/output/tem/tem_ee1_warming$<span class="w"> </span>ls<span class="w"> </span>-l
-total<span class="w"> </span><span class="m">8</span>
+total<span class="w"> </span><span class="m">4</span>
 drwxr-xr-x<span class="w"> </span><span class="m">6</span><span class="w"> </span>modex_user<span class="w"> </span>modex_user<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">19</span>:41<span class="w"> </span>control
-drwxr-xr-x<span class="w"> </span><span class="m">6</span><span class="w"> </span>modex_user<span class="w"> </span>modex_user<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">19</span>:41<span class="w"> </span>warming_2.6C_JJAS_2019
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><span class="red">TODO</span></p>
-<p>Do we need the <code class="docutils literal notranslate"><span class="pre">-l</span></code> flag above? Might confuse users if their output
-doesn’t match exactly.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-l</span></code> flag to the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command shows more detailed information about
+the files and folders, including permissions, ownership, size, and modification
+time.</p>
 </div>
-<p>Now that we have run folders that point towards the input datasets we created
-and selected, we can start a run in each folder.</p>
 </section>
-<section id="running-the-model">
-<h3><span class="section-number">4.2.5. </span>Running the model<a class="headerlink" href="#running-the-model" title="Link to this heading">¶</a></h3>
-<p>There are a few more setup steps that need to be done before starting a run - these need to be executed for <strong>EACH RUNFOLDER</strong>:</p>
+<section id="do-the-control-run">
+<h3><span class="section-number">4.2.4. </span>Do the control run<a class="headerlink" href="#do-the-control-run" title="Link to this heading">¶</a></h3>
+<p>There are a few more setup steps that need to be done before starting the
+control run.</p>
 <ol class="arabic">
-<li><p>Change into the run folder, e.g. <code class="code docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/mnt/output/tem/tem_ee1_warming/control</span></code>.</p></li>
-<li><p>Adjust the run mask so that only a single pixel is enabled. This is done
-using the <code class="code docutils literal notranslate"><span class="pre">pyddt-runmask</span></code> utility. For this example, we will enable
-only the pixel at (0,0) - the first pixel in the dataset.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pyddt-runmask --reset --yx 0 0 run-mask.nc
+<li><p>Change into the run folder, e.g. <code class="code docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/mnt/output/tem/tem_ee1_warming/control</span></code>.</p>
+<p>Explore the contents of this folder. Note that you should have a run-mask,
+config folder, and an output folder already created by the <code class="docutils literal notranslate"><span class="pre">pyddt-swd</span></code>
+command. Also in the config folder you should find a file called
+<code class="code docutils literal notranslate"><span class="pre">output_spec.csv</span></code> which is the output specification file that tells
+the model which variables to output.</p>
+</li>
+<li><p>Set the run mask (if you have a single pixel dataset, you can skip this step).</p>
+<details name="run-mask-info" class="workshop-collapse summary-advanced-using-the-run-mask-for-multi-pixel-datasets">
+<summary>Advanced - using the run mask for multi-pixel datasets</summary><p>Some of the inputs are single pixel while others are multi-pixel datasets.
+If you have a multi-pixel dataset, you may want to adjust the run mask so
+that only a subset of pixels are active for the run. This is especially
+useful for workshop exercises where we want to keep the run time short and
+the output data size small.</p>
+<p>The run mask file in an input data folder (<code class="code docutils literal notranslate"><span class="pre">run-mask.nc</span></code>) controls
+which pixels are active in the model run. A value of 1 indicates that the
+pixel is active, and a value of 0 indicates that the pixel is inactive.</p>
+<p>We will use the <code class="code docutils literal notranslate"><span class="pre">pyddt-runmask</span></code> utility to adjust the run mask
+so that only the desired pixel is active for this run.</p>
+<p>For this example, we will enable only the pixel at (0,0) - the first pixel in
+the dataset.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyddt</span><span class="o">-</span><span class="n">runmask</span> <span class="o">--</span><span class="n">reset</span> <span class="o">--</span><span class="n">yx</span> <span class="mi">0</span> <span class="mi">0</span> <span class="n">run</span><span class="o">-</span><span class="n">mask</span><span class="o">.</span><span class="n">nc</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><span class="red">TODO</span></p>
-<p>I think we should have the input datasets pre-prepared  with single pixel
-run masks to avoid this step? I will need to adjust the plotting scripts
-then too. If we don’t have time for both, stitching beforehand is more
-important though</p>
+<p>See the <code class="docutils literal notranslate"><span class="pre">--help</span></code> message for more options on how to select pixels.</p>
 </div>
-</li>
+</details></li>
 <li><p>Setup the output specification file. This is a <code class="code docutils literal notranslate"><span class="pre">csv</span></code> file that tells
 the model which variables to output and at what resolution. You can edit it
 by hand but it’s easier to use the <code class="code docutils literal notranslate"><span class="pre">pyddt-outspec</span></code> utility to add the
-variables you want. There are many variables to choose from - for this example,
-we will output GPP, LAYERDZ (layer thickness), and TLAYER (temperature by layer).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pyddt-outspec config/output_spec.csv --on GPP m p
-$ pyddt-outspec config/output_spec.csv --on LAYERDZ m l
-$ pyddt-outspec config/output_spec.csv --on TLAYER m l
+variables you want. There are many variables to choose from - for this
+example, we will output GPP (Gross Primary Productivity), LAYERDZ (layer
+thickness), and TLAYER (temperature by layer). We will also enable the CMTNUM
+variable to help identify the community type in the generated outputs. This
+is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">on</span> <span class="n">GPP</span> <span class="n">m</span> <span class="n">p</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">on</span> <span class="n">LAYERDZ</span> <span class="n">m</span> <span class="n">l</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">on</span> <span class="n">TLAYER</span> <span class="n">m</span> <span class="n">l</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">on</span> <span class="n">CMTNUM</span> <span class="n">y</span>
 
-# Print it out to see what vars we have at what resolution...
-$ pyddt-outspec config/output_spec.csv -s
-         Name                Units       Yearly      Monthly        Daily          PFT Compartments       Layers    Data Type     Description
-          GPP            g/m2/time            y                   invalid                                invalid       double     GPP
-      LAYERDZ                    m            y            m      invalid      invalid      invalid            l       double     Thickness of layer
-       TLAYER             degree_C            y            m      invalid      invalid      invalid            l       double     Temperature by layer
+<span class="c1"># Print it out to confirm what vars we have at what resolution...</span>
+<span class="c1"># Hint: you need a wide terminal for this to look good!</span>
+<span class="n">pyddt</span><span class="o">-</span><span class="n">outspec</span> <span class="n">config</span><span class="o">/</span><span class="n">output_spec</span><span class="o">.</span><span class="n">csv</span> <span class="o">-</span><span class="n">s</span>
+       <span class="n">Name</span>                <span class="n">Units</span>       <span class="n">Yearly</span>      <span class="n">Monthly</span>        <span class="n">Daily</span>          <span class="n">PFT</span> <span class="n">Compartments</span>       <span class="n">Layers</span>    <span class="n">Data</span> <span class="n">Type</span>     <span class="n">Description</span>
+     <span class="n">CMTNUM</span>                    <span class="n">m</span>            <span class="n">y</span>      <span class="n">invalid</span>      <span class="n">invalid</span>      <span class="n">invalid</span>      <span class="n">invalid</span>      <span class="n">invalid</span>          <span class="nb">int</span>     <span class="n">Community</span> <span class="n">Type</span> <span class="n">Number</span>
+        <span class="n">GPP</span>            <span class="n">g</span><span class="o">/</span><span class="n">m2</span><span class="o">/</span><span class="n">time</span>            <span class="n">y</span>            <span class="n">m</span>      <span class="n">invalid</span>            <span class="n">p</span>                   <span class="n">invalid</span>       <span class="n">double</span>     <span class="n">GPP</span>
+    <span class="n">LAYERDZ</span>                    <span class="n">m</span>            <span class="n">y</span>            <span class="n">m</span>      <span class="n">invalid</span>      <span class="n">invalid</span>      <span class="n">invalid</span>            <span class="n">l</span>       <span class="n">double</span>     <span class="n">Thickness</span> <span class="n">of</span> <span class="n">layer</span>
+     <span class="n">TLAYER</span>             <span class="n">degree_C</span>            <span class="n">y</span>            <span class="n">m</span>      <span class="n">invalid</span>      <span class="n">invalid</span>      <span class="n">invalid</span>            <span class="n">l</span>       <span class="n">double</span>     <span class="n">Temperature</span> <span class="n">by</span> <span class="n">layer</span>
 </pre></div>
 </div>
 </li>
 <li><p>Optional - config file settings.</p>
-<p>Expand this section to see a discussion of adjusting the config file.</p>
-<details name="alt-file-shuffle" class="workshop-collapse summary-example-of-adjusting-config-file-settings">
-<summary>Example of adjusting config file settings</summary><p>The config file is a <code class="code docutils literal notranslate"><span class="pre">json</span></code> file that contains a bunch of settings
+<details name="alt-file-shuffle" class="workshop-collapse summary-advanced-adjusting-config-file-settings">
+<summary>Advanced - adjusting config file settings</summary><p>The config file is a <code class="code docutils literal notranslate"><span class="pre">json</span></code> file that contains a bunch of settings
 for the run. You may want to look through the file to see what things
 are available for changing. You can edit the file directly with a text
 editor, or you can use a small script to do it programmatically or in
@@ -383,8 +329,146 @@ an interactive Python session, as in the following example.</p>
 </pre></div>
 </div>
 </details></li>
-<li><p>Now we can start the run.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>dvmdostem<span class="w"> </span>-f<span class="w"> </span>config/config.js<span class="w"> </span>-p<span class="w"> </span><span class="m">15</span><span class="w"> </span>-e<span class="w"> </span><span class="m">10</span><span class="w"> </span>-s<span class="w"> </span><span class="m">10</span><span class="w"> </span>-t<span class="w"> </span><span class="m">150</span><span class="w"> </span>-n<span class="w"> </span><span class="m">0</span><span class="w"> </span>-l<span class="w"> </span>monitor
+<li><p>Now we can start the control run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>dvmdostem<span class="w"> </span>-f<span class="w"> </span>config/config.js<span class="w"> </span>-p<span class="w"> </span><span class="m">100</span><span class="w"> </span>-e<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-s<span class="w"> </span><span class="m">250</span><span class="w"> </span>-t<span class="w"> </span><span class="m">123</span><span class="w"> </span>-n<span class="w"> </span><span class="m">0</span><span class="w"> </span>--force-cmt<span class="w"> </span><span class="m">6</span><span class="w"> </span>-l<span class="w"> </span>monitor
+</pre></div>
+</div>
+<p>When you run this command you should eventually see the following output:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>..<span class="w"> </span>Setting<span class="w"> </span>up<span class="w"> </span>logging...
+<span class="o">[</span>monitor<span class="o">]</span><span class="w"> </span><span class="o">[</span>EQ<span class="o">]</span><span class="w"> </span>Equilibrium<span class="w"> </span>Initial<span class="w"> </span>Year<span class="w"> </span>Count:<span class="w"> </span><span class="m">1000</span>
+<span class="o">[</span>monitor<span class="o">]</span><span class="w"> </span><span class="o">[</span>EQ<span class="o">]</span><span class="w"> </span>Running<span class="w"> </span>Equilibrium,<span class="w"> </span><span class="m">1000</span><span class="w"> </span>years.
+<span class="o">[</span>monitor<span class="o">]</span><span class="w"> </span><span class="o">[</span>SP<span class="o">]</span><span class="w"> </span>Running<span class="w"> </span>Spinup,<span class="w"> </span><span class="m">250</span><span class="w"> </span>years.
+<span class="o">[</span>monitor<span class="o">]</span><span class="w"> </span><span class="o">[</span>TR<span class="o">]</span><span class="w"> </span>Running<span class="w"> </span>Transient,<span class="w"> </span><span class="m">123</span><span class="w"> </span>years
+cell<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">0</span><span class="w"> </span>complete.
+Total<span class="w"> </span>Seconds:<span class="w"> </span><span class="m">155</span>
+</pre></div>
+</div>
+<details name="dvmdostem-options" class="workshop-collapse summary-explanation-of-the-dvmdostem-command-line-options">
+<summary>Explanation of the dvmdostem command line options</summary><p>The command line options used here are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-f</span> <span class="pre">config/config.js</span></code>: specifies the config file to use for the run.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">100</span></code>: number of years pre-run (environmental modules only).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">1000</span></code>: number of equilibrium years to run (constant climate).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">250</span></code>: number of years of spinup to run (30 year repeating climate).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">123</span></code>: number of transient years to run (historic climate data, generally 1901 onward).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">0</span></code>: number of scenario years to run (projected climate).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--force-cmt</span> <span class="pre">6</span></code>: force all pixels to use community type 6 (wet sedge tundra).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">monitor</span></code>: log level (monitor is a moderate level of logging).</p></li>
+</ul>
+<p>The number of years for each stage can be adjusted as needed. For this
+single pixel run, the way the input data is generated, the pixel gets classified
+as community type 0 (water/ice/rock/snow) so it would not run by default,
+but we can force it to use community type 6 (wet sedge tundra) with the
+<code class="docutils literal notranslate"><span class="pre">--force-cmt</span></code> flag.</p>
+</details></li>
+</ol>
+</section>
+<section id="do-the-warming-treatment-run">
+<h3><span class="section-number">4.2.5. </span>Do the warming/treatment run<a class="headerlink" href="#do-the-warming-treatment-run" title="Link to this heading">¶</a></h3>
+<p>There are a few more setup steps that need to be done before starting the
+control run.</p>
+<ol class="arabic">
+<li><p>Change directories up to the main experiment folder:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/mnt/output/tem/tem_ee1_warming
+</pre></div>
+</div>
+</li>
+<li><p>Make a new run folder for the warming treatment if you have not already done
+so. Here we name it with a descriptive name indicating the treatment:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pyddt-swd<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--input-data-path<span class="w"> </span>/mnt/inputdata/TEM/modex26_1x1_AK-UTQ<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--copy-inputs<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>warming_2.6C_JJAS_2019
+</pre></div>
+</div>
+</li>
+<li><p>Change into the run folder, e.g. <code class="code docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/mnt/output/tem/tem_ee1_warming/warming_2.6C_JJAS_2019</span></code>.</p></li>
+<li><p>Modify the input dataset to create the warming treatment dataset.</p>
+<p>We will use a helper script to modify the air temperature variable in the
+climate data file to add 2.6 degrees Celsius during the summer months
+(June, July, August, September) for the year 2019.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>/home/modex_user/model_examples/TEM/modify_air_temperature.py<span class="w"> </span><span class="se">\</span>
+--input-file<span class="w"> </span>inputs/modex26_1x1_AK-UTQ/historic-climate.nc<span class="w"> </span><span class="se">\</span>
+--months<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
+--years<span class="w"> </span><span class="m">2019</span><span class="w"> </span><span class="se">\</span>
+--deviation<span class="w"> </span><span class="m">2</span>.6
+</pre></div>
+</div>
+<details name="modify-script-details" class="workshop-collapse summary-details-about-the-modification-script">
+<summary>Details about the modification script</summary><p>The modification script uses <code class="code docutils literal notranslate"><span class="pre">xarray</span></code> under the hood to manipulate
+the netCDF data. It creates a boolean mask for the time dimension based
+on the specified years and months, and then applies the temperature deviation
+only to those selected time points.</p>
+<p>The modification script can take additional arguments to modify multiple
+years and different months as needed. See the help message for details.</p>
+</details><p>As you will see in the statements that are printed out from this script it
+will actually create an new file (<code class="code docutils literal notranslate"><span class="pre">modified_historic-climate.nc</span></code>)
+alongside the existing one (<code class="code docutils literal notranslate"><span class="pre">historic-climate.nc</span></code>). Here we throw out
+the original file and rename the modified version to clean things up.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>inputs/modex26_1x1_AK-UTQ/modified_historic-climate.nc<span class="w"> </span>inputs/modex26_1x1_AK-UTQ/historic-climate.nc
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If for some reason you want to keep the original file, rather than
+removing it, you can simply update the path in the config file to point to
+the modified file instead.</p>
+</div>
+<details name="examine-modified-data" class="workshop-collapse summary-examining-the-modified-data">
+<summary>Examining the modified data</summary><p>You can make a plot of the air temperature variable to confirm that the
+modification worked as expected. Use the <code class="code docutils literal notranslate"><span class="pre">xarray</span></code> library in a Python
+session to load the modified dataset and plot the air temperature time series.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can run this code in visualization container - it has IPython
+and all the visualization libraries installed.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Load the modified dataset</span>
+<span class="n">ds_control</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+   <span class="s1">&#39;/mnt/output/tem/tem_ee1_warming/control/inputs/modex26_1x1_AK-UTQ/historic-climate.nc&#39;</span>
+<span class="p">)</span>
+<span class="n">ds_warming</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+   <span class="s1">&#39;/mnt/output/tem/tem_ee1_warming/warming_2.6C_JJAS_2019/inputs/modex26_1x1_AK-UTQ/historic-climate.nc&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Select the air temperature variable (assuming it&#39;s called &#39;tair&#39;)</span>
+<span class="n">tair_control</span> <span class="o">=</span> <span class="n">ds_control</span><span class="p">[</span><span class="s1">&#39;tair&#39;</span><span class="p">]</span>
+<span class="n">tair_warming</span> <span class="o">=</span> <span class="n">ds_warming</span><span class="p">[</span><span class="s1">&#39;tair&#39;</span><span class="p">]</span>
+
+<span class="c1"># Plot the time series for 2019</span>
+<span class="k">for</span> <span class="n">ds</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">tair_control</span><span class="p">,</span> <span class="n">tair_warming</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">,</span> <span class="s1">&#39;warming&#39;</span><span class="p">]):</span>
+   <span class="n">ds_2019</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-12-31&#39;</span><span class="p">))</span>
+   <span class="n">ds_2019</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Air Temperature Time Series for 2019, control and warming)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Air Temperature (C)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;air_temperature_2019.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This should produce a plot showing the air temperature time series for
+2019, with the warming dataset showing a 2.6C increase during the
+summer months (June-September). It should look something like this:</p>
+<a class="reference internal image-reference" href="../_images/air_temperature_2019.png"><img alt="Air Temperature Time Series for 2019, control and warming" src="../_images/air_temperature_2019.png" style="width: 600px;" />
+</a>
+</details></li>
+<li><p>Set the run mask - same as for the control run.</p></li>
+<li><p>Setup the output specification file - same as for the control run, or simplify
+copy the file from the control run folder.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>../control/config/output_spec.csv<span class="w"> </span>config/output_spec.csv
+</pre></div>
+</div>
+</li>
+<li><p>Optional - config file settings, same as for the control run.</p></li>
+<li><p>Start the warming run - same command as for the control run!</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Make sure you are in the warming run folder before starting the run!</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>dvmdostem<span class="w"> </span>-f<span class="w"> </span>config/config.js<span class="w"> </span>-p<span class="w"> </span><span class="m">100</span><span class="w"> </span>-e<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-s<span class="w"> </span><span class="m">250</span><span class="w"> </span>-t<span class="w"> </span><span class="m">123</span><span class="w"> </span>-n<span class="w"> </span><span class="m">0</span><span class="w"> </span>-l<span class="w"> </span>monitor<span class="w"> </span>--force-cmt<span class="w"> </span><span class="m">6</span>
 </pre></div>
 </div>
 </li>
@@ -408,9 +492,21 @@ in a new container:</p>
 </pre></div>
 </div>
 <p>You should see output like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>I<span class="w"> </span><span class="m">2025</span>-12-12<span class="w"> </span><span class="m">21</span>:31:22.299<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>jupyter_lsp<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>linked.
+<span class="o">[</span>I<span class="w"> </span><span class="m">2025</span>-12-12<span class="w"> </span><span class="m">21</span>:31:22.305<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>jupyter_server_terminals<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>linked.
+<span class="o">[</span>I<span class="w"> </span><span class="m">2025</span>-12-12<span class="w"> </span><span class="m">21</span>:31:22.311<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>jupyterlab<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>linked.
+<span class="o">[</span>I<span class="w"> </span><span class="m">2025</span>-12-12<span class="w"> </span><span class="m">21</span>:31:22.317<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>notebook<span class="w"> </span><span class="p">|</span><span class="w"> </span>extension<span class="w"> </span>was<span class="w"> </span>successfully<span class="w"> </span>linked.
+...
+<span class="w">    </span>To<span class="w"> </span>access<span class="w"> </span>the<span class="w"> </span>server,<span class="w"> </span>open<span class="w"> </span>this<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>browser:
+<span class="w">     </span>file:///home/jovyan/.local/share/jupyter/runtime/jpserver-360-open.html
+<span class="w"> </span>Or<span class="w"> </span>copy<span class="w"> </span>and<span class="w"> </span>paste<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>these<span class="w"> </span>URLs:
+<span class="w">     </span>http://2aecc7b15434:8888/tree?token<span class="o">=</span>e66b3be47f2b3d7721adeb88992b8b1818901c5d76281678
+<span class="w">     </span>http://127.0.0.1:8888/tree?token<span class="o">=</span>e66b3be47f2b3d7721adeb88992b8b1818901c5d76281678
+</pre></div>
+</div>
 <p>Once the server is running, you should see a URL printed out in the terminal
 that you can open in your web browser on your host computer to access the
-Jupyter interface. Navigate to the <code class="code docutils literal notranslate"><span class="pre">model_examples/TEM/</span></code> directory and
+Jupyter interface. Navigate to the <code class="code docutils literal notranslate"><span class="pre">vis_notebooks/TEM/</span></code> directory and
 open the <code class="code docutils literal notranslate"><span class="pre">temperature_plotting.ipynb</span></code> notebook.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -448,9 +544,9 @@ control and warming runs?</p>
 <li><a class="reference internal" href="#setup">4.2. Setup</a><ul>
 <li><a class="reference internal" href="#starting-the-container">4.2.1. Starting the container</a></li>
 <li><a class="reference internal" href="#inputs">4.2.2. Inputs</a></li>
-<li><a class="reference internal" href="#creating-the-warming-treatment-dataset">4.2.3. Creating the Warming Treatment Dataset</a></li>
-<li><a class="reference internal" href="#setting-up-the-run-folders">4.2.4. Setting up the run folders</a></li>
-<li><a class="reference internal" href="#running-the-model">4.2.5. Running the model</a></li>
+<li><a class="reference internal" href="#setting-up-the-run-folders">4.2.3. Setting up the run folders</a></li>
+<li><a class="reference internal" href="#do-the-control-run">4.2.4. Do the control run</a></li>
+<li><a class="reference internal" href="#do-the-warming-treatment-run">4.2.5. Do the warming/treatment run</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#analysis">4.3. Analysis</a></li>
