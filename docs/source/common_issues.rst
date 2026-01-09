@@ -42,9 +42,9 @@ More Information and Links
 
 Setup help:
 
-  * :ref:`Workshop Setup Instructions <setup>`
+  * :doc:`Workshop Setup Instructions <setup>`
   * `Github Issue for Setup Notes <https://github.com/NGEE-Arctic/Field-to-Model/issues/38>`_
-  * :ref:`Workshop Agenda <modex_agenda_2025>`
+  * :doc:`Workshop Agenda <modex_agenda_2026>`
 
 More information about ELM
 
