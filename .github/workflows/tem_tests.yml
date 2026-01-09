@@ -64,7 +64,10 @@ jobs:
               yuanfornl/ngee-arctic-modex26:models-main-latest \
               bash -s <<'EOF'
               set -euo pipefail
-              cp -r /opt/dvmdostem/demo-data/* /mnt/inputdata/TEM/
+              # Hmmm maybe not needed to copy anymore from instal directory 
+              # now that the other repo with input data is setup and we have
+              # populated the volume...
+              #cp -r /opt/dvmdostem/demo-data/* /mnt/inputdata/TEM/
               /home/modex_user/model_examples/TEM/glue_transient_scenario.py /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
               cp -r /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10 /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10_warming_2.6C_JJAS_2019
               /home/modex_user/model_examples/TEM/modify_air_temperature.py \
@@ -97,7 +100,7 @@ jobs:
       strategy:
         fail-fast: false
         matrix:
-          INPUT_DATASET: [modex26_1x1_AK-UTQ]
+          INPUT_DATASET: [modex26_1x1_AK-UTQ, cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10]
       steps:
         - name: Checkout repo
           uses: actions/checkout@v6
