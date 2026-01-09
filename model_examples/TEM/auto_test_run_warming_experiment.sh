@@ -7,8 +7,10 @@
 # Sure would be nice to have a way to automatically sync this script with that
 # documentation...
 
-# NOTE: One differece from the documentation is that this script reduces the 
-# number of running years from 1000 to 100 for speed.
+# NOTE: One differece from the documentation is that this script reduces the
+# number of running years from 1000 to 100 for speed. Also this script
+# automatically figures out how many years of historic data are in the input
+# dataset.
 
 INPUT_DATA_NAME=$1
 
@@ -26,6 +28,7 @@ pyddt-outspec config/output_spec.csv --on LAYERDZ m l
 pyddt-outspec config/output_spec.csv --on TLAYER m l
 pyddt-outspec config/output_spec.csv --on CMTNUM y
 pyddt-outspec config/output_spec.csv -s
+# Optional - adjust run mask, some inputs have more than one px enabled by default.
 dvmdostem -f config/config.js -p 10 -e 10 -s 25 -t $TRANSIENT_YRS -n 0 --force-cmt 6 -l monitor
 
 # Setup the warming run
@@ -35,6 +38,7 @@ cd warming_2.6C_JJAS_2019
 python /home/modex_user/model_examples/TEM/modify_air_temperature.py --input-file inputs/$INPUT_DATA_NAME/historic-climate.nc --months 6 7 8 9 --years 2019 --deviation 2.6
 mv inputs/$INPUT_DATA_NAME/modified_historic-climate.nc inputs/$INPUT_DATA_NAME/historic-climate.nc
 cp ../control/config/output_spec.csv config/output_spec.csv
+# Optional - adjust run mask, some inputs have more than one px enabled by default.
 # length of historic data should be the same as control run
 dvmdostem -f config/config.js -p 10 -e 10 -s 25 -t $TRANSIENT_YRS -n 0 -l monitor --force-cmt 6
 
