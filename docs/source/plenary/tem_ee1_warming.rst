@@ -579,7 +579,7 @@ in a new container:
 
 You should see output like this:
 
-.. code::python
+.. code:: bash
 
    [I 2025-12-12 21:31:22.299 ServerApp] jupyter_lsp | extension was successfully linked.
    [I 2025-12-12 21:31:22.305 ServerApp] jupyter_server_terminals | extension was successfully linked.
@@ -591,6 +591,7 @@ You should see output like this:
     Or copy and paste one of these URLs:
         http://2aecc7b15434:8888/tree?token=e66b3be47f2b3d7721adeb88992b8b1818901c5d76281678
         http://127.0.0.1:8888/tree?token=e66b3be47f2b3d7721adeb88992b8b1818901c5d76281678
+
 
 Once the server is running, you should see a URL printed out in the terminal
 that you can open in your web browser on your host computer to access the
