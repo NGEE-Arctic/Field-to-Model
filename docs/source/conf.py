@@ -1,3 +1,5 @@
+import datetime
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -9,7 +11,8 @@
 project = 'ModEx 2026'
 copyright = '2026, ModEx Team, LANL, ORNL, UAF, LBNL'
 author = 'ModEx 2026 Developers'
-release = '0.0.1'
+build_time = datetime.datetime.now(datetime.timezone.utc)
+release = f'(updated: {build_time.strftime("%b %d %H:%M:%S UTC")})'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
