@@ -48,8 +48,18 @@
 <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t open file &#39;</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">modex_user</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">olmt</span><span class="o">/./</span><span class="n">site_fullrun</span><span class="o">.</span><span class="n">py</span><span class="s1">&#39;: [Errno 2] No such file or directory</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>A similar looking error can occur if you try to run ELM/OLMT from the wrong directory. Make sure you are in the Field-to-Model directory, if you are not,
+you will see an error that looks like this:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">models</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span><span class="p">:</span> <span class="n">Pulling</span> <span class="kn">from</span><span class="w"> </span><span class="nn">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex26</span>
+<span class="n">Digest</span><span class="p">:</span> <span class="n">sha256</span><span class="p">:</span><span class="mi">3</span><span class="n">a96539f34d532d5a85b6ab496e1b57c34e51a553318b19ea181d9ba0fd5effc</span>
+<span class="n">Status</span><span class="p">:</span> <span class="n">Image</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">for</span> <span class="n">yuanfornl</span><span class="o">/</span><span class="n">ngee</span><span class="o">-</span><span class="n">arctic</span><span class="o">-</span><span class="n">modex26</span><span class="p">:</span><span class="n">models</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">latest</span>
+<span class="n">docker</span><span class="p">:</span> <span class="n">Error</span> <span class="n">response</span> <span class="kn">from</span><span class="w"> </span><span class="nn">daemon</span><span class="p">:</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">create</span> <span class="n">task</span> <span class="k">for</span> <span class="n">container</span><span class="p">:</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">create</span> <span class="n">shim</span> <span class="n">task</span><span class="p">:</span> <span class="n">OCI</span> <span class="n">runtime</span> <span class="n">create</span> <span class="n">failed</span><span class="p">:</span> <span class="n">runc</span> <span class="n">create</span> <span class="n">failed</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">start</span> <span class="n">container</span> <span class="n">process</span><span class="p">:</span> <span class="n">error</span> <span class="n">during</span> <span class="n">container</span> <span class="n">init</span><span class="p">:</span> <span class="n">exec</span><span class="p">:</span> <span class="s2">&quot;/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh&quot;</span><span class="p">:</span> <span class="n">stat</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">modex_user</span><span class="o">/</span><span class="n">model_examples</span><span class="o">/</span><span class="n">ELM</span><span class="o">/</span><span class="n">run_ngeearctic_site</span><span class="o">.</span><span class="n">sh</span><span class="p">:</span> <span class="n">no</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+</pre></div>
+</div>
 <ul>
-<li><p>If you try to run two instances of the Docker containers at the same time,
+<li><p>If you try to run two instances of the Docker visualization container at the same time,
 with the same port mappings you may see an error like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="p">:</span> <span class="n">Error</span> <span class="n">response</span> <span class="kn">from</span><span class="w"> </span><span class="nn">daemon</span><span class="p">:</span> <span class="n">failed</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">container</span> <span class="n">networking</span><span class="p">:</span>
 <span class="n">driver</span> <span class="n">failed</span> <span class="n">programming</span> <span class="n">external</span> <span class="n">connectivity</span> <span class="n">on</span> <span class="n">endpoint</span> <span class="n">friendly_shirley</span>
@@ -57,6 +67,12 @@ with the same port mappings you may see an error like this:</p>
 <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8888</span> <span class="n">failed</span><span class="p">:</span> <span class="n">port</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">allocated</span>
 </pre></div>
 </div>
+</li>
+<li><p>If Docker Desktop is not running, you may see an error like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Cannot connect to the Docker daemon at unix:///Users/rfiorella/.docker/run/docker.sock. Is the docker daemon running?
+</pre></div>
+</div>
+<p>Start docker desktop and try again.</p>
 </li>
 </ul>
 </section>
