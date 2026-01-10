@@ -466,9 +466,11 @@ if [ ${site_name} = imnaviat_creek ]; then
   if [ ${use_allshrubs} = True ]; then
     surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_shrubs.nc"
     landuse_file="''"
+    options="$options --nopftdyn"
   elif [ ${use_noshrubs} = True ]; then
     surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_noshrubs.nc"
     landuse_file="''"
+    options="$options --nopftdyn"
   fi 
 fi
 
