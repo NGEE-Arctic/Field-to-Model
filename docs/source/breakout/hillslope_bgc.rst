@@ -176,7 +176,7 @@ the datasets with **"topounits"** to be used in this exercise.
 ELM Forcing Files
 ~~~~~~~~~~~~~~~~~
 
-A number of meteorological datsets are being used by NGEE-Arctic to
+A number of meteorological datasets are being used by NGEE-Arctic to
 provide forcings for the ELM simulations. This exercise will use GSWP3
 (v2) data, available at: ``/mnt/inputdata/E3SM/atm/datm7/gswp3/``
 
@@ -231,13 +231,13 @@ In this exercise we will conduct ELM runs at a single NGEE Arctic Phase 4 evalua
 
 We will work through the following steps:
 
-1. A full-run of 3 stagesi (AD spinup, final spinup, transient run) of ELM simulation, but for only a few years (due to time constraint).
+1. A full-run of 3 stages (AD spinup, final spinup, transient run) of ELM simulation, but for only a few years (due to time constraint).
 
 2. Create a transient case, build it, but not run. 
 
 3. Perform 4 sets of simulations, using the case setup and built in #2.
 
-A sample end-toend topounit enabled ELM run
+A sample end-to-end topounit enabled ELM run
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
@@ -505,10 +505,12 @@ Start jupyter notebook in the Docker container
     .. figure:: ../_static/hillslope_bgc/docker_run_jupyter2.png
        :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN setting page
 
-(3) It will pop up a option/setting page, click and pull the drawdown button, and edit as following.
+(3) It will pop up a option/setting page, click and pull the drawdown button, and edit as following. 
   
     .. figure:: ../_static/hillslope_bgc/docker_run_jupyter3.png
        :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN setting editing
+
+  Note: The first row of volume hookup is for connecting Your local cloned repository 'Field-to-Model' directory (full path) to  docker container's directory of '/home/jovyan'.
 
 (4) Click Run button and it will start Jupyter notebook. Notice the https links in the output and click on them to pop up a browser window.
 
