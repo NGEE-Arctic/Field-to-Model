@@ -78,6 +78,12 @@ merge strategy to create the topounits.
 .. figure:: ../_static/hillslope_bgc/toolik_elevation_summary.png
    :alt: Topounits workflow
 
+Plot below shows the number of topounits across a 0.5 degress Pan-Arctic
+ELM grid.
+
+.. figure:: ../_static/hillslope_bgc/panarctic_topounits.png
+   :alt: Panarctic Topounits
+
 Atmospheric Downscaling Scheme
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Elevation Range with Maximum elevation Method (ERMM) devveloped by Tesfa
