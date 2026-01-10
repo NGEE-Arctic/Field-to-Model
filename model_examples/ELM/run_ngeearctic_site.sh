@@ -406,7 +406,9 @@ elif [ ${site_name} = upper_kuparuk ]; then
   fi   
 elif [ ${site_name} = imnaviat_creek ]; then
   site_code="AK-TFS-IMC"
-  domain_file="domain.lnd.1x1pt_ImnaviatCreek-GRID.nc"
+  domain_file="domain.lnd.1x1pt_ImnaviatCreek-GRID.nc" 
+  surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609.nc"
+  landuse_file="landuse.timeseries_1x1pt_ImnaviatCreek-GRID_simyr1850-2015_c250609.nc"
   if [ ${met_source} = era5 ]; then
     met_path="${met_root}/ImC_wshed"
   elif [ ${met_source} = gswp3 ]; then
@@ -467,10 +469,7 @@ if [ ${site_name} = imnaviat_creek ]; then
   elif [ ${use_noshrubs} = True ]; then
     surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_noshrubs.nc"
     landuse_file="''"
-  else
-    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609.nc"
-    landuse_file="landuse.timeseries_1x1pt_ImnaviatCreek-GRID_simyr1850-2015_c250609.nc"
-  fi
+  fi 
 fi
 
 #sites with surface data including terrain features, include slope, aspect, sky_view and terrain_config
