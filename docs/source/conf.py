@@ -46,16 +46,19 @@ html_css_files = [
 ]
 
 html_theme_options = {
-  # There are no options for the 'nature' theme
-
+  # There aren't many options for the 'nature' theme
+  # Tried playing with the sidebar width, but it didn't work very well and is
+  # likely to cause problem with different resolutions and devices.
+  # Some docs here: https://www.sphinx-doc.org/en/master/usage/theming.html
+  #"sidebarwidth": '50%',
+  #"sidebarwidth": 230, # in pixels, this seems to be the default
 }
 
 html_sidebars = {
   # 'Pages matching pattern': [list of templates to include...]
+  
   '**': ['searchbox.html','localtoc.html', 'globaltoc.html', 'relations.html'],
   
+  # This puts a different sidebar on the index page only...
   #'index': ['searchbox.html', 'globaltoc.html', 'searchbox.html',],
-  # This adds a differently styled TOC, I don't think it looks as good.
-  # But it is global to the whole site....
-  #'**': [ 'globaltoc.html', 'searchbox.html'],
 }
