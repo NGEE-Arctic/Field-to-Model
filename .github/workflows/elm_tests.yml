@@ -8,14 +8,14 @@ on:
             - "model_examples/ELM/**"
             - "tools/**"
             - ".cime/**"
-            - ".github/workflows/elm_test.yml"
+            - ".github/workflows/elm_tests.yml"
     pull_request:
         paths:
             - "Docker/**"
             - "model_examples/ELM/**"
             - "tools/**"
             - ".cime/**"
-            - ".github/workflows/elm_test.yml"
+            - ".github/workflows/elm_tests.yml"
     schedule:
       - cron: "0 0 * * *"
     workflow_dispatch:
