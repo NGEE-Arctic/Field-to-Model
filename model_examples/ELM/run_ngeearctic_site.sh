@@ -308,14 +308,14 @@ if [ "${no_submit}" = True ]; then
   options="$options --no_submit"
 fi 
 if [ "${use_allshrubs}" = True ]; then
-  if [ "${site_name}" = imnaviat_creek ]; then
+  if [ ${site_name} = imnaviat_creek ]; then
     echo "Running with a surface file with all shrubs"
   else
     echo "--use_allshrubs only works with site_name=imnaviat_creek"
   fi
 fi
 if [ "${use_noshrubs}" = True ]; then
-  if [ "${site_name}" = imnaviat_creek ]; then
+  if [ ${site_name} = imnaviat_creek ]; then
     echo "Running with a surface file with all shrubs"
   else
     echo "--use_noshrubs only works with site_name=imnaviat_creek"
@@ -459,7 +459,7 @@ if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = T
 
 fi
 
-if [ "${site_name}" = imnaviat_creek ]; then
+if [ ${site_name} = imnaviat_creek ]; then
   # imnaviat creek surface data options
   if [ ${use_allshrubs} = True ]; then
     surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_shrubs.nc"
