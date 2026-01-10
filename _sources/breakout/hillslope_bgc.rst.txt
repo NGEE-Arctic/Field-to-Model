@@ -6,21 +6,21 @@ Objectives of the workshop breakout
 Objectives of this workshop breakout is learn how to set up and run ELM
 simulations to explore a set of four ELM configurations:
 
-+---------------------------+------------------+---------------------+------------------------------+
-| Features                  | Spatial Extent   | Spatial Resolutions | Configuration name (CODE)    |
-+===========================+==================+=====================+==============================+
-| Topounits                 | Panarctic        | 0.5 deg             | Baseline (IM0_DS0)           |
-+---------------------------+------------------+---------------------+------------------------------+
-| Topounits                 | Panarctic        | 0.5 deg             |                              |
-| + meteorology downscaling |                  |                     | Met. Downscaling (IM0_DS1)   |
-+---------------------------+------------------+---------------------+------------------------------+
-| Topounits                 | Panarctic        | 0.5 deg             |                              |
-| + IM2 hillslope hydrology |                  |                     | Hillslope Hydrology (IM1_DS0)|
-+---------------------------+------------------+---------------------+------------------------------+
-| Topounits                 | Panarctic        | 0.5 deg             |                              |
-| + meteorology downscaling |                  |                     | Met. Downscaling +           |
-| + IM2 hillslope hydrology |                  |                     | Hillslope Hydrology (IM1_DS1)|
-+---------------------------+------------------+---------------------+------------------------------+
++---------+---------------------------+------------------+---------------------+------------------------------+
+| ID      | Features                  | Spatial Extent   | Spatial Resolutions | Configuration name (CODE)    |
++=========+===========================+==================+=====================+==============================+
+| IM0_DS0 | Topounits                 | Panarctic        | 0.5 deg             | Baseline (IM0_DS0)           |
++---------+---------------------------+------------------+---------------------+------------------------------+
+| IM0_DS1 | Topounits                 | Panarctic        | 0.5 deg             |                              |
+|         | + meteorology downscaling |                  |                     | Met. Downscaling (IM0_DS1)   |
++---------+---------------------------+------------------+---------------------+------------------------------+
+| IM1_DS0 | Topounits                 | Panarctic        | 0.5 deg             |                              |
+|         | + IM2 hillslope hydrology |                  |                     | Hillslope Hydrology (IM1_DS0)|
++---------+---------------------------+------------------+---------------------+------------------------------+
+| IM1_DS1 | Topounits                 | Panarctic        | 0.5 deg             |                              |
+|         | + meteorology downscaling |                  |                     | Met. Downscaling +           |
+|         | + IM2 hillslope hydrology |                  |                     | Hillslope Hydrology (IM1_DS1)|
++---------+---------------------------+------------------+---------------------+------------------------------+
 
 Background on ELM features we will explore
 ------------------------------------------
@@ -78,6 +78,12 @@ merge strategy to create the topounits.
 .. figure:: ../_static/hillslope_bgc/toolik_elevation_summary.png
    :alt: Topounits workflow
 
+Plot below shows the number of topounits across a 0.5 degree Pan-Arctic
+ELM grid.
+
+.. figure:: ../_static/hillslope_bgc/panarctic_topounits.png
+   :alt: Panarctic Topounits
+
 Atmospheric Downscaling Scheme
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Elevation Range with Maximum elevation Method (ERMM) devveloped by Tesfa
@@ -100,6 +106,35 @@ topounits. The ERMM method uses only the topographic characteristics of the grid
 
 IM2 Hillslope Hydrology
 ~~~~~~~~~~~~~~~~~~~~~~~
+.. list-table::
+   :widths: 50 50
+   :class: borderless
+
+   * - .. figure:: ../_static/hillslope_bgc/IM2_scheme_1.png
+         :width: 100%
+
+         Connections among multiple topounits (labeled a through g) on a single gridcell. Each topounit is connected to at most one other downhill topounit (the next lowest in elevation), while the lowest topounit does not have a downhill connection. 
+
+     - .. figure:: ../_static/hillslope_bgc/IM2_scheme_2.png
+         :width: 100%
+
+         Arrangement of topounits, columns, state variables, and water fluxes 
+
+.. list-table::
+   :widths: 50 50
+   :class: borderless
+
+   * - .. figure:: ../_static/hillslope_bgc/IM2_scheme_3.png
+         :width: 100%
+
+         A summary of water fluxes for a single column. 
+
+     - .. figure:: ../_static/hillslope_bgc/IM2_scheme_4.png
+         :width: 100%
+
+         Summary representation of hillslope hydrology fluxes at the topounit level. The water state variable for one topounit (gray shaded box) receives water from a column on an uphill topounit (column a). The operator symbol represents combined user parameter for the fraction of column-level flux to transport downhill and the scaling factor accounting for potential difference in area between the upstream column and the downstream topounit. Water leaving the topounit water state is moved to columns on the topounit .
+
+
 
 ELM Domain/Surface Datasets
 -----------------------------------

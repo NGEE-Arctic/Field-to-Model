@@ -1,5 +1,5 @@
 const DOCUMENTATION_OPTIONS = {
-    VERSION: '(updated: Jan 10 02:20:19 UTC)',
+    VERSION: '(updated: Jan 10 04:16:30 UTC)',
     LANGUAGE: 'en',
     COLLAPSE_INDEX: false,
     BUILDER: 'html',

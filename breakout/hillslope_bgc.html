@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. Hillslope hydrology and BGC impacts breakout group &#8212; ModEx 2026 (updated: Jan 10 02:20:19 UTC) documentation</title>
+    <title>9. Hillslope hydrology and BGC impacts breakout group &#8212; ModEx 2026 (updated: Jan 10 04:16:30 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=45a7863d"></script>
+    <script src="../_static/documentation_options.js?v=53ea3690"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="permafrost_hydrology.html" title="8. Permafrost hydrology breakout group"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 10 02:20:19 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 10 04:16:30 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Hillslope hydrology and BGC impacts breakout group</a></li> 
       </ul>
     </div>  
@@ -47,31 +47,36 @@
 simulations to explore a set of four ELM configurations:</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Features</p></th>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Features</p></th>
 <th class="head"><p>Spatial Extent</p></th>
 <th class="head"><p>Spatial Resolutions</p></th>
 <th class="head"><p>Configuration name (CODE)</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Topounits</p></td>
+<tr class="row-even"><td><p>IM0_DS0</p></td>
+<td><p>Topounits</p></td>
 <td><p>Panarctic</p></td>
 <td><p>0.5 deg</p></td>
 <td><p>Baseline (IM0_DS0)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Topounits
+<tr class="row-odd"><td><p>IM0_DS1</p></td>
+<td><p>Topounits
 + meteorology downscaling</p></td>
 <td><p>Panarctic</p></td>
 <td><p>0.5 deg</p></td>
 <td><p>Met. Downscaling (IM0_DS1)</p></td>
 </tr>
-<tr class="row-even"><td><p>Topounits
+<tr class="row-even"><td><p>IM1_DS0</p></td>
+<td><p>Topounits
 + IM2 hillslope hydrology</p></td>
 <td><p>Panarctic</p></td>
 <td><p>0.5 deg</p></td>
 <td><p>Hillslope Hydrology (IM1_DS0)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Topounits
+<tr class="row-odd"><td><p>IM1_DS1</p></td>
+<td><p>Topounits
 + meteorology downscaling
 + IM2 hillslope hydrology</p></td>
 <td><p>Panarctic</p></td>
@@ -143,6 +148,11 @@ merge strategy to create the topounits.</p>
 <figure class="align-default">
 <img alt="Topounits workflow" src="../_images/toolik_elevation_summary.png" />
 </figure>
+<p>Plot below shows the number of topounits across a 0.5 degree Pan-Arctic
+ELM grid.</p>
+<figure class="align-default">
+<img alt="Panarctic Topounits" src="../_images/panarctic_topounits.png" />
+</figure>
 </section>
 <section id="atmospheric-downscaling-scheme">
 <h3><span class="section-number">9.2.2. </span>Atmospheric Downscaling Scheme<a class="headerlink" href="#atmospheric-downscaling-scheme" title="Link to this heading">¶</a></h3>
@@ -163,6 +173,56 @@ topounits. The ERMM method uses only the topographic characteristics of the grid
 </section>
 <section id="im2-hillslope-hydrology">
 <h3><span class="section-number">9.2.3. </span>IM2 Hillslope Hydrology<a class="headerlink" href="#im2-hillslope-hydrology" title="Link to this heading">¶</a></h3>
+<table class="borderless docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/IM2_scheme_1.png"><img alt="../_images/IM2_scheme_1.png" src="../_images/IM2_scheme_1.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Connections among multiple topounits (labeled a through g) on a single gridcell. Each topounit is connected to at most one other downhill topounit (the next lowest in elevation), while the lowest topounit does not have a downhill connection.</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/IM2_scheme_2.png"><img alt="../_images/IM2_scheme_2.png" src="../_images/IM2_scheme_2.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Arrangement of topounits, columns, state variables, and water fluxes</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="borderless docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/IM2_scheme_3.png"><img alt="../_images/IM2_scheme_3.png" src="../_images/IM2_scheme_3.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">A summary of water fluxes for a single column.</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="../_images/IM2_scheme_4.png"><img alt="../_images/IM2_scheme_4.png" src="../_images/IM2_scheme_4.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Summary representation of hillslope hydrology fluxes at the topounit level. The water state variable for one topounit (gray shaded box) receives water from a column on an uphill topounit (column a). The operator symbol represents combined user parameter for the fraction of column-level flux to transport downhill and the scaling factor accounting for potential difference in area between the upstream column and the downstream topounit. Water leaving the topounit water state is moved to columns on the topounit .</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="elm-domain-surface-datasets">
@@ -554,7 +614,7 @@ TIP: For ELM developers, its namelist is use_IM2_hillslope_hydrology = .true., s
         <li class="right" >
           <a href="permafrost_hydrology.html" title="8. Permafrost hydrology breakout group"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 10 02:20:19 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 10 04:16:30 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Hillslope hydrology and BGC impacts breakout group</a></li> 
       </ul>
     </div>
