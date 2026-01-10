@@ -136,97 +136,109 @@ IM2 Hillslope Hydrology
 
 
 
-ELM Domain/Surface Datasets
------------------------------------
 
-For running ELM without coupled to other E3SM components, it requires inputs, as summarized in following:
+Running ELM
+-----------
+We will use Council C71 site (at Seward Peninsula of Alaska) for all
+simulations in this exercise. 
+To run ELM in offline mode (without coupling to other E3SM
+components), we would need input datafiles as summarized below:
 
 https://github.com/ORNL-Ecosystem-Projects/Documentations/wiki/Offline-ELM-Inputs-for-Regional-Simulations
 
-The following will list what really needed for this demonstration.
+Described below are the essential data components need for this
+exercise.
 
 ELM Domain Files
 ~~~~~~~~~~~~~~~~
 
-By default, ELM domain file is located in:
+ELM domain file is located within the container volume at:
+``/mnt/inputdata/E3SM/share/domains/domain.clm/``
 
-/mnt/inputdata/E3SM/share/domains/domain.clm/
+Files used in this exercise include the identifier 'C71' for Council
+Mile Marker 71, at Seward Peninsula of AK,
+AK in their name:
 
-Files used in this exercise are named as, with 'C71' standing for Council 71, AK:
-
-domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc
-
-This file will provide a mesh of land surface, including grid location and its size (vertices, and area).
+``domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc``: This file
+provides the computational mesh for ELM, including grid location and its size (vertices, and area).
 
 ELM Surface Datasets
 ~~~~~~~~~~~~~~~~~~~~
 
-ELM requires a lot of land surface properties. The netCDF files are in:
+ELM requires a number of land surface properties to be defined in netCDF
+files that are located at:
+``/mnt/inputdata/E3SM/lnd/clm2/surfdata_map``
 
-/mnt/inputdata/E3SM/lnd/clm2/surfdata_map
-
-The dataset with topounits, used in this exercise, will be:
-
-topounit_surfdata_0.5x0.5_simyr1850_c20220204_C71-GRID.nc
-
-Again, with C71 stands for Council Mileage 71, AK.
-
+``topounit_surfdata_0.5x0.5_simyr1850_c20220204_C71-GRID.nc``: Contains
+the datasets with **"topounits"** to be used in this exercise.
 
 
 ELM Forcing Files
 ~~~~~~~~~~~~~~~~~
 
-In this exercise, ELM will be driven by a meteorological data, called GSWP3 (v2), in:
+A number of meteorological datasets are being used by NGEE-Arctic to
+provide forcings for the ELM simulations. This exercise will use GSWP3
+(v2) data, available at: ``/mnt/inputdata/E3SM/atm/datm7/gswp3/``
 
-/mnt/inputdata/E3SM/atm/datm7/gswp3/
+Data for Council site are within the subdirectory: ``cnl/``
 
-For Council site, the subdirectory is: cnl/
+There are 7 key meterological variables at 3 hourly frequency that
+provides meteorological:
 
-From the file names, there are 7 meterological variables of 3 hourly:
-
-  FSDS - incoming solar shortwave radiation
-  
-  FLDS - incoming solar longwave radiation
-  
-  PRECTmms - precipitation in unit of mm/s
-  
-  PSRF - air pressure (near-surface)
-  
-  QBOT - air specific humidity (near-surface, or bottom of atmosphere)
-  
-  TBOT - air temperature
-  
-  WIND - wind speed
++----------+---------------------------------------------------------------+
++----------+---------------------------------------------------------------+
+| FSDS     | incoming solar shortwave radiation                            |
++----------+---------------------------------------------------------------+
+| FLDS     | incoming solar longwave radiation                             |
++----------+---------------------------------------------------------------+
+| PRECTmms | precipitation in unit of mm/s                                 |
++----------+---------------------------------------------------------------+
+| PSRF     | air pressure (near-surface)                                   |
++----------+---------------------------------------------------------------+
+| QBOT     | air specific humidity (near-surface, or bottom of atmosphere) |
++----------+---------------------------------------------------------------+
+| TBOT     | air temperature                                               |
++----------+---------------------------------------------------------------+
+| WIND     | wind speed                                                    |
++----------+---------------------------------------------------------------+
   
   
 
 Running ELM: Exercises on topographic unit, hereafter, topounit, data and functionality
 ---------------------------------------------------------------------------------------
 
-
 A general briefing on how to use or run ELM may be found in: https://github.com/ORNL-Ecosystem-Projects/Documentations/wiki#welcome-to-the-e3sm-land-model-elm-pflotran-coupled-wiki
 
+In this exercise we will conduct ELM runs at a single NGEE Arctic Phase 4 evaluation site: Council, Council Road Mileage 71, AK.
 
-In this series of ELM runs we will do following at a single NGEE Arctic Phase 4 evaluation site: Council, Council Road Mileage 71, AK.
++-------------------------------+------------+
++-------------------------------+------------+
+| site name                     | council    |
++-------------------------------+------------+
+| site code                     | AK-SP-CL71 |
++-------------------------------+------------+
+| meteorological forcing source | GSWP3      |
++-------------------------------+------------+
 
-site name: council
++---------------+------------------------------------------------------------------------------------------------------------------------+
++---------------+------------------------------------------------------------------------------------------------------------------------+
+|   domain file | ``/mnt/inputdata/E3SM/share/domains/domain.clm/domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc``                    |
++---------------+------------------------------------------------------------------------------------------------------------------------+
+| surfdata file | ``/mnt/inputdata/E3SM/lnd/clm2/surfdata_map/topounit_surfdata_0.5x0.5_simyr1850_c20220204_C71-GRID.nc``                |
++---------------+------------------------------------------------------------------------------------------------------------------------+
+| inidata file  | ``/mnt/inputdata/E3SM/lnd/clm2/inidata/council/topounit_gswp3_AK-SP-CL71_ICB1850CNPRDCTCBC.elm.r.0601-01-01-00000.nc`` |
++---------------+------------------------------------------------------------------------------------------------------------------------+
 
-site code: AK-SP-CL71
+We will work through the following steps:
 
-meteorological forcing source: gswp3
+1. A full-run of 3 stages (AD spinup, final spinup, transient run) of ELM simulation, but for only a few years (due to time constraint).
 
-domain file: /mnt/inputdata/E3SM/share/domains/domain.clm/domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc
+2. Create a transient case, build it, but not run. 
 
-surfdata file: /mnt/inputdata/E3SM/lnd/clm2/surfdata_map/topounit_surfdata_0.5x0.5_simyr1850_c20220204_C71-GRID.nc
+3. Perform 4 sets of simulations, using the case setup and built in #2.
 
-inidata file: //mnt/inputdata/E3SM/lnd/clm2/inidata/council/topounit_gswp3_AK-SP-CL71_ICB1850CNPRDCTCBC.elm.r.0601-01-01-00000.nc
-
-(1) a full-run of 3 stages of ELM simulations, but in short running years.
-(2) create a transient case, build it, but not run. 
-(3) 4 sets of simulations, using the case setup and built in (2).
-
-A quick test of ensential topounit enabled ELM run
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A sample end-to-end topounit enabled ELM run
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
@@ -244,10 +256,15 @@ A quick test of ensential topounit enabled ELM run
      --final_spinup_yrs=10 \
      --transient_yrs=10
 
+``--topounits_atmdownscale``, will turn ON the feature to
+downscaling air temperature and precipitation from gricells to topounits.
 
-The option, --topounits_atmdownscale, will turn on a function, downscaling air temperature and precipitation by topounit.
+``--ad_spinup_yrs=20``, ``--final_spinup_yrs=10``, ``--transient_yrs=10`` defines the number of years simulation should be conducted for ``ad_spinup``, ``final_spinup``, and ``transient`` steps.  These values typically would be higher, but set low for illustration.
 
-This function may significantly impact hydrology and may have consequent impacts on biogeochemical cycle, if multiple topounits are properly created in ELM surface data.
+**Topounits** and **downscaling** features can have significant impact
+on hydrological processes, and consequent impacts on biogeochemical
+cycle, if multiple topounits are properly created in ELM surface data.
+We will look into those effect later in this exercise.
 
 Create a new transient case and build it.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -270,52 +287,63 @@ Create a new transient case and build it.
      
 The option,
 
---ad_spinup_yrs=0 will allow workflow SKIP ELM stage of biogeochimcally accelebrated spinup;
+``--ad_spinup_yrs=0`` will allow workflow to SKIP the step of
+biogeochemically accelerated spinup.
 
---final_spinup_yrs=0 will SKIP stage of normal spinup.
+``--final_spinup_yrs=0`` will SKIP stage of normal spinup.
 
-Thus, it will create a case of Transient stage. Then, --no_submit will tell workflow not run the case.
+It will create a case for **transient** simulation. ``--no_submit`` will
+however tell the workflow not start the simulation, which we will do in
+the next step..
 
 
-From this command, 3 directories will generated for the case:
+The above command will generate 3 directories for the case: ``CASE`` = ``topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC``
 
-  CASE: topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC
+``CASEROOT``: ``/mnt/output/cime_case_dirs/topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC``
+``EXEROOT``: ``/mnt/output/cime_run_dirs/topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC/bld``
+``RUNDIR``: ``/mnt/output/cime_run_dirs/topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC/run``
 
-  CASEROOT: /mnt/output/cime_case_dirs/topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC
-
-  EXEROOT: /mnt/output/cime_run_dirs/topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC/bld
-
-  RUNDIR: /mnt/output/cime_run_dirs/topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC/run
-
-for convenience, CASEROOT has two parts:
-
-    case_dir=/mnt/output/cime_case_dirs
-
-    case_name=topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC
+.. JK: Commenting out the next three lines since they may not be needed
+.. for convenience, CASEROOT has two parts:
+.. case_dir=/mnt/output/cime_case_dirs
+.. case_name=topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC
     
-EXEROOT is where 'e3sm.exe' and its building root directory.
+``EXEROOT`` is the root directory where the cose is built and the main
+executable ``e3sm.exe`` is located.
 
-RUNDIR is where all simulation results are. Later on, when visualizing and/or analysing, all output data will be there.
+``RUNDIR`` contains the outputs of the simulation. We will access the
+outputs from this directory during analysis and visualization step.
 
 
-Four (4) runs of the case just setup and built.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Conduct ELM Simulations
+~~~~~~~~~~~~~~~~~~~~~~~
+Four simulations we would conduct explore three key features of ELM, in
+various combinations:
 
-Topographic features along hillslope, may have 2 import thermal-hydrologically impacts on:
+1. Use of **topounits** to capture subgrid scale topographic variability
 
-(1) near-surface temperature and precipitation. In ELM, this topounit function is called atmospheric forcing downscaling, i.e. topo-downscaling.
-    TIP: For ELM developers, its namelist is use_atmdownscaling_to_topounit = .true., setup in ELM_BLDNML_OPTS ( "-topunit")
+2. Atmospheric downscaling for elevation based downscaling of grid cell level forcings to **topounits**.
+
+3. NGEE-Arctic developed IM2 module for hillslope hydrology. 
+
+.. Topographic features along hillslope, may have 2 import thermal-hydrologically impacts on:
+
+.. (1) near-surface temperature and precipitation. In ELM, this topounit function is called atmospheric forcing downscaling, i.e. topo-downscaling.
+..    TIP: For ELM developers, its namelist is use_atmdownscaling_to_topounit = .true., setup in ELM_BLDNML_OPTS ( "-topunit")
     
-(2) water flow along hillslope. In ELM this topounit function is called IM2 hillslope hydrology.
-    TIP: For ELM developers, its namelist is use_IM2_hillslope_hydrology = .true., setup in 'user_nl_name'
+.. (2) water flow along hillslope. In ELM this topounit function is called IM2 hillslope hydrology.
+..    TIP: For ELM developers, its namelist is use_IM2_hillslope_hydrology = .true., setup in 'user_nl_name'
 
 
-HERE, an ELM case re-run workflow, namely called run_ngeearctic_site_rerun.sh, will be used.
+We will use the Field-to-Model: ``model_examples/ELM/run_ngeearctic_site_rerun.sh`` with various flags to
+conduct all these simulations.
 
-- It will run the already setup/built case, from a pre-run ending restart data packages.
-- 4 runs will change run options differently, but no need to re-build model and implementation machine settings.
+.. - It will run the already setup/built case, from a pre-run ending restart data packages.
+.. - 4 runs will change run options differently, but no need to re-build model and implementation machine settings.
 
-RUN 1: Baseline (IM0_DS0)
+**RUN 1: Baseline (IM0_DS0)**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 .. code-block:: bash
 
@@ -336,29 +364,37 @@ RUN 1: Baseline (IM0_DS0)
      --user_namelist="topounit" \
      --merged_ncfile="MasterE3SM_subgrid.out_met-ds-NO_IM-2-NO_yes.topounit_gswp3_AK-SP-CL72_ICB20TRCNPRDCTCBC_2005.2014.nc"
 
-NOTES:
        
-       --case_dirs, --case_name, will be the CASEROOT, which already existed.
-       
-       --run_type=branch. This must be used together with --restart_path, --restart_case, --restart_date
-       
-       'branch' RUN_TYPE is one of 3 types supported here (startup, restart, and branch). It will find a few data and rpointer files in --restart_path, with case_name of --restart_case, from starting point time of --restart_date
-       
-       --continue_run_yrs=10, it allows run goes for 10 years. So if starting from 2005-01-01, it will be ending at 2014-12-31.
-       
-       --rest_yrs=11, tells model saves restart files every 11 years. Since the run only goes for 10 years, it won't generate restart files in this case. If intended to, have to set this to not greater than --continue_run_yrs.
-       
-       --user_namelist="topounit", allows run configured as 'topounits' enabled, but no meteorological downscaling or IM2 hillslope hydrology
-       
-       --merged_ncfile will tell workflow to save merged sub-grid output netCDF files to this file.
-           
-           Otherwise, its name is ELM_output_PFT.nc (and it will be overwritten by new run).
-           
-           It can be any name. Here we sort of intending it referring some meaningful name, e.g. E3SM version, not-grid-aggregated, met-ds (NO), IM-2 (NO), topounit (yes), met. type, site-code, ELM compset, period, etc.
+``--case_dirs``, ``--case_name``: will be set to the ``CASEROOT``, we created in previous steps.
+
+``--run_type=branch``: This must be used together with
+``--restart_path``, ``--restart_case``, ``--restart_date``
+
+``branch`` ``RUN_TYPE`` is one of 3 types supported by the workflow (``startup``,
+``restart``, and ``branch``). It will find data and rpointer files at
+``--restart_path``, with ``case_name`` == ``--restart_case``, and start
+a simulation from the date specified by ``--restart_date``.
+
+``--continue_run_yrs=10``: Would perform a simulation for 10 years. So
+if starting from 2005-01-01, it will end on 2014-12-31.
+
+``--rest_yrs=11``: Tells the model to save restart files every 11 years.
+Since the current run only goes for 10 years, it won't generate any restart files. 
+.. If intended to, have to set this to not greater than --continue_run_yrs.
+
+``--user_namelist="topounit"``:  Enables **topounits** feature
+.. , but no meteorological downscaling or IM2 hillslope hydrology
+
+``--merged_ncfile`` will asks workflow to save merged sub-grid output netCDF files to this file.
+Otherwise, default filename would be *ELM_output_PFT.nc* (overwriting
+any existing file with that name).
+    
+It can be any name. Here we will use names with some identifiable tags, e.g. E3SM version, not-grid-aggregated, met-ds (NO), IM-2 (NO), topounit (yes), met. type, site-code, ELM compset, period, etc.
        
 
 
-RUN 2: Downscaling (IM0_DS1)
+**RUN 2: Downscaling (IM0_DS1)**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
@@ -379,15 +415,16 @@ RUN 2: Downscaling (IM0_DS1)
      --user_namelist="topounit_atm_downscaling" \
      --merged_ncfile="MasterE3SM_subgrid.out_met-ds-YES_IM-2-NO_yes.topounit_gswp3_AK-SP-CL72_ICB20TRCNPRDCTCBC_2005.2014.nc"
 
-NOTE:
-       In this run, only the following options are changed.
+Following options are changed compared to previous **RUN1: IM0_DS0**.
        
-         --user_namelist="topounit_atm_downscalng", allows run configured as 'topounits' enabled PLUS meteorological downscaling.
+``--user_namelist="topounit_atm_downscalng"`` that enables
+**meteorological downscaling** in addition to **topounits**.
        
-         --merged_ncfile
+``--merged_ncfile`` to save the outputs to a new file.
 
 
-RUN 3: Hillslope Hydrology (IM1_DS0)
+**RUN 3: Hillslope Hydrology (IM1_DS0)**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
@@ -408,17 +445,18 @@ RUN 3: Hillslope Hydrology (IM1_DS0)
      --user_namelist="topounit_IM2" \
      --merged_ncfile="MasterE3SM_subgrid.out_met-ds-NO_IM-2-YES_yes.topounit_gswp3_AK-SP-CL72_ICB20TRCNPRDCTCBC_2005.2014.nc"
 
-NOTE:
-       In this run, only the following options are changed.
+Following options are changed compared to previous **RUN1: IM0_DS0**.
 
-         --user_namelist="topounit_IM2", allows run configured as 'topounits' enabled PLUS IM2 hillslope hydrology.
-       
-          (--user_namelist="use_IM2_hillslope_hydrology", will do exactly same running configuration)
+``--user_namelist="topounit_IM2"`` enables **IM2 hillslope hydrology**
+in addition to **topounits**.
 
-         --merged_ncfile
+.. (``--user_namelist="use_IM2_hillslope_hydrology"``, will enable exactly same configuration change)
+
+``--merged_ncfile`` to save the outputs to a new file.
 
 
-RUN 4: Met. Downscaling + Hillslope Hydrology (IM1_DS1)
+**RUN 4: Met. Downscaling + Hillslope Hydrology (IM1_DS1)**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
@@ -439,67 +477,75 @@ RUN 4: Met. Downscaling + Hillslope Hydrology (IM1_DS1)
      --user_namelist="topounit_atm_downscaling, topounit_IM2" \
      --merged_ncfile="MasterE3SM_subgrid.out_met-ds-YES_IM-2-YES_yes.topounit_gswp3_AK-SP-CL72_ICB20TRCNPRDCTCBC_2005.2014.nc"
 
-NOTE:
-       In this run, only the following options are changed.
+Following options are changed compared to previous **RUN3: IM1_DS0**.
 
-         --user_namelist="topounit_atm_downscalng, topounit_IM2", allows run configured as 'topounits' enabled PLUS meteorological downscaling and IM2 hillslope hydrology
+``--user_namelist="topounit_atm_downscalng, topounit_IM2"`` enables
+**topounits**, **meteorological downscaling** and **IM2 hillslope
+hydrology**.
 
-         --merged_ncfile
+``--merged_ncfile`` to save the outputs to a new file.
 
 
 
-ELM run results visualizing and/or analysis
--------------------------------------------
+Analysis and visualization of ELM simulation outputs
+----------------------------------------------------
 
-Running jupyter notebook container in Docker Desktop App
+Start jupyter notebook in the Docker container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The recent version of Docker Desktop App is very handy to run jupyter notebook container.
+.. The recent version of Docker Desktop App is very handy to run jupyter notebook container.
 
-  (1) After startup Docker Desktop App, click Left panel's 'Images', showing the images pulled (or in pulling)
+(1) After starting the Docker Desktop App, click Left panel's *Images*, listing the images available.
 
     .. figure:: ../_static/hillslope_bgc/docker_run_jupyter1.png
        :alt: Docker Desktop App - image pulling
 
-  (2) Click the Triangle run button of image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' to start
+(2) Click the Triangle run button next to the image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' to start
 
     .. figure:: ../_static/hillslope_bgc/docker_run_jupyter2.png
        :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN setting page
 
-  (3) It will pop up a option setting page, click and pull the drawdown button, and edit as following.
+(3) It will pop up a option/setting page, click and pull the drawdown button, and edit as following. 
   
     .. figure:: ../_static/hillslope_bgc/docker_run_jupyter3.png
        :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN setting editing
 
-  (4) Click Run button in above, it will load Jupyter notebook, like following. Notice those https links, and click anyone to pop up a browser window.
+  Note: The first row of volume hookup is for connecting Your local cloned repository 'Field-to-Model' directory (full path) to  docker container's directory of '/home/jovyan'.
+
+(4) Click Run button and it will start Jupyter notebook. Notice the https links in the output and click on them to pop up a browser window.
 
     .. figure:: ../_static/hillslope_bgc/docker_run_jupyter4.png
        :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN jupyter notebook loading
    
-  (5) In the pop-up browser window, it would show the landing page like following.
+(5) In the pop-up browser window, it should show the landing page like following.
 
     .. figure:: ../_static/hillslope_bgc/docker_run_jupyter5.png
        :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN jupyter notebook landing page
 
 
 
-Visualizing results using jupyter notebook container
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Visualizing results using jupyter notebook
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Click the left explorer window, and click-open the folder: /vis_notebooks/hillslope-bgc/
+Click the left explorer window, and click-open the folder: ``/vis_notebooks/hillslope-bgc/``
 
-Click open file: plot_ELM_output.ipynb file. We will run this script to open a ELM output nc file, and check a few variables (visualizing)
+Click open file: ``plot_ELM_output.ipynb``. We will run this script to
+open a ELM output file, and investigate a few variables.
 
   .. figure:: ../_static/hillslope_bgc/docker_run_jupyter_plotELMoutput.png
      :alt: jupyter notebook PlotELMoutput visualization tool
 
 
-Analysing hillslope hydrology over topounits impacts: soil moisture, GPP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Analyzing the impact of topounits and hillslope hydrology on hydrology (**soil moisture**) and biogeochemistry (**GPP**)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Again, from the left explorer window, click-open file: topounit_run_analysis.ipynb. We will run this script to open 4 simulations' merged netcdf files, generated from this breakout session model exercise, and do some analysis on topounit-enabled ELM runs.
+From the left explorer window, click-open file:
+``topounit_run_analysis.ipynb``. We will run this script to open
+``merged_ncfile`` we created for 4 simulations in previous runs, and
+conduct some analysis.
 
-We're going to focus on two variables: top-10cm soil moisture and GPP. 
+We're going to focus on two variables: **top-10cm soil moisture** and
+**GPP**. 
 
   .. figure:: ../_static/hillslope_bgc/docker_run_jupyter_hillslopeTool.png
      :alt: jupyter notebook ELM outputs analysis tool
