@@ -88,7 +88,7 @@ A very detailed explain of FATES can be found in this `Technical Documentation <
 
 The source code for FATES, as well as discussion boards, and tracking changes can be found in this `GitHub repository <https://github.com/NGEET/fates>`
 
-For this workshop, we will not go into the details of setting up and running FATES. However, we encourage users to visit previous User Guide documentation, and past `FATES Tutorial documents <https://fates-users-guide.readthedocs.io/en/latest/>`(the latest tutorial was in Fall 2024). 
+For this workshop, we will not go into the details of setting up and running FATES. However, we encourage users to visit previous User Guide documentation, and past `FATES Tutorial documents <https://fates-users-guide.readthedocs.io/en/latest/>` (the latest tutorial was in Fall 2024). 
   
 Here are a few quick instructions and tips for running ELM-FATES:
 - FATES will use these same files from ELM: the surface file, domain file, climatology driver data, and ELM parameter file.  The main difference is that FATES has its own parameter file for FATES specific PFT and site level parameters. 
