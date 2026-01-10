@@ -66,8 +66,8 @@ Look at the available input data and check that the Imnavait data is available:
 
 
 
-Set up the runfolders
-**********************
+Set up the run folders
+**************************
 
 
 With the available functions, you can create different TEM scenarios by modifying the input climate data files. 
@@ -78,7 +78,7 @@ Below are the instructions to set up the identical scenarios to the ELM examples
 * Precipitation scaling (rain +40%, snow +60%)
 * Combined temperature and precipitation scaling
 
-You will need to create a separate runfolder for each scenario you want to run:
+You will need to create a separate run folder for each scenario you want to run:
 
 .. code:: shell
 
@@ -144,7 +144,7 @@ Baseline run:
     
 
 Temperature scaled by +3 °C:
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/warming_imnavait_tussock`
 
@@ -186,7 +186,7 @@ Temperature scaled by +3 °C:
 
 
 Precipitation scaling (rain +40%, snow +60%):
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/precip_imnavait_tussock`
 
@@ -235,7 +235,7 @@ Precipitation scaling (rain +40%, snow +60%):
 
 
 Combined temperature and precipitation scaling:
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/warming_and_precip_imnavait_tussock`
 
@@ -336,7 +336,7 @@ Advanced TEM Processing and Information
 
 
 TEM background for Snow, Vegetation, and Permafrost
---------------------------------------------
+----------------------------------------------------
 Each DVMDOSTEM grid cell can be assigned one “community type” (CMT). A community type is essentially a parameterization
 that specifies many properties for vegetation, and soil.
 
