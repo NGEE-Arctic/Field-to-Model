@@ -67,9 +67,17 @@ jobs:
           uses: actions/checkout@v6
           with:
             submodules: recursive
+            
         - name: Create docker volumes
           run: |
             docker volume create output
+
+        - name: Restore cache
+          uses: actions/cache@v3
+          with:
+            path: .cache/inputdata
+            key: inputdata-v2-${{ hashFiles('tools/scripts/get_inputdata.sh') }}
+
         - name: Run test case for site
           run: |
             docker run --rm -v $(pwd):/home/modex_user -v $(pwd)/.cache/inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=era5 -ady=1 -fsy=1 -try=1 -tsp=1
