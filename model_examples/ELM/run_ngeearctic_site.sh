@@ -21,7 +21,7 @@ Help()
     echo "                              workshop this will always be NGEE-Arctic"
     echo "  --case_prefix             What should be appended to the beginning of the casename to distinguish"
     echo "                              between two runs at the same site?"
-    echo "  -ms, --met_source         Select which meteorological forcing you would like to use. ERA5 or GSWP3 (Default: ERA5)"
+    echo "  -ms, --met_source         Select which meteorological forcing you would like to use. ERA5 or GSWP3 (Default: era5, Otherwise: gswp3)"
     echo "  --use_arctic_init         Use modified startup condition for Arctic conditions. (ELM default is soil moisture of 0.15 m3/m3"
     echo "                            and 274K. Modified condition is at liquid saturation and at 250+40*cos(lat) K)"
     echo "  --use_IM2_hillslope_hydrology  Turn on transfer of water from high elevation topounits to low elevation."
@@ -41,7 +41,7 @@ Help()
     echo "                              1850-2024 for ERA5)"
     echo "  -tsp, --timestep          What timestep should the model use? (Default: 1 hour, units of this number"
     echo "                               should be hours)"
-    echo "  --met_source              What met source should be used? (Default: ERA5, can also use GSWP3)"
+    echo "  --no_submit               After case setup and build, don't submit job to run (Default: False)"
     echo "  --add_temperature         Add a constant temperature to the meteorology time series, in K"
     echo "  --startdate_add_temperature   When should the temperature perturbation be initiated?"
     echo "                                (It will continue to the end of the run). YYYYMMDD format"
@@ -60,6 +60,8 @@ Help()
     echo "  --startdate_scale_pdep    When should the phosphorus deposition scaling begin? (It will continue to the end of the transient run)"
     echo "                            YYYYMMDD format"
     echo "  --mod_parm_file           Use a modified PFT parameter file (Note, requires full path)"
+    echo "  --use_allshrubs           Use a modified surface file with 100% Broadleaf deciduous shrub – boreal"
+    echo "  --use_noshrubs            Use a modified surface file with 100% C3 arctic grass"
     exit 0
 }
 
@@ -160,6 +162,10 @@ case $i in
     use_arctic_init=True
     shift
     ;;   
+    --no_submit)
+    no_submit=True
+    shift
+    ;;
     --use_IM2_hillslope_hydrology)
     use_IM2_hillslope_hydrology=True
     shift
@@ -172,6 +178,14 @@ case $i in
     ;;
     --use_polygonal_tundra)
     use_polygonal_tundra=True
+    shift
+    ;;
+    --use_allshrubs)
+    use_allshrubs=True
+    shift
+    ;;
+    --use_noshrubs)
+    use_noshrubs=True
     shift
     ;;
     *)
@@ -196,6 +210,9 @@ use_IM2_hillslope_hydrology="${use_IM2_hillslope_hydrology:-False}"
 topounits_atmdownscale="${topounits_atmdownscale:-False}"
 terrain_raddownscale="${terrain_raddownscale:-False}"
 use_polygonal_tundra="${use_polygonal_tundra:-False}"
+use_allshrubs="${use_allshrubs:-False}"
+use_noshrubs="${use_noshrubs:-False}"
+no_submit="${no_submit:-False}"
 options="${options:-}"
 # -1 is the default
 timestep="${timestep:-1}"
@@ -286,6 +303,24 @@ if [ "${use_polygonal_tundra}" = True ]; then
   echo "Turning on polygonal tundra parameterizations"
   options="$options --use_polygonal_tundra"
 fi 
+if [ "${no_submit}" = True ]; then
+  echo "After setup/build case, do not submit"
+  options="$options --no_submit"
+fi 
+if [ "${use_allshrubs}" = True ]; then
+  if [ ${site_name} = imnaviat_creek ]; then
+    echo "Running with a surface file with all shrubs"
+  else
+    echo "--use_allshrubs only works with site_name=imnaviat_creek"
+  fi
+fi
+if [ "${use_noshrubs}" = True ]; then
+  if [ ${site_name} = imnaviat_creek ]; then
+    echo "Running with a surface file with all shrubs"
+  else
+    echo "--use_noshrubs only works with site_name=imnaviat_creek"
+  fi
+fi
 echo " "
 # =======================================================================================
 
@@ -371,14 +406,14 @@ elif [ ${site_name} = upper_kuparuk ]; then
   fi   
 elif [ ${site_name} = imnaviat_creek ]; then
   site_code="AK-TFS-IMC"
+  domain_file="domain.lnd.1x1pt_ImnaviatCreek-GRID.nc" 
   surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609.nc"
   landuse_file="landuse.timeseries_1x1pt_ImnaviatCreek-GRID_simyr1850-2015_c250609.nc"
-  domain_file="domain.lnd.1x1pt_ImnaviatCreek-GRID.nc"
   if [ ${met_source} = era5 ]; then
     met_path="${met_root}/ImC_wshed"
   elif [ ${met_source} = gswp3 ]; then
     met_path="${met_root}/tfs" # use same site data as toolik
-  fi  
+  fi
 else 
   echo " "
   echo "**** EXECUTION HALTED ****"
@@ -396,7 +431,7 @@ landuse_file="/mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file}"
 #sites with surface data including multiple topographicUnits
 if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = True ]]; then
   # currently no landuse.timeseries data available for transient stage.
-  landuse_file=""
+  landuse_file="''"
   options="$options --nopftdyn"
   if [ ${site_name} = council ]; then
     domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
@@ -426,10 +461,23 @@ if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = T
 
 fi
 
+if [ ${site_name} = imnaviat_creek ]; then
+  # imnaviat creek surface data options
+  if [ ${use_allshrubs} = True ]; then
+    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_shrubs.nc"
+    landuse_file="''"
+    options="$options --nopftdyn"
+  elif [ ${use_noshrubs} = True ]; then
+    surf_file="surfdata_1x1pt_ImnaviatCreek-GRID_simyr1850_c360x720_c250609_noshrubs.nc"
+    landuse_file="''"
+    options="$options --nopftdyn"
+  fi 
+fi
+
 #sites with surface data including terrain features, include slope, aspect, sky_view and terrain_config
 if [ "${terrain_raddownscale}" = True ]; then
   # currently no landuse.timeseries data available for transient stage.
-  landuse_file=""
+  landuse_file="''"
   options="$options --nopftdyn"
   if [ ${site_name} = council ]; then
     domain_file="domain.lnd.r05_RRSwISC6to18E3r5.240328_C71-Grid.nc"
@@ -534,9 +582,11 @@ else
   exit 1
 fi
 # =======================================================================================
+
 # =======================================================================================
 #### Postprocess
 ### Collapse transient simulation output into a single netCDF file
+if [ ! "${no_submit}" = True ]; then
 echo " "
 echo " "
 echo " "
@@ -549,5 +599,7 @@ echo "**** Concatenating netCDF output - Hang tight this can take awhile ****"
 ncrcat --ovr *.h0.*.nc ELM_output.nc
 chmod 666 ELM_output.nc
 echo "**** Concatenating netCDF output: DONE ****"
+fi
+
 sleep 2
 # =======================================================================================

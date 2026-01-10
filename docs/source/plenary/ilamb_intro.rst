@@ -235,11 +235,11 @@ Start the container:
 * ``--model_setup`` defines model simulations to benchmark 
 * ``--build_dir`` defines the path where the ILAMB outputs should be saved 
 * ``--study_limits`` is optional and defines the temporal period of the
-analysis. By default the analysis will conducted over the entire time
-series contained within the model and reference data files.
-* ``--define_regions`` is optional and defines the spatial region of
-analysis. By default analysis is conducted on the entire spatial
-extent contained within the model/obs data. 
+  analysis. By default the analysis will conducted over the entire time
+  series contained within the model and reference data files.
+* ``--define_regions`` is optional and defines the spatial region of 
+  analysis. By default analysis is conducted on the entire spatial
+  extent contained within the model/obs data. 
 
 ``ILAMB_region_CAVM_NO_GREENLAND.nc`` is a custom defined region limited
 to the extent of Arctic vegetation as defined by Circumpolar Arctic
