@@ -21,6 +21,32 @@ on:
     workflow_dispatch:
 
 jobs:
+    setup-cache:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Restore cached inputdata
+          id: cache-inputdata
+          uses: actions/cache@v4
+          with:
+            path: .cache/inputdata
+            key: inputdata-v1-${{ hashFiles('tools/scripts/get_inputdata.sh') }}
+            restore-keys: |
+              inputdata-v1-
+
+      - name: Prepare cache dirs
+        run: |
+          mkdir -p .cache/inputdata
+
+      - name: Get input data (only if cache miss)
+        if: steps.cache-inputdata.outputs.cache-hit != 'true'
+        run: |
+          docker run --rm \
+            -v $(pwd):/home/modex_user \
+            -v $(pwd)/.cache/inputdata:/mnt/inputdata \
+            -v $(pwd)/.cache/output:/mnt/output \
+            yuanfornl/ngee-arctic-modex26:models-main-latest \
+            /home/modex_user/tools/scripts/get_inputdata.sh
+
 ### SMOKE TESTS
     test-era5:
       if: github.event_name != 'schedule'
@@ -36,13 +62,10 @@ jobs:
             submodules: recursive
         - name: Create docker volumes
           run: |
-            docker volume create inputdata
             docker volume create output
-        - name: Get input data
-          run: docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/tools/scripts/get_inputdata.sh
         - name: Run test case for site
           run: |
-            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=era5 -ady=1 -fsy=1 -try=1 -tsp=1
+            docker run --rm -v $(pwd):/home/modex_user -v $(pwd)/.cache/inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=${{matrix.site_name}} --met_source=era5 -ady=1 -fsy=1 -try=1 -tsp=1
         
     test-gswp3:
       if: github.event_name != 'schedule'
