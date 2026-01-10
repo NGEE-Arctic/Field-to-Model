@@ -24,26 +24,28 @@ jobs:
     setup-cache:
       runs-on: ubuntu-latest
       steps:
-        - name: Restore cached inputdata
-          id: cache-inputdata
-          uses: actions/cache@v4
-          with:
-            path: .cache/inputdata
-            key: inputdata-v1-${{ hashFiles('tools/scripts/get_inputdata.sh') }}
-            restore-keys: |
-              inputdata-v1-
+        - name: Checkout repo
+          uses: actions/checkout@v6
 
         - name: Prepare cache dirs
           run: |
             mkdir -p .cache/inputdata
 
-        - name: Checkout repo
-          uses: actions/checkout@v6
-          if: steps.cache-inputdata.outputs.cache-hit != 'true'
+        - name: Restore cached inputdata
+          id: cache-inputdata
+          uses: actions/cache@v4
+          with:
+            path: .cache/inputdata
+            key: inputdata-v2-${{ hashFiles('tools/scripts/get_inputdata.sh') }}
+            restore-keys: |
+              inputdata-v2-
           
         - name: Get input data (only if cache miss)
           if: steps.cache-inputdata.outputs.cache-hit != 'true'
           run: |
+            # ensure writable by current user
+            chmod -R u+rwX .cache/inputdata || true
+
             docker run --rm \
               --user "$(id -u):$(id -g)" \
               -v $(pwd):/home/modex_user \
