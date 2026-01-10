@@ -1,5 +1,6 @@
 TEM Model
 ==========
+.. include:: ../colors.rst
 
 The input variables used to drive DVMDOSTEM include: drainage classification (upland or lowland), 
 CMT classification, topography (slope, aspect, elevation), soil texture (percent sand, silt, and clay), 
@@ -125,7 +126,7 @@ Baseline run:
 
 #. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/baseline_tussock`
 
-#. Adjust the runmask: :code:`pyddt-runmask --reset --yx 0 0 run-mask.nc`
+#. Adjust the runmask: :code:`pyddt-runmask --reset --yx 0 0 inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/run-mask.nc`
 
 #. Setup the output specification file 
 
@@ -137,8 +138,10 @@ Baseline run:
       pyddt-outspec config/output_spec.csv --on SWE m 
       pyddt-outspec config/output_spec.csv --on SNOWTHICK m 
       pyddt-outspec config/output_spec.csv --on ALD y
+      pyddt-outspec config/output_spec.csv --on CMTNUM y
 
-#. Start the run. ATTENTION! :code:`--force-cmt 5` is for tussock tundra. For wet sedge tundra, use :code:`--force-cmt 6`, and for heath tundra, use :code:`--force-cmt 7`.
+
+#. Start the run. :red:`ATTENTION!` :code:`--force-cmt 5` is for tussock tundra. For wet sedge tundra, use :code:`--force-cmt 6`, and for heath tundra, use :code:`--force-cmt 7`.
    
    .. code:: 
 
@@ -155,20 +158,29 @@ Temperature scaled by +3 °C:
 
 #. Adjust the input climate data:
 
+
+   .. note:: :red:`TODO: Going to need to do the gluing again here...`
+
+      Will have to handle the stitching together of inputs...2019 is in the 
+      projected file in these datasets...
+
+
    .. code:: shell
 
-      python home/modex_user/model_examples/TEM/modify_air_temperature.py \
-      --input-file input/historic-climate.nc \
-      --months 6 7 8 9 \
-      --years 2019 \
-      --deviation 3
+      python /home/modex_user/model_examples/TEM/modify_air_temperature.py \
+        --input-file inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc \
+        --months 6 7 8 9 \
+        --years 2019 \
+        --deviation 3
+
 #. Replace the old input climate data file with the modified one:
 
    .. code:: shell
 
-      mv input/modified_historic-climate.nc input/historic-climate.nc   
+      mv inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/modified_historic-climate.nc \
+         inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc   
 
-#. Adjust the runmask: :code:`pyddt-runmask --reset --yx 0 0 run-mask.nc`
+#. Adjust the run mask: :code:`pyddt-runmask --reset --yx 0 0 run-mask.nc`
 
 #. Setup the output specification file 
 
