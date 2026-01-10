@@ -16,15 +16,15 @@ how changes in temperature and precipitation impact snow, vegetation, and permaf
 we can modify the input climate data files used by TEM through the combination of 
 two different functions: 
 
-* modify_air_temperature.py , which we used in the previous example and which allows us to 
+* :code:`modify_air_temperature.py`, which we used in the previous example and which allows us to 
   modify air temperature by a specified offset (in °C) for specific months (e.g., summer or winter months).
-* modify_precipitation_percent.py , which allows us to modify precipitation by a specified percentage for specific months.
+* :code:`modify_precipitation_percent.py`, which allows us to modify precipitation by a specified percentage for specific months.
 
 In addition to the changes to the input climate data files, we can also alter the community type that we look at, which
 determines the plant functional types (PFTs) that are present in the model simulation. For the model site that we are looking at in this example (Imnavait creek), 
 the three community types that we can select from are:
 
-* Tussock tundra (contains the PFTs betula shrubs, other decidious shrubs, evergreen shrubs, sedges, forbs, lichen, feathermoss, sphagnum moss)
+* Tussock tundra (contains the PFTs betula shrubs, other deciduous shrubs, evergreen shrubs, sedges, forbs, lichen, feathermoss, sphagnum moss)
 * Wet sedge tundra (contains the PFTs deciduous shrubs, sedges, grasses, forbs, lichen, feathermoss, sphagnum moss)
 * Heath tundra (contains the PFTs deciduous shrubs, evergreen shrubs, forbs, lichen, grasses, moss)
 
