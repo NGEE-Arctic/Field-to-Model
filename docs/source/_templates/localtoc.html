@@ -1,0 +1,8 @@
+{# Sphinx sidebar template: local table of contents. #}
+{# override default to add Page to title... #}
+{%- if display_toc %}
+  <div>
+    <h3><a href="{{ pathto(root_doc)|e }}">{{ _('Page Table of Contents') }}</a></h3>
+    {{ toc }}
+  </div>
+{%- endif %}
