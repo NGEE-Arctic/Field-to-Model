@@ -207,7 +207,21 @@ Air Temperature.
 
 Running ILAMB
 -------------
-Now that we have the configuration file set up, you can run the study using the ilamb-run script. Executing the command:
+Now that we have the configuration file set up, you can run the study using the ilamb-run script. 
+
+Start the container:
+
+``cd Field-to-Model`` 
+
+.. code::
+
+   docker run -it --rm \
+   -p 8000:8000 \
+   -v $(pwd):/home/modex_user \
+   -v inputdata:/mnt/inputdata \
+   -v output:/mnt/output \
+   yuanfornl/ngee-arctic-modex26:models-main-latest \
+   /bin/bash
 
 .. code::
 
