@@ -78,7 +78,11 @@ merge strategy to create the topounits.
 .. figure:: ../_static/hillslope_bgc/toolik_elevation_summary.png
    :alt: Topounits workflow
 
+<<<<<<< HEAD
 Plot below shows the number of topounits across a 0.5 degress Pan-Arctic
+=======
+Plot below shows the number of topounits across a 0.5 degree Pan-Arctic
+>>>>>>> origin/main
 ELM grid.
 
 .. figure:: ../_static/hillslope_bgc/panarctic_topounits.png
@@ -109,6 +113,32 @@ IM2 Hillslope Hydrology
 .. list-table::
    :widths: 50 50
    :class: borderless
+
+   * - .. figure:: ../_static/hillslope_bgc/IM2_scheme_1.png
+         :width: 100%
+
+         Connections among multiple topounits (labeled a through g) on a single gridcell. Each topounit is connected to at most one other downhill topounit (the next lowest in elevation), while the lowest topounit does not have a downhill connection. 
+
+     - .. figure:: ../_static/hillslope_bgc/IM2_scheme_2.png
+         :width: 100%
+
+         Arrangement of topounits, columns, state variables, and water fluxes 
+
+.. list-table::
+   :widths: 50 50
+   :class: borderless
+
+   * - .. figure:: ../_static/hillslope_bgc/IM2_scheme_3.png
+         :width: 100%
+
+         A summary of water fluxes for a single column. 
+
+     - .. figure:: ../_static/hillslope_bgc/IM2_scheme_4.png
+         :width: 100%
+
+         Summary representation of hillslope hydrology fluxes at the topounit level. The water state variable for one topounit (gray shaded box) receives water from a column on an uphill topounit (column a). The operator symbol represents combined user parameter for the fraction of column-level flux to transport downhill and the scaling factor accounting for potential difference in area between the upstream column and the downstream topounit. Water leaving the topounit water state is moved to columns on the topounit .
+
+
 
    * - .. figure:: ../_static/hillslope_bgc/IM2_scheme_1.png
          :width: 100%
@@ -450,11 +480,57 @@ NOTE:
 ELM run results visualizing and/or analysis
 -------------------------------------------
 
+Running jupyter notebook container in Docker Desktop App
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The recent version of Docker Desktop App is very handy to run jupyter notebook container.
+
+  (1) After startup Docker Desktop App, click Left panel's 'Images', showing the images pulled (or in pulling)
+
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter1.png
+       :alt: Docker Desktop App - image pulling
+
+  (2) Click the Triangle run button of image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' to start
+
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter2.png
+       :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN setting page
+
+  (3) It will pop up a option setting page, click and pull the drawdown button, and edit as following.
+  
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter3.png
+       :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN setting editing
+
+  (4) Click Run button in above, it will load Jupyter notebook, like following. Notice those https links, and click anyone to pop up a browser window.
+
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter4.png
+       :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN jupyter notebook loading
+   
+  (5) In the pop-up browser window, it would show the landing page like following.
+
+    .. figure:: ../_static/hillslope_bgc/docker_run_jupyter5.png
+       :alt: Docker Desktop App - image 'yuanfornl/ngee-arctic-modex26:vis-main-latest' RUN jupyter notebook landing page
+
+
+
 Visualizing results using jupyter notebook container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Click the left explorer window, and click-open the folder: /vis_notebooks/hillslope-bgc/
 
-Analysing Hillslope hydrology over topounits: soil moisture, GPP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Click open file: plot_ELM_output.ipynb file. We will run this script to open a ELM output nc file, and check a few variables (visualizing)
+
+  .. figure:: ../_static/hillslope_bgc/docker_run_jupyter_plotELMoutput.png
+     :alt: jupyter notebook PlotELMoutput visualization tool
+
+
+Analysing hillslope hydrology over topounits impacts: soil moisture, GPP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Again, from the left explorer window, click-open file: topounit_run_analysis.ipynb. We will run this script to open 4 simulations' merged netcdf files, generated from this breakout session model exercise, and do some analysis on topounit-enabled ELM runs.
+
+We're going to focus on two variables: top-10cm soil moisture and GPP. 
+
+  .. figure:: ../_static/hillslope_bgc/docker_run_jupyter_hillslopeTool.png
+     :alt: jupyter notebook ELM outputs analysis tool
 
 

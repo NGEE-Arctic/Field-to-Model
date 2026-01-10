@@ -61,7 +61,7 @@ SVP Breakout Thursday, January 15, 2026
      - Coffee break
      - 
    * - 3:45-5:00 pm
-     - Hands on work 
+     - Hands on work
      - 
    * - 5:00–5:20 pm
      - Breakout group report out

@@ -94,13 +94,20 @@ Combined temperature and precipitation scaling:
 Looking at ELM Results
 ----------------------
 
-Here is where we will review how to look at the ELM results in Jupyter Lab notebooks.
+Here is where we will review how to look at the ELM results in Jupyter Lab notebooks :ref:`breakout/analyzing_ELM_output_Jupyter_Notebooks:Analyzing ELM Output in Jupyter Lab`.
 
 Advanced ELM Processing and Information
 ---------------------------------------
 
-* ELM Background Information on Snow, Vegetation, and Permafrost Processes :ref:`ELM Background: Snow, Vegetation, and Permafrost Processes `.
+* ELM Background Information :ref:`breakout/ELM_Background:ELM Background`.
 
-* The impact of shrubs in ELM :ref:`The impact of shrubs in ELM `.
-* Sub-grid variability in ELM :ref:`Sub-grid variability in ELM `.
-* Understanding and modifying surface files in ELM :ref:`Understanding and modifying surface files in ELM `.
+* The impact of shrubs in ELM :ref:`breakout/shrub_impacts_ELM:The impact of shrubs in ELM`.
+* Understanding and modifying surface files in ELM :ref:`breakout/surface_files_ELM:Understanding and modifying surface files in ELM`.
+
+.. toctree::
+    :hidden:
+
+    analyzing_ELM_output_Jupyter_Notebooks
+    ELM_Background
+    shrub_impacts_ELM
+    surface_files_ELM

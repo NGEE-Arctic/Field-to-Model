@@ -97,13 +97,30 @@ Each time you see code in the box below, copy and paste the contents of it into 
     
 
 where
-    * ls means 'list' and provides a list of the files within your current directory (folder)
-    * cd means 'change directory' and allows you to move from one directory to another
-    * pwd means "print working directory" and outputs the filepath of the directory where you are currently located
-    * history prints a history of the commands you have already run
-    * exit allows you to leave your Docker session and return to your home directory 
-    * Ctrl + C will cancel a command (useful if you want to cancel a model run)
-    * Tab will autocomplete a command or file name
+    * :code:`ls` means 'list' and provides a list of the files within your current directory (folder)
+    * :code:`cd` means 'change directory' and allows you to move from one directory to another
+    * :code:`pwd` means "print working directory" and outputs the filepath of the directory where you are currently located
+    * :code:`history` prints a history of the commands you have already run
+    * :code:`exit` allows you to leave your Docker session and return to your home directory 
+    * :code:`Ctrl + C` will cancel a command (useful if you want to cancel a model run)
+    * :code:`Tab` will autocomplete a command or file name
+    * :code:`Up Arrow` will cycle through your command history
+
+
+.. hint::
+
+    Sometimes example boxes will have multiple lines of code with a backslash
+    (``\``) used as an escape character for commands that are too long to
+    fit on line line. You can copy and paste all of the lines at once into your
+    Terminal window and hit Enter to run them all together, but be aware that
+    sometimes the lines don't get interpreted correctly leading to confusing
+    errors.
+
+.. hint::
+
+    Some example code boxes may show a prompt (e.g., :code:`$` or :code:`#`, or
+    :code:`modex_user@5e62ef081f1c:~$`). You should not copy and paste the
+    prompt itself, just the code that comes after it.
 
 Clone Field-to-Model repository for the workshop
 -------------------------------------------------
