@@ -33,19 +33,19 @@ jobs:
             restore-keys: |
               inputdata-v1-
 
-      - name: Prepare cache dirs
-        run: |
-          mkdir -p .cache/inputdata
+        - name: Prepare cache dirs
+          run: |
+            mkdir -p .cache/inputdata
 
-      - name: Get input data (only if cache miss)
-        if: steps.cache-inputdata.outputs.cache-hit != 'true'
-        run: |
-          docker run --rm \
-            -v $(pwd):/home/modex_user \
-            -v $(pwd)/.cache/inputdata:/mnt/inputdata \
-            -v $(pwd)/.cache/output:/mnt/output \
-            yuanfornl/ngee-arctic-modex26:models-main-latest \
-            /home/modex_user/tools/scripts/get_inputdata.sh
+        - name: Get input data (only if cache miss)
+          if: steps.cache-inputdata.outputs.cache-hit != 'true'
+          run: |
+            docker run --rm \
+              -v $(pwd):/home/modex_user \
+              -v $(pwd)/.cache/inputdata:/mnt/inputdata \
+              -v $(pwd)/.cache/output:/mnt/output \
+              yuanfornl/ngee-arctic-modex26:models-main-latest \
+              /home/modex_user/tools/scripts/get_inputdata.sh
 
 ### SMOKE TESTS
     test-era5:
