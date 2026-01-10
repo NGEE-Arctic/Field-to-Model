@@ -21,7 +21,7 @@ on:
 jobs:
 ### SHARED INPUT DATA PREPARATION
     prepare-inputdata:
-      runs-on: ubuntu-slim
+      runs-on: ubuntu-latest
       steps:
         - name: Checkout repo
           uses: actions/checkout@v6
@@ -50,7 +50,7 @@ jobs:
 ### SMOKE TESTS
     tem-run-check:
       #needs: prepare-inputdata
-      runs-on: ubuntu-slim
+      runs-on: ubuntu-latest
       steps:
         - name: Checkout repo
           uses: actions/checkout@v6
@@ -80,7 +80,7 @@ jobs:
     tem-inputs-matrix:
       if: github.event_name != 'schedule'
       needs: prepare-inputdata
-      runs-on: ubuntu-slim
+      runs-on: ubuntu-latest
       strategy:
         fail-fast: false
         matrix:
