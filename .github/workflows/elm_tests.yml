@@ -55,7 +55,7 @@ jobs:
     test-era5:
       if: github.event_name != 'schedule'
       runs-on: ubuntu-latest
-      requires: setup-cache
+      needs: setup-cache
       strategy:
         fail-fast: false
         matrix:
