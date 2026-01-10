@@ -307,7 +307,7 @@ if [ "${no_submit}" = True ]; then
   echo "After setup/build case, do not submit"
   options="$options --no_submit"
 fi 
-if [ "${use_allshrubs}" = True]; then
+if [ "${use_allshrubs}" = True ]; then
   if [ "${site_name}" = imnaviat_creek ]; then
     echo "Running with a surface file with all shrubs"
   else
