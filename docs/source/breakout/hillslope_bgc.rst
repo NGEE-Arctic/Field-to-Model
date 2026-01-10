@@ -238,7 +238,7 @@ We will work through the following steps:
 3. Perform 4 sets of simulations, using the case setup and built in #2.
 
 A sample end-to-end topounit enabled ELM run
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
