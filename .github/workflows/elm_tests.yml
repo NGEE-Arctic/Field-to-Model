@@ -5,14 +5,14 @@ on:
         branches: [main]
         paths:
             - "Docker/**"
-            - "model_examples/**"
+            - "model_examples/ELM/**"
             - "tools/**"
             - ".cime/**"
             - ".github/workflows/elm_test.yml"
     pull_request:
         paths:
             - "Docker/**"
-            - "model_examples/**"
+            - "model_examples/ELM/**"
             - "tools/**"
             - ".cime/**"
             - ".github/workflows/elm_test.yml"
@@ -24,7 +24,7 @@ jobs:
 ### SMOKE TESTS
     test-era5:
       if: github.event_name != 'schedule'
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-slim
       strategy:
         fail-fast: false
         matrix:
@@ -46,7 +46,7 @@ jobs:
         
     test-gswp3:
       if: github.event_name != 'schedule'
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-slim
       strategy:
         fail-fast: false
         matrix:

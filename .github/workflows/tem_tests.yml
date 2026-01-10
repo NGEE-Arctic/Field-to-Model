@@ -3,7 +3,17 @@ name: TEM Tests
 on:
     push:
         branches: [main]
+        paths:
+            - "Docker/**"
+            - "model_examples/TEM/**"
+            - "tools/**"
+            - ".github/workflows/tem_tests.yml"
     pull_request:
+        paths:
+            - "Docker/**"
+            - "model_examples/TEM/**"
+            - "tools/**"
+            - ".github/workflows/tem_tests.yml"
     schedule:
       - cron: "0 0 * * *"
     workflow_dispatch:
@@ -11,7 +21,7 @@ on:
 jobs:
 ### SHARED INPUT DATA PREPARATION
     prepare-inputdata:
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-slim
       steps:
         - name: Checkout repo
           uses: actions/checkout@v6
@@ -40,7 +50,7 @@ jobs:
 ### SMOKE TESTS
     tem-run-check:
       #needs: prepare-inputdata
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-slim
       steps:
         - name: Checkout repo
           uses: actions/checkout@v6
@@ -70,7 +80,7 @@ jobs:
     tem-inputs-matrix:
       if: github.event_name != 'schedule'
       needs: prepare-inputdata
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-slim
       strategy:
         fail-fast: false
         matrix:
