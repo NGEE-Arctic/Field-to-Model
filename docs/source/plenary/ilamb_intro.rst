@@ -164,7 +164,7 @@ defined using ``derived`` tag.
 Point based data for benchmarking
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 While its common to benchmark models using gridded reference datasets,
-ILAMB is also able to leverge point based datasets, such as those from
+ILAMB is also able to leverage point based datasets, such as those from
 FLUX towers, for benchmarking. Following is an example of using
 towers-based FLUXNET-CH4 datasets for benchmarking of methane (CH4)
 fluxes from the ELM model.
@@ -225,8 +225,8 @@ Start the container:
 
 .. code::
 
-    ilamb-run --config hostdir/Field-to-Model/tools/ilamb/1_config_IM2.cfg \
-    --model_setup hostdir/Field-to-Model/tools/ilamb/models_IM2.yaml \
+    ilamb-run --config tools/ilamb/1_config_IM2.cfg \
+    --model_setup tools/ilamb/models_IM2.yaml \
     --build_dir ilamb_builds/build_IM2_20260115_1 \
     --study_limits 2000 2014 \
     --define_regions /mnt/inputdata/ILAMB/DATA/NGEEA-Workshop/regions/ILAMB_region_CAVM_NO_GREENLAND.nc
