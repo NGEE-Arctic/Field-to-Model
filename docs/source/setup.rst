@@ -185,8 +185,8 @@ platforms (e.g., Windows vs Mac).
 
         .. code:: bash
 
-            docker volume delete inputdata
-            docker volume delete output
+            docker volume rm inputdata
+            docker volume rm output
             docker volume create inputdata
             docker volume create output
 
