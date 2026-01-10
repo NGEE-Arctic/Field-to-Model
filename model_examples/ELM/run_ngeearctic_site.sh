@@ -308,14 +308,14 @@ if [ "${no_submit}" = True ]; then
   options="$options --no_submit"
 fi 
 if [ "${use_allshrubs}" = True]; then
-  if [ "${site_name}" == "imnaviat_creek" ]; then
+  if [ "${site_name}" == imnaviat_creek ]; then
     echo "Running with a surface file with all shrubs"
   else
     echo "--use_allshrubs only works with site_name=imnaviat_creek"
   fi
 fi
 if [ "${use_noshrubs}" = True ]; then
-  if [ "${site_name}" == "imnaviat_creek" ]; then
+  if [ "${site_name}" = imnaviat_creek ]; then
     echo "Running with a surface file with all shrubs"
   else
     echo "--use_noshrubs only works with site_name=imnaviat_creek"
