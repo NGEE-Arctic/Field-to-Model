@@ -56,12 +56,13 @@ Look at the available input data and check that the Imnavait data is available:
 
 .. code:: shell
 
-   modex_user@40bc0d780707:~$ ls /mnt/inputdata/TEM/
+   modex_user@40bc0d780707:~$ ls -1 /mnt/inputdata/TEM/
+   cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10
+   cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Kougarok_10x10
+   cru-ts40_ar5_rcp85_ncar-ccsm4_EML_study_area_10x10
+   cru-ts40_ar5_rcp85_ncar-ccsm4_KUPARUK_10x10
    cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
-   modex26-AK-BEO
-   modex26-AK-UTQ
-   modex26-AK-TFS-IMC
-   modex26-AK-TFS
+   modex26_1x1_AK-UTQ
 
 
 
@@ -85,34 +86,38 @@ You will need to create a separate run folder for each scenario you want to run:
    mkdir -p /mnt/output/tem/tem_ee2_breakout
    cd /mnt/output/tem/tem_ee2_breakout
 
-   pyddt-swd --input-data \
+   pyddt-swd \
+      --input-data-path /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10 \
       --copy-inputs \
-      --input-data-path /mnt/inputdata/TEM/modex26-AK-UTQ \
+      --force \
       baseline_tussock
 
-   pyddt-swd --input-data \
+   pyddt-swd \
+      --input-data-path /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10 \
       --copy-inputs \
-      --input-data-path /mnt/inputdata/TEM/modex26-AK-UTQ \
+      --force \
       warming_imnavait_tussock
 
-    pyddt-swd --input-data \
+    pyddt-swd \
+      --input-data-path /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10 \
       --copy-inputs \
-      --input-data-path /mnt/inputdata/TEM/modex26-AK-UTQ \
+      --force \
       precip_imnavait_tussock
     
-    pyddt-swd --input-data \
+    pyddt-swd \
+      --input-data-path /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10 \
       --copy-inputs \
-      --input-data-path /mnt/inputdata/TEM/modex26-AK-UTQ \
+      --force \
       warming_and_precip_imnavait_tussock
 
 
 You can run each of the scenarios for the three different community types available for the 
-Imnavait site described above, by replacing "tussock" in the runfolder names with "wetsedge" or "heath". 
+Imnavait site described above, by replacing "tussock" in the run folder names with "wetsedge" or "heath". 
 We run through the examples using tussock tundra but will note where to change for the other community types.
 
 Running the model
 **********************
-Running the different runfolders involves several steps, many of which are identical across the scenarios.
+Running the different run folders involves several steps, many of which are identical across the scenarios.
 However, some steps to adjusting the input climate data files differ. Below are the instructions for each scenario.
 
 Baseline run:
