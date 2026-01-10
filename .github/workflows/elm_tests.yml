@@ -47,7 +47,6 @@ jobs:
             docker run --rm \
               -v $(pwd):/home/modex_user \
               -v $(pwd)/.cache/inputdata:/mnt/inputdata \
-              -v $(pwd)/.cache/output:/mnt/output \
               yuanfornl/ngee-arctic-modex26:models-main-latest \
               /home/modex_user/tools/scripts/get_inputdata.sh
 
