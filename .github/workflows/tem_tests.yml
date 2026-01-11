@@ -3,7 +3,17 @@ name: TEM Tests
 on:
     push:
         branches: [main]
+        paths:
+            - "Docker/**"
+            - "model_examples/TEM/**"
+            - "tools/**"
+            - ".github/workflows/tem_tests.yml"
     pull_request:
+        paths:
+            - "Docker/**"
+            - "model_examples/TEM/**"
+            - "tools/**"
+            - ".github/workflows/tem_tests.yml"
     schedule:
       - cron: "0 0 * * *"
     workflow_dispatch:
