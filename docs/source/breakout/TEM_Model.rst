@@ -126,11 +126,15 @@ Baseline run:
 
 #. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/baseline_tussock`
 
-#. Adjust the runmask: :code:`pyddt-runmask --reset --yx 0 0 inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/run-mask.nc`
+#. Adjust the runmask:
+
+   .. code:: bash
+
+      pyddt-runmask --reset --yx 0 0 inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/run-mask.nc
 
 #. Setup the output specification file 
 
-   .. code::
+   .. code:: bash
 
       pyddt-outspec config/output_spec.csv --on GPP m p
       pyddt-outspec config/output_spec.csv --on LAYERDZ m l
@@ -141,11 +145,60 @@ Baseline run:
       pyddt-outspec config/output_spec.csv --on CMTNUM y
 
 
-#. Start the run. :red:`ATTENTION!` :code:`--force-cmt 5` is for tussock tundra. For wet sedge tundra, use :code:`--force-cmt 6`, and for heath tundra, use :code:`--force-cmt 7`.
+#. Start the run.
    
+   .. note:: Inputs, length of data
+
+      If you are using different input data, you might need to adjust the number
+      of transient years to run (the ``-t`` flag). For the older generation of 
+      input data (``cru-ts40_ar5_*_10x10/``) there are 115 years of transient
+      data, ending in 2015. For the newer files (``modex26_1x1_*/``), there are
+      123 years of transient data to run, ending in 2023.
+
+      .. collapse:: Check size of input files.
+         :class: workshop-collapse
+
+         There are many ways to check on the size and shape of a NetCDF file,
+         here we will use the command line tool :code:`ncdump`. 
+
+         .. code:: bash
+
+            ncdump -h path/to/your/input_file.nc
+
+         This will print out the header to the NetCDF file. If you look at the 
+         printed output, you should be able to find the length of the time axis.
+         For valid TEM input files, this will be the number of months in the 
+         file. 
+
+         Using Python's :code:`xarray` is also a good option:
+
+         .. code:: 
+
+            python -c "import xarray as xr; print(xr.open_dataset('path/to/your/historic-climate.nc').sizes)"
+
+         Note that the command line options for running TEM require the 
+         number of years!
+
+   .. note:: Forcing the community type
+
+      If you would like to ignore the vegetation map and use a particular
+      community type (CMT) for the run, you can use the ``--force-cmt`` flag.
+      :code:`--force-cmt 5` is for tussock tundra. For wet sedge tundra, use
+      :code:`--force-cmt 6`, and for heath tundra, use :code:`--force-cmt 7`.
+
+      .. collapse:: Listing available CMTs
+         :class: workshop-collapse
+
+         If you would like to see a list of all CMTs that are available in your
+         run's parameter directory, you can run this command:
+
+         .. code:: 
+
+            pyddt-pyddt-param --report-all-cmts parameters/
+
    .. code:: 
 
-        dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 123 -n 0 -l monitor 
+      dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 115 -n 0 -l monitor 
 
 
     
