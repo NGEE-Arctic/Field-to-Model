@@ -596,7 +596,8 @@ runcmd="python3 ./site_fullrun.py \
       --use_onset_gdd_extension \
       ${options} \
       & sleep 10"
-echo ${runcmd}
+
+echo ${runcmd} | sed 's/\s\+\(--\)/\n\1/g'
 echo " "
 echo " "
 
