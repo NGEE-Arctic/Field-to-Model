@@ -18,13 +18,10 @@ RUN set -ex \
    'pandas' \
    'xarray' \
    'geopandas' \
-   'ipyleaflet' \
-   && conda clean --all -f -y \
-   && conda install --quiet --yes -c conda-forge \
-   'nc-time-axis' \
    'netCDF4' \
-   && conda clean --all -f -y \
-   && mamba install --quiet --yes -c conda-forge \
+   'zarr' \
+   'ipyleaflet' \
+   'nc-time-axis' \
    'earthengine-api' \
    'geemap' \
    'pygis' \
@@ -37,11 +34,7 @@ RUN set -ex \
 
 # Make local directories to use with plotting of ELM output
 RUN mkdir "/home/${NB_USER}/vis_notebooks" \
-   && mkdir "/home/${NB_USER}/inputdata" \
-   && mkdir "/home/${NB_USER}/output" \
    && fix-permissions "/home/${NB_USER}/vis_notebooks" \
-   && fix-permissions "/home/${NB_USER}/inputdata" \
-   && fix-permissions "/home/${NB_USER}/output" \
    && fix-permissions "/home/${NB_USER}"
 
 # Setup default user, when enter docker container
