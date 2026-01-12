@@ -53,7 +53,6 @@ if __name__ == "__main__":
     print(f"Adjusting precipitation by {args.deviation} for selected times...")
 
     # Where time_mask is True, add deviation; else keep original values
-    ds['tair'] = ds['tair'].where(~time_mask, ds['tair'] + args.deviation)
     ds['precip'] = ds['precip'].where(~time_mask, ds['precip'] * (1 + args.deviation))
 
   print("Saving modified dataset...")
