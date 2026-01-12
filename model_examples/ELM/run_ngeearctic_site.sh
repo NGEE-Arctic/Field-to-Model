@@ -198,28 +198,28 @@ case $i in
     shift
     ;;
     --mixed_polygons)
-    use_mixed_polygons=True
+    mixed_polygons=True
     high_centered_polygons=False
     low_centered_polygons=False
     flat_centered_polygons=False
     shift
     ;;
     --high_centered_polygons)
-    use_mixed_polygons=False
+    mixed_polygons=False
     high_centered_polygons=True
     low_centered_polygons=False
     flat_centered_polygons=False
     shift
     ;;
     --low_centered_polygons)
-    use_mixed_polygons=False
+    mixed_polygons=False
     high_centered_polygons=False
     low_centered_polygons=True
     flat_centered_polygons=False
     shift
     ;;
     --flat_centered_polygons)
-    use_mixed_polygons=False
+    mixed_polygons=False
     high_centered_polygons=False
     low_centered_polygons=False
     flat_centered_polygons=True
@@ -485,14 +485,15 @@ fi
 # polygonal tundra surface data setup
 if [ "${use_polygonal_tundra}" = True ]; then
   if [ ${site_name} = beo ]; then
+    domain_file="Utqiagvik_domain.nc"
     landuse_file="polygonal_tundra/Utqiagvik_surfdata.pftdyn.nc"
-    if [ ${mixed_polygons} = True ]; then
+    if [ "${mixed_polygons}" = True ]; then
       surf_file="polygonal_tundra/Utqiagvik_surfdata_ALLPOLY.nc"
-    elif [ ${high_centered_polygons} = True ]; then
+    elif [ "${high_centered_polygons}" = True ]; then
       surf_file="polygonal_tundra/Utqiagvik_surfdata_HCP.nc"
-    elif [ ${low_centered_polygons} = True ]; then
+    elif [ "${low_centered_polygons}" = True ]; then
       surf_file="polygonal_tundra/Utqiagvik_surfdata_LCP.nc"
-    elif [ ${flat_centered_polygons} = True ]; then
+    elif [ "${flat_centered_polygons}" = True ]; then
       surf_file="polygonal_tundra/Utqiagvik_surfdata_FCP.nc"
     fi
   else
@@ -502,6 +503,17 @@ if [ "${use_polygonal_tundra}" = True ]; then
     exit -1
   fi
 fi 
+
+if [ "${more_vertlayers}" = True ]; then
+  if [ "${use_polygonal_tundra}" = True ]; then
+    echo " "
+    echo "**** EXECUTION HALTED ****"
+    echo "more_vertlayers option not available with polygonal_tundra option"
+    exit -1
+  else
+    surf_file="polygonal_tundra/Utqiagvik_surfdata_morelayers.nc"
+  fi
+fi
 
 # the following is by default. if reset to empty later on, ELM will run without landuse_timeseries file for transient stage.
 landuse_file="/mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file}"
