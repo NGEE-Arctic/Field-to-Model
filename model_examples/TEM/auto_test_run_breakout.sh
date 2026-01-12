@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e # exit on error
 
 # Automated test script to run the TEM EE2 breakout group runs
 # The commands in here should be the same as those in the documentation at
@@ -13,14 +12,21 @@ set -e # exit on error
 # automatically figures out how many years of historic data are in the input
 # dataset.
 
+
+set -e # exit on error, for debugging...not sure how this will play 
+       # on github actions...
+ 
 # Workshop actual is 1000, 250, in order to get full outputs to analyze...
 PR_YRS=10     # 100 workshop actual
 EQ_YRS=10     # 1000
 SP_YRS=25     # 250
 SC_YRS=0
 
+# Input args
+# 1: input data name (e.g., cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10)
+# 2: short name (e.g., imnavait), used for naming output dirs
 INPUT_DATA_NAME=$1
-
+SHORT_NAME=$2
 
 ##############################
 # Setup
@@ -34,25 +40,25 @@ pyddt-swd \
    --input-data-path /mnt/inputdata/TEM/$INPUT_DATA_NAME \
    --copy-inputs \
    --force \
-   baseline_imnavait_tussock
+   baseline_${SHORT_NAME}_tussock
 
 pyddt-swd \
    --input-data-path /mnt/inputdata/TEM/$INPUT_DATA_NAME \
    --copy-inputs \
    --force \
-   warming_imnavait_tussock
+   warming_${SHORT_NAME}_tussock
 
  pyddt-swd \
    --input-data-path /mnt/inputdata/TEM/$INPUT_DATA_NAME \
    --copy-inputs \
    --force \
-   precip_imnavait_tussock
+   precip_${SHORT_NAME}_tussock
 
  pyddt-swd \
    --input-data-path /mnt/inputdata/TEM/$INPUT_DATA_NAME \
    --copy-inputs \
    --force \
-   warming_and_precip_imnavait_tussock
+   warming_and_precip_${SHORT_NAME}_tussock
 
 
 ##############################
@@ -60,7 +66,7 @@ pyddt-swd \
 ##############################
 echo "Baseline run..."
 
-cd /mnt/output/tem/tem_ee2_breakout/baseline_imnavait_tussock
+cd /mnt/output/tem/tem_ee2_breakout/baseline_${SHORT_NAME}_tussock
 
 # have to look this up once we are in the baseline run dir
 # Lookup how much transient data we have...
@@ -82,7 +88,7 @@ dvmdostem -f config/config.js --force-cmt 5 -p $PR_YRS -e $EQ_YRS -s $SP_YRS -t 
 # Do the warming
 ##############################
 echo "Warming run..."
-cd /mnt/output/tem/tem_ee2_breakout/warming_imnavait_tussock
+cd /mnt/output/tem/tem_ee2_breakout/warming_${SHORT_NAME}_tussock
 python /home/modex_user/model_examples/TEM/modify_air_temperature.py \
   --input-file inputs/$INPUT_DATA_NAME/historic-climate.nc \
   --months 6 7 8 9 \
@@ -105,7 +111,7 @@ dvmdostem -f config/config.js --force-cmt 5 -p $PR_YRS -e $EQ_YRS -s $SP_YRS -t 
 ##############################
 echo "Precip run..."
 
-cd /mnt/output/tem/tem_ee2_breakout/precip_imnavait_tussock
+cd /mnt/output/tem/tem_ee2_breakout/precip_${SHORT_NAME}_tussock
 
 python /home/modex_user/model_examples/TEM/modify_precipitation.py \
    --input-file inputs/$INPUT_DATA_NAME/historic-climate.nc \
@@ -137,7 +143,7 @@ dvmdostem -f config/config.js --force-cmt 5 -p $PR_YRS -e $EQ_YRS -s $SP_YRS -t 
 #################################
 echo "Combined run..."
 
-cd /mnt/output/tem/tem_ee2_breakout/warming_and_precip_imnavait_tussock
+cd /mnt/output/tem/tem_ee2_breakout/warming_and_precip_${SHORT_NAME}_tussock
 
 python /home/modex_user/model_examples/TEM/modify_precipitation.py \
   --input-file inputs/$INPUT_DATA_NAME/historic-climate.nc \
