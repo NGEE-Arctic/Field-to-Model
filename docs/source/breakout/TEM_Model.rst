@@ -263,26 +263,40 @@ Precipitation scaling (rain +40%, snow +60%):
 
    .. code:: shell
 
-      python home/modex_user/model_examples/TEM/modify_precipitation.py \
-      --input-file input/historic-climate.nc \
-      --months 6 7 8 9 \
-      --years 2018 2019 \
-      --deviation 0.4
+      python /home/modex_user/model_examples/TEM/modify_precipitation.py \
+         --input-file inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc \
+         --months 6 7 8 9 \
+         --years 2010 2011 2012 \
+         --deviation 0.4
 
-      python home/modex_user/model_examples/TEM/modify_precipitation.py \
-      --input-file input/historic-climate.nc \
-      --months 10 11 12 1 2 3 4 5 \
-      --years 2018 2019 \
-      --deviation 0.6
-
-
-#. Replace the old input climate data file with the modified one:
+   Move the modified into the original file.
 
    .. code:: shell
 
-      mv input/modified_historic-climate.nc input/historic-climate.nc  
+      mv inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/modified_historic-climate.nc \
+         inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc   
 
-#. Adjust the runmask: :code:`pyddt-runmask --reset --yx 0 0 run-mask.nc`
+   And run the second modification, followed by the :code:`mv` command again.
+
+   .. code::
+
+      python /home/modex_user/model_examples/TEM/modify_precipitation.py \
+         --input-file inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc \
+         --months 10 11 12 1 2 3 4 5 \
+         --years 2010 2011 2012 \
+         --deviation 0.6
+
+   .. code:: bash
+
+      mv inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/modified_historic-climate.nc \
+         inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc   
+
+
+#. Adjust the run mask: 
+
+   .. code::
+      
+      pyddt-runmask --reset --yx 0 0 inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/run-mask.nc`
 
 #. Setup the output specification file 
 
@@ -291,9 +305,11 @@ Precipitation scaling (rain +40%, snow +60%):
       pyddt-outspec config/output_spec.csv --on GPP m p
       pyddt-outspec config/output_spec.csv --on LAYERDZ m l
       pyddt-outspec config/output_spec.csv --on TLAYER m l
-      pyddt-outspec config/output_spec.csv --on SWE m 
-      pyddt-outspec config/output_spec.csv --on SNOWTHICK m 
+      pyddt-outspec config/output_spec.csv --on SWE m
+      pyddt-outspec config/output_spec.csv --on SNOWTHICK m
       pyddt-outspec config/output_spec.csv --on ALD y
+      pyddt-outspec config/output_spec.csv --on CMTNUM y
+
 
 #. Start the run. 
    
