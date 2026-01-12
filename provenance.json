@@ -5,7 +5,7 @@
     {
       "name": ".buildinfo",
       "digest": {
-        "sha256": "1722900e463a6237f166a7106d97fb570849719821f04f8ebdd0bda184db24ad"
+        "sha256": "1fb1f20492925509f67b2be1b2d02b847a9874d5bc0e40099829a112377b8805"
       }
     },
     {
@@ -263,7 +263,7 @@
     {
       "name": "_sources/plenary/elm_intro.rst.txt",
       "digest": {
-        "sha256": "6b1330fe90d30d3e44a18352e34aaa099da2e48d49d3904ab0f153662b50992f"
+        "sha256": "609b9f268866736e79fe11ee2f89fb94b8ef14443dff2b7987b8edb8ecd79f20"
       }
     },
     {
@@ -281,7 +281,7 @@
     {
       "name": "_sources/setup.rst.txt",
       "digest": {
-        "sha256": "2243639816cded2a1066a340dcecbbeb06db00e8404de61d35a40f161a342924"
+        "sha256": "b27dce4910ea3df18d39c7b2cf2b0a8c68f58d0eeaac6510773667fecd125bf9"
       }
     },
     {
@@ -311,7 +311,7 @@
     {
       "name": "_static/documentation_options.js",
       "digest": {
-        "sha256": "af471ac6f7f5954f7543dde29c786f4ae6180ac83fe0e4e644684829fa52f702"
+        "sha256": "ae38ae71ca85cd92f716604040c1130456bf740ce3dc2ce30dc07ead4df7dbad"
       }
     },
     {
@@ -515,157 +515,157 @@
     {
       "name": "breakout/ELM_Background.html",
       "digest": {
-        "sha256": "1f92ceb80208c9487717adf6057bdd9fe4b46af36116374de9d7e48035688a95"
+        "sha256": "fee7b1b11b7a461b6c592e12f855930d46f0a614aec8f40c560a588628246328"
       }
     },
     {
       "name": "breakout/ELM_Model.html",
       "digest": {
-        "sha256": "ee223dccf3a5532fe7735440a57101ff2dadad119e94aea97baca6719865c12b"
+        "sha256": "8731abc6772cc107c560bb1a2ca2e1c7483fd2332146a127f0eea7f992d99fcf"
       }
     },
     {
       "name": "breakout/TEM_Model.html",
       "digest": {
-        "sha256": "b1b8d6147c93c885342acb830c5927e383a689d7ed0bf5ac4c651b6c7274d6a3"
+        "sha256": "965bdb2d41d0118b3dd5de94e2e13894f5bf32b1afc3b1e51867e6d97a09bd8c"
       }
     },
     {
       "name": "breakout/analyzing_ELM_output_Jupyter_Notebooks.html",
       "digest": {
-        "sha256": "e3eee990af89d03c71817cf62c04050e0c37436ba71dde7d7f5068104b2dd24e"
+        "sha256": "028830cd59fcdaa7312a4db19f487707fc14e4dded79c3496eb6d70e07b73ebb"
       }
     },
     {
       "name": "breakout/hillslope_bgc.html",
       "digest": {
-        "sha256": "d04107b14f8207df736595dcdb76c2c1ba149be4293dfbe9a2245f04893ebdab"
+        "sha256": "5c8fa37d059e4e6c8e37009c76ef968392105f5e104e39b0f82b764090324757"
       }
     },
     {
       "name": "breakout/permafrost_hydrology.html",
       "digest": {
-        "sha256": "242f644cc9c40dbfb6719d9206c3a8ed002286842f11b3716fa3c50ace7c03d7"
+        "sha256": "4d003445449ee78c1c27d79f09228adacc2e3a656c6a89be6a7c18f65b847e80"
       }
     },
     {
       "name": "breakout/shrub_impacts_ELM.html",
       "digest": {
-        "sha256": "272858d74912e83a38db563503e07a9b267a02c5cfeac1661059af070a67ad32"
+        "sha256": "fd6115cb28d8b2eed9809d43d48df1ac717ae17aa24113bdfeb6ce12765caf85"
       }
     },
     {
       "name": "breakout/snow_veg_permafrost.html",
       "digest": {
-        "sha256": "c0700e77aad4122cea431caefb6c25bad41a1378ed3cd90deb1ff8a3b01db959"
+        "sha256": "3e2fa18b457aad8f6920b6a135960dcc76080cc89c66d692422f5cd75bfdf457"
       }
     },
     {
       "name": "breakout/snow_veg_permafrost_agenda.html",
       "digest": {
-        "sha256": "0c356a65fd7f9473cde341c3b50bd85295bd511fd879a572aa3065cac5a5f8b6"
+        "sha256": "6a0a837bd3841cfa505677f7b850700ae41d2d5c4fd57e5585d46e957898c0db"
       }
     },
     {
       "name": "breakout/subgrid_variability_ELM.html",
       "digest": {
-        "sha256": "674e37ba21e0490ddeb1892dad249aefc58758f11acea02c9214faabe7a4747d"
+        "sha256": "bcab8b06c169537123fc5006d2af0e0fec0f265cfcd77cb6dae3ecf2bf7c6777"
       }
     },
     {
       "name": "breakout/surface_files_ELM.html",
       "digest": {
-        "sha256": "25b57126b9f23d8d7f01938e93a72cfa9f76efcb4577ccae06043932dccd0880"
+        "sha256": "98bc062b1217ec09da7fe6d0d0d12686f423c4811acbebe50576ec3a93428c36"
       }
     },
     {
       "name": "colors.html",
       "digest": {
-        "sha256": "e3ce167efc9e6893bf04e6292e88e732022023d2006efcb8f22d56936ea2a9de"
+        "sha256": "61f966f062d48ef727dfd1685892dd566f1a4d9fd293370ba1a65aded39bd72f"
       }
     },
     {
       "name": "common_issues.html",
       "digest": {
-        "sha256": "e63d59cb3b1daeebed5fd7f15f250663cb7e49b69674fb2df0aad04e94f7f2cf"
+        "sha256": "1756be85112ea039044542f8905fd35adddddb373e5696497f1dc60ae776a12b"
       }
     },
     {
       "name": "dev_notes.html",
       "digest": {
-        "sha256": "fe29dd603a489379df67276433708db4e8576ecb672d1c39584071e861ad4a6d"
+        "sha256": "bfe09a5b3c7943a649e12f4c43e35a4d01bf9069fe55f6ac8434dbebc7307729"
       }
     },
     {
       "name": "genindex.html",
       "digest": {
-        "sha256": "fe1d500c204f5f235fcde37223d31c198397d8f8be14083020c14d2c537ccdd9"
+        "sha256": "3b6e8fe58d8c9503569ec9ace6c62547a60677ee73bbfe885c02b2c613d4cae5"
       }
     },
     {
       "name": "index.html",
       "digest": {
-        "sha256": "e5402fe3bc1a7227c146a04e94a125f50a2173122ffb0676651ab3581c4a6032"
+        "sha256": "4e5fefe4cf56898662181bd6092fea1a413e9843b288b224a41ac5e6bd23f7e6"
       }
     },
     {
       "name": "modex_agenda_2026.html",
       "digest": {
-        "sha256": "88ab0799eb3b3c7e9e934aaf51242bed03ed2688d2d5949ecdda4f05ecd3fb2b"
+        "sha256": "3b01b30bd2a7b17e68ea9b3a523de1e053ff33df79551bbaa35d4906f0a59233"
       }
     },
     {
       "name": "objects.inv",
       "digest": {
-        "sha256": "ffbd374725c528fdb6eb0477a843ea36de446501a6eb959eff69e29bb68cc515"
+        "sha256": "9ea65cdbb8ee34c3a446f10a7e68a661492a8f31af00f34d90c955a551cdce92"
       }
     },
     {
       "name": "plenary/ats_intro.html",
       "digest": {
-        "sha256": "57b3214c1968b225dc8903cfb6f6706a63218b6815333f99da107090a1a8d525"
+        "sha256": "5a95799401b505dd6d0f4294503b18091d7128e4c6fe5050afd323d68c6d2925"
       }
     },
     {
       "name": "plenary/elm_intro.html",
       "digest": {
-        "sha256": "38a49f64b0f660d2c79c95a8266401a3809f758d3f09d30b6fb8f89154476c15"
+        "sha256": "2c3525cdcef5ace6912e645f181d67a7c7da5ea17ddf7b0b1557c4d9061421d3"
       }
     },
     {
       "name": "plenary/ilamb_intro.html",
       "digest": {
-        "sha256": "595f8a771530ce8978281e5c50670abd7acf2bca5cee670159a36d645a965971"
+        "sha256": "bef7d3fa1d0beb6818bebedbcb148f2d6ced13fdac7063980086a874f302d9aa"
       }
     },
     {
       "name": "plenary/tem_ee1_warming.html",
       "digest": {
-        "sha256": "59fbb2baef44af5ee989e2770629da003ada5e6f4f4839fe0c4bc8c97ef1a86c"
+        "sha256": "5b9d2d0277de8041b2d4b1b7801188ea89ecbe18f587b13a03ede76a659411ba"
       }
     },
     {
       "name": "search.html",
       "digest": {
-        "sha256": "f22b1b028428e94ac2780b1d7a90f99cfd8bf0e494748113e19ee83241df1e72"
+        "sha256": "bd5bb0656e5d163f6a15c2fada2b627201ddc26d710f27ac962ffc04bf3ebb1f"
       }
     },
     {
       "name": "searchindex.js",
       "digest": {
-        "sha256": "c1bfd4e00b77fa93cb84a70562c49a557e188879bfbfa366f33285500b522934"
+        "sha256": "78fca55f7530a337e76bcab84b1b1e6ba493ab3ee533b577228da42cf1eb189c"
       }
     },
     {
       "name": "setup.html",
       "digest": {
-        "sha256": "494af2ede4c11205ec480d89958ef48b866e3ae3daab6e73f26a0f8b854161dd"
+        "sha256": "9c9e2dc568d66804c46b2678b48b58de7407cbcc39a23cd1399f62525b18a7b3"
       }
     }
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20886674996/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20904458350/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -696,189 +696,27 @@
         "github_actor_id": "17805542",
         "github_event_name": "push",
         "github_event_payload": {
-          "after": "ab579661bdd87603c1cbb05aa6732ceaa85fe0b1",
+          "after": "572b06e94003ef19b2a96d348411f286fb84170d",
           "base_ref": null,
-          "before": "251704d2fe15fbd83a5670a268ed6d369a7d02ef",
+          "before": "ab579661bdd87603c1cbb05aa6732ceaa85fe0b1",
           "commits": [
             {
               "author": {
-                "email": "rfiorella@lanl.gov",
+                "email": "rich.p.fiorella@gmail.com",
                 "name": "Rich Fiorella",
                 "username": "rfiorella"
               },
               "committer": {
-                "email": "rfiorella@lanl.gov",
+                "email": "rich.p.fiorella@gmail.com",
                 "name": "Rich Fiorella",
                 "username": "rfiorella"
               },
               "distinct": false,
-              "id": "ad3fe7ee3af9fb95734f6f43cefadfd6c4b4be70",
-              "message": "use ubuntu-slim where reasonable to get runners faster",
-              "timestamp": "2026-01-09T18:34:36-07:00",
-              "tree_id": "7b9b2bb459e04a9709191ad61109d75f7bcea21e",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/ad3fe7ee3af9fb95734f6f43cefadfd6c4b4be70"
-            },
-            {
-              "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "distinct": false,
-              "id": "f19394120519bf999741a506ba01ef7a6a647f8f",
-              "message": "need latest for anything w/ docker",
-              "timestamp": "2026-01-09T19:34:59-07:00",
-              "tree_id": "8148c19c33658ee70d02e30882b2e49a04720c99",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/f19394120519bf999741a506ba01ef7a6a647f8f"
-            },
-            {
-              "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "distinct": false,
-              "id": "09e252ae5d364cc90e3f44b10b0c0cfcb4bcf025",
-              "message": "deploy cache in elm runs - wip",
-              "timestamp": "2026-01-09T22:21:58-07:00",
-              "tree_id": "2a42b90c737f0c1709fb4d028da163311bd322da",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/09e252ae5d364cc90e3f44b10b0c0cfcb4bcf025"
-            },
-            {
-              "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "distinct": false,
-              "id": "6849b7dc91259cc42ec78fb4cf00bd260e541252",
-              "message": "fix syntax error in gha action",
-              "timestamp": "2026-01-09T22:25:44-07:00",
-              "tree_id": "c6bef3cef64c43fc1568a1cc07b2bb22d75a4dcf",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/6849b7dc91259cc42ec78fb4cf00bd260e541252"
-            },
-            {
-              "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "distinct": false,
-              "id": "775205d646b54a9f8a7d8e61af057d5ccbb415f3",
-              "message": "fix constraints",
-              "timestamp": "2026-01-09T22:38:12-07:00",
-              "tree_id": "c563234d5fb6c197f3b652cdac82062e877db969",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/775205d646b54a9f8a7d8e61af057d5ccbb415f3"
-            },
-            {
-              "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "distinct": false,
-              "id": "0038541c376a0df914420f2cb03cec40f89478d0",
-              "message": "fix setup-cache and add dependencies",
-              "timestamp": "2026-01-09T22:42:53-07:00",
-              "tree_id": "b1e7fdc55eb50fba59240a28038c8ef222e0eca3",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/0038541c376a0df914420f2cb03cec40f89478d0"
-            },
-            {
-              "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "distinct": false,
-              "id": "980f5025b34b43c192c0f7becc7070be040e4cdb",
-              "message": "requires -\u003e needs",
-              "timestamp": "2026-01-09T22:58:45-07:00",
-              "tree_id": "4669678eef1651accdb852a082fc8ed2eba04654",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/980f5025b34b43c192c0f7becc7070be040e4cdb"
-            },
-            {
-              "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "distinct": false,
-              "id": "2580b3293425e3a8aeed3635317ef65b730a1962",
-              "message": "remove unnecessary volume mount",
-              "timestamp": "2026-01-09T23:04:52-07:00",
-              "tree_id": "f6ee3358afc9142f1a703b08b21aa2dc8e29ca21",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/2580b3293425e3a8aeed3635317ef65b730a1962"
-            },
-            {
-              "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "distinct": false,
-              "id": "4169d5c49b01ec066cf4d5931705a8bbc3758709",
-              "message": "fix permissions issue",
-              "timestamp": "2026-01-09T23:10:49-07:00",
-              "tree_id": "fef3df93e83e22e46f222ae1fd213fc4f886504f",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/4169d5c49b01ec066cf4d5931705a8bbc3758709"
-            },
-            {
-              "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
-              },
-              "distinct": false,
-              "id": "f3814d15a0af34bbb3e03a9d0787f138daaa7350",
-              "message": "tweak permissions more",
-              "timestamp": "2026-01-09T23:26:35-07:00",
-              "tree_id": "75a8b051f802d94c0c7695b2f9933dc86b48b0bf",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/f3814d15a0af34bbb3e03a9d0787f138daaa7350"
+              "id": "7efb74067227ad2d90e179e58233bcff75259573",
+              "message": "Fix FATES rendering issue\n\nClose #110",
+              "timestamp": "2026-01-10T21:16:18-07:00",
+              "tree_id": "11022511607bdea3d01001c5d3ede573c17b2e22",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/7efb74067227ad2d90e179e58233bcff75259573"
             },
             {
               "author": {
@@ -892,11 +730,11 @@
                 "username": "rfiorella"
               },
               "distinct": false,
-              "id": "9fb700964a4d116c4329022894b6abbb0d3a476a",
-              "message": "add restore cache step",
-              "timestamp": "2026-01-10T08:10:29-07:00",
-              "tree_id": "176427b68a2a89567f197adfb8a1029e91c19ab2",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/9fb700964a4d116c4329022894b6abbb0d3a476a"
+              "id": "71df6b16f13bd692983a4ff12489437a4950b10a",
+              "message": "make netcdf4 backend available to xarray",
+              "timestamp": "2026-01-11T09:02:00-07:00",
+              "tree_id": "13980881e68bb9da626bfff883314ad75440d859",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/71df6b16f13bd692983a4ff12489437a4950b10a"
             },
             {
               "author": {
@@ -910,11 +748,11 @@
                 "username": "rfiorella"
               },
               "distinct": false,
-              "id": "0413b1c8ffa411e2db7f46444c69b05de1b3ccfa",
-              "message": "Fix docker volume deletion commands\n\nClose #105",
-              "timestamp": "2026-01-10T08:12:28-07:00",
-              "tree_id": "27606da1b0eb70190fb9120b5f1dbc9d5f09e7f9",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/0413b1c8ffa411e2db7f46444c69b05de1b3ccfa"
+              "id": "ede48a4f649c52ca662c938cd6dfa5ab95d36022",
+              "message": "add met forcing comparison",
+              "timestamp": "2026-01-11T14:39:13-07:00",
+              "tree_id": "3e7861a16cfd4098418e9e46a2e4c863f59e6949",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/ede48a4f649c52ca662c938cd6dfa5ab95d36022"
             },
             {
               "author": {
@@ -928,11 +766,29 @@
                 "username": "rfiorella"
               },
               "distinct": false,
-              "id": "c36c23cbc8bc8d29f7bc6ec12eff13dad0c6bf9a",
-              "message": "finish updates to CI speedup",
-              "timestamp": "2026-01-10T17:02:56-07:00",
-              "tree_id": "c9b7424a039fa984babfee941c551dd86ad836cb",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/c36c23cbc8bc8d29f7bc6ec12eff13dad0c6bf9a"
+              "id": "0095fba375f228f650d8b4c157b5293df573d332",
+              "message": "add makefile to quickly spinup containers",
+              "timestamp": "2026-01-11T14:39:33-07:00",
+              "tree_id": "3e07d37fdc88212c68bc12fc63b809dcee95763c",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/0095fba375f228f650d8b4c157b5293df573d332"
+            },
+            {
+              "author": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "committer": {
+                "email": "rfiorella@lanl.gov",
+                "name": "Rich Fiorella",
+                "username": "rfiorella"
+              },
+              "distinct": false,
+              "id": "3395414b0dda79bf4d93c84b14c44be71a733daf",
+              "message": "remove visit/paraview, not used",
+              "timestamp": "2026-01-11T14:47:01-07:00",
+              "tree_id": "d8ae13690a2c8c7cf8a9dce24784e8735e53fbf4",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/3395414b0dda79bf4d93c84b14c44be71a733daf"
             },
             {
               "author": {
@@ -946,14 +802,14 @@
                 "username": "web-flow"
               },
               "distinct": true,
-              "id": "ab579661bdd87603c1cbb05aa6732ceaa85fe0b1",
-              "message": "Merge pull request #103 from NGEE-Arctic/faster-CI\n\ntweaks to speed up CI",
-              "timestamp": "2026-01-10T17:25:18-07:00",
-              "tree_id": "59e513e026e084c4461243adcf49e0f35c03c8ad",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/ab579661bdd87603c1cbb05aa6732ceaa85fe0b1"
+              "id": "572b06e94003ef19b2a96d348411f286fb84170d",
+              "message": "Merge pull request #112 from NGEE-Arctic/saturday-roundup\n\nweekend issue roundup",
+              "timestamp": "2026-01-11T17:27:18-07:00",
+              "tree_id": "d8ae13690a2c8c7cf8a9dce24784e8735e53fbf4",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/572b06e94003ef19b2a96d348411f286fb84170d"
             }
           ],
-          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/251704d2fe15...ab579661bdd8",
+          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/ab579661bdd8...572b06e94003",
           "created": false,
           "deleted": false,
           "forced": false,
@@ -969,11 +825,11 @@
               "username": "web-flow"
             },
             "distinct": true,
-            "id": "ab579661bdd87603c1cbb05aa6732ceaa85fe0b1",
-            "message": "Merge pull request #103 from NGEE-Arctic/faster-CI\n\ntweaks to speed up CI",
-            "timestamp": "2026-01-10T17:25:18-07:00",
-            "tree_id": "59e513e026e084c4461243adcf49e0f35c03c8ad",
-            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/ab579661bdd87603c1cbb05aa6732ceaa85fe0b1"
+            "id": "572b06e94003ef19b2a96d348411f286fb84170d",
+            "message": "Merge pull request #112 from NGEE-Arctic/saturday-roundup\n\nweekend issue roundup",
+            "timestamp": "2026-01-11T17:27:18-07:00",
+            "tree_id": "d8ae13690a2c8c7cf8a9dce24784e8735e53fbf4",
+            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/572b06e94003ef19b2a96d348411f286fb84170d"
           },
           "organization": {
             "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -1051,8 +907,8 @@
             "name": "Field-to-Model",
             "node_id": "R_kgDOPQRvJA",
             "notifications_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/notifications{?since,all,participating}",
-            "open_issues": 11,
-            "open_issues_count": 11,
+            "open_issues": 8,
+            "open_issues_count": 8,
             "organization": "NGEE-Arctic",
             "owner": {
               "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -1079,9 +935,9 @@
             },
             "private": false,
             "pulls_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/pulls{/number}",
-            "pushed_at": 1768091118,
+            "pushed_at": 1768177638,
             "releases_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/releases{/id}",
-            "size": 48035,
+            "size": 48236,
             "ssh_url": "git@github.com:NGEE-Arctic/Field-to-Model.git",
             "stargazers": 0,
             "stargazers_count": 0,
@@ -1094,7 +950,7 @@
             "teams_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/teams",
             "topics": [],
             "trees_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/trees{/sha}",
-            "updated_at": "2026-01-10T23:55:41Z",
+            "updated_at": "2026-01-11T00:25:23Z",
             "url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model",
             "visibility": "public",
             "watchers": 0,
@@ -1133,20 +989,20 @@
         "github_repository_owner": "NGEE-Arctic",
         "github_repository_owner_id": "184418857",
         "github_run_attempt": "1",
-        "github_run_id": "20886674996",
-        "github_run_number": "322",
+        "github_run_id": "20904458350",
+        "github_run_number": "328",
         "github_runner_arch": "X64",
         "github_runner_environment": "github-hosted",
         "github_runner_image_os": "ubuntu24",
         "github_runner_image_version": "20260105.202.1",
-        "github_runner_name": "GitHub Actions 1000005644",
+        "github_runner_name": "GitHub Actions 1000005790",
         "github_runner_os": "Linux",
-        "github_runner_tracking_id": "github_51d2e2d2-4727-4ccc-acca-7702ac4edb7c",
+        "github_runner_tracking_id": "github_1bd8c540-a505-4811-8296-208d566bbea3",
         "github_server_url": "https://github.com",
         "github_triggering_actor": "rfiorella",
         "github_workflow": "Sphinx: Render docs",
         "github_workflow_ref": "NGEE-Arctic/Field-to-Model/.github/workflows/docs.yml@refs/heads/main",
-        "github_workflow_sha": "ab579661bdd87603c1cbb05aa6732ceaa85fe0b1",
+        "github_workflow_sha": "572b06e94003ef19b2a96d348411f286fb84170d",
         "platform": "linux/amd64"
       }
     },
@@ -1470,23 +1326,23 @@
         }
       ],
       "digestMapping": {
-        "sha256:099e4f5c0e55c3814a4bdb52c6dcb3030c967889d940a7b7576075d3f1ca0a60": "step2",
-        "sha256:3d494dd76b82180a3edd20acda69ce49edfd18253f393b2972a0d96f833b2dd5": "step3",
-        "sha256:41befee44e4bb3ea307e20b5a47f2efc528956c11c2ad5f136a795f6e9dbd117": "step7",
+        "sha256:044a42a91800e3aba3871c43b8d837c6daafd82555d94ce306b7bcaebccf08d1": "step9",
+        "sha256:0a76b09ba14cec8f567f4af931f85d3b2b7deaf69db104fc50906382277b618d": "step7",
+        "sha256:1f45520d7c97c976a2241d697903aa274c2b7c8e3e75de0818b52f38c5dbb1c5": "step4",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:5051eaa68e9e031ac3eb192d4495db1e8569dee581368f42cab5c12451038108": "step8",
-        "sha256:7c46ce563413041fbede319f0c4175850dc1544c3de150093edce6e687b82688": "step9",
-        "sha256:8dfa5decd70e49fa7ab2e3c18c302990ab1e951b9e402528e034d38d33bc2cec": "step4",
-        "sha256:c0e4fc4caea0f17ddd251bcc4c087ce5c1896175358124cfd9bd3778b0dccd40": "step1",
-        "sha256:dab1298f46059f45f9ee7797a7726ecd671185089357f5f70685327f06815d52": "step10",
-        "sha256:e17cf2be79901c97e9f44011be784eef9d4faada02db5fdd26d7810a1900bd5b": "step5",
-        "sha256:e6f7d54a69e776616abb9baeea55283d22e3ab2f303c183d0503cbb42fbaf415": "step6"
+        "sha256:6ec3f6c9527bdafef21291286e7b0dae2452987c80fa267977d70825bcb8e28a": "step10",
+        "sha256:746d231fa1793ff6bb97c859d3100b6081b3de3e44891f9db5c22f9a0103e9d5": "step8",
+        "sha256:751559bcab42c2232ed500839a60119c6c7add9b3ed37001332c81e263e28a9d": "step6",
+        "sha256:8b9886759eb7fd40dc5acef33d80fe457b22650e1653d717b490da9ceedece37": "step3",
+        "sha256:b70e93e86f5173e445deef8a95bb6abfbcdabd1be34edb93b2aefbf364ef574d": "step5",
+        "sha256:daecb113fada1115ad04042ec8bf36de456b2bd612c314fcb686daf6ed151700": "step2",
+        "sha256:f58f79ec25be3e88134772495dc743616e4011e21b896d7633daa1d7b4626038": "step1"
       }
     },
     "metadata": {
-      "buildInvocationID": "evkfrw68ii24bnjwjpa2zhrjq",
-      "buildStartedOn": "2026-01-11T00:25:37.867039202Z",
-      "buildFinishedOn": "2026-01-11T00:26:03.751800139Z",
+      "buildInvocationID": "i44z9z7vhuuamyrhvnexfhcze",
+      "buildStartedOn": "2026-01-12T00:37:51.026572417Z",
+      "buildFinishedOn": "2026-01-12T00:38:14.744925628Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -1497,7 +1353,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "ab579661bdd87603c1cbb05aa6732ceaa85fe0b1",
+          "revision": "572b06e94003ef19b2a96d348411f286fb84170d",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -1697,8 +1553,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:792f4e79c7cadddaa621c143840977a66a4d0282eb9c78d2ee7c38eaff0c52d1": "step0",
-                "sha256:96b17425d03b1377da750a8f1e835a3c6adeea5af7aa5b9cc273cf7af9e58a21": "step1"
+                "sha256:227bd93aaef9db19d48d46eed1f07c6f34d8d5981478e894a3c37c8c6ca56f69": "step0",
+                "sha256:abaa6ba4bc7d9082027de86da2a1a60a96c182dd05d62fee89c887bdf0c71d63": "step1"
               }
             }
           ]

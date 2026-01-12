@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Introduction to ELM and workshop scripts &#8212; ModEx 2026 (updated: Jan 11 00:26:01 UTC) documentation</title>
+    <title>3. Introduction to ELM and workshop scripts &#8212; ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=d53ce0cf"></script>
+    <script src="../_static/documentation_options.js?v=3b8a77e7"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="../setup.html" title="2. Getting Started"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 11 00:26:01 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>  
@@ -111,14 +111,16 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
 <section id="adding-demography-and-disturbance-elm-fates">
 <h2><span class="section-number">3.2. </span>Adding demography and disturbance: ELM-FATES<a class="headerlink" href="#adding-demography-and-disturbance-elm-fates" title="Link to this heading">¶</a></h2>
 <p>FATES is the “Functionally Assembled Terrestrial Ecosystem Simulator.” It is an optional external module which can run within ELM to include alternative representations of ecosystem processes, namely vegetation demography and dynamic vegetation and disturbance.  FATES is a cohort- and patch-based model of vegetation competition and co-existence, allowing a representation of the terrestrial biosphere which accounts for the division of the land surface into successional stages, and for competition for light between height structured cohorts of representative trees of various plant functional types.</p>
-<p>A very detailed explain of FATES can be found in this <cite>Technical Documentation &lt;https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html&gt;</cite></p>
-<p>The source code for FATES, as well as discussion boards, and tracking changes can be found in this <cite>GitHub repository &lt;https://github.com/NGEET/fates&gt;</cite></p>
-<p>For this workshop, we will not go into the details of setting up and running FATES. However, we encourage users to visit previous User Guide documentation, and past <cite>FATES Tutorial documents &lt;https://fates-users-guide.readthedocs.io/en/latest/&gt;</cite> (the latest tutorial was in Fall 2024).</p>
-<p>Here are a few quick instructions and tips for running ELM-FATES:
-- FATES will use these same files from ELM: the surface file, domain file, climatology driver data, and ELM parameter file.  The main difference is that FATES has its own parameter file for FATES specific PFT and site level parameters.
-- Before running FATES we need to generate a parameter file that describes the traits of each Plant Functional Type (PFT) in our simulation.
-- A main way to “turn on” the FATES model is through a compset. Example compsets for FATES are IELMFATES or I1850ELMFATES
-- There is also a containerized version of FATES using Docker, which was created in 2024.</p>
+<p>A very detailed explain of FATES can be found in this <a class="reference external" href="https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html">Technical Documentation</a></p>
+<p>The source code for FATES, as well as discussion boards, and tracking changes can be found in this <a class="reference external" href="https://github.com/NGEET/fates">GitHub repository</a></p>
+<p>For this workshop, we will not go into the details of setting up and running FATES. However, we encourage users to visit previous User Guide documentation, and past <a class="reference external" href="https://fates-users-guide.readthedocs.io/en/latest/">FATES Tutorial documents</a> (the latest tutorial was in Fall 2024).</p>
+<p>Here are a few quick instructions and tips for running ELM-FATES:</p>
+<ul class="simple">
+<li><p>FATES will use these same files from ELM: the surface file, domain file, climatology driver data, and ELM parameter file.  The main difference is that FATES has its own parameter file for FATES specific PFT and site level parameters.</p></li>
+<li><p>Before running FATES we need to generate a parameter file that describes the traits of each Plant Functional Type (PFT) in our simulation.</p></li>
+<li><p>A main way to “turn on” the FATES model is through a compset. Example compsets for FATES are IELMFATES or I1850ELMFATES</p></li>
+<li><p>There is also a containerized version of FATES using Docker, which was created in 2024.</p></li>
+</ul>
 <section id="additional-resources">
 <h3><span class="section-number">3.2.1. </span>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
@@ -215,7 +217,7 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
         <li class="right" >
           <a href="../setup.html" title="2. Getting Started"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 11 00:26:01 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>

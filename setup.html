@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. Getting Started &#8212; ModEx 2026 (updated: Jan 11 00:26:01 UTC) documentation</title>
+    <title>2. Getting Started &#8212; ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e3f3e722" />
-    <script src="_static/documentation_options.js?v=d53ce0cf"></script>
+    <script src="_static/documentation_options.js?v=3b8a77e7"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="modex_agenda_2026.html" title="1. ModEx Workshop 2026 Agenda"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 11 00:26:01 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Getting Started</a></li> 
       </ul>
     </div>  
@@ -49,8 +49,8 @@ across computers and operating systems by providing a single “bundle” that c
 visualization tools, and their dependencies.</p>
 <p>We have pre-built Docker images for the models and visualization tools, which
 can be pulled from Docker Hub.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
 <p>If you prefer to build the images locally, instructions are provided in the <a class="reference internal" href="dev_notes.html#container-setup"><span class="std std-ref">Container Setup</span></a> section.
 It will take quite some time, and we strongly recommend using the pre-built containers.</p>
 </div>
@@ -60,9 +60,8 @@ It will take quite some time, and we strongly recommend using the pre-built cont
 <ul class="simple">
 <li><p>Docker Desktop - though note you may need an institutional license.</p></li>
 <li><p>git</p></li>
-<li><p>WSL (Windows Subsystem for Linux) for Windows users</p></li>
+<li><p>If on Windows: WSL (Windows Subsystem for Linux)</p></li>
 </ul>
-<p>Optionally, you will need a 3D visualization tool: one of ParaView or VisIt for the ATS section of this workshop.  VisIt is a little more intuitive to new users if you have never used either one and is sufficient for 90% of what we will do; ParaView is preferred for viewing complex 3D meshes.</p>
 <section id="docker">
 <h3><span class="section-number">2.1.1. </span>Docker<a class="headerlink" href="#docker" title="Link to this heading">¶</a></h3>
 <p><a class="reference external" href="https://www.docker.com/get-started">Download Docker</a></p>
@@ -110,13 +109,6 @@ the WSL application, a new Ubuntu application if it’s been installed or simply
 <li><p><strong>Mac OSX</strong>: git is included in the <em>command line tools</em>, installed via <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code>, or in XCode itself.</p></li>
 <li><p><strong>Linux</strong>: git is included as a standard package under most package managers, e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p></li>
 <li><p><strong>Windows</strong>: See <a class="reference external" href="https://github.com/git-guides/install-git">Git Downloads</a>. Note that the GitHub Desktop is also an option for Windows users and provides a GUI.</p></li>
-</ul>
-</section>
-<section id="paraview-or-visit">
-<h3><span class="section-number">2.1.3. </span>ParaView or VisIt<a class="headerlink" href="#paraview-or-visit" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p><strong>ParaView</strong>: ParaView can be installed from the KitWare website (or for LANL folks, LANL self service/software center): <a class="reference external" href="https://www.paraview.org/download/">Download ParaView</a></p></li>
-<li><p><strong>VisIt</strong>: VisIt can be installed from the LLNL website: <a class="reference external" href="https://wci.llnl.gov/simulation/computer-codes/visit/downloads">Download VisIt</a></p></li>
 </ul>
 </section>
 </section>
@@ -333,7 +325,6 @@ and we will try to have someone from the organizing team help you out before the
 <li><a class="reference internal" href="#required-software">2.1. Required software:</a><ul>
 <li><a class="reference internal" href="#docker">2.1.1. Docker</a></li>
 <li><a class="reference internal" href="#git">2.1.2. Git</a></li>
-<li><a class="reference internal" href="#paraview-or-visit">2.1.3. ParaView or VisIt</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#terminal-tips">2.2. Terminal Tips</a></li>
@@ -402,7 +393,7 @@ and we will try to have someone from the organizing team help you out before the
         <li class="right" >
           <a href="modex_agenda_2026.html" title="1. ModEx Workshop 2026 Agenda"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 11 00:26:01 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Getting Started</a></li> 
       </ul>
     </div>
