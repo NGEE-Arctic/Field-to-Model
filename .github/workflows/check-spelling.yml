@@ -39,7 +39,7 @@ jobs:
           codespell docs source \
             -S "*.po,*.pot,build,_build,*.png,*.jpg,*.gif,*.svg" \
             -f > codespell-report.txt \
-            -L matric
+            -L matric,heping
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
           set -e
 
