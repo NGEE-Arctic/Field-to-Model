@@ -174,7 +174,15 @@ And copy and paste the URL and token provided in the terminal into your web brow
 
 How different are the meteorological forcing datasets?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+We've provided two different meteorological forcing datasets: GSWP3 and ERA5. One reason we might look at multiple forcing datasets is that meterological data in remote Arctic settings is often uncertain, so we might want to see how sensitive our land surface model results are to uncertainty in these forcings. 
 
+In the ``vis_notebooks`` folder, you'll find a notebook titled 01_compare_met_forcing.ipynb. I've shown an example below - this is forcing temperature from Imnaviat Creek, Alaska near Toolik Field Station. Note that while annual means might be similar, GSWP3 seems to be significantly warmer than ERA5 in the spring, but significantly cooler than ERA5 in the fall. What impacts might this have on our simulations?
+
+.. figure:: ../_static/plenary/elm/gswp3vsera5.png
+   :alt: Comparing two met forcing datasets.
+   :width: 80%
+
+Try working through this notebook a few more times - you can change the value of either "site" or "variable" to look at how different these forcing datasets are across the available sites.
 
 How different are the surface datasets across these sites?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -182,6 +190,25 @@ How different are the surface datasets across these sites?
 
 Examining case output
 ^^^^^^^^^^^^^^^^^^^^^^
+Now that we have some completed simulations, let's take a look at some of the data! In the ``vis_notebooks`` folder, you'll find a notebook titled 02_plot_ELM_output.ipynb that shows some examples of plotting timeseries variables, as well as contour plots for 2D vairables (e.g,. soil temperature over time). The ``elm_output`` object shows the variables that are available for plotting:
+
+.. figure:: ../_static/plenary/elm/analyze_output1.png
+   :alt: variables_available
+   :width: 80%
+
+You can learn the long name of the variable, as well as any other metadata assigned to that variable by the model, by clicking on the button in the green square for any particular variable.
+
+Further down you'll find examples of plotting 1D variables over time as timeseries (these are from a simulation at Abisko, Sweden):
+
+.. figure:: ../_static/plenary/elm/analyze_output2.png
+   :alt: 1d_vars
+   :width: 80%
+
+And 2D variables as contour plots (e.g., bottom panel is soil temperature):
+
+.. figure:: ../_static/plenary/elm/analyze_output3.png
+   :alt: 2d_vars
+   :width: 80%
 
 
 ======================
