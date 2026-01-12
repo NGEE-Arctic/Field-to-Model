@@ -461,6 +461,28 @@ else
   echo "RUSSIA: samoylov_island"
   exit 0
 fi
+
+# polygonal tundra surface data setup
+if [ "${use_polygonal_tundra}" = True ]; then
+  if [ ${site_name} = beo ]; then
+    landuse_file="polygonal_tundra/Utqiagvik_surfdata.pftdyn.nc"
+    if [ ${mixed_polygons} = True ]; then
+      surf_file="polygonal_tundra/Utqiagvik_surfdata_ALLPOLY.nc"
+    elif [ ${high_centered_polygons} = True ]; then
+      surf_file="polygonal_tundra/Utqiagvik_surfdata_HCP.nc"
+    elif [ ${low_centered_polygons} = True ]; then
+      surf_file="polygonal_tundra/Utqiagvik_surfdata_LCP.nc"
+    elif [ ${flat_centered_polygons} = True ]; then
+      surf_file="polygonal_tundra/Utqiagvik_surfdata_FCP.nc"
+    fi
+  else
+    echo " "
+    echo "**** EXECUTION HALTED ****"
+    echo "polygonal_tundra option only available for Site Name: beo"
+    exit -1
+  fi
+fi 
+
 # the following is by default. if reset to empty later on, ELM will run without landuse_timeseries file for transient stage.
 landuse_file="/mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file}"
 
@@ -494,7 +516,6 @@ if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = T
     echo "RUSSIA: samoylov_island"
     exit -1
  fi
-
 fi
 
 if [ ${site_name} = imnaviat_creek ]; then
@@ -541,27 +562,6 @@ if [ "${terrain_raddownscale}" = True ]; then
     exit -1
  fi
 fi
-
-# polygonal tundra surface data setup
-if [ "${use_polygonal_tundra}" = True ]; then
-  if [ ${site_name} = beo ]; then
-    landuse_file="polygonal_tundra/Utqiagvik_surfdata.pftdyn.nc"
-    if [ ${mixed_polygons} = True ]; then
-      surf_file="polygonal_tundra/Utqiagvik_surfdata_ALLPOLY.nc"
-    elif [ ${high_centered_polygons} = True ]; then
-      surf_file="polygonal_tundra/Utqiagvik_surfdata_HCP.nc"
-    elif [ ${low_centered_polygons} = True ]; then
-      surf_file="polygonal_tundra/Utqiagvik_surfdata_LCP.nc"
-    elif [ ${flat_centered_polygons} = True ]; then
-      surf_file="polygonal_tundra/Utqiagvik_surfdata_FCP.nc"
-    fi
-  else
-    echo " "
-    echo "**** EXECUTION HALTED ****"
-    echo "polygonal_tundra option only available for Site Name: beo"
-    exit -1
-  fi
-fi 
 
 echo "OLMT Site Code: ${site_code}"
 # =======================================================================================

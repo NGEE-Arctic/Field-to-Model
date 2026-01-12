@@ -141,7 +141,7 @@ Polygonal tundra:
         -v output:/mnt/output \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
-        --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --MISSING_SURFACE_FILE ARG
+        --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons
 
 Polygonal tundra warming experiment:
 
@@ -153,5 +153,5 @@ Polygonal tundra warming experiment:
         -v output:/mnt/output \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
-        --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --MISSING_SURFACE_FILE ARG \
-        --add_temperature 5.0
+        --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons \
+        --add_temperature 5.0 --startdate_add_temperature=20100601 --transient_years 200
