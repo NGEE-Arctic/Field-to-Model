@@ -38,7 +38,8 @@ cd warming_2.6C_JJAS_2019
 python /home/modex_user/model_examples/TEM/modify_air_temperature.py --input-file inputs/$INPUT_DATA_NAME/historic-climate.nc --months 6 7 8 9 --years 2019 --deviation 2.6
 mv inputs/$INPUT_DATA_NAME/modified_historic-climate.nc inputs/$INPUT_DATA_NAME/historic-climate.nc
 cp ../control/config/output_spec.csv config/output_spec.csv
-# Optional - adjust run mask, some inputs have more than one px enabled by default.
+# Adjust run mask, some inputs have more than one px enabled by default.
+pyddt-runmask --reset --yx 0 0 inputs/$INPUT_DATA_NAME/run-mask.nc
 # length of historic data should be the same as control run
 dvmdostem -f config/config.js -p 10 -e 10 -s 25 -t $TRANSIENT_YRS -n 0 -l monitor --force-cmt 6
 
