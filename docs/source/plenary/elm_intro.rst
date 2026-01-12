@@ -190,7 +190,7 @@ How different are the surface datasets across these sites?
 
 Examining case output
 ^^^^^^^^^^^^^^^^^^^^^^
-Now that we have some completed simulations, let's take a look at some of the data! In the ``vis_notebooks`` folder, you'll find a notebook titled 02_plot_ELM_output.ipynb that shows some examples of plotting timeseries variables, as well as contour plots for 2D vairables (e.g,. soil temperature over time). The ``elm_output`` object shows the variables that are available for plotting:
+Now that we have some completed simulations, let's take a look at some of the data! In the ``vis_notebooks`` folder, you'll find a notebook titled 02_plot_ELM_output.ipynb that shows some examples of plotting timeseries variables, as well as contour plots for 2D variables (e.g,. soil temperature over time). The ``elm_output`` object shows the variables that are available for plotting:
 
 .. figure:: ../_static/plenary/elm/analyze_output1.png
    :alt: variables_available
@@ -209,7 +209,6 @@ And 2D variables as contour plots (e.g., bottom panel is soil temperature):
 .. figure:: ../_static/plenary/elm/analyze_output3.png
    :alt: 2d_vars
    :width: 80%
-
 
 ======================
 Additional Resources
