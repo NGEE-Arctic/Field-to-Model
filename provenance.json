@@ -5,7 +5,7 @@
     {
       "name": ".buildinfo",
       "digest": {
-        "sha256": "d9df81c63adc69a5b776dc018f712e9ced97698fc80cebd43f6f377f6dd1be72"
+        "sha256": "1773640fc7b6449b4ba9979209fcb41ce6f7621b913344051e5b9669d496ba4d"
       }
     },
     {
@@ -239,7 +239,7 @@
     {
       "name": "_sources/breakout/TEM_Model.rst.txt",
       "digest": {
-        "sha256": "1c00e2986e04592c74eb1728344fee38387323105b189d3e2559d45cccf6772b"
+        "sha256": "c7e24a6710c2a2569c661a07a1f3d224c9af6822ba4e8176d971bcbb4f4724cc"
       }
     },
     {
@@ -377,7 +377,7 @@
     {
       "name": "_static/documentation_options.js",
       "digest": {
-        "sha256": "9cfdf313d976d4152d53cf9f7249f5d3984db4aaeb77385b5cd91e2ca07a1d49"
+        "sha256": "15599f717f157374b13bf21b4281d1d0a252c0f849af288a0c50eaf5f746db15"
       }
     },
     {
@@ -647,157 +647,157 @@
     {
       "name": "breakout/ELM_Background.html",
       "digest": {
-        "sha256": "d5f44a104bd38ee130e03c9242b7e0058cde762ad69270c1b26d5a7b6c3658c7"
+        "sha256": "775a84d4b674eebbaddcd0fab2aed48eb8477935e89bc70732b4b7786f6d7e0c"
       }
     },
     {
       "name": "breakout/ELM_Model.html",
       "digest": {
-        "sha256": "b2a67551e74476214d137bd43ce246e6b8ba9a0a5136d729dbb0dd8a06f9c931"
+        "sha256": "45efb349564b506e3e670daa5e5371fec27a2e7709301cfd22c7837bf25a3307"
       }
     },
     {
       "name": "breakout/TEM_Model.html",
       "digest": {
-        "sha256": "45bec6003a3527ad8dcd94cbfb45fcdb1631fa3e8c22abb97893dcbb60fc9866"
+        "sha256": "c9bec3abca9f7a0d51fee28b4c20ce43f7b4b9ebc42c1c60a27669cbabd2385a"
       }
     },
     {
       "name": "breakout/analyzing_ELM_output_Jupyter_Notebooks.html",
       "digest": {
-        "sha256": "d4573127ab2c8f4a06e40580a76de780c8bee4ae868f918234de5d1e43dfe9e4"
+        "sha256": "8431dea2bff679d2e2ea7d2ee7718b4ac8273942f50b874df079c54ce24d25fa"
       }
     },
     {
       "name": "breakout/hillslope_bgc.html",
       "digest": {
-        "sha256": "c9dbcbd770ad0a3434e84ab8317819e37d192855322f2ecae59cb8092ded7182"
+        "sha256": "81166f1befcb99912df63f807f1cf230ede1e43daba6087e098cf172a30ad163"
       }
     },
     {
       "name": "breakout/permafrost_hydrology.html",
       "digest": {
-        "sha256": "2c53d69319b014a40dac68090a8827d1345253ab396199678b1632e3ff75e5f0"
+        "sha256": "cc525687f9a8ea8dff415b0b450977b035f7fb18a4e7488550c4ef0b8a3b9828"
       }
     },
     {
       "name": "breakout/shrub_impacts_ELM.html",
       "digest": {
-        "sha256": "b8f590eb4cd3bea92269d0a3d75f26c19a7a36bdff943d0e00db0c6e21ce2c61"
+        "sha256": "0e96e0b1e4865ec3c8dd6a7762cea96afb9f9a7b361848282af747ed1c14687b"
       }
     },
     {
       "name": "breakout/snow_veg_permafrost.html",
       "digest": {
-        "sha256": "c80976f2457c148e5724a7cbc3f5572009a5d1f861525b1de831e79b5bb3aa8e"
+        "sha256": "2b644559ebae5c51f7b86edd98535440921e77f9541a08e70572ecea266c08a7"
       }
     },
     {
       "name": "breakout/snow_veg_permafrost_agenda.html",
       "digest": {
-        "sha256": "d71ee9b00097a20b4c6849357ed6a5e0ad38a031e6c2c99077474c9d99e1ed62"
+        "sha256": "570cc2205f3fcc4be88436f11555d40f758b0204ea7c27a051311f849bdfe335"
       }
     },
     {
       "name": "breakout/subgrid_variability_ELM.html",
       "digest": {
-        "sha256": "1268bd3caf3b045461cd61cac10b55592f0387c2f712503232f46c42a21285f8"
+        "sha256": "5300435a95c09d92cb6dd2dca4045c871805b7b5347123da82c1a1db1852fe54"
       }
     },
     {
       "name": "breakout/surface_files_ELM.html",
       "digest": {
-        "sha256": "c35ea171dee45692780440589bd1a6335451b9c9a09b01167a2756ce721de7d9"
+        "sha256": "cd175d1946080ef450deeb99b9927e7a677507ac4268fe5ded58dcbf9b312d81"
       }
     },
     {
       "name": "colors.html",
       "digest": {
-        "sha256": "1c98c76cecd6f28d6a5e52cff3b133293ba4d5b062451df6172f1821fee9385b"
+        "sha256": "8fd9ef744d165ac81bbc08731cf9d3e4446152f971c33a67aab9533c4aaf574a"
       }
     },
     {
       "name": "common_issues.html",
       "digest": {
-        "sha256": "28944ef0dbf52693154d8c0da5d5a593a084fb89688dc1310122d8b489f28523"
+        "sha256": "f3c3f21c35388bdbec4f7bc89787773ca3f1b47fd9aec905dffbaedaca05a981"
       }
     },
     {
       "name": "dev_notes.html",
       "digest": {
-        "sha256": "aa58320e10d00bc7b71dfd54a9ec50eb503ada5596fa3abfd8c6fdbe93d7c07b"
+        "sha256": "1d7665dfe126e22177c63bd519d5095c21e71aae902e94126e50f580c1d6ba1f"
       }
     },
     {
       "name": "genindex.html",
       "digest": {
-        "sha256": "b303af979e3d9bfa56daecca146a01a19c0216d87522f69d86328e976c683e26"
+        "sha256": "c435a8680b272b0479adc1f07c4718e095ae46f3eec108a63c029194111154c5"
       }
     },
     {
       "name": "index.html",
       "digest": {
-        "sha256": "71976d8cb9f88cab5e4c4951959fe9158be15a58049edc6f0a7f966002732549"
+        "sha256": "b7843d04bab80336f9339c4608841ef866a565b59d5f9707459fcca5c7360d52"
       }
     },
     {
       "name": "modex_agenda_2026.html",
       "digest": {
-        "sha256": "789d78159c10d1d5b280099bbcf6d9a22fc8c3752fb555414fdbff5d8251cfec"
+        "sha256": "1a3774c27d68e2df2d5221be6c0ae7989f2d9c7d88e059b30664fa8e31f4d8af"
       }
     },
     {
       "name": "objects.inv",
       "digest": {
-        "sha256": "8ff6eafc4dd156b7a73ed96584dab8bf47e5dd34ae0122defbe6d6ee23089fe3"
+        "sha256": "29c5c5fa9e41d12a186ea4107d3ecc137e82b7d5880c1860b6309d7c93d3f081"
       }
     },
     {
       "name": "plenary/ats_intro.html",
       "digest": {
-        "sha256": "2bd32522075ab00b77d6dba1a2a48097fee1e148710c5a7ff027e2ae530f0601"
+        "sha256": "dd27a9282c8cca2718c29416d9c39557aaf629b2caed424bf426158710edbfe0"
       }
     },
     {
       "name": "plenary/elm_intro.html",
       "digest": {
-        "sha256": "1c8c55ce5eafeee86ba4fe55a0a3e03998e0bc1108b82cdc58a2d89dbf2cb190"
+        "sha256": "cf722818866d971b2fb238a27d13452f8eac000cfc6a19765cc4a0c544eda2bb"
       }
     },
     {
       "name": "plenary/ilamb_intro.html",
       "digest": {
-        "sha256": "8597462948999c16e746978f0ed4fdee13bdb751fea0392938efad486e80d370"
+        "sha256": "39f47eff2d3a709d624d9d3f0c38f668431445f0f26c38f277070d26f884b23d"
       }
     },
     {
       "name": "plenary/tem_ee1_warming.html",
       "digest": {
-        "sha256": "397582828be6f5ac1e13c43141fddfae2dde2e3ff146a897b529d1dc79669e28"
+        "sha256": "762f40e0514d874359b8251f5d8a62dfc40a4f108bf28284910fbda3bf4d0ec0"
       }
     },
     {
       "name": "search.html",
       "digest": {
-        "sha256": "ffb4cdd1a2caf2c303ff6ce46f0ba1b3b19576ed56e5bb342ebfccc6cb0cc569"
+        "sha256": "948c1e898d3f8fe4023c35d0ebd40feced55f547707c446479600c40b59d18d6"
       }
     },
     {
       "name": "searchindex.js",
       "digest": {
-        "sha256": "b6fe37ddb9dc60207625ffc36553f770c1f7481cfd18ea4bd98211ef33eb6c7f"
+        "sha256": "8e3b92d16d982081f49a662b49ec6ab096408e33d81fd92155d15b637249c2c0"
       }
     },
     {
       "name": "setup.html",
       "digest": {
-        "sha256": "2758602860bf0487a5c3dede30f8f941e53168760d2a26be5b6822c6e0ba9ad5"
+        "sha256": "e26d540b3d717b2603081667d03571faa3690fac6c3892c56851a805091b78ae"
       }
     }
   ],
   "predicate": {
     "builder": {
-      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20908344187/attempts/1"
+      "id": "https://github.com/NGEE-Arctic/Field-to-Model/actions/runs/20924319488/attempts/1"
     },
     "buildType": "https://mobyproject.org/buildkit@v1",
     "materials": [
@@ -828,189 +828,351 @@
         "github_actor_id": "17805542",
         "github_event_name": "push",
         "github_event_payload": {
-          "after": "3cec57500d54d14359ab6186834a895bca5a1018",
+          "after": "f2e1475790b9fcbb08f03a2a10e5d34f8bc9bd73",
           "base_ref": null,
-          "before": "572b06e94003ef19b2a96d348411f286fb84170d",
+          "before": "3cec57500d54d14359ab6186834a895bca5a1018",
           "commits": [
             {
               "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "b0b413d3583c236e5767775dc883ed34435e57ee",
-              "message": "various updates for permafrost hydro notes",
-              "timestamp": "2026-01-11T17:49:02-07:00",
-              "tree_id": "e0ffa9f178f2200cc13133b1c509638fac600053",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/b0b413d3583c236e5767775dc883ed34435e57ee"
+              "id": "6c403810ee0f390cd7d3fb80954e29dc66bafa01",
+              "message": "adjust formatting for easier code copying, add note on inputs",
+              "timestamp": "2026-01-11T20:22:18-09:00",
+              "tree_id": "ad925269e3458a6e3e531cad04b4cbaea6bfe7b5",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/6c403810ee0f390cd7d3fb80954e29dc66bafa01"
             },
             {
               "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "5a0cd50c6742d5d6d1eba9da0a813f52596fd1a1",
-              "message": "cleanup output",
-              "timestamp": "2026-01-11T17:49:02-07:00",
-              "tree_id": "93c50955e29b1f8615aa07b8113a57ebe92ce6ee",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/5a0cd50c6742d5d6d1eba9da0a813f52596fd1a1"
+              "id": "b7244dd26d0e30c5e8db93524d5b3aa0234bafee",
+              "message": "Take temp mod out of precip file.",
+              "timestamp": "2026-01-11T20:22:18-09:00",
+              "tree_id": "12f6631f9959b1438cc172fc64d799d5bda0ccfe",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/b7244dd26d0e30c5e8db93524d5b3aa0234bafee"
             },
             {
               "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "cc6c944287529f14ff16ca08aec41d8065252bee",
-              "message": "add OLMT description",
-              "timestamp": "2026-01-11T17:49:59-07:00",
-              "tree_id": "5cee5b4cf63e9c6f10c5cfd29c807a6f95903efe",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/cc6c944287529f14ff16ca08aec41d8065252bee"
+              "id": "8a99484a8b78b46b5dde4a60187c24612a9e166e",
+              "message": "style, typos, reorg, slight",
+              "timestamp": "2026-01-11T20:22:18-09:00",
+              "tree_id": "d7a14b80b1d759aacc410dd9b17c507656743e60",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/8a99484a8b78b46b5dde4a60187c24612a9e166e"
             },
             {
               "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "b6e02c3179eb7cd166af375912333e1ff70e4a85",
-              "message": "add OLMT output images",
-              "timestamp": "2026-01-11T17:50:00-07:00",
-              "tree_id": "1b2b6e612d560a3de91e6d4e5499309107a0e6c1",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/b6e02c3179eb7cd166af375912333e1ff70e4a85"
+              "id": "7f51bff90217272321c6300164bdf145b6d101f6",
+              "message": "fix yrs on temp mod, add CMTNUM output",
+              "timestamp": "2026-01-11T20:22:18-09:00",
+              "tree_id": "7f8ae8282d6bfce939d0fc5ca52b3e5b12a57b6a",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/7f51bff90217272321c6300164bdf145b6d101f6"
             },
             {
               "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "bdeaffb9871613aae7603b19d1144a8527154251",
-              "message": "fix surf file issue for polygonal tundra",
-              "timestamp": "2026-01-11T17:50:00-07:00",
-              "tree_id": "0c194003037fdd378b2aa18367af374697dcfb28",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/bdeaffb9871613aae7603b19d1144a8527154251"
+              "id": "8c935adf247da3d073929fc418dc95b36920c86d",
+              "message": "get rid of note",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "30c32a33e0efc7a5b5a7c3e0e3cea26303d10a1d",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/8c935adf247da3d073929fc418dc95b36920c86d"
             },
             {
               "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "8e659458294d172a858ae75730e075af29ca271c",
-              "message": "add more content to elm_intro",
-              "timestamp": "2026-01-11T17:50:00-07:00",
-              "tree_id": "abe265bdc0b266e0e7ee4da38aff6a4e24330cf2",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/8e659458294d172a858ae75730e075af29ca271c"
+              "id": "2850d0074cc2716a4ff6dd68ae4d4d901cadca91",
+              "message": "fix transient years to run",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "5e104c70599e1a2b2a2d957f6580c2f9b2aed1c5",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/2850d0074cc2716a4ff6dd68ae4d4d901cadca91"
             },
             {
               "author": {
-                "email": "rich.p.fiorella@gmail.com",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rich.p.fiorella@gmail.com",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "2621bad3e854e23efd651790ac383515931bf40e",
-              "message": "update plenary notebooks",
-              "timestamp": "2026-01-11T20:07:49-07:00",
-              "tree_id": "d837aa6f9999b21eb6aaf9a96bece8792b0c53d8",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/2621bad3e854e23efd651790ac383515931bf40e"
+              "id": "b1195b71ff7411d43ca43363513acfb1587f95e6",
+              "message": "update precip scaling section, fix yrs, etc",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "4a6d8bb8e522bf7b1ca127584c62d0a18766e5fd",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/b1195b71ff7411d43ca43363513acfb1587f95e6"
             },
             {
               "author": {
-                "email": "rich.p.fiorella@gmail.com",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rich.p.fiorella@gmail.com",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "07c387331ce23ff6def815f1f33be398f5773acf",
-              "message": "finish updates to elm intro page",
-              "timestamp": "2026-01-11T20:31:56-07:00",
-              "tree_id": "681e8c947de1c368e64e8514906ee30900fa2970",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/07c387331ce23ff6def815f1f33be398f5773acf"
+              "id": "8a91eca5c1fae6067539d635c40a45df043acc11",
+              "message": "some formatting, (get code easier to copy in code blocks)",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "42697a88e37cb5d15d22a5039432e6666f974a32",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/8a91eca5c1fae6067539d635c40a45df043acc11"
             },
             {
               "author": {
-                "email": "rich.p.fiorella@gmail.com",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rich.p.fiorella@gmail.com",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "5fc72d6b2ccbb020e5db2bf949c98b5197fa8dac",
-              "message": "fix typo",
-              "timestamp": "2026-01-11T20:34:32-07:00",
-              "tree_id": "0c9397cd20b7efc734b6e6cab892ea32db35dbd7",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/5fc72d6b2ccbb020e5db2bf949c98b5197fa8dac"
+              "id": "975ca77c4a1ae420b5b864942cba2b4dabee6859",
+              "message": "update combined experiment",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "62c8d5a13d7b9fb3f675f6fd9435fb60633ad588",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/975ca77c4a1ae420b5b864942cba2b4dabee6859"
             },
             {
               "author": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "committer": {
-                "email": "rfiorella@lanl.gov",
-                "name": "Rich Fiorella",
-                "username": "rfiorella"
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
               },
               "distinct": false,
-              "id": "d8e9c60714ef87ccb791c6803c66c46df4423279",
-              "message": "move E3SM pointer",
-              "timestamp": "2026-01-11T21:23:22-07:00",
-              "tree_id": "df53bc65498be690f6615e7b348fbca6a0de72d2",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/d8e9c60714ef87ccb791c6803c66c46df4423279"
+              "id": "0be8156be28894f4f5eb7d0de8c89fd9109359c1",
+              "message": "Add auto test run script for breakout",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "873fc9e957083c8ed4ab23df1541dce9def38016",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/0be8156be28894f4f5eb7d0de8c89fd9109359c1"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "365ba740f6e4c8427f69518f243322b4bdbc326b",
+              "message": "standardize nameing by adding site to baseline run folder",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "61cb4fe786b5f8285af49e43f941b43022a33802",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/365ba740f6e4c8427f69518f243322b4bdbc326b"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "6b10cb82de68a527ea90622b55f0e0d95ff7ebe9",
+              "message": "Add cleanup to precip auto test run",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "55b3770fa2201ae9ff71cf45a6b5c25590cd2621",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/6b10cb82de68a527ea90622b55f0e0d95ff7ebe9"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "4c2c01273e9bc9b3a1fd083f686523c72783312e",
+              "message": "update precip viz notebook",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "a32e454593001b1453f8c7b6accf62a6c3ffcf77",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/4c2c01273e9bc9b3a1fd083f686523c72783312e"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "64ee78d8e558b185ef014ca6cac16f92b116fb64",
+              "message": "refactor the test to use a variable for the directory names.",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "2ec91d41ec1db7be24a2c6e0ca056b5cc7c744c6",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/64ee78d8e558b185ef014ca6cac16f92b116fb64"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "9c16866eb713210a109b740600f305f069d426ca",
+              "message": "Lots of github actions action:\n\n- add more datasets\n - add breakout test\n - add second field to matrix for shortname",
+              "timestamp": "2026-01-11T20:22:19-09:00",
+              "tree_id": "94684ed0b730b999c1e5c3c682f14644fa79994b",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/9c16866eb713210a109b740600f305f069d426ca"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "c72435c91d0e09d44e4ae6447dabe0dd4667aadc",
+              "message": "Fix syntax error in github action",
+              "timestamp": "2026-01-11T20:28:15-09:00",
+              "tree_id": "4b28a3ed8cdfa1032aa9a1082b715e84676bf5e5",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/c72435c91d0e09d44e4ae6447dabe0dd4667aadc"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "d0e17093b037ff9d859db5d42a8ba66a4a2f8dbf",
+              "message": "Add run mask adjustment to prevent test from running all 100 px..\n\n...which would take all night...",
+              "timestamp": "2026-01-11T20:58:15-09:00",
+              "tree_id": "13c0f32b08d86136af912afbf88f1d3171983885",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/d0e17093b037ff9d859db5d42a8ba66a4a2f8dbf"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "8aef77bda83414c48c1c9d4ad1235042f258d8ab",
+              "message": "Add run mask adjustment on the control in the warming.",
+              "timestamp": "2026-01-12T05:01:35-09:00",
+              "tree_id": "7958d5f54e91870244e398ba75ae2362d87bc3ff",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/8aef77bda83414c48c1c9d4ad1235042f258d8ab"
+            },
+            {
+              "author": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "committer": {
+                "email": "tcarman2@alaska.edu",
+                "name": "Tobey Carman",
+                "username": "tobeycarman"
+              },
+              "distinct": false,
+              "id": "16bec033d7feebc05dce7771c710ab68142b3a70",
+              "message": "Fix bug (extra space) in ignored words list for codespell",
+              "timestamp": "2026-01-12T05:15:50-09:00",
+              "tree_id": "59c68bc3ed12699852ea58501ffc29d4f44608da",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/16bec033d7feebc05dce7771c710ab68142b3a70"
             },
             {
               "author": {
@@ -1024,14 +1186,14 @@
                 "username": "web-flow"
               },
               "distinct": true,
-              "id": "3cec57500d54d14359ab6186834a895bca5a1018",
-              "message": "Merge pull request #111 from NGEE-Arctic/permafrost-hydro-breakout\n\nvarious updates for permafrost hydro notes",
-              "timestamp": "2026-01-11T21:45:03-07:00",
-              "tree_id": "df53bc65498be690f6615e7b348fbca6a0de72d2",
-              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/3cec57500d54d14359ab6186834a895bca5a1018"
+              "id": "f2e1475790b9fcbb08f03a2a10e5d34f8bc9bd73",
+              "message": "Merge pull request #114 from NGEE-Arctic/TEM-SVP-breakout\n\nTem svp breakout",
+              "timestamp": "2026-01-12T08:10:12-07:00",
+              "tree_id": "59c68bc3ed12699852ea58501ffc29d4f44608da",
+              "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/f2e1475790b9fcbb08f03a2a10e5d34f8bc9bd73"
             }
           ],
-          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/572b06e94003...3cec57500d54",
+          "compare": "https://github.com/NGEE-Arctic/Field-to-Model/compare/3cec57500d54...f2e1475790b9",
           "created": false,
           "deleted": false,
           "forced": false,
@@ -1047,11 +1209,11 @@
               "username": "web-flow"
             },
             "distinct": true,
-            "id": "3cec57500d54d14359ab6186834a895bca5a1018",
-            "message": "Merge pull request #111 from NGEE-Arctic/permafrost-hydro-breakout\n\nvarious updates for permafrost hydro notes",
-            "timestamp": "2026-01-11T21:45:03-07:00",
-            "tree_id": "df53bc65498be690f6615e7b348fbca6a0de72d2",
-            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/3cec57500d54d14359ab6186834a895bca5a1018"
+            "id": "f2e1475790b9fcbb08f03a2a10e5d34f8bc9bd73",
+            "message": "Merge pull request #114 from NGEE-Arctic/TEM-SVP-breakout\n\nTem svp breakout",
+            "timestamp": "2026-01-12T08:10:12-07:00",
+            "tree_id": "59c68bc3ed12699852ea58501ffc29d4f44608da",
+            "url": "https://github.com/NGEE-Arctic/Field-to-Model/commit/f2e1475790b9fcbb08f03a2a10e5d34f8bc9bd73"
           },
           "organization": {
             "avatar_url": "https://avatars.githubusercontent.com/u/184418857?v=4",
@@ -1157,9 +1319,9 @@
             },
             "private": false,
             "pulls_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/pulls{/number}",
-            "pushed_at": 1768193104,
+            "pushed_at": 1768230613,
             "releases_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/releases{/id}",
-            "size": 53091,
+            "size": 53524,
             "ssh_url": "git@github.com:NGEE-Arctic/Field-to-Model.git",
             "stargazers": 0,
             "stargazers_count": 0,
@@ -1172,7 +1334,7 @@
             "teams_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/teams",
             "topics": [],
             "trees_url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model/git/trees{/sha}",
-            "updated_at": "2026-01-12T00:27:23Z",
+            "updated_at": "2026-01-12T04:45:08Z",
             "url": "https://api.github.com/repos/NGEE-Arctic/Field-to-Model",
             "visibility": "public",
             "watchers": 0,
@@ -1211,20 +1373,20 @@
         "github_repository_owner": "NGEE-Arctic",
         "github_repository_owner_id": "184418857",
         "github_run_attempt": "1",
-        "github_run_id": "20908344187",
-        "github_run_number": "337",
+        "github_run_id": "20924319488",
+        "github_run_number": "344",
         "github_runner_arch": "X64",
         "github_runner_environment": "github-hosted",
         "github_runner_image_os": "ubuntu24",
         "github_runner_image_version": "20260105.202.1",
-        "github_runner_name": "GitHub Actions 1000006003",
+        "github_runner_name": "GitHub Actions 1000006071",
         "github_runner_os": "Linux",
-        "github_runner_tracking_id": "github_37a6ba6a-a620-48fa-9b59-3bed621f358b",
+        "github_runner_tracking_id": "github_7d155006-be30-4be4-8f73-5fb042d950fe",
         "github_server_url": "https://github.com",
         "github_triggering_actor": "rfiorella",
         "github_workflow": "Sphinx: Render docs",
         "github_workflow_ref": "NGEE-Arctic/Field-to-Model/.github/workflows/docs.yml@refs/heads/main",
-        "github_workflow_sha": "3cec57500d54d14359ab6186834a895bca5a1018",
+        "github_workflow_sha": "f2e1475790b9fcbb08f03a2a10e5d34f8bc9bd73",
         "platform": "linux/amd64"
       }
     },
@@ -1548,23 +1710,23 @@
         }
       ],
       "digestMapping": {
-        "sha256:09c8871559bbff644470f6a560698ee5fc5d7629dbdec0a9d7ebdc91f9ba2004": "step8",
-        "sha256:2c8adf36d521289b361bf9406a7b938d7409d86ed6c82ce2d38f21bfe943c0fe": "step1",
-        "sha256:35b84786eef846955d26ae4b6eb714252d929318f8ead1c6f04822021d846055": "step3",
+        "sha256:3778919f92cbc22e26ae44a891fa49289c6aa042ce4555d17b2ff1ad54991717": "step7",
         "sha256:495dde8bb048f85f9e257b18e77c7e688416cf924929b77b94e0a7f41b788de0": "step0",
-        "sha256:6d66e577055426c51c90da48159ed0ba3e05abb5947080378278958ae98a7881": "step7",
-        "sha256:7be593919cf4653e1b505f2bd01c74311685b973af43f648ce8f79c3f8154997": "step9",
-        "sha256:864617c80f23dae370cf25476df8d7159e8352bd9b0c666cd7b0892fc2241f8d": "step2",
-        "sha256:a35fed880e013f7eeaa0c6c95447f900d201ec7c001ecc685c87abd40e3ae52e": "step4",
-        "sha256:a55e7582d7a483a4cbd20166f293631be0a38e6373f5028790ace7ff11fa9d6d": "step5",
-        "sha256:b314d708b50846dfa6bfab37d6c7b9427af80509ea16a0e4b64bfae66a8e9b4c": "step10",
-        "sha256:f416652ca76880e29eb97bf2b9162cad5b74b66bea59ae5ebaedec6dda55056f": "step6"
+        "sha256:54648d62a113f60365dd738668ec0a88d695a735f41898fb34ef858a9a05a043": "step1",
+        "sha256:66201a84347a55327ec7233925a10139b28611aa8fc0ed81ee36e6b6e89c6202": "step3",
+        "sha256:681e1cbe8b2c3eaaa224b1c682894a1d76da902c352afb08e86a98a06920ea14": "step10",
+        "sha256:7614620707d6c9afbd9f143fa1e2173a527f4c73680bdb49c4675df4ea7cbfdb": "step2",
+        "sha256:76d9e3506e82c4cab13be31256088185713ba8e5a965aae7ff5345032ce34556": "step5",
+        "sha256:7d2668e63ce36243d97129304c2383e2e4860969fe8dfdd0d1aba582787c1f10": "step6",
+        "sha256:a55c6543d03bdd54e5a2b5f5605e92589b10bc19240e0ae4911a6a6d494e1094": "step9",
+        "sha256:c9a55a9218c127fc3814d4f1ff562a2f3437e317dac2e1444f9348c9303e85bb": "step8",
+        "sha256:d9c115c0c562b3ce4b01f5a2ac6f863b974111f13a9d3441ae3474fee9061662": "step4"
       }
     },
     "metadata": {
-      "buildInvocationID": "zocqnpjiw0d42vsqbgd0hg7kg",
-      "buildStartedOn": "2026-01-12T04:45:20.390051197Z",
-      "buildFinishedOn": "2026-01-12T04:45:42.624438808Z",
+      "buildInvocationID": "8y4gxdyl2js5p0lhu15y4xfz5",
+      "buildStartedOn": "2026-01-12T15:10:35.202073688Z",
+      "buildFinishedOn": "2026-01-12T15:10:58.636120611Z",
       "completeness": {
         "parameters": true,
         "environment": true,
@@ -1575,7 +1737,7 @@
         "vcs": {
           "localdir:context": ".",
           "localdir:dockerfile": "Docker",
-          "revision": "3cec57500d54d14359ab6186834a895bca5a1018",
+          "revision": "f2e1475790b9fcbb08f03a2a10e5d34f8bc9bd73",
           "source": "https://github.com/NGEE-Arctic/Field-to-Model"
         },
         "source": {
@@ -1775,8 +1937,8 @@
                 }
               ],
               "digestMapping": {
-                "sha256:266cc976869e9fe09382ef21f75f564f0b9dac3167f9eccc4c6f73a95222e12b": "step0",
-                "sha256:f04487ceee5c8a8a4710a745f00cb14e7862667207a5949053ae41ecd5c48903": "step1"
+                "sha256:6510f163f12d78305f88def90128e0e23c9c90943baeebf97cce8e15aa68376b": "step1",
+                "sha256:68aca32139dd407f65a8b8121723cbc049c69d1b8098f9e588bec35d96d0a302": "step0"
               }
             }
           ]
