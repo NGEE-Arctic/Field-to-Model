@@ -165,6 +165,10 @@ case $i in
     --use_arctic_init)
     use_arctic_init=True
     shift
+    ;;    
+    --mod_parm_file=*)
+    mod_parm_file="${i#*=}"
+    shift
     ;;   
     --no_submit)
     no_submit=True
@@ -267,6 +271,8 @@ scale_ndep="${scale_ndep:-1.0}"
 startdate_scale_ndep="${startdate_scale_ndep:-99991231}"
 scale_pdep="${scale_pdep:-1.0}"
 startdate_scale_pdep="${startdate_scale_pdep:-99991231}"
+mod_parm_file="${mod_parm_file:-""}"
+
 
 #enforce met naming in prefix
 case_prefix=${case_prefix}_${met_source}
@@ -356,6 +362,10 @@ if [ "${use_noshrubs}" = True ]; then
   else
     echo "--use_noshrubs only works with site_name=imnaviat_creek"
   fi
+fi
+if [ "${mod_parm_file}" != "" ]; then
+  echo "Using modified PFT parameter file: ${mod_parm_file}"
+  options="$options --mod_parm_file ${mod_parm_file}"
 fi
 echo " "
 # =======================================================================================
