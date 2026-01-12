@@ -126,7 +126,7 @@ Baseline run:
 
 #. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/baseline_tussock`
 
-#. Adjust the runmask:
+#. Adjust the run mask:
 
    .. code:: bash
 
@@ -147,6 +147,11 @@ Baseline run:
 
 #. Start the run.
    
+   .. code:: 
+
+      dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 115 -n 0 -l monitor 
+
+
    .. note:: Inputs, length of data
 
       If you are using different input data, you might need to adjust the number
@@ -181,10 +186,11 @@ Baseline run:
 
    .. note:: Forcing the community type
 
-      If you would like to ignore the vegetation map and use a particular
-      community type (CMT) for the run, you can use the ``--force-cmt`` flag.
-      :code:`--force-cmt 5` is for tussock tundra. For wet sedge tundra, use
-      :code:`--force-cmt 6`, and for heath tundra, use :code:`--force-cmt 7`.
+      If you would like to ignore the input vegetation map (``vegetation.nc``)
+      and use a particular community type (CMT) for the run, you can use the
+      ``--force-cmt`` flag. :code:`--force-cmt 5` is for tussock tundra. For wet
+      sedge tundra, use :code:`--force-cmt 6`, and for heath tundra, use
+      :code:`--force-cmt 7`.
 
       .. collapse:: Listing available CMTs
          :class: workshop-collapse
@@ -196,12 +202,7 @@ Baseline run:
 
             pyddt-pyddt-param --report-all-cmts parameters/
 
-   .. code:: 
-
-      dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 115 -n 0 -l monitor 
-
-
-    
+  
     
 
 Temperature scaled by +3 °C:
@@ -233,7 +234,11 @@ Temperature scaled by +3 °C:
       mv inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/modified_historic-climate.nc \
          inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc   
 
-#. Adjust the run mask: :code:`pyddt-runmask --reset --yx 0 0 run-mask.nc`
+#. Adjust the run mask:
+
+   .. code:: bash
+
+      pyddt-runmask --reset --yx 0 0 inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/run-mask.nc
 
 #. Setup the output specification file 
 
@@ -400,6 +405,11 @@ Once the server is running, you should see a URL printed out in the terminal
 that you can open in your web browser on your host computer to access the
 Jupyter interface. Navigate to the :code:`vis_notebooks/TEM/` directory and
 open the :code:`precipitation_plotting.ipynb` notebook.
+
+.. note:: :red:`TODO: plots: 2005-15 (capture pre and post warming)`
+.. note:: :red:`TODO: GPP might have to shorten...to see right`
+
+
 
 Advanced TEM Processing and Information
 ---------------------------------------
