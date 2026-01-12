@@ -124,7 +124,11 @@ However, some steps to adjusting the input climate data files differ. Below are 
 Baseline run:
 ^^^^^^^^^^^^^^^^^^^^
 
-#. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/baseline_tussock`
+#. Change into the run folder: 
+
+   .. code::
+
+      cd /mnt/output/tem/tem_ee2_breakout/baseline_tussock
 
 #. Adjust the run mask:
 
@@ -208,7 +212,11 @@ Baseline run:
 Temperature scaled by +3 °C:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/warming_imnavait_tussock`
+#. Change into the run folder:
+
+   .. code::
+
+      cd /mnt/output/tem/tem_ee2_breakout/warming_imnavait_tussock
 
 #. Adjust the input climate data:
 
@@ -257,7 +265,11 @@ Temperature scaled by +3 °C:
 Precipitation scaling (rain +40%, snow +60%):
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/precip_imnavait_tussock`
+#. Change into the run folder: 
+
+   .. code::
+
+      cd /mnt/output/tem/tem_ee2_breakout/precip_imnavait_tussock
 
 #. Adjust the input climate data with the :code:`modify_precipitation_percent.py` script. Since in TEM, precipitation falls as rain or snow depending on the average monthly air temperature, we will modify rain and snow separately assuming that rain occurs in the summer months (June, July, August, September) and snow in the winter months (October, November, December, January, February, March, April, May). 
 
@@ -322,7 +334,11 @@ Precipitation scaling (rain +40%, snow +60%):
 Combined temperature and precipitation scaling:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Change into the run folder: :code:`cd /mnt/output/tem/tem_ee2_breakout/warming_and_precip_imnavait_tussock`
+#. Change into the run folder: 
+
+   .. code:: 
+
+      cd /mnt/output/tem/tem_ee2_breakout/warming_and_precip_imnavait_tussock
 
 #. Adjust the input climate data
 
