@@ -66,6 +66,7 @@ Help()
     echo "  --mod_parm_file           Use a modified PFT parameter file (Note, requires full path)"
     echo "  --use_allshrubs           Use a modified surface file with 100% Broadleaf deciduous shrub – boreal"
     echo "  --use_noshrubs            Use a modified surface file with 100% C3 arctic grass"
+    echo "  --more_vertlayers         Turn on more vertical soil layers in ELM"
     exit 0
 }
 
@@ -224,6 +225,10 @@ case $i in
     flat_centered_polygons=True
     shift
     ;;
+    --more_vertlayers)
+    more_vertlayers=True
+    shift
+    ;;
     *)
         # unknown option
     ;;
@@ -272,6 +277,7 @@ startdate_scale_ndep="${startdate_scale_ndep:-99991231}"
 scale_pdep="${scale_pdep:-1.0}"
 startdate_scale_pdep="${startdate_scale_pdep:-99991231}"
 mod_parm_file="${mod_parm_file:-""}"
+more_vertlayers="${more_vertlayers:-False}"
 
 
 #enforce met naming in prefix
@@ -366,6 +372,10 @@ fi
 if [ "${mod_parm_file}" != "" ]; then
   echo "Using modified PFT parameter file: ${mod_parm_file}"
   options="$options --mod_parm_file ${mod_parm_file}"
+fi
+if [ "${more_vertlayers}" = True ]; then
+  echo "Turning on more vertical soil layers in ELM"
+  options="$options --more_vertlayers"
 fi
 echo " "
 # =======================================================================================
