@@ -212,13 +212,6 @@ Temperature scaled by +3 °C:
 
 #. Adjust the input climate data:
 
-
-   .. note:: :red:`TODO: Going to need to do the gluing again here...`
-
-      Will have to handle the stitching together of inputs...2019 is in the 
-      projected file in these datasets...
-
-
    .. code:: shell
 
       python /home/modex_user/model_examples/TEM/modify_air_temperature.py \
