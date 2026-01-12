@@ -84,7 +84,20 @@ jobs:
       strategy:
         fail-fast: false
         matrix:
-          INPUT_DATASET: [modex26_1x1_AK-UTQ, cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10]
+          INPUT_DATASET:
+          include:
+            - INPUT_DATASET: modex26_1x1_AK-UTQ
+              SHORT_NAME: ak-utq
+            - INPUT_DATASET: cru-ts40_ar5_rcp85_ncar-ccsm4_toolik_field_station_10x10
+              SHORT_NAME: toolik
+            - INPUT_DATASET: cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10
+              SHORT_NAME: imnavait
+            - INPUT_DATASET: cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Kougarok_10x10
+              SHORT_NAME: kougarok
+            - INPUT_DATASET: cru-ts40_ar5_rcp85_ncar-ccsm4_EML_study_area_10x10
+              SHORT_NAME: eml
+            - INPUT_DATASET: cru-ts40_ar5_rcp85_ncar-ccsm4_KUPARUK_10x10
+              SHORT_NAME: kuparuk
       steps:
         - name: Checkout repo
           uses: actions/checkout@v6
@@ -104,3 +117,7 @@ jobs:
         - name: Run warming experiment for inputdata set
           run: |
             docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/TEM/auto_test_run_warming_experiment.sh ${{matrix.INPUT_DATASET}}
+
+        - name: Run breakout group experiments for input open_dataset
+          run: |
+            docker run --rm -v $(pwd):/home/modex_user -v inputdata:/mnt/inputdata -v output:/mnt/output yuanfornl/ngee-arctic-modex26:models-main-latest /home/modex_user/model_examples/TEM/auto_test_run_breakout.sh ${{matrix.INPUT_DATASET}} ${{matrix.SHORT_NAME}}
