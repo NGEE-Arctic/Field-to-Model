@@ -25,6 +25,7 @@ INPUT_DATA_NAME=$1
 ##############################
 # Setup
 ##############################
+rm -rf /mnt/output/tem/tem_ee2_breakout/*
 
 mkdir -p /mnt/output/tem/tem_ee2_breakout
 cd /mnt/output/tem/tem_ee2_breakout
