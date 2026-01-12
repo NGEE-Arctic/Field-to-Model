@@ -69,17 +69,6 @@ After these runs are completed, we can compare the impacts of this initializatio
     Therefore, if you want to perform a second simulation on a site, you should also set the `--case_prefix` option so that
     the case has a different name. In this case, we have set it to "Arctic_init" to distinguish it from our control.
 
-
-Under the hood
---------------
-The script we have developed simplifies the interface to the Offline Land Model Testbed (OLMT), developed by
-Dan Ricciuto (ORNL). OLMT itself simplifies the setup of model cases necessary to spin up an ELM simulation from
-a 'cold start' condition. (Figure of hierarchy?). OLMT sets up three cases that run consecutively: an 'accelerated'
-decomposition spin up that features accelerated biogeochemical cycling, a second stage of spin up with normal
-biogeochemical cycling rates, and finally a transient run that starts in 1850 and continues to near present
-(depending on how long the forcing datasets run). OLMT automates the setup of these cases through the E3SM case
-control system (CIME - Common Infrastructure for Modeling the Earth).
-
 Adding demography and disturbance: ELM-FATES
 --------------------------------------------
 FATES is the “Functionally Assembled Terrestrial Ecosystem Simulator.” It is an optional external module which can run within ELM to include alternative representations of ecosystem processes, namely vegetation demography and dynamic vegetation and disturbance.  FATES is a cohort- and patch-based model of vegetation competition and co-existence, allowing a representation of the terrestrial biosphere which accounts for the division of the land surface into successional stages, and for competition for light between height structured cohorts of representative trees of various plant functional types.
@@ -97,7 +86,83 @@ Here are a few quick instructions and tips for running ELM-FATES:
 * A main way to "turn on" the FATES model is through a compset. Example compsets for FATES are IELMFATES or I1850ELMFATES
 * There is also a containerized version of FATES using Docker, which was created in 2024.
 
+What's going on under the hood?
+------------------------------------
+The script we have developed simplifies the interface to the Offline Land Model Testbed (OLMT), developed by
+Dan Ricciuto (ORNL). OLMT itself simplifies the setup of model cases necessary to spin up an ELM simulation from
+a 'cold start' condition. (Figure of hierarchy?). OLMT sets up three cases that run consecutively: an 'accelerated'
+decomposition spin up that features accelerated biogeochemical cycling, a second stage of spin up with normal
+biogeochemical cycling rates, and finally a transient run that starts in 1850 and continues to near present
+(depending on how long the forcing datasets run). OLMT automates the setup of these cases through the E3SM case
+control system (CIME - Common Infrastructure for Modeling the Earth).
 
+Understanding OLMT/E3SM terminal output during the run
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OLMT, and the E3SM cases that it sets up and runs, will both print output to the terminal window while the model is running.
+This output can be useful for diagnosing problems with the run, but it can be hard to parse if you are unfamiliar with the model. 
+In this section, we provide a brief overview of what each section of the output means. (Note: all of the python scripts here
+are not directly called in the workshop, but are called by the shell script we have provided. You can learn more about these scripts
+by viewing the OLMT links in the additional information sections).
+
+First, the ``run_ngeearctic_site.sh`` we have provided will print some information about the case being run:
+
+.. figure:: ../_static/plenary/elm/elm-output-1.png
+   :alt: First output stage from ELM
+   :width: 80%
+
+Second, the script configures a call to the OLMT Python script, ``site_fullrun.py``, which sets up and runs the ELM cases. The script we have provided lists all of the arguments that are provided to set up the cases:
+
+.. figure:: ../_static/plenary/elm/elm-output-2.png
+   :alt: Second output stage from ELM
+   :width: 80%
+
+In turn, ``site_fullrun.py`` sets up each case with three different calls to ``runcase.py`` which uses settings appropriate for each case, and sets them to run sequentially:
+
+.. figure:: ../_static/plenary/elm/elm-output-3.png
+   :alt: Third output stage from ELM
+   :width: 80%
+
+At this stage, OLMT begins to walk through the CIME scripts that are used to set up and run each case. While there are a lot of details between each step here that can be modified by users, the main steps in using the CIME case management system involve four scripts:
+1. ``create_newcase`` - this script sets up a new case directory with the appropriate model components, resolution, and compset (set of E3SM components that are active and how they are configured). This script also creates a case directory.
+2. ``case.setup`` - this script sets up the case with the appropriate model parameter files, input data links, user namelist options, and for parallel runs, processor layouts.
+3. ``case.build`` - this script compiles the model code for the case (note in the case of OLMT, all three cases use the same executable, so this step is only done for the first case).
+4. ``case.submit`` - this script runs the model case. 
+
+The ``create_newcase`` and ``case.setup`` steps are shown below:
+
+.. figure:: ../_static/plenary/elm/elm-output-5.png
+   :alt: create_newcase and case.setup output
+   :width: 80%
+
+(Note: in this case, each is specified to run on 1 processor. All of the other domains - e.g., ATM, ICE, OCN - are not active in ELM only runs, and since these ELM runs are only a single grid cell, only one processor is needed.)
+
+The model compiles (``case.build``) and the case scripts check to make sure all of the namelists (e.g., a list of options set at runtime that is common in Fortran-based models) are set up correctly:
+
+.. figure:: ../_static/plenary/elm/elm-output-6.png
+   :alt: Preview namelists
+   :width: 80%
+
+Finally, the model runs:
+
+.. figure:: ../_static/plenary/elm/elm-output-4.png
+   :alt: Model run output
+   :width: 80%
+
+
+CIME and configurations of E3SM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Each component of E3SM (e.g., atmosphere, land, sea ice, ocean, land ice) can be configured in different ways depending on the scientific questions being asked. These configurations are called 'compsets' (component-sets) and define which components are active in a simulation, and how they are configured. CIME provides the "glue" to help orchestrate compilation and running of coupled (or single model component) simulations. Land-only compsets in E3SM start with 'I', and then include components that describe: what time period is being simulated, whether the coupler bypass is being used, what biogeochemistry model is being used (if any, there is also a satellite phenology mode), different models for below-ground decomposition, and whether disturbance and demography (FATES) are enabled.
+
+
+Visualizing ELM output in Jupyter Lab
+--------------------------------------
+
+
+How different are the meteorological forcing datasets?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Examining case output
+^^^^^^^^^^^^^^^^^^^^^^
 
 
 ======================
