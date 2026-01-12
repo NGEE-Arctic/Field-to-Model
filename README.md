@@ -27,7 +27,7 @@ for all setup instructions, agendas, and information!**
 ## Developer Info
 
 > [!TIP]
-> Attendeeds should be able to ignore this section.
+> Attendees should be able to ignore this section.
 
 More comprehensive developer information is held in the Developer Notes section
 of the [workshop website](https://ngee-arctic.github.io/Field-to-Model/index.html#developer-notes),
