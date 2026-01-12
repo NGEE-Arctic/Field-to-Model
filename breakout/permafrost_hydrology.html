@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Permafrost hydrology breakout group &#8212; ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</title>
+    <title>8. Permafrost hydrology breakout group &#8212; ModEx 2026 (updated: Jan 12 04:45:40 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=3b8a77e7"></script>
+    <script src="../_static/documentation_options.js?v=268f7ac9"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="subgrid_variability_ELM.html" title="7.4.3. Sub-grid variability in ELM"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 04:45:40 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>Permafrost hydrology breakout group</a></li> 
       </ul>
     </div>  
@@ -58,6 +58,14 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
 <section id="elm-s-vertical-discretization">
 <h3><span class="section-number">8.1.1. </span>ELM’s vertical discretization<a class="headerlink" href="#elm-s-vertical-discretization" title="Link to this heading">¶</a></h3>
 <p>ELM represents the subsurface using a vertically discretized soil column designed to resolve strong near-surface gradients while still extending deep enough to capture deep soil temperature responses. The standard configuration uses 15 soil layers with exponentially increasing thickness with depth, placing many thin layers near the surface where temperature, moisture, and freeze–thaw gradients are sharp, and fewer, thicker layers at depth where changes are slower. Importantly, ELM only computes hydrology on the top 10 layers, which extends to ~3.8 meters depth. The remaining five layers below this depth are only used for thermal calculations and do not participate in water storage or flow.</p>
+<p>Relative to many other land surface models, the ELM soil column extends deeper into the subsurface than many other models, however, it has fairly coarse resolution between 0.5-3.8 meters and so the ability to resolve important permafrost processes in this region may be limited. (See figure below):</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/model_vertical_structure.png"><img alt="Land surface model vertical discretization comparison" src="../_images/model_vertical_structure.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Figure illustrating differences in vertical discretization across 8 land surface models. ELM is third from left. Figure from Matthes et al. (2025).</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="freezing-physics-in-elm-heat-phase-change-and-supercooled-water">
 <h3><span class="section-number">8.1.2. </span>Freezing physics in ELM: heat, phase change, and “supercooled” water<a class="headerlink" href="#freezing-physics-in-elm-heat-phase-change-and-supercooled-water" title="Link to this heading">¶</a></h3>
@@ -88,11 +96,11 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
 <section id="polygonal-tundra-landscapes">
 <h2><span class="section-number">8.3. </span>Polygonal tundra landscapes<a class="headerlink" href="#polygonal-tundra-landscapes" title="Link to this heading">¶</a></h2>
 <p>Networks of subsurface ice wedges can create polygonal tundra landscapes. The ice wedges alter Arctic hydrology both by promoting microtopographic variations at the surface that affects surface water storage capacity and by acting as subsurface barriers to lateral flow.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/AboltYoungPolygons.png"><img alt="Example of polygonal tundra landscape" src="../_images/AboltYoungPolygons.png" style="width: 80%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">DEM (a) and polygon classification (b) of a landscape south of Prudhoe Bay, Alaska (Abolt and Young, 2020). In (b), high-centered polygons are shown in red, flat-centered polygons are closer to white, and low-centered polygons are shown in blue.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-text">DEM (a) and polygon classification (b) of a landscape south of Prudhoe Bay, Alaska (Abolt and Young, 2020). In (b), high-centered polygons are shown in red, flat-centered polygons are closer to white, and low-centered polygons are shown in blue.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>In Phase 3 of NGEE Arctic, a new parameterization to represent these polygonal landscapes was introduced to try to capture these effects in ELM (Demir et al. in preparation). This parameterization was developed using intermediate-scale ATS simulations of polygonal tundra to inform new functional relationships between microtopography and surface and subsurface hydrology in ELM.</p>
@@ -132,7 +140,7 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
     -v output:/mnt/output \
     yuanfornl/ngee-arctic-modex26:models-main-latest \
     /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
-    --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --MISSING_SURFACE_FILE ARG
+    --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons
 </pre></div>
 </div>
 <p>Polygonal tundra warming experiment:</p>
@@ -142,8 +150,8 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
     -v output:/mnt/output \
     yuanfornl/ngee-arctic-modex26:models-main-latest \
     /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
-    --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --MISSING_SURFACE_FILE ARG \
-    --add_temperature 5.0
+    --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons \
+    --add_temperature 5.0 --startdate_add_temperature=20100601 --transient_years 200
 </pre></div>
 </div>
 </section>
@@ -248,7 +256,7 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
         <li class="right" >
           <a href="subgrid_variability_ELM.html" title="7.4.3. Sub-grid variability in ELM"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 04:45:40 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>Permafrost hydrology breakout group</a></li> 
       </ul>
     </div>

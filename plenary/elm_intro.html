@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Introduction to ELM and workshop scripts &#8212; ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</title>
+    <title>3. Introduction to ELM and workshop scripts &#8212; ModEx 2026 (updated: Jan 12 04:45:40 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=3b8a77e7"></script>
+    <script src="../_static/documentation_options.js?v=268f7ac9"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="../setup.html" title="2. Getting Started"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 04:45:40 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>  
@@ -98,18 +98,8 @@ forcing from dapper will be used, but GSWP3 is available as an option for compar
 Therefore, if you want to perform a second simulation on a site, you should also set the <cite>–case_prefix</cite> option so that
 the case has a different name. In this case, we have set it to “Arctic_init” to distinguish it from our control.</p>
 </div>
-<section id="under-the-hood">
-<h2><span class="section-number">3.1. </span>Under the hood<a class="headerlink" href="#under-the-hood" title="Link to this heading">¶</a></h2>
-<p>The script we have developed simplifies the interface to the Offline Land Model Testbed (OLMT), developed by
-Dan Ricciuto (ORNL). OLMT itself simplifies the setup of model cases necessary to spin up an ELM simulation from
-a ‘cold start’ condition. (Figure of hierarchy?). OLMT sets up three cases that run consecutively: an ‘accelerated’
-decomposition spin up that features accelerated biogeochemical cycling, a second stage of spin up with normal
-biogeochemical cycling rates, and finally a transient run that starts in 1850 and continues to near present
-(depending on how long the forcing datasets run). OLMT automates the setup of these cases through the E3SM case
-control system (CIME - Common Infrastructure for Modeling the Earth).</p>
-</section>
 <section id="adding-demography-and-disturbance-elm-fates">
-<h2><span class="section-number">3.2. </span>Adding demography and disturbance: ELM-FATES<a class="headerlink" href="#adding-demography-and-disturbance-elm-fates" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Adding demography and disturbance: ELM-FATES<a class="headerlink" href="#adding-demography-and-disturbance-elm-fates" title="Link to this heading">¶</a></h2>
 <p>FATES is the “Functionally Assembled Terrestrial Ecosystem Simulator.” It is an optional external module which can run within ELM to include alternative representations of ecosystem processes, namely vegetation demography and dynamic vegetation and disturbance.  FATES is a cohort- and patch-based model of vegetation competition and co-existence, allowing a representation of the terrestrial biosphere which accounts for the division of the land surface into successional stages, and for competition for light between height structured cohorts of representative trees of various plant functional types.</p>
 <p>A very detailed explain of FATES can be found in this <a class="reference external" href="https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html">Technical Documentation</a></p>
 <p>The source code for FATES, as well as discussion boards, and tracking changes can be found in this <a class="reference external" href="https://github.com/NGEET/fates">GitHub repository</a></p>
@@ -121,11 +111,115 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
 <li><p>A main way to “turn on” the FATES model is through a compset. Example compsets for FATES are IELMFATES or I1850ELMFATES</p></li>
 <li><p>There is also a containerized version of FATES using Docker, which was created in 2024.</p></li>
 </ul>
+</section>
+<section id="what-s-going-on-under-the-hood">
+<h2><span class="section-number">3.2. </span>What’s going on under the hood?<a class="headerlink" href="#what-s-going-on-under-the-hood" title="Link to this heading">¶</a></h2>
+<p>The script we have developed simplifies the interface to the Offline Land Model Testbed (OLMT), developed by
+Dan Ricciuto (ORNL). OLMT itself simplifies the setup of model cases necessary to spin up an ELM simulation from
+a ‘cold start’ condition. (Figure of hierarchy?). OLMT sets up three cases that run consecutively: an ‘accelerated’
+decomposition spin up that features accelerated biogeochemical cycling, a second stage of spin up with normal
+biogeochemical cycling rates, and finally a transient run that starts in 1850 and continues to near present
+(depending on how long the forcing datasets run). OLMT automates the setup of these cases through the E3SM case
+control system (CIME - Common Infrastructure for Modeling the Earth).</p>
+<section id="understanding-olmt-e3sm-terminal-output-during-the-run">
+<h3><span class="section-number">3.2.1. </span>Understanding OLMT/E3SM terminal output during the run<a class="headerlink" href="#understanding-olmt-e3sm-terminal-output-during-the-run" title="Link to this heading">¶</a></h3>
+<p>OLMT, and the E3SM cases that it sets up and runs, will both print output to the terminal window while the model is running.
+This output can be useful for diagnosing problems with the run, but it can be hard to parse if you are unfamiliar with the model.
+In this section, we provide a brief overview of what each section of the output means. (Note: all of the python scripts here
+are not directly called in the workshop, but are called by the shell script we have provided. You can learn more about these scripts
+by viewing the OLMT links in the additional information sections).</p>
+<p>First, the <code class="docutils literal notranslate"><span class="pre">run_ngeearctic_site.sh</span></code> we have provided will print some information about the case being run:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/elm-output-1.png"><img alt="First output stage from ELM" src="../_images/elm-output-1.png" style="width: 80%;" />
+</a>
+</figure>
+<p>Second, the script configures a call to the OLMT Python script, <code class="docutils literal notranslate"><span class="pre">site_fullrun.py</span></code>, which sets up and runs the ELM cases. The script we have provided lists all of the arguments that are provided to set up the cases:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/elm-output-2.png"><img alt="Second output stage from ELM" src="../_images/elm-output-2.png" style="width: 80%;" />
+</a>
+</figure>
+<p>In turn, <code class="docutils literal notranslate"><span class="pre">site_fullrun.py</span></code> sets up each case with three different calls to <code class="docutils literal notranslate"><span class="pre">runcase.py</span></code> which uses settings appropriate for each case, and sets them to run sequentially:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/elm-output-3.png"><img alt="Third output stage from ELM" src="../_images/elm-output-3.png" style="width: 80%;" />
+</a>
+</figure>
+<p>At this stage, OLMT begins to walk through the CIME scripts that are used to set up and run each case. While there are a lot of details between each step here that can be modified by users, the main steps in using the CIME case management system involve four scripts:
+1. <code class="docutils literal notranslate"><span class="pre">create_newcase</span></code> - this script sets up a new case directory with the appropriate model components, resolution, and compset (set of E3SM components that are active and how they are configured). This script also creates a case directory.
+2. <code class="docutils literal notranslate"><span class="pre">case.setup</span></code> - this script sets up the case with the appropriate model parameter files, input data links, user namelist options, and for parallel runs, processor layouts.
+3. <code class="docutils literal notranslate"><span class="pre">case.build</span></code> - this script compiles the model code for the case (note in the case of OLMT, all three cases use the same executable, so this step is only done for the first case).
+4. <code class="docutils literal notranslate"><span class="pre">case.submit</span></code> - this script runs the model case.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">create_newcase</span></code> and <code class="docutils literal notranslate"><span class="pre">case.setup</span></code> steps are shown below:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/elm-output-5.png"><img alt="create_newcase and case.setup output" src="../_images/elm-output-5.png" style="width: 80%;" />
+</a>
+</figure>
+<p>(Note: in this case, each is specified to run on 1 processor. All of the other domains - e.g., ATM, ICE, OCN - are not active in ELM only runs, and since these ELM runs are only a single grid cell, only one processor is needed.)</p>
+<p>The model compiles (<code class="docutils literal notranslate"><span class="pre">case.build</span></code>) and the case scripts check to make sure all of the namelists (e.g., a list of options set at runtime that is common in Fortran-based models) are set up correctly:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/elm-output-6.png"><img alt="Preview namelists" src="../_images/elm-output-6.png" style="width: 80%;" />
+</a>
+</figure>
+<p>Finally, the model runs:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/elm-output-4.png"><img alt="Model run output" src="../_images/elm-output-4.png" style="width: 80%;" />
+</a>
+</figure>
+</section>
+<section id="cime-and-configurations-of-e3sm">
+<h3><span class="section-number">3.2.2. </span>CIME and configurations of E3SM<a class="headerlink" href="#cime-and-configurations-of-e3sm" title="Link to this heading">¶</a></h3>
+<p>Each component of E3SM (e.g., atmosphere, land, sea ice, ocean, land ice) can be configured in different ways depending on the scientific questions being asked. These configurations are called ‘compsets’ (component-sets) and define which components are active in a simulation, and how they are configured. CIME provides the “glue” to help orchestrate compilation and running of coupled (or single model component) simulations. Land-only compsets in E3SM start with ‘I’, and then include components that describe: what time period is being simulated, whether the coupler bypass is being used, what biogeochemistry model is being used (if any, there is also a satellite phenology mode), different models for below-ground decomposition, and whether disturbance and demography (FATES) are enabled.</p>
+</section>
+</section>
+<section id="visualizing-elm-output-in-jupyter-lab">
+<h2><span class="section-number">3.3. </span>Visualizing ELM output in Jupyter Lab<a class="headerlink" href="#visualizing-elm-output-in-jupyter-lab" title="Link to this heading">¶</a></h2>
+<p>ELM output, as well as the forcing input datasets, are in NetCDF format. We have provided a Jupyter Lab Docker container that includes packages such as xarray to help examine and visualize the output in these files.</p>
+<p>A reminder how to launch the Jupyter lab container if you don’t currently have one open - from the <code class="docutils literal notranslate"><span class="pre">field-to-model</span></code> directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always --rm \
+    -p 8888:8888 \
+    -v $(pwd):/home/jovyan \
+    -v inputdata:/mnt/inputdata \
+    -v output:/mnt/output \
+    yuanfornl/ngee-arctic-modex26:vis-main-latest
+</pre></div>
+</div>
+<p>And copy and paste the URL and token provided in the terminal into your web browser to access Jupyter Lab.</p>
+<section id="how-different-are-the-meteorological-forcing-datasets">
+<h3><span class="section-number">3.3.1. </span>How different are the meteorological forcing datasets?<a class="headerlink" href="#how-different-are-the-meteorological-forcing-datasets" title="Link to this heading">¶</a></h3>
+<p>We’ve provided two different meteorological forcing datasets: GSWP3 and ERA5. One reason we might look at multiple forcing datasets is that meterological data in remote Arctic settings is often uncertain, so we might want to see how sensitive our land surface model results are to uncertainty in these forcings.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">vis_notebooks</span></code> folder, you’ll find a notebook titled 01_compare_met_forcing.ipynb. I’ve shown an example below - this is forcing temperature from Imnaviat Creek, Alaska near Toolik Field Station. Note that while annual means might be similar, GSWP3 seems to be significantly warmer than ERA5 in the spring, but significantly cooler than ERA5 in the fall. What impacts might this have on our simulations?</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/gswp3vsera5.png"><img alt="Comparing two met forcing datasets." src="../_images/gswp3vsera5.png" style="width: 80%;" />
+</a>
+</figure>
+<p>Try working through this notebook a few more times - you can change the value of either “site” or “variable” to look at how different these forcing datasets are across the available sites.</p>
+</section>
+<section id="how-different-are-the-surface-datasets-across-these-sites">
+<h3><span class="section-number">3.3.2. </span>How different are the surface datasets across these sites?<a class="headerlink" href="#how-different-are-the-surface-datasets-across-these-sites" title="Link to this heading">¶</a></h3>
+</section>
+<section id="examining-case-output">
+<h3><span class="section-number">3.3.3. </span>Examining case output<a class="headerlink" href="#examining-case-output" title="Link to this heading">¶</a></h3>
+<p>Now that we have some completed simulations, let’s take a look at some of the data! In the <code class="docutils literal notranslate"><span class="pre">vis_notebooks</span></code> folder, you’ll find a notebook titled 02_plot_ELM_output.ipynb that shows some examples of plotting timeseries variables, as well as contour plots for 2D variables (e.g,. soil temperature over time). The <code class="docutils literal notranslate"><span class="pre">elm_output</span></code> object shows the variables that are available for plotting:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/analyze_output1.png"><img alt="variables_available" src="../_images/analyze_output1.png" style="width: 80%;" />
+</a>
+</figure>
+<p>You can learn the long name of the variable, as well as any other metadata assigned to that variable by the model, by clicking on the button in the green square for any particular variable.</p>
+<p>Further down you’ll find examples of plotting 1D variables over time as timeseries (these are from a simulation at Abisko, Sweden):</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/analyze_output2.png"><img alt="1d_vars" src="../_images/analyze_output2.png" style="width: 80%;" />
+</a>
+</figure>
+<p>And 2D variables as contour plots (e.g., bottom panel is soil temperature):</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/analyze_output3.png"><img alt="2d_vars" src="../_images/analyze_output3.png" style="width: 80%;" />
+</a>
+</figure>
 <section id="additional-resources">
-<h3><span class="section-number">3.2.1. </span>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">¶</a></h3>
+<h4>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">¶</a></h4>
 <ol class="arabic simple">
 <li><p>What variables are on an ELM surface file? <a class="reference external" href="https://ngee-arctic.github.io/dapper/surface-variables.html#all-surface-variables">https://ngee-arctic.github.io/dapper/surface-variables.html#all-surface-variables</a></p></li>
 </ol>
+</section>
 </section>
 </section>
 </section>
@@ -155,9 +249,19 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
     <h3><a href="../index.html">Page Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">3. Introduction to ELM and workshop scripts</a><ul>
-<li><a class="reference internal" href="#under-the-hood">3.1. Under the hood</a></li>
-<li><a class="reference internal" href="#adding-demography-and-disturbance-elm-fates">3.2. Adding demography and disturbance: ELM-FATES</a><ul>
-<li><a class="reference internal" href="#additional-resources">3.2.1. Additional Resources</a></li>
+<li><a class="reference internal" href="#adding-demography-and-disturbance-elm-fates">3.1. Adding demography and disturbance: ELM-FATES</a></li>
+<li><a class="reference internal" href="#what-s-going-on-under-the-hood">3.2. What’s going on under the hood?</a><ul>
+<li><a class="reference internal" href="#understanding-olmt-e3sm-terminal-output-during-the-run">3.2.1. Understanding OLMT/E3SM terminal output during the run</a></li>
+<li><a class="reference internal" href="#cime-and-configurations-of-e3sm">3.2.2. CIME and configurations of E3SM</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#visualizing-elm-output-in-jupyter-lab">3.3. Visualizing ELM output in Jupyter Lab</a><ul>
+<li><a class="reference internal" href="#how-different-are-the-meteorological-forcing-datasets">3.3.1. How different are the meteorological forcing datasets?</a></li>
+<li><a class="reference internal" href="#how-different-are-the-surface-datasets-across-these-sites">3.3.2. How different are the surface datasets across these sites?</a></li>
+<li><a class="reference internal" href="#examining-case-output">3.3.3. Examining case output</a><ul>
+<li><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -172,8 +276,9 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
 <li class="toctree-l1"><a class="reference internal" href="../modex_agenda_2026.html">1. ModEx Workshop 2026 Agenda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../setup.html">2. Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Introduction to ELM and workshop scripts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#under-the-hood">3.1. Under the hood</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-demography-and-disturbance-elm-fates">3.2. Adding demography and disturbance: ELM-FATES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-demography-and-disturbance-elm-fates">3.1. Adding demography and disturbance: ELM-FATES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-going-on-under-the-hood">3.2. What’s going on under the hood?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualizing-elm-output-in-jupyter-lab">3.3. Visualizing ELM output in Jupyter Lab</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tem_ee1_warming.html">4. Introduction to TEM and Warming Experiment Example</a></li>
@@ -217,7 +322,7 @@ control system (CIME - Common Infrastructure for Modeling the Earth).</p>
         <li class="right" >
           <a href="../setup.html" title="2. Getting Started"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 00:38:12 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 04:45:40 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>
