@@ -33,7 +33,7 @@ pyddt-swd \
    --input-data-path /mnt/inputdata/TEM/$INPUT_DATA_NAME \
    --copy-inputs \
    --force \
-   baseline_tussock
+   baseline_imnavait_tussock
 
 pyddt-swd \
    --input-data-path /mnt/inputdata/TEM/$INPUT_DATA_NAME \
@@ -59,7 +59,7 @@ pyddt-swd \
 ##############################
 echo "Baseline run..."
 
-cd /mnt/output/tem/tem_ee2_breakout/baseline_tussock
+cd /mnt/output/tem/tem_ee2_breakout/baseline_imnavait_tussock
 
 # have to look this up once we are in the baseline run dir
 # Lookup how much transient data we have...

@@ -91,7 +91,7 @@ You will need to create a separate run folder for each scenario you want to run:
       --input-data-path /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10 \
       --copy-inputs \
       --force \
-      baseline_tussock
+      baseline_imnavait_tussock
 
    pyddt-swd \
       --input-data-path /mnt/inputdata/TEM/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10 \
@@ -128,7 +128,7 @@ Baseline run:
 
    .. code::
 
-      cd /mnt/output/tem/tem_ee2_breakout/baseline_tussock
+      cd /mnt/output/tem/tem_ee2_breakout/baseline_imnavait_tussock
 
 #. Adjust the run mask:
 
