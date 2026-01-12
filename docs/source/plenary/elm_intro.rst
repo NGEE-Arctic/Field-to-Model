@@ -84,17 +84,18 @@ Adding demography and disturbance: ELM-FATES
 --------------------------------------------
 FATES is the “Functionally Assembled Terrestrial Ecosystem Simulator.” It is an optional external module which can run within ELM to include alternative representations of ecosystem processes, namely vegetation demography and dynamic vegetation and disturbance.  FATES is a cohort- and patch-based model of vegetation competition and co-existence, allowing a representation of the terrestrial biosphere which accounts for the division of the land surface into successional stages, and for competition for light between height structured cohorts of representative trees of various plant functional types.
 
-A very detailed explain of FATES can be found in this `Technical Documentation <https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html>`
+A very detailed explain of FATES can be found in this `Technical Documentation <https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html>`__
 
-The source code for FATES, as well as discussion boards, and tracking changes can be found in this `GitHub repository <https://github.com/NGEET/fates>`
+The source code for FATES, as well as discussion boards, and tracking changes can be found in this `GitHub repository <https://github.com/NGEET/fates>`__
 
-For this workshop, we will not go into the details of setting up and running FATES. However, we encourage users to visit previous User Guide documentation, and past `FATES Tutorial documents <https://fates-users-guide.readthedocs.io/en/latest/>` (the latest tutorial was in Fall 2024). 
+For this workshop, we will not go into the details of setting up and running FATES. However, we encourage users to visit previous User Guide documentation, and past `FATES Tutorial documents <https://fates-users-guide.readthedocs.io/en/latest/>`__ (the latest tutorial was in Fall 2024). 
   
 Here are a few quick instructions and tips for running ELM-FATES:
-- FATES will use these same files from ELM: the surface file, domain file, climatology driver data, and ELM parameter file.  The main difference is that FATES has its own parameter file for FATES specific PFT and site level parameters. 
-- Before running FATES we need to generate a parameter file that describes the traits of each Plant Functional Type (PFT) in our simulation.
-- A main way to "turn on" the FATES model is through a compset. Example compsets for FATES are IELMFATES or I1850ELMFATES
-- There is also a containerized version of FATES using Docker, which was created in 2024.
+
+* FATES will use these same files from ELM: the surface file, domain file, climatology driver data, and ELM parameter file.  The main difference is that FATES has its own parameter file for FATES specific PFT and site level parameters. 
+* Before running FATES we need to generate a parameter file that describes the traits of each Plant Functional Type (PFT) in our simulation.
+* A main way to "turn on" the FATES model is through a compset. Example compsets for FATES are IELMFATES or I1850ELMFATES
+* There is also a containerized version of FATES using Docker, which was created in 2024.
 
 
 
