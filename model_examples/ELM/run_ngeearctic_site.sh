@@ -32,6 +32,10 @@ Help()
     echo "                                 (Requires surffile with properties of SINSL_COSAS, SINSL_SINAS, SKY_VIEW, and TERRAIN_CONFIG)"
     echo "  --use_polygonal_tundra    Turn on polygonal tundra parameterizations affecting runoff, depression storage, and inundation fraction"
     echo "                            (Requires surface file with polygonal tundra type area fractions specified)"
+    echo "  --mixed_polygons          Use a modified surface file with all three polygon tundra types"
+    echo "  --high_centered_polygons  Use a modified surface file with only high-centered polygon tundra type"
+    echo "  --low_centered_polygons   Use a modified surface file with only low-centered polygon tundra type"
+    echo "  --flat_centered_polygons  Use a modified surface file with only flat-centered polygon tundra type" 
     echo "  -ady, --ad_spinup_yrs     How many years of initial spinup using accelerated decomposition rates"
     echo "                              should be used? (Default: 200, Skip to normal spinup: 0)"
     echo "  -fsy, --final_spinup_yrs  How many years should the second stage of spinup run (with normal"
@@ -188,6 +192,34 @@ case $i in
     use_noshrubs=True
     shift
     ;;
+    --mixed_polygons)
+    use_mixed_polygons=True
+    high_centered_polygons=False
+    low_centered_polygons=False
+    flat_centered_polygons=False
+    shift
+    ;;
+    --high_centered_polygons)
+    use_mixed_polygons=False
+    high_centered_polygons=True
+    low_centered_polygons=False
+    flat_centered_polygons=False
+    shift
+    ;;
+    --low_centered_polygons)
+    use_mixed_polygons=False
+    high_centered_polygons=False
+    low_centered_polygons=True
+    flat_centered_polygons=False
+    shift
+    ;;
+    --flat_centered_polygons)
+    use_mixed_polygons=False
+    high_centered_polygons=False
+    low_centered_polygons=False
+    flat_centered_polygons=True
+    shift
+    ;;
     *)
         # unknown option
     ;;
@@ -210,6 +242,10 @@ use_IM2_hillslope_hydrology="${use_IM2_hillslope_hydrology:-False}"
 topounits_atmdownscale="${topounits_atmdownscale:-False}"
 terrain_raddownscale="${terrain_raddownscale:-False}"
 use_polygonal_tundra="${use_polygonal_tundra:-False}"
+mixed_polygons="${mixed_polygons:-False}"
+high_centered_polygons="${high_centered_polygons:-False}"
+low_centered_polygons="${low_centered_polygons:-False}"
+flat_centered_polygons="${flat_centered_polygons:-False}"
 use_allshrubs="${use_allshrubs:-False}"
 use_noshrubs="${use_noshrubs:-False}"
 no_submit="${no_submit:-False}"
@@ -425,6 +461,28 @@ else
   echo "RUSSIA: samoylov_island"
   exit 0
 fi
+
+# polygonal tundra surface data setup
+if [ "${use_polygonal_tundra}" = True ]; then
+  if [ ${site_name} = beo ]; then
+    landuse_file="polygonal_tundra/Utqiagvik_surfdata.pftdyn.nc"
+    if [ ${mixed_polygons} = True ]; then
+      surf_file="polygonal_tundra/Utqiagvik_surfdata_ALLPOLY.nc"
+    elif [ ${high_centered_polygons} = True ]; then
+      surf_file="polygonal_tundra/Utqiagvik_surfdata_HCP.nc"
+    elif [ ${low_centered_polygons} = True ]; then
+      surf_file="polygonal_tundra/Utqiagvik_surfdata_LCP.nc"
+    elif [ ${flat_centered_polygons} = True ]; then
+      surf_file="polygonal_tundra/Utqiagvik_surfdata_FCP.nc"
+    fi
+  else
+    echo " "
+    echo "**** EXECUTION HALTED ****"
+    echo "polygonal_tundra option only available for Site Name: beo"
+    exit -1
+  fi
+fi 
+
 # the following is by default. if reset to empty later on, ELM will run without landuse_timeseries file for transient stage.
 landuse_file="/mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file}"
 
@@ -458,7 +516,6 @@ if [[ "${use_IM2_hillslope_hydrology}" = True || "${topounits_atmdownscale}" = T
     echo "RUSSIA: samoylov_island"
     exit -1
  fi
-
 fi
 
 if [ ${site_name} = imnaviat_creek ]; then
@@ -504,9 +561,7 @@ if [ "${terrain_raddownscale}" = True ]; then
     echo "RUSSIA: samoylov_island"
     exit -1
  fi
-
 fi
-
 
 echo "OLMT Site Code: ${site_code}"
 # =======================================================================================
@@ -541,7 +596,8 @@ runcmd="python3 ./site_fullrun.py \
       --use_onset_gdd_extension \
       ${options} \
       & sleep 10"
-echo ${runcmd}
+
+echo ${runcmd} | sed 's/\s\+\(--\)/\n\1/g'
 echo " "
 echo " "
 
