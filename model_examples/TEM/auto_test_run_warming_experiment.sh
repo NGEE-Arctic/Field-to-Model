@@ -28,7 +28,7 @@ pyddt-outspec config/output_spec.csv --on LAYERDZ m l
 pyddt-outspec config/output_spec.csv --on TLAYER m l
 pyddt-outspec config/output_spec.csv --on CMTNUM y
 pyddt-outspec config/output_spec.csv -s
-# Optional - adjust run mask, some inputs have more than one px enabled by default.
+pyddt-runmask --reset --yx 0 0 inputs/$INPUT_DATA_NAME/run-mask.nc
 dvmdostem -f config/config.js -p 10 -e 10 -s 25 -t $TRANSIENT_YRS -n 0 --force-cmt 6 -l monitor
 
 # Setup the warming run
