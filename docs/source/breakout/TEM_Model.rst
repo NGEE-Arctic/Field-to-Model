@@ -344,32 +344,51 @@ Combined temperature and precipitation scaling:
 
    .. code:: shell
 
-    python home/modex_user/model_examples/TEM/modify_precipitation.py \
-      --input-file input/historic-climate.nc \
-      --months 6 7 8 9 \
-      --years 2018 2019 \
-      --deviation 0.4
-
-    python home/modex_user/model_examples/TEM/modify_precipitation.py \
-      --input-file input/historic-climate.nc \
-      --months 10 11 12 1 2 3 4 5 \
-      --years 2018 2019 \
-      --deviation 0.6
-
-    python home/modex_user/model_examples/TEM/modify_air_temperature.py \
-      --input-file input/historic-climate.nc \
-      --months 6 7 8 9 \
-      --years 2019 \
-      --deviation 3
-
-
-#. Replace the old input climate data file with the modified one:
+      python /home/modex_user/model_examples/TEM/modify_precipitation.py \
+         --input-file inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc \
+         --months 6 7 8 9 \
+         --years 2010 2011 2012 \
+         --deviation 0.4
 
    .. code:: shell
 
-      mv input/modified_historic-climate.nc input/historic-climate.nc  
+      mv inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/modified_historic-climate.nc \
+         inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc   
 
-#. Adjust the runmask: :code:`pyddt-runmask --reset --yx 0 0 run-mask.nc`
+   .. code:: shell
+
+      python /home/modex_user/model_examples/TEM/modify_precipitation.py \
+         --input-file inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc \
+         --months 10 11 12 1 2 3 4 5 \
+         --years 2010 2011 2012 \
+         --deviation 0.6
+
+   .. code:: shell
+
+      mv inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/modified_historic-climate.nc \
+         inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc   
+
+   .. code:: shell
+
+      python /home/modex_user/model_examples/TEM/modify_air_temperature.py \
+         --input-file inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc \
+         --months 6 7 8 9 \
+         --years 2010 2011 2012 \
+         --deviation 3
+
+   .. code:: shell
+
+      mv inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/modified_historic-climate.nc \
+         inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc   
+
+
+
+
+#. Adjust the runmask: 
+
+   .. code:: 
+
+      pyddt-runmask --reset --yx 0 0 inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/run-mask.nc
 
 #. Setup the output specification file 
 
@@ -381,12 +400,13 @@ Combined temperature and precipitation scaling:
       pyddt-outspec config/output_spec.csv --on SWE m 
       pyddt-outspec config/output_spec.csv --on SNOWTHICK m 
       pyddt-outspec config/output_spec.csv --on ALD y
+      pyddt-outspec config/output_spec.csv --on CMTNUM y
 
 #. Start the run. 
    
    .. code:: 
 
-        dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 123 -n 0 -l monitor 
+        dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 115 -n 0 -l monitor 
 
 
 
