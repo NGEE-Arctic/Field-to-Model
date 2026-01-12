@@ -249,7 +249,7 @@ Temperature scaled by +3 °C:
    
    .. code:: 
 
-        dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 123 -n 0 -l monitor 
+        dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 115 -n 0 -l monitor
 
 
 
@@ -299,7 +299,7 @@ Precipitation scaling (rain +40%, snow +60%):
    
    .. code:: 
 
-        dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 123 -n 0 -l monitor 
+        dvmdostem -f config/config.js --force-cmt 5 -p 100 -e 1000 -s 250 -t 115 -n 0 -l monitor 
 
 
 
