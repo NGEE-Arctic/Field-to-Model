@@ -224,7 +224,7 @@ Temperature scaled by +3 °C:
       python /home/modex_user/model_examples/TEM/modify_air_temperature.py \
         --input-file inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/historic-climate.nc \
         --months 6 7 8 9 \
-        --years 2019 \
+        --years 2010 2011 2012 \
         --deviation 3
 
 #. Replace the old input climate data file with the modified one:
@@ -250,6 +250,7 @@ Temperature scaled by +3 °C:
       pyddt-outspec config/output_spec.csv --on SWE m 
       pyddt-outspec config/output_spec.csv --on SNOWTHICK m 
       pyddt-outspec config/output_spec.csv --on ALD y
+      pyddt-outspec config/output_spec.csv --on CMTNUM y
 
 #. Start the run. 
    
