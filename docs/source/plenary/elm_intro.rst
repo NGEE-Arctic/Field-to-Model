@@ -157,9 +157,28 @@ Each component of E3SM (e.g., atmosphere, land, sea ice, ocean, land ice) can be
 Visualizing ELM output in Jupyter Lab
 --------------------------------------
 
+ELM output, as well as the forcing input datasets, are in NetCDF format. We have provided a Jupyter Lab Docker container that includes packages such as xarray to help examine and visualize the output in these files.
+
+A reminder how to launch the Jupyter lab container if you don't currently have one open - from the ``field-to-model`` directory:
+
+.. code::
+
+    docker run -it --pull always --rm \
+        -p 8888:8888 \
+        -v $(pwd):/home/jovyan \
+        -v inputdata:/mnt/inputdata \
+        -v output:/mnt/output \
+        yuanfornl/ngee-arctic-modex26:vis-main-latest
+
+And copy and paste the URL and token provided in the terminal into your web browser to access Jupyter Lab.
 
 How different are the meteorological forcing datasets?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+How different are the surface datasets across these sites?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 Examining case output
 ^^^^^^^^^^^^^^^^^^^^^^
