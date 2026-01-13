@@ -225,5 +225,5 @@ Combined temperature and precipitation scaling in the 0% shrubs example:
 Looking at ELM Results
 ----------------------
 
-Here is where we will review how to look at the ELM results in Jupyter Lab notebooks :ref:`Analyzing ELM Output in Jupyter Lab`.
+Here is where we will review how to look at the ELM results in Jupyter Lab notebooks :ref:`breakout/analyzing_ELM_output_Jupyter_Notebooks:Analyzing ELM Output in Jupyter Lab`
 
