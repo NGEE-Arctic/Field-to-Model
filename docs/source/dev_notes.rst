@@ -1,4 +1,4 @@
-General Notes
+Modex Workshop Development Notes
 ===========================================================
 
  - This Sphinx project is configured to use MyST parser to allow writing in 
@@ -19,7 +19,8 @@ General Notes
 
 
 Working with Sphinx Docs
-===========================================================
+--------------------------
+
 The Dockerfile-docs file contains instructions to build a Docker image that can
 build and serve the Sphinx docs.
 
@@ -27,14 +28,14 @@ There are a number of ways you can use this, but for working on content and
 editing the docs, the easiest is to use the live reloading server shown below.
 
 Building the Docker Image
----------------------------
+++++++++++++++++++++++++++++
 
 .. code:: bash
 
   docker build -t docbuilder --target docbuilder -f Docker/Dockerfile-docs .
 
 Running the container with Live Reload
-----------------------------------------
+++++++++++++++++++++++++++++++++++++++++++
 
 Run the container! This starts a live-reloading server on port 9999 that is 
 watching the docs folder for changes. When it encounters changes, it rebuilds
@@ -55,12 +56,12 @@ the docs.
     worked with the bind mount!!
 
 Working with the Modeling and Visualization Docker Images
-===========================================================
+-----------------------------------------------------------
 
 .. _container-setup:
 
 Container Setup
--------------------
+++++++++++++++++++++++
 
 .. code::
 
@@ -92,7 +93,7 @@ Container Setup
 
 
 Usage
--------------------
+++++++++++
 
 These examples show 
 
