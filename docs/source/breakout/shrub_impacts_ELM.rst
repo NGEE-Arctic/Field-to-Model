@@ -57,7 +57,7 @@ Model run with 100% shrubs and bendresist example:
      --met_source=gswp3 \
      --use_arctic_init \
      --use_allshrubs \
-     --mod_param_file=/mnt/inputdata/E3SM/lnd/clm2/paramdata/im3_params_bendresist025_sd.nc \
+     --mod_param_file=/mnt/inputdata/E3SM/lnd/clm2/paramdata/im3_params_bendresist050_sd.nc \
      --transient_yrs=25 \
      --case_prefix=Arctic_init_br50_allshrubs
 
