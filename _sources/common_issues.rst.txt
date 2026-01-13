@@ -40,7 +40,8 @@ Common Issues/FAQ
 More Information and Links
 =============================
 
-Setup help:
+Setup help
+
 
   * :doc:`Workshop Setup Instructions <setup>`
   * `Github Issue for Setup Notes <https://github.com/NGEE-Arctic/Field-to-Model/issues/38>`_
@@ -73,8 +74,7 @@ Breakout groups
   * `Snow/Vegetation/Permafrost Interactions <https://ngee-arctic.github.io/Field-to-Model/breakout/snow_veg_permafrost.html>`_
   * `Hillslope Hydrology impacts on Biogeochemistry <https://ngee-arctic.github.io/Field-to-Model/breakout/hillslope_bgc.html>`_  
 
-Additional resources
-=========================
+Software tools
 
   * `Introduction to version control using Git <https://swcarpentry.github.io/git-novice/>`_
 
@@ -90,8 +90,12 @@ Glossary
     - **Definition**
   * - ATS
     - Advanced Terrestrial Simulator
+  * - CC
+    - Cross Cut
   * - CI
     - Continuous Integration
+  * - CMT
+    - Community Type
   * - DaPPER
     - Data PreParation for ELM Runs 
   * - DVM-DOS-TEM
@@ -102,10 +106,11 @@ Glossary
     - E3SM Land Model
   * - ILAMB
     - International Land Model Benchmarking system
-  * - IM3
-    - ??
   * - MEQ
-    - ??
+    - Model Experiment Question
   * - OLMT
     - Offline Land Model Testbed
-
+  * - PFT
+    - Plant Functional Type
+  * - TEM
+    - Terrestrial Ecosystem Model (referring to DVM-DOS-TEM here)
