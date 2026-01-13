@@ -31,6 +31,7 @@ Baseline run (Arctic initialization):
      yuanfornl/ngee-arctic-modex25:models-main-latest \
      /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
      --site_name=imnaviat_creek \
+     --met_source=gswp3 \
      --use_arctic_init \
      --transient_yrs=25 \
      --case_prefix=Arctic_init
@@ -46,6 +47,7 @@ Temperature scaled by +3 °C:
      yuanfornl/ngee-arctic-modex25:models-main-latest \
      /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
      --site_name=imnaviat_creek \
+     --met_source=gswp3 \
      --use_arctic_init \
      --add_temperature=3 \
      --startdate_add_temperature=18550101 \
@@ -63,6 +65,7 @@ Precipitation scaling (rain +40%, snow +60%):
      yuanfornl/ngee-arctic-modex25:models-main-latest \
      /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
      --site_name=imnaviat_creek \
+     --met_source=gswp3 \
      --use_arctic_init \
      --scale_rain=1.4 \
      --startdate_scale_rain=18550101 \
@@ -82,11 +85,14 @@ Combined temperature and precipitation scaling:
      yuanfornl/ngee-arctic-modex25:models-main-latest \
      /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
      --site_name=imnaviat_creek \
+     --met_source=gswp3 \
      --use_arctic_init \
-     --scale_rain=1.4 \
-     --scale_snow=1.6 \
      --add_temperature=3 \
      --startdate_add_temperature=18550101 \
+     --scale_rain=1.4 \
+     --startdate_scale_rain=18550101 \
+     --scale_snow=1.6 \
+     --startdate_scale_snow=18550101 \
      --transient_yrs=25 \
      --case_prefix=scale_rain40_snow60_temp3
 
@@ -102,7 +108,7 @@ Advanced ELM Processing and Information
 * ELM Background Information :ref:`breakout/ELM_Background:ELM Background`.
 
 * The impact of shrubs in ELM :ref:`breakout/shrub_impacts_ELM:The impact of shrubs in ELM`.
-* Understanding and modifying surface files in ELM :ref:`breakout/surface_files_ELM:Understanding and modifying surface files in ELM`.
+* Understanding surface files in ELM :ref:`breakout/surface_files_ELM:Understanding surface files in ELM`.
 
 .. toctree::
     :hidden:
