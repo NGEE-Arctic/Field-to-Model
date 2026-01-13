@@ -511,7 +511,8 @@ if [ "${more_vertlayers}" = True ]; then
     echo "more_vertlayers option not available with polygonal_tundra option"
     exit -1
   else
-    surf_file="polygonal_tundra/Utqiagvik_surfdata_morelayers.nc"
+    surf_file="polygonal_tundra/Utqiagvik_surfdata.nc"
+    domain_file="Utqiagvik_domain.nc"
   fi
 fi
 
