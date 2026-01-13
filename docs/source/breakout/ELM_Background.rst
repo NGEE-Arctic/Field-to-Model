@@ -1,7 +1,7 @@
 ELM Background
 ===============
 
-ELM (Version 1.0) is based on the Community Land Model Version 4.5 (CLM4.5,
+ELM is based on the Community Land Model Version 4.5 (CLM4.5,
 Oleson et al. 2013). ELM calculates canopy radiation flux using the
 two-stream approximation methods; snow albedo using the Snow, Ice, and
 Aerosol Radiative Model (SNICAR) model (Flanner et al., 2007); and snow
