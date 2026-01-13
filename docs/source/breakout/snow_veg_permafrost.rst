@@ -129,12 +129,6 @@ outputs.
 
    ELM_Model
    TEM_Model
-  
-.. toctree::
-  :hidden:
-
-  subgrid_variability_ELM
-
 
 References
 ----------
