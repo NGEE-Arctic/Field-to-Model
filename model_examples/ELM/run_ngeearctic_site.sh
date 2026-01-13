@@ -66,6 +66,7 @@ Help()
     echo "  --mod_parm_file           Use a modified PFT parameter file (Note, requires full path)"
     echo "  --use_allshrubs           Use a modified surface file with 100% Broadleaf deciduous shrub – boreal"
     echo "  --use_noshrubs            Use a modified surface file with 100% C3 arctic grass"
+    echo "  --more_vertlayers         Turn on more vertical soil layers in ELM"
     exit 0
 }
 
@@ -197,31 +198,35 @@ case $i in
     shift
     ;;
     --mixed_polygons)
-    use_mixed_polygons=True
+    mixed_polygons=True
     high_centered_polygons=False
     low_centered_polygons=False
     flat_centered_polygons=False
     shift
     ;;
     --high_centered_polygons)
-    use_mixed_polygons=False
+    mixed_polygons=False
     high_centered_polygons=True
     low_centered_polygons=False
     flat_centered_polygons=False
     shift
     ;;
     --low_centered_polygons)
-    use_mixed_polygons=False
+    mixed_polygons=False
     high_centered_polygons=False
     low_centered_polygons=True
     flat_centered_polygons=False
     shift
     ;;
     --flat_centered_polygons)
-    use_mixed_polygons=False
+    mixed_polygons=False
     high_centered_polygons=False
     low_centered_polygons=False
     flat_centered_polygons=True
+    shift
+    ;;
+    --more_vertlayers)
+    more_vertlayers=True
     shift
     ;;
     *)
@@ -272,6 +277,7 @@ startdate_scale_ndep="${startdate_scale_ndep:-99991231}"
 scale_pdep="${scale_pdep:-1.0}"
 startdate_scale_pdep="${startdate_scale_pdep:-99991231}"
 mod_parm_file="${mod_parm_file:-""}"
+more_vertlayers="${more_vertlayers:-False}"
 
 
 #enforce met naming in prefix
@@ -366,6 +372,10 @@ fi
 if [ "${mod_parm_file}" != "" ]; then
   echo "Using modified PFT parameter file: ${mod_parm_file}"
   options="$options --mod_parm_file ${mod_parm_file}"
+fi
+if [ "${more_vertlayers}" = True ]; then
+  echo "Turning on more vertical soil layers in ELM"
+  options="$options --more_vertlayers"
 fi
 echo " "
 # =======================================================================================
@@ -475,14 +485,15 @@ fi
 # polygonal tundra surface data setup
 if [ "${use_polygonal_tundra}" = True ]; then
   if [ ${site_name} = beo ]; then
+    domain_file="Utqiagvik_domain.nc"
     landuse_file="polygonal_tundra/Utqiagvik_surfdata.pftdyn.nc"
-    if [ ${mixed_polygons} = True ]; then
+    if [ "${mixed_polygons}" = True ]; then
       surf_file="polygonal_tundra/Utqiagvik_surfdata_ALLPOLY.nc"
-    elif [ ${high_centered_polygons} = True ]; then
+    elif [ "${high_centered_polygons}" = True ]; then
       surf_file="polygonal_tundra/Utqiagvik_surfdata_HCP.nc"
-    elif [ ${low_centered_polygons} = True ]; then
+    elif [ "${low_centered_polygons}" = True ]; then
       surf_file="polygonal_tundra/Utqiagvik_surfdata_LCP.nc"
-    elif [ ${flat_centered_polygons} = True ]; then
+    elif [ "${flat_centered_polygons}" = True ]; then
       surf_file="polygonal_tundra/Utqiagvik_surfdata_FCP.nc"
     fi
   else
@@ -492,6 +503,18 @@ if [ "${use_polygonal_tundra}" = True ]; then
     exit -1
   fi
 fi 
+
+if [ "${more_vertlayers}" = True ]; then
+  if [ "${use_polygonal_tundra}" = True ]; then
+    echo " "
+    echo "**** EXECUTION HALTED ****"
+    echo "more_vertlayers option not available with polygonal_tundra option"
+    exit -1
+  else
+    surf_file="polygonal_tundra/Utqiagvik_surfdata.nc"
+    domain_file="Utqiagvik_domain.nc"
+  fi
+fi
 
 # the following is by default. if reset to empty later on, ELM will run without landuse_timeseries file for transient stage.
 landuse_file="/mnt/inputdata/E3SM/lnd/clm2/surfdata_map/${landuse_file}"

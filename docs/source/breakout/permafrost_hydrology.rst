@@ -130,6 +130,15 @@ Wet/icy spinup:
 
 More layers + wet spinup:
 
+.. code::
+
+    docker run -it --pull always --rm \
+        -v  $(pwd):/home/modex_user \
+        -v inputdata:/mnt/inputdata \
+        -v output:/mnt/output \
+        yuanfornl/ngee-arctic-modex26:models-main-latest \
+        /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \ 
+        --use_arctic_init --more_vertlayers --case_prefix=vertlayers
 
 Polygonal tundra:
 
@@ -141,7 +150,8 @@ Polygonal tundra:
         -v output:/mnt/output \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
-        --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons
+        --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons \
+        --arctic_topounit_output
 
 Polygonal tundra warming experiment:
 
@@ -154,4 +164,5 @@ Polygonal tundra warming experiment:
         yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
         --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons \
-        --add_temperature 5.0 --startdate_add_temperature=20100601 --transient_years 200
+        --add_temperature 5.0 --startdate_add_temperature=20100601 --transient_years 200 \
+        --arctic_topounit_output
