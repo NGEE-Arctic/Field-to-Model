@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.4.1. ELM Model &#8212; ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</title>
+    <title>7.4.1. ELM Model &#8212; ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=69244c97"></script>
+    <script src="../_static/documentation_options.js?v=c256cfc9"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="snow_veg_permafrost_agenda.html" title="7.1. Snow, Vegetation, Permafrost (SVP) Breakout Agenda"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" accesskey="U"><span class="section-number">7. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.4.1. </span>ELM Model</a></li> 
       </ul>
@@ -64,6 +64,7 @@ inputs affect ELM behavior.</p>
 <span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--case_prefix<span class="o">=</span>Arctic_init
@@ -77,6 +78,7 @@ inputs affect ELM behavior.</p>
 <span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
@@ -92,6 +94,7 @@ inputs affect ELM behavior.</p>
 <span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--startdate_scale_rain<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
@@ -109,11 +112,14 @@ inputs affect ELM behavior.</p>
 <span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_rain<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_snow<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--case_prefix<span class="o">=</span>scale_rain40_snow60_temp3
 </pre></div>
@@ -128,7 +134,7 @@ inputs affect ELM behavior.</p>
 <ul class="simple">
 <li><p>ELM Background Information <a class="reference internal" href="ELM_Background.html#elm-background"><span class="std std-ref">ELM Background</span></a>.</p></li>
 <li><p>The impact of shrubs in ELM <a class="reference internal" href="shrub_impacts_ELM.html#the-impact-of-shrubs-in-elm"><span class="std std-ref">The impact of shrubs in ELM</span></a>.</p></li>
-<li><p>Understanding and modifying surface files in ELM <a class="reference internal" href="surface_files_ELM.html#understanding-and-modifying-surface-files-in-elm"><span class="std std-ref">Understanding and modifying surface files in ELM</span></a>.</p></li>
+<li><p>Understanding surface files in ELM <a class="reference internal" href="surface_files_ELM.html#understanding-surface-files-in-elm"><span class="std std-ref">Understanding surface files in ELM</span></a>.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -223,7 +229,7 @@ inputs affect ELM behavior.</p>
         <li class="right" >
           <a href="snow_veg_permafrost_agenda.html" title="7.1. Snow, Vegetation, Permafrost (SVP) Breakout Agenda"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" ><span class="section-number">7. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.4.1. </span>ELM Model</a></li> 
       </ul>

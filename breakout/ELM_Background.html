@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ELM Background &#8212; ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</title>
+    <title>ELM Background &#8212; ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=69244c97"></script>
+    <script src="../_static/documentation_options.js?v=c256cfc9"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -30,7 +30,7 @@
         <li class="right" >
           <a href="analyzing_ELM_output_Jupyter_Notebooks.html" title="Analyzing ELM Output in Jupyter Lab"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" ><span class="section-number">7. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="ELM_Model.html" accesskey="U"><span class="section-number">7.4.1. </span>ELM Model</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">ELM Background</a></li> 
@@ -44,6 +44,21 @@
             
   <section id="elm-background">
 <h1>ELM Background<a class="headerlink" href="#elm-background" title="Link to this heading">¶</a></h1>
+<p>ELM is based on the Community Land Model Version 4.5 (CLM4.5,
+Oleson et al. 2013). ELM calculates canopy radiation flux using the
+two-stream approximation methods; snow albedo using the Snow, Ice, and
+Aerosol Radiative Model (SNICAR) model (Flanner et al., 2007); and snow
+cover fraction based on snow water equivalent (Swenson and Lawrence, 2012).
+ELM also represents the snow hydrological processes including snowfall
+accumulation, melting, refreezing, compaction, aging, water transfer across
+layers, etc.</p>
+<p>New features in ELM to better represent land surface processes include an
+updated representation of soil hydrology (Bisht et al., 2018), improved
+treatment of ecosystem carbon dynamics (Tang and Riley, 2018), a novel
+topography-based sub-grid spatial structure impacting atmospheric preciptiation
+and temperature (Tesfa and Leung, 2017, Tesfa et al. 2020) and radiation
+(Hao et al. 2022), an irrigation scheme constrained by water management
+(Zhou et al., 2020), and improved snow albedo (Hao et al. 2023).</p>
 <section id="elm-background-snow-processes">
 <h2>ELM Background: Snow Processes<a class="headerlink" href="#elm-background-snow-processes" title="Link to this heading">¶</a></h2>
 <p>ELM represents snow as a vertically resolved, multi-layer snowpack that
@@ -63,6 +78,7 @@ with the atmosphere, vegetation canopy, and soil.</p>
 </ul>
 <p>Between these thresholds, precipitation is linearly partitioned between
 rain and snow.</p>
+<p>For more details, see the CLM 4.5 Tech Note (Oleson et al 2013).</p>
 </section>
 <section id="elm-background-vegetation-and-shrubs">
 <h2>ELM Background: Vegetation and Shrubs<a class="headerlink" href="#elm-background-vegetation-and-shrubs" title="Link to this heading">¶</a></h2>
@@ -180,10 +196,67 @@ climate forcing in a physically consistent manner.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<p>Ball, J.T., Woodrow, I.E. and Berry, J.A., 1987, October. A model predicting
+stomatal conductance and its contribution to the control of photosynthesis
+under different environmental conditions. In Progress in photosynthesis research:
+volume 4 proceedings of the VIIth international congress on photosynthesis
+providence, Rhode Island, USA, august 10–15, 1986 (pp. 221-224). Dordrecht:
+Springer Netherlands.</p>
+<p>Bisht, G., Riley, W.J., Hammond, G.E. and Lorenzetti, D.M., 2018.
+Development and evaluation of a variably saturated flow model in the
+global E3SM Land Model (ELM) version 1.0. Geoscientific Model Development,
+11(10), pp.4085-4102.</p>
+<p>Farquhar, G.D., von Caemmerer, S., and Berry, J.A. 1980. A biochemical
+model of photosynthetic CO2 assimilation in leaves of C3 species.
+Planta 149:78-90.</p>
+<p>Flanner, M.G., Arnheim, J., Cook, J.M., Dang, C., He, C., Huang, X.,
+Singh, D., Skiles, S.M., Whicker, C.A. and Zender, C.S., 2021.
+SNICAR-AD v3: A community tool for modeling spectral snow albedo.
+Geoscientific Model Development Discussions, 2021, pp.1-49.</p>
+<p>Hao, D., Bisht, G., Huang, M., Ma, P.L., Tesfa, T., Lee, W.L., Gu, Y.
+and Leung, L.R., 2022. Impacts of sub‐grid topographic representations
+on surface energy balance and boundary conditions in the E3SM land model:
+A case study in Sierra Nevada. Journal of Advances in Modeling Earth
+Systems, 14(4), p.e2021MS002862.</p>
+<p>Hao, D., Bisht, G., Rittger, K., Bair, E., He, C., Huang, H.,
+Dang, C., Stillinger, T., Gu, Y., Wang, H., Qian, Y., and Leung, L. R.,
+2023. Improving snow albedo modeling in the E3SM land model (version 2.0)
+and assessing its impacts on snow and surface fluxes over the Tibetan
+Plateau, Geosci. Model Dev., 16, 75–94,
+<a class="reference external" href="https://doi.org/10.5194/gmd-16-75-2023">https://doi.org/10.5194/gmd-16-75-2023</a>.</p>
+<p>Leuning R. A critical appraisal of a combined stomatal‐photosynthesis model
+for C3 plants. Plant, Cell &amp; Environment. 1995 Apr; 18(4):339-55.</p>
+<p>Medlyn, B.E., Duursma, R.A., Eamus, D., Ellsworth, D.S., Prentice, I.C.,
+Barton, C.V., Crous, K.Y., De Angelis, P., Freeman, M. and Wingate, L., 2011.
+Reconciling the optimal and empirical approaches to modelling stomatal
+conductance. Global change biology, 17(6), pp.2134-2144.</p>
+<p>Oleson, K.W., Lawrence, D.M., Bonan, G.B., Fisher, R.A., Lawrence, P.J.
+and Muszala, S.P., 2013. Technical description of version 4.5 of the
+Community Land Model (CLM). Technical description of version 4.5 of
+the Community Land Model (CLM)(2013) NCAR/TN-503+ STR, 503.</p>
 <p>Sulman, B.N., Salmon, V.G., Iversen, C.M., Breen, A.L., Yuan, F.
 and Thornton, P.E., 2021. Integrating arctic plant functional types
 in a land surface model using above‐and belowground field observations.
 Journal of Advances in Modeling Earth Systems, 13(4), p.e2020MS002396.</p>
+<p>Swenson, S.C. and Lawrence, D.M., 2012. A new fractional snow‐covered
+area parameterization for the Community Land Model and its effect
+on the surface energy balance. Journal of geophysical research:
+Atmospheres, 117(D21).</p>
+<p>Tang, J. and Riley, W.J., 2018. Predicted land carbon dynamics are
+strongly dependent on the numerical coupling of nitrogen mobilizing
+and immobilizing processes: A demonstration with the E3SM land model.
+Earth Interactions, 22(11), pp.1-18.</p>
+<p>Tesfa, T. K. and Leung, L.-Y. R.: Exploring new topography-based subgrid
+spatial structures for improving land surface modeling, Geosci. Model Dev.,
+10, 873–888, <a class="reference external" href="https://doi.org/10.5194/gmd-10-873-2017">https://doi.org/10.5194/gmd-10-873-2017</a>, 2017.</p>
+<p>Tesfa, T.K., Leung, L.R. and Ghan, S.J., 2020. Exploring topography‐based
+methods for downscaling subgrid precipitation for use in Earth System
+Models. Journal of Geophysical Research: Atmospheres, 125(5), p.e2019JD031456.</p>
+<p>Zhou, T., Leung, L.R., Leng, G., Voisin, N., Li, H.Y., Craig, A.P.,
+Tesfa, T. and Mao, Y., 2020. Global irrigation characteristics and
+effects simulated by fully coupled land surface, river, and water
+management models in E3SM. Journal of Advances in Modeling Earth
+Systems, 12(10), p.e2020MS002069.</p>
 </section>
 </section>
 
@@ -276,7 +349,7 @@ Journal of Advances in Modeling Earth Systems, 13(4), p.e2020MS002396.</p>
         <li class="right" >
           <a href="analyzing_ELM_output_Jupyter_Notebooks.html" title="Analyzing ELM Output in Jupyter Lab"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" ><span class="section-number">7. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="ELM_Model.html" ><span class="section-number">7.4.1. </span>ELM Model</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">ELM Background</a></li> 

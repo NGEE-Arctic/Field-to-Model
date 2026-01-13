@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Understanding and modifying surface files in ELM &#8212; ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</title>
+    <title>Understanding surface files in ELM &#8212; ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=69244c97"></script>
+    <script src="../_static/documentation_options.js?v=c256cfc9"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,10 +29,10 @@
         <li class="right" >
           <a href="shrub_impacts_ELM.html" title="The impact of shrubs in ELM"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" ><span class="section-number">7. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="ELM_Model.html" accesskey="U"><span class="section-number">7.4.1. </span>ELM Model</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Understanding and modifying surface files in ELM</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Understanding surface files in ELM</a></li> 
       </ul>
     </div>  
 
@@ -41,8 +41,24 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="understanding-and-modifying-surface-files-in-elm">
-<h1>Understanding and modifying surface files in ELM<a class="headerlink" href="#understanding-and-modifying-surface-files-in-elm" title="Link to this heading">¶</a></h1>
+  <section id="understanding-surface-files-in-elm">
+<h1>Understanding surface files in ELM<a class="headerlink" href="#understanding-surface-files-in-elm" title="Link to this heading">¶</a></h1>
+<p>A surface file is the data input that provides ELM with
+a description of the land surface required for our
+simulations. They are stored in a multi-dimensional file
+type referred to as a NetCDF. These NetCDF files can
+describe our regions of interest by representing the
+land surface in smaller chunks called grid cells.
+These files can represent each grid cell in the area we
+are modeling with many surface characteristics (often 80+
+variables) across a range of plant functional type,
+soil levels, and much more.</p>
+<p>There are many ways we can intuitively modify variables
+within a surface file to answer different science questions
+in our modeling. For example, if we wanted to understand
+the impact of shrubification in the Arctic, we could modify
+the percentage of the landscape represented by shrubs on
+the surface file and compare with our current baseline.</p>
 </section>
 
 
@@ -121,10 +137,10 @@
         <li class="right" >
           <a href="shrub_impacts_ELM.html" title="The impact of shrubs in ELM"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" ><span class="section-number">7. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="ELM_Model.html" ><span class="section-number">7.4.1. </span>ELM Model</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Understanding and modifying surface files in ELM</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Understanding surface files in ELM</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

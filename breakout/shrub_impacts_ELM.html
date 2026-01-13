@@ -5,16 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The impact of shrubs in ELM &#8212; ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</title>
+    <title>The impact of shrubs in ELM &#8212; ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=69244c97"></script>
+    <script src="../_static/documentation_options.js?v=c256cfc9"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Understanding and modifying surface files in ELM" href="surface_files_ELM.html" />
+    <link rel="next" title="Understanding surface files in ELM" href="surface_files_ELM.html" />
     <link rel="prev" title="ELM Background" href="ELM_Background.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
@@ -24,12 +24,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="surface_files_ELM.html" title="Understanding and modifying surface files in ELM"
+          <a href="surface_files_ELM.html" title="Understanding surface files in ELM"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="ELM_Background.html" title="ELM Background"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" ><span class="section-number">7. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="ELM_Model.html" accesskey="U"><span class="section-number">7.4.1. </span>ELM Model</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">The impact of shrubs in ELM</a></li> 
@@ -43,6 +43,194 @@
             
   <section id="the-impact-of-shrubs-in-elm">
 <h1>The impact of shrubs in ELM<a class="headerlink" href="#the-impact-of-shrubs-in-elm" title="Link to this heading">¶</a></h1>
+<p>When shrubs increase in Arctic ecosystems, a process often referred to as <em>shrubification</em>,
+they alter ecosystem structure, energy balance, and biogeochemical cycling.</p>
+<p>Taller and denser shrubs trap more snow during winter, which insulates the ground and
+leads to warmer soil temperatures. In summer, shrubs reduce surface albedo by darkening
+the landscape, increasing the absorption of solar radiation. Together, these effects can
+accelerate permafrost thaw, change hydrology, shift plant community composition, and
+influence carbon cycling by modifying both plant productivity and soil decomposition rates.</p>
+<p>The Energy Exascale Earth System Model Land Model (ELM) can be used to understand shrub
+impacts on snow and permafrost by explicitly representing vegetation functional types,
+snow–vegetation interactions, and soil thermal processes.</p>
+<p>In the NGEE Arctic project, we add a shrub bending parameter to better represent shrub
+characteristics in Arctic ecosystems. A stiffer shrub (higher shrub bending parameters
+of 1 or 0.75) results in more canopy area exposed above the snow, which generally
+leads to a lower surface albedo (darker surface) and potentially less snow accumulation
+on the ground. This can also lead to a earlier and faster snow melt.</p>
+<p>A more flexible shrub (i.e., 0.25) leads to more of the shrub being buried, resulting
+in a higher surface albedo (brighter snow surface) and different snowpack properties.</p>
+<p>The amount of exposed or buried vegetation can also affect the surface energy budget.
+Buried vegetation is insulated by the snowpack, while exposed branches interact with
+the atmosphere, influencing heat and moisture fluxes.</p>
+<p>ELM simulates how shrub height and density influence snow accumulation, snow thermal
+insulation, and the timing of snowmelt, as well as how changes in albedo affect
+surface energy fluxes. These processes are coupled to a vertically resolved soil
+thermal model that tracks soil temperature and active-layer depth, enabling
+assessment of how shrub expansion modifies permafrost stability. By running
+scenario experiments with varying shrub cover, shrub bending, and climate forcing,
+ELM allows researchers to project the impacts of shrubification on Arctic
+snow dynamics and permafrost degradation.</p>
+<section id="running-elm-cases">
+<h2>Running ELM Cases<a class="headerlink" href="#running-elm-cases" title="Link to this heading">¶</a></h2>
+<p>Below are cases for shrubs at 100% in Imnaviat Creek basin examples.</p>
+<p>Model run with 100% shrubs and bendresist example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_allshrubs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mod_param_file<span class="o">=</span>/mnt/inputdata/E3SM/lnd/clm2/paramdata/im3_params_bendresist050_sd.nc<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>Arctic_init_br50_allshrubs
+</pre></div>
+</div>
+<p>Temperature scaled by +3 °C in the 100% shrubs and bendresist example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_allshrubs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mod_param_file<span class="o">=</span>/mnt/inputdata/E3SM/lnd/clm2/paramdata/im3_params_bendresist025_sd.nc<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>scale_temp3_br25_allshrubs
+</pre></div>
+</div>
+<p>You can see below how this will look in your terminal.</p>
+<p>Precipitation scaling (rain +40%, snow +60%) in the 100% shrubs and bendresist example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_rain<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_snow<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_allshrubs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mod_param_file<span class="o">=</span>/mnt/inputdata/E3SM/lnd/clm2/paramdata/im3_params_bendresist025_sd.nc<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>scale_rain40_snow60_br25_allshrubs
+</pre></div>
+</div>
+<p>Combined temperature and precipitation scaling in the 100% shrubs and bendresist example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_rain<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_snow<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_allshrubs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mod_param_file<span class="o">=</span>/mnt/inputdata/E3SM/lnd/clm2/paramdata/im3_params_bendresist025_sd.nc<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>scale_rain40_snow60_temp3_br25_allshrubs
+</pre></div>
+</div>
+<p>Below are cases for shrubs at 0% in Imnaviat Creek basin examples. This means that there is all grass
+in these simulations. In these runs, there is no bendresist used since there are no shrubs.</p>
+<p>Model run with 0% shrubs example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_noshrubs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>Arctic_init_noshrubs
+</pre></div>
+</div>
+<p>Temperature scaled by +3 °C in the 0% shrubs example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_noshrubs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>scale_temp3_noshrubs
+</pre></div>
+</div>
+<p>You can see below how this will look in your terminal.</p>
+<p>Precipitation scaling (rain +40%, snow +60%) in the 0% shrubs example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_rain<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_snow<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_noshrubs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>scale_rain40_snow60_noshrubs
+</pre></div>
+</div>
+<p>Combined temperature and precipitation scaling in the 0% shrubs example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/modex_user<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex25:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/modex_user/model_examples/ELM/run_ngeearctic_site.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--site_name<span class="o">=</span>imnaviat_creek<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--met_source<span class="o">=</span>gswp3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_arctic_init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--add_temperature<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_add_temperature<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_rain<span class="o">=</span><span class="m">1</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_rain<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scale_snow<span class="o">=</span><span class="m">1</span>.6<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--startdate_scale_snow<span class="o">=</span><span class="m">18550101</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_noshrubs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--transient_yrs<span class="o">=</span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--case_prefix<span class="o">=</span>scale_rain40_snow60_temp3_noshrubs
+</pre></div>
+</div>
+</section>
+<section id="looking-at-elm-results">
+<h2>Looking at ELM Results<a class="headerlink" href="#looking-at-elm-results" title="Link to this heading">¶</a></h2>
+<p>Here is where we will review how to look at the ELM results in Jupyter Lab notebooks <a class="reference internal" href="analyzing_ELM_output_Jupyter_Notebooks.html#analyzing-elm-output-in-jupyter-lab"><span class="std std-ref">Analyzing ELM Output in Jupyter Lab</span></a></p>
+</section>
 </section>
 
 
@@ -66,6 +254,17 @@
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
 
+  <div>
+    <h3><a href="../index.html">Page Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">The impact of shrubs in ELM</a><ul>
+<li><a class="reference internal" href="#running-elm-cases">Running ELM Cases</a></li>
+<li><a class="reference internal" href="#looking-at-elm-results">Looking at ELM Results</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
 
 
 <h3><a href="../index.html">Global Table of Contents</a></h3>
@@ -103,7 +302,7 @@
   <div>
     <h4>Next topic</h4>
     <p class="topless"><a href="surface_files_ELM.html"
-                          title="next chapter">Understanding and modifying surface files in ELM</a></p>
+                          title="next chapter">Understanding surface files in ELM</a></p>
   </div>
         </div>
       </div>
@@ -116,12 +315,12 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="surface_files_ELM.html" title="Understanding and modifying surface files in ELM"
+          <a href="surface_files_ELM.html" title="Understanding surface files in ELM"
              >next</a> |</li>
         <li class="right" >
           <a href="ELM_Background.html" title="ELM Background"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 12 18:42:29 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 13 17:08:51 UTC) documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="snow_veg_permafrost.html" ><span class="section-number">7. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="ELM_Model.html" ><span class="section-number">7.4.1. </span>ELM Model</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">The impact of shrubs in ELM</a></li> 
