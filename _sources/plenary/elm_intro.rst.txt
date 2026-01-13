@@ -42,9 +42,10 @@ you can choose from and substitute into the command below at <site_name> (must d
     -v inputdata:/mnt/inputdata \
     -v output:/mnt/output \
     yuanfornl/ngee-arctic-modex26:models-main-latest \
-    /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=<site_name>
+    /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
+    --site_name=<site_name>
 
-This command will run three ELM cases (Rosenbloom and Thorton, 2004): a) a spinup with accelerated
+This command will run three ELM cases (Rosenbloom and Thornton, 2004): a) a spinup with accelerated
 biogeochemical cycling (to more rapidly spinup biogeochemical pools), b) a second stage of spinup with
 normal biogeochemical cycling rates, and c) a transient run with time-varying CO2 and meteorological forcing
 from 1850 to near present (2024 for ERA5, 2014 for GSWP3). In this default configuration, ERA5 meteorological
