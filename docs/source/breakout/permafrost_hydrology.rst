@@ -33,7 +33,7 @@ If you don't still have a visualization container running, please start one now:
             -v inputdata:/mnt/inputdata \
             -v output:/mnt/output \
             yuanfornl/ngee-arctic-modex26:models-main-latest \
-            /home/modex_user/tools/scripts/get_inputdata.sh
+            /home/jovyan/tools/scripts/get_inputdata.sh
         
 
 Background on ELM subsurface hydrology and soil column layer
