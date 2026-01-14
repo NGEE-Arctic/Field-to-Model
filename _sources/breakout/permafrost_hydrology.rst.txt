@@ -44,9 +44,11 @@ Ice impedance: how frozen soil restricts water movement
 
 When ice forms in the pore space, it does not simply remove water—it blocks flow pathways. ELM represents this using an ice impedance factor, which reduces hydraulic conductivity as a function of the fraction of pore space filled with ice. This reduction follows a strong power-law relationship, meaning that even moderate ice contents can dramatically lower permeability. In practice, partially frozen layers can behave almost like impermeable barriers.
 
-.. note::TODO
+.. math::
 
-    add ice impedance equation from Oleson et al. 2013 here
+    k = 10^{-\Omega F_{ice}} \, k_{sat}
+       \left( \frac{\theta_{liq}}{\phi} \right)^{2B + 3}
+
 
 
 Perched drainage and runoff above frozen layers
@@ -65,7 +67,7 @@ Key differences to keep in mind between the two models used in this breakout ses
 Impact of initialization conditions and vertical layer structure on permafrost hydrology
 -----------------------------------------------------------------------------------------
 
-The ice impedance parameterization can cause results to be very sensitive to the choices of initial conditions. This sensitivity arises from the lack of permeability in the top frozen layer. Because soil columns in the high-Arctic freeze rapidly after initialization, this can rapidly cause a lens to form that prohibits any additional drainage through that layer. If the initial conditions before this layer freezes are too dry, this can cause a subsurface that is unrealistically dry below the first frozen layer. By default, ELM initializes its soil column at 15% of liquid saturation and at 274K, which for many Arctic simulations leads to this condition where the subsurface is quite dry below the active layer. An alternative initialization scheme that is implemented in ELM is to initialize the soil column at 100% liquid saturation and at a more appropriate approximated temeperature than using 274K globally - we have chosen to use 250 + 40 * cos(latitude) for this initialization option.
+The ice impedance parameterization can cause results to be very sensitive to the choices of initial conditions. This sensitivity arises from the lack of permeability in the top frozen layer. Because soil columns in the high-Arctic freeze rapidly after initialization, this can rapidly cause a lens to form that prohibits any additional drainage through that layer. If the initial conditions before this layer freezes are too dry, this can cause a subsurface that is unrealistically dry below the first frozen layer. By default, ELM initializes its soil column at 15% of liquid saturation and at 274K, which for many Arctic simulations leads to this condition where the subsurface is quite dry below the active layer. An alternative initialization scheme that is implemented in ELM is to initialize the soil column at 70% liquid saturation and at a more appropriate approximated temeperature than using 274K globally - we have chosen to use 270 + 20 * cos(latitude) for this initialization option.
 
 To help speed up the simulations in these breakout groups, we have provided restart files from the end of the two spinup stages in OLMT.
 
@@ -96,7 +98,6 @@ Impacts of cryosuction (ATS)
 
 
 
-Note: Generative AI was used to help draft and revise portions of this text. The authors reviewed and edited the content as needed and take full responsibility for the accuracy and appropriateness of the final document.
 
 Full runs
 ^^^^^^^^^
@@ -166,3 +167,6 @@ Polygonal tundra warming experiment:
         --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons \
         --add_temperature 5.0 --startdate_add_temperature=20100601 --transient_years 200 \
         --arctic_topounit_output
+
+
+Note: Generative AI was used to help draft and revise portions of this text. The authors reviewed and edited the content as needed and take full responsibility for the accuracy and appropriateness of the final document.

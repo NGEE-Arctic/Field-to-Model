@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Introduction to ELM and workshop scripts &#8212; ModEx 2026 (updated: Jan 14 04:08:00 UTC) documentation</title>
+    <title>3. Introduction to ELM and workshop scripts &#8212; ModEx 2026 (updated: Jan 14 04:57:55 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=f9db7e0b"></script>
+    <script src="../_static/documentation_options.js?v=1c913f13"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="../setup.html" title="2. Getting Started"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 04:08:00 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 04:57:55 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>  
@@ -74,7 +74,8 @@ you can choose from and substitute into the command below at &lt;site_name&gt; (
    -v output:/mnt/output \
    yuanfornl/ngee-arctic-modex26:models-main-latest \
    /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
-   --site_name=&lt;site_name&gt;
+   --site_name=&lt;site_name&gt; \
+   --met_source=&lt;met_source&gt;
 </pre></div>
 </div>
 <p>This command will run three ELM cases (Rosenbloom and Thornton, 2004): a) a spinup with accelerated
@@ -82,7 +83,7 @@ biogeochemical cycling (to more rapidly spinup biogeochemical pools), b) a secon
 normal biogeochemical cycling rates, and c) a transient run with time-varying CO2 and meteorological forcing
 from 1850 to near present (2024 for ERA5, 2014 for GSWP3). In this default configuration, ERA5 meteorological
 forcing from dapper will be used, but GSWP3 is available as an option for comparison.</p>
-<p>We can open a second shell window (Terminal, Cmd + N for a new window, or Cmd + T for a new tab) and run a second set of cases while this first case is running. As an example, let’s change the initial conditions of the first spinup case. By default, ELM initializes at 274K and at fairly dry soil conditions. A new initialization option, <code class="docutils literal notranslate"><span class="pre">--use_arctic_init</span></code>, sets wetter and colder initial conditions for the first step (soil column at liquid saturation, and at a temperature varying between 290K and 250K based on <cite>cos(lat)</cite>).</p>
+<p>We can open a second shell window (Terminal, Cmd + N for a new window, or Cmd + T for a new tab) and run a second set of cases while this first case is running. As an example, let’s change the initial conditions of the first spinup case. By default, ELM initializes at 274K and at fairly dry soil conditions. A new initialization option, <code class="docutils literal notranslate"><span class="pre">--use_arctic_init</span></code>, sets wetter and colder initial conditions for the first step (soil column at 70% liquid saturation, and at a temperature varying between 290K and 270K based on <cite>cos(lat)</cite>).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --pull always --rm \
    -v  $(pwd):/home/modex_user \
    -v inputdata:/mnt/inputdata \
@@ -102,7 +103,7 @@ the case has a different name. In this case, we have set it to “Arctic_init”
 <section id="adding-demography-and-disturbance-elm-fates">
 <h2><span class="section-number">3.1. </span>Adding demography and disturbance: ELM-FATES<a class="headerlink" href="#adding-demography-and-disturbance-elm-fates" title="Link to this heading">¶</a></h2>
 <p>FATES is the “Functionally Assembled Terrestrial Ecosystem Simulator.” It is an optional external module which can run within ELM to include alternative representations of ecosystem processes, namely vegetation demography and dynamic vegetation and disturbance.  FATES is a cohort- and patch-based model of vegetation competition and co-existence, allowing a representation of the terrestrial biosphere which accounts for the division of the land surface into successional stages, and for competition for light between height structured cohorts of representative trees of various plant functional types.</p>
-<p>A very detailed explain of FATES can be found in this <a class="reference external" href="https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html">Technical Documentation</a></p>
+<p>A very detailed explanation of FATES can be found in this <a class="reference external" href="https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html">Technical Documentation</a></p>
 <p>The source code for FATES, as well as discussion boards, and tracking changes can be found in this <a class="reference external" href="https://github.com/NGEET/fates">GitHub repository</a></p>
 <p>For this workshop, we will not go into the details of setting up and running FATES. However, we encourage users to visit previous User Guide documentation, and past <a class="reference external" href="https://fates-users-guide.readthedocs.io/en/latest/">FATES Tutorial documents</a> (the latest tutorial was in Fall 2024).</p>
 <p>Here are a few quick instructions and tips for running ELM-FATES:</p>
@@ -196,6 +197,12 @@ by viewing the OLMT links in the additional information sections).</p>
 </section>
 <section id="how-different-are-the-surface-datasets-across-these-sites">
 <h3><span class="section-number">3.3.2. </span>How different are the surface datasets across these sites?<a class="headerlink" href="#how-different-are-the-surface-datasets-across-these-sites" title="Link to this heading">¶</a></h3>
+<p>Each surface dataset provided for this workshop is derived from a 0.5° grid from the global model. Because of this relatively coarse resolution, these surface files may not contain the plant communities or land unit types in the abundance that you’d expect with more detailed knowledge of the particular site. We’ve included a quick jupyter notebook that you can use to investigate how the area of this grid cell is partitioned among land units (e.g., lake, wetland, vegetated land) and plant functional types (PFTs - e.g., shrubs, grasses, tree types): 00_inspect_surface_file.ipynb.</p>
+<p>Take a look at this notebook - all you should need to change is the “site_name” variable at the top of the notebook to look at different sites. Here’s an example plot of PFT fractions from Abisko:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/abisko_pfts.png"><img alt="PFTs at abisko" src="../_images/abisko_pfts.png" style="width: 80%;" />
+</a>
+</figure>
 </section>
 <section id="examining-case-output">
 <h3><span class="section-number">3.3.3. </span>Examining case output<a class="headerlink" href="#examining-case-output" title="Link to this heading">¶</a></h3>
@@ -283,15 +290,14 @@ by viewing the OLMT links in the additional information sections).</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tem_ee1_warming.html">4. Introduction to TEM and Warming Experiment Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ats_intro.html">5. ATS Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ilamb_intro.html">6. International Land Model Benchmarking (ILAMB)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../breakout/snow_veg_permafrost.html">7. Snow, Vegetation, and Permafrost Interactions Breakout Group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../breakout/permafrost_hydrology.html">8. Permafrost hydrology breakout group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../breakout/hillslope_bgc.html">9. Hillslope hydrology and BGC impacts breakout group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_issues.html">10. Common Issues/FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_issues.html#more-information-and-links">11. More Information and Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_issues.html#glossary">12. Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev_notes.html">13. Modex Workshop Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ilamb_intro.html">5. International Land Model Benchmarking (ILAMB)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../breakout/snow_veg_permafrost.html">6. Snow, Vegetation, and Permafrost Interactions Breakout Group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../breakout/permafrost_hydrology.html">7. Permafrost hydrology breakout group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../breakout/hillslope_bgc.html">8. Hillslope hydrology and BGC impacts breakout group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_issues.html">9. Common Issues/FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_issues.html#more-information-and-links">10. More Information and Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_issues.html#glossary">11. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_notes.html">12. Modex Workshop Development Notes</a></li>
 </ul>
 
   <div>
@@ -320,7 +326,7 @@ by viewing the OLMT links in the additional information sections).</p>
         <li class="right" >
           <a href="../setup.html" title="2. Getting Started"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 04:08:00 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 04:57:55 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Introduction to ELM and workshop scripts</a></li> 
       </ul>
     </div>

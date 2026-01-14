@@ -69,7 +69,6 @@ Here you will find resources and documentation needed to follow the workshop exa
   setup
   plenary/elm_intro
   plenary/tem_ee1_warming
-  plenary/ats_intro
   plenary/ilamb_intro.rst
   breakout/snow_veg_permafrost
   breakout/permafrost_hydrology

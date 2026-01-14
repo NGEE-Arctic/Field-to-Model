@@ -5,16 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. Modex Workshop Development Notes &#8212; ModEx 2026 (updated: Jan 14 04:08:00 UTC) documentation</title>
+    <title>12. Modex Workshop Development Notes &#8212; ModEx 2026 (updated: Jan 14 04:57:55 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e3f3e722" />
-    <script src="_static/documentation_options.js?v=f9db7e0b"></script>
+    <script src="_static/documentation_options.js?v=1c913f13"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="10. Common Issues/FAQ" href="common_issues.html" /> 
+    <link rel="prev" title="9. Common Issues/FAQ" href="common_issues.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
@@ -23,10 +23,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="common_issues.html" title="10. Common Issues/FAQ"
+          <a href="common_issues.html" title="9. Common Issues/FAQ"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 14 04:08:00 UTC) documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">13. </span>Modex Workshop Development Notes</a></li> 
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 14 04:57:55 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">12. </span>Modex Workshop Development Notes</a></li> 
       </ul>
     </div>  
 
@@ -36,7 +36,7 @@
           <div class="body" role="main">
             
   <section id="modex-workshop-development-notes">
-<h1><span class="section-number">13. </span>Modex Workshop Development Notes<a class="headerlink" href="#modex-workshop-development-notes" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">12. </span>Modex Workshop Development Notes<a class="headerlink" href="#modex-workshop-development-notes" title="Link to this heading">¶</a></h1>
 <blockquote>
 <div><ul class="simple">
 <li><p>This Sphinx project is configured to use MyST parser to allow writing in
@@ -53,19 +53,19 @@ borders, etc. See the comments in the CSS file for more details.</p></li>
 </ul>
 </div></blockquote>
 <section id="working-with-sphinx-docs">
-<h2><span class="section-number">13.1. </span>Working with Sphinx Docs<a class="headerlink" href="#working-with-sphinx-docs" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.1. </span>Working with Sphinx Docs<a class="headerlink" href="#working-with-sphinx-docs" title="Link to this heading">¶</a></h2>
 <p>The Dockerfile-docs file contains instructions to build a Docker image that can
 build and serve the Sphinx docs.</p>
 <p>There are a number of ways you can use this, but for working on content and
 editing the docs, the easiest is to use the live reloading server shown below.</p>
 <section id="building-the-docker-image">
-<h3><span class="section-number">13.1.1. </span>Building the Docker Image<a class="headerlink" href="#building-the-docker-image" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.1. </span>Building the Docker Image<a class="headerlink" href="#building-the-docker-image" title="Link to this heading">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>docbuilder<span class="w"> </span>--target<span class="w"> </span>docbuilder<span class="w"> </span>-f<span class="w"> </span>Docker/Dockerfile-docs<span class="w"> </span>.
 </pre></div>
 </div>
 </section>
 <section id="running-the-container-with-live-reload">
-<h3><span class="section-number">13.1.2. </span>Running the container with Live Reload<a class="headerlink" href="#running-the-container-with-live-reload" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.1.2. </span>Running the container with Live Reload<a class="headerlink" href="#running-the-container-with-live-reload" title="Link to this heading">¶</a></h3>
 <p>Run the container! This starts a live-reloading server on port 9999 that is
 watching the docs folder for changes. When it encounters changes, it rebuilds
 the docs. On your host system you can open a browser to localhost:9999 to see
@@ -85,9 +85,9 @@ worked with the bind mount!!</p>
 </section>
 </section>
 <section id="working-with-the-modeling-and-visualization-docker-images">
-<h2><span class="section-number">13.2. </span>Working with the Modeling and Visualization Docker Images<a class="headerlink" href="#working-with-the-modeling-and-visualization-docker-images" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">12.2. </span>Working with the Modeling and Visualization Docker Images<a class="headerlink" href="#working-with-the-modeling-and-visualization-docker-images" title="Link to this heading">¶</a></h2>
 <section id="container-setup">
-<span id="id1"></span><h3><span class="section-number">13.2.1. </span>Container Setup<a class="headerlink" href="#container-setup" title="Link to this heading">¶</a></h3>
+<span id="id1"></span><h3><span class="section-number">12.2.1. </span>Container Setup<a class="headerlink" href="#container-setup" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># # data
 git clone --recurse-submodules https://github.com/NGEE-Arctic/field-to-model
 cd field-to-model
@@ -117,7 +117,7 @@ docker run -it -v $(pwd):/home/modex_user yuanfornl/ngee-modex-visualization:mai
 </div>
 </section>
 <section id="usage">
-<h3><span class="section-number">13.2.2. </span>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">12.2.2. </span>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h3>
 <p>These examples show</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># # model image
 
@@ -161,15 +161,15 @@ docker run -it --init \
   <div>
     <h3><a href="index.html">Page Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">13. Modex Workshop Development Notes</a><ul>
-<li><a class="reference internal" href="#working-with-sphinx-docs">13.1. Working with Sphinx Docs</a><ul>
-<li><a class="reference internal" href="#building-the-docker-image">13.1.1. Building the Docker Image</a></li>
-<li><a class="reference internal" href="#running-the-container-with-live-reload">13.1.2. Running the container with Live Reload</a></li>
+<li><a class="reference internal" href="#">12. Modex Workshop Development Notes</a><ul>
+<li><a class="reference internal" href="#working-with-sphinx-docs">12.1. Working with Sphinx Docs</a><ul>
+<li><a class="reference internal" href="#building-the-docker-image">12.1.1. Building the Docker Image</a></li>
+<li><a class="reference internal" href="#running-the-container-with-live-reload">12.1.2. Running the container with Live Reload</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#working-with-the-modeling-and-visualization-docker-images">13.2. Working with the Modeling and Visualization Docker Images</a><ul>
-<li><a class="reference internal" href="#container-setup">13.2.1. Container Setup</a></li>
-<li><a class="reference internal" href="#usage">13.2.2. Usage</a></li>
+<li><a class="reference internal" href="#working-with-the-modeling-and-visualization-docker-images">12.2. Working with the Modeling and Visualization Docker Images</a><ul>
+<li><a class="reference internal" href="#container-setup">12.2.1. Container Setup</a></li>
+<li><a class="reference internal" href="#usage">12.2.2. Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -185,17 +185,16 @@ docker run -it --init \
 <li class="toctree-l1"><a class="reference internal" href="setup.html">2. Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plenary/elm_intro.html">3. Introduction to ELM and workshop scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plenary/tem_ee1_warming.html">4. Introduction to TEM and Warming Experiment Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plenary/ats_intro.html">5. ATS Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plenary/ilamb_intro.html">6. International Land Model Benchmarking (ILAMB)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="breakout/snow_veg_permafrost.html">7. Snow, Vegetation, and Permafrost Interactions Breakout Group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="breakout/permafrost_hydrology.html">8. Permafrost hydrology breakout group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="breakout/hillslope_bgc.html">9. Hillslope hydrology and BGC impacts breakout group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="common_issues.html">10. Common Issues/FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="common_issues.html#more-information-and-links">11. More Information and Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="common_issues.html#glossary">12. Glossary</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">13. Modex Workshop Development Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-sphinx-docs">13.1. Working with Sphinx Docs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-the-modeling-and-visualization-docker-images">13.2. Working with the Modeling and Visualization Docker Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plenary/ilamb_intro.html">5. International Land Model Benchmarking (ILAMB)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="breakout/snow_veg_permafrost.html">6. Snow, Vegetation, and Permafrost Interactions Breakout Group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="breakout/permafrost_hydrology.html">7. Permafrost hydrology breakout group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="breakout/hillslope_bgc.html">8. Hillslope hydrology and BGC impacts breakout group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_issues.html">9. Common Issues/FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_issues.html#more-information-and-links">10. More Information and Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_issues.html#glossary">11. Glossary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">12. Modex Workshop Development Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-sphinx-docs">12.1. Working with Sphinx Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-the-modeling-and-visualization-docker-images">12.2. Working with the Modeling and Visualization Docker Images</a></li>
 </ul>
 </li>
 </ul>
@@ -203,7 +202,7 @@ docker run -it --init \
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="common_issues.html"
-                          title="previous chapter"><span class="section-number">10. </span>Common Issues/FAQ</a></p>
+                          title="previous chapter"><span class="section-number">9. </span>Common Issues/FAQ</a></p>
   </div>
         </div>
       </div>
@@ -216,10 +215,10 @@ docker run -it --init \
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="common_issues.html" title="10. Common Issues/FAQ"
+          <a href="common_issues.html" title="9. Common Issues/FAQ"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 14 04:08:00 UTC) documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">13. </span>Modex Workshop Development Notes</a></li> 
+        <li class="nav-item nav-item-0"><a href="index.html">ModEx 2026 (updated: Jan 14 04:57:55 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">12. </span>Modex Workshop Development Notes</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

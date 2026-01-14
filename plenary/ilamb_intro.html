@@ -5,17 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. International Land Model Benchmarking (ILAMB) &#8212; ModEx 2026 (updated: Jan 14 04:08:00 UTC) documentation</title>
+    <title>5. International Land Model Benchmarking (ILAMB) &#8212; ModEx 2026 (updated: Jan 14 04:57:55 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=f9db7e0b"></script>
+    <script src="../_static/documentation_options.js?v=1c913f13"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Snow, Vegetation, and Permafrost Interactions Breakout Group" href="../breakout/snow_veg_permafrost.html" />
-    <link rel="prev" title="5. ATS Intro" href="ats_intro.html" /> 
+    <link rel="next" title="6. Snow, Vegetation, and Permafrost Interactions Breakout Group" href="../breakout/snow_veg_permafrost.html" />
+    <link rel="prev" title="4. Introduction to TEM and Warming Experiment Example" href="tem_ee1_warming.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
@@ -24,13 +24,13 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../breakout/snow_veg_permafrost.html" title="7. Snow, Vegetation, and Permafrost Interactions Breakout Group"
+          <a href="../breakout/snow_veg_permafrost.html" title="6. Snow, Vegetation, and Permafrost Interactions Breakout Group"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="ats_intro.html" title="5. ATS Intro"
+          <a href="tem_ee1_warming.html" title="4. Introduction to TEM and Warming Experiment Example"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 04:08:00 UTC) documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6. </span>International Land Model Benchmarking (ILAMB)</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 04:57:55 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5. </span>International Land Model Benchmarking (ILAMB)</a></li> 
       </ul>
     </div>  
 
@@ -40,7 +40,7 @@
           <div class="body" role="main">
             
   <section id="international-land-model-benchmarking-ilamb">
-<h1><span class="section-number">6. </span>International Land Model Benchmarking (ILAMB)<a class="headerlink" href="#international-land-model-benchmarking-ilamb" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">5. </span>International Land Model Benchmarking (ILAMB)<a class="headerlink" href="#international-land-model-benchmarking-ilamb" title="Link to this heading">¶</a></h1>
 <p>The ILAMB is a python package which provides systematic assessment and
 benchmarking of land surface models by confronting them with reference
 datasets. ILAMB works with CF-compliant NetCDF files, such as outputs
@@ -50,7 +50,7 @@ both structured and unstructured grids for gridded or point scale
 simulations. As part of this workshop we will explore features of ILAMB using a
 series of Pan-Arctic scale gridded simulations conducted using ELM.</p>
 <section id="get-the-ilamb-model-and-observation-data">
-<h2><span class="section-number">6.1. </span>Get the ILAMB model and observation data<a class="headerlink" href="#get-the-ilamb-model-and-observation-data" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.1. </span>Get the ILAMB model and observation data<a class="headerlink" href="#get-the-ilamb-model-and-observation-data" title="Link to this heading">¶</a></h2>
 <p>Skip if you have completed this step before</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
     -v $(pwd):/home/modex_user \
@@ -97,7 +97,7 @@ NGEE Arctic data servers and can be downloaded using <code class="docutils liter
 </div>
 </section>
 <section id="models-yaml-files">
-<h2><span class="section-number">6.2. </span>Models yaml Files<a class="headerlink" href="#models-yaml-files" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.2. </span>Models yaml Files<a class="headerlink" href="#models-yaml-files" title="Link to this heading">¶</a></h2>
 <p>Model simulations to be included in the benchmarking analysis can be
 described via a simple YAML file. YAML file to be used in this workshop
 is available in <em>Field-to-Model</em> repository at
@@ -131,7 +131,7 @@ with elevation-based topounits, downscaling of atmospheric forcings ON,
 and IM1 - Hill Slope hydrology module ON.</p>
 </section>
 <section id="ilamb-configure-files">
-<h2><span class="section-number">6.3. </span>ILAMB Configure Files<a class="headerlink" href="#ilamb-configure-files" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.3. </span>ILAMB Configure Files<a class="headerlink" href="#ilamb-configure-files" title="Link to this heading">¶</a></h2>
 <p>Model variables to be benchmarked and reference datasets to confront
 them with are defined using a simple configuration file.</p>
 <p>Evaluations can be grouped in logical groups as desired. For example,
@@ -179,7 +179,7 @@ defined using <code class="docutils literal notranslate"><span class="pre">deriv
 </pre></div>
 </div>
 <section id="point-based-data-for-benchmarking">
-<h3><span class="section-number">6.3.1. </span>Point based data for benchmarking<a class="headerlink" href="#point-based-data-for-benchmarking" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.1. </span>Point based data for benchmarking<a class="headerlink" href="#point-based-data-for-benchmarking" title="Link to this heading">¶</a></h3>
 <p>While its common to benchmark models using gridded reference datasets,
 ILAMB is also able to leverage point based datasets, such as those from
 FLUX towers, for benchmarking. Following is an example of using
@@ -197,7 +197,7 @@ data being in point formats and conducts necessary metrics calculations
 automatically.</p>
 </section>
 <section id="variable-to-variable-relationships">
-<h3><span class="section-number">6.3.2. </span>Variable to variable relationships<a class="headerlink" href="#variable-to-variable-relationships" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.2. </span>Variable to variable relationships<a class="headerlink" href="#variable-to-variable-relationships" title="Link to this heading">¶</a></h3>
 <p>While most often individual variables are compared against reference
 dataset to benchmark the model, equally important is to ensure that
 model (and observations) preserve functional relationships among
@@ -220,7 +220,7 @@ Air Temperature.</p>
 </section>
 </section>
 <section id="running-ilamb">
-<h2><span class="section-number">6.4. </span>Running ILAMB<a class="headerlink" href="#running-ilamb" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.4. </span>Running ILAMB<a class="headerlink" href="#running-ilamb" title="Link to this heading">¶</a></h2>
 <p>Now that we have the configuration file set up, you can run the study using the ilamb-run script.</p>
 <p>Start the container:</p>
 <p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Field-to-Model</span></code></p>
@@ -256,7 +256,7 @@ to the extent of Arctic vegetation as defined by Circumpolar Arctic
 Vegetation Map.</p>
 </section>
 <section id="visualize-ilamb-results">
-<h2><span class="section-number">6.5. </span>Visualize ILAMB Results<a class="headerlink" href="#visualize-ilamb-results" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.5. </span>Visualize ILAMB Results<a class="headerlink" href="#visualize-ilamb-results" title="Link to this heading">¶</a></h2>
 <p>ILAMB results are prepared as a set of html files that can be viewed in
 any browser. Relevant statistics and data are also stored in set of
 NetCDF files, all in the directory defined by <code class="docutils literal notranslate"><span class="pre">--build_dir</span></code>.</p>
@@ -294,16 +294,16 @@ ILAMB results.</p>
   <div>
     <h3><a href="../index.html">Page Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">6. International Land Model Benchmarking (ILAMB)</a><ul>
-<li><a class="reference internal" href="#get-the-ilamb-model-and-observation-data">6.1. Get the ILAMB model and observation data</a></li>
-<li><a class="reference internal" href="#models-yaml-files">6.2. Models yaml Files</a></li>
-<li><a class="reference internal" href="#ilamb-configure-files">6.3. ILAMB Configure Files</a><ul>
-<li><a class="reference internal" href="#point-based-data-for-benchmarking">6.3.1. Point based data for benchmarking</a></li>
-<li><a class="reference internal" href="#variable-to-variable-relationships">6.3.2. Variable to variable relationships</a></li>
+<li><a class="reference internal" href="#">5. International Land Model Benchmarking (ILAMB)</a><ul>
+<li><a class="reference internal" href="#get-the-ilamb-model-and-observation-data">5.1. Get the ILAMB model and observation data</a></li>
+<li><a class="reference internal" href="#models-yaml-files">5.2. Models yaml Files</a></li>
+<li><a class="reference internal" href="#ilamb-configure-files">5.3. ILAMB Configure Files</a><ul>
+<li><a class="reference internal" href="#point-based-data-for-benchmarking">5.3.1. Point based data for benchmarking</a></li>
+<li><a class="reference internal" href="#variable-to-variable-relationships">5.3.2. Variable to variable relationships</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#running-ilamb">6.4. Running ILAMB</a></li>
-<li><a class="reference internal" href="#visualize-ilamb-results">6.5. Visualize ILAMB Results</a></li>
+<li><a class="reference internal" href="#running-ilamb">5.4. Running ILAMB</a></li>
+<li><a class="reference internal" href="#visualize-ilamb-results">5.5. Visualize ILAMB Results</a></li>
 </ul>
 </li>
 </ul>
@@ -317,33 +317,32 @@ ILAMB results.</p>
 <li class="toctree-l1"><a class="reference internal" href="../setup.html">2. Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elm_intro.html">3. Introduction to ELM and workshop scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tem_ee1_warming.html">4. Introduction to TEM and Warming Experiment Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ats_intro.html">5. ATS Intro</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. International Land Model Benchmarking (ILAMB)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#get-the-ilamb-model-and-observation-data">6.1. Get the ILAMB model and observation data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#models-yaml-files">6.2. Models yaml Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ilamb-configure-files">6.3. ILAMB Configure Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-ilamb">6.4. Running ILAMB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#visualize-ilamb-results">6.5. Visualize ILAMB Results</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. International Land Model Benchmarking (ILAMB)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#get-the-ilamb-model-and-observation-data">5.1. Get the ILAMB model and observation data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#models-yaml-files">5.2. Models yaml Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ilamb-configure-files">5.3. ILAMB Configure Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-ilamb">5.4. Running ILAMB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualize-ilamb-results">5.5. Visualize ILAMB Results</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../breakout/snow_veg_permafrost.html">7. Snow, Vegetation, and Permafrost Interactions Breakout Group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../breakout/permafrost_hydrology.html">8. Permafrost hydrology breakout group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../breakout/hillslope_bgc.html">9. Hillslope hydrology and BGC impacts breakout group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_issues.html">10. Common Issues/FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_issues.html#more-information-and-links">11. More Information and Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../common_issues.html#glossary">12. Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev_notes.html">13. Modex Workshop Development Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../breakout/snow_veg_permafrost.html">6. Snow, Vegetation, and Permafrost Interactions Breakout Group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../breakout/permafrost_hydrology.html">7. Permafrost hydrology breakout group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../breakout/hillslope_bgc.html">8. Hillslope hydrology and BGC impacts breakout group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_issues.html">9. Common Issues/FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_issues.html#more-information-and-links">10. More Information and Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common_issues.html#glossary">11. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_notes.html">12. Modex Workshop Development Notes</a></li>
 </ul>
 
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="ats_intro.html"
-                          title="previous chapter"><span class="section-number">5. </span>ATS Intro</a></p>
+    <p class="topless"><a href="tem_ee1_warming.html"
+                          title="previous chapter"><span class="section-number">4. </span>Introduction to TEM and Warming Experiment Example</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
     <p class="topless"><a href="../breakout/snow_veg_permafrost.html"
-                          title="next chapter"><span class="section-number">7. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a></p>
+                          title="next chapter"><span class="section-number">6. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a></p>
   </div>
         </div>
       </div>
@@ -356,13 +355,13 @@ ILAMB results.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../breakout/snow_veg_permafrost.html" title="7. Snow, Vegetation, and Permafrost Interactions Breakout Group"
+          <a href="../breakout/snow_veg_permafrost.html" title="6. Snow, Vegetation, and Permafrost Interactions Breakout Group"
              >next</a> |</li>
         <li class="right" >
-          <a href="ats_intro.html" title="5. ATS Intro"
+          <a href="tem_ee1_warming.html" title="4. Introduction to TEM and Warming Experiment Example"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 04:08:00 UTC) documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6. </span>International Land Model Benchmarking (ILAMB)</a></li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 04:57:55 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5. </span>International Land Model Benchmarking (ILAMB)</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
