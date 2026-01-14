@@ -38,6 +38,21 @@ warming, we can also change summer and winter precipitation. In the
 example below, we walk through shifting both summer and winter
 precipitation to examine impacts on subsurface conditions.
 
+.. tip::
+
+  Reminder - if you need don't have the visualization container running, you can launch one with:
+
+  .. code-block:: bash
+
+        cd field-to-model
+
+        docker run -it --pull always --rm \
+          -p 8888:8888 \
+          -v $(pwd):/home/jovyan \
+          -v inputdata:/mnt/inputdata \
+          -v output:/mnt/output \
+          yuanfornl/ngee-arctic-modex26:vis-main-latest
+
 Variables of Interest in TEM and ELM
 ------------------------------------
 

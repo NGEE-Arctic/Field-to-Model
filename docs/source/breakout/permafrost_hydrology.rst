@@ -16,6 +16,26 @@ If you don't still have a visualization container running, please start one now:
         -v output:/mnt/output \
         yuanfornl/ngee-arctic-modex26:vis-main-latest
 
+
+.. note:: 
+
+    We updated a few things recently for this breakout group to add the ``more_vertlayers`` option (since this morning),
+    so we'll have to update our repositories:
+
+    .. code-block:: bash
+
+        cd field-to-model
+        git pull origin main
+        git submodule update --init --recursive
+        docker run -it --pull always --rm \
+            -p 8888:8888 \
+            -v $(pwd):/home/jovyan \
+            -v inputdata:/mnt/inputdata \
+            -v output:/mnt/output \
+            yuanfornl/ngee-arctic-modex26:models-main-latest \
+            /home/modex_user/tools/scripts/get_inputdata.sh
+        
+
 Background on ELM subsurface hydrology and soil column layer
 ------------------------------------------------------------
 
@@ -87,14 +107,6 @@ Networks of subsurface ice wedges can create polygonal tundra landscapes. The ic
 In Phase 3 of NGEE Arctic, a new parameterization to represent these polygonal landscapes was introduced to try to capture these effects in ELM (Demir et al. in preparation). This parameterization was developed using intermediate-scale ATS simulations of polygonal tundra to inform new functional relationships between microtopography and surface and subsurface hydrology in ELM. 
 
 We've provided surface files that we can investigate the impacts of this parameterization against the simulations we created above.
-
-Impacts of cryosuction (ATS)
-----------------------------
-
-
-
-
-
 
 
 
