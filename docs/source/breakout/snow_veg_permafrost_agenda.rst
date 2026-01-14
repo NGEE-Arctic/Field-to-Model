@@ -3,7 +3,7 @@ Snow, Vegetation, Permafrost (SVP) Breakout Agenda
 
 Santa Fe, New Mexico
 
-SVP Breakout Wednesday, January 14, 2026
+SVP Breakout January 14, 2026
 --------------------------------------------
 
 .. list-table::
@@ -23,7 +23,7 @@ SVP Breakout Wednesday, January 14, 2026
      - Snow, vegetation, permafrost in TEM
      - Hannah Mevenkamp
    * - 2:30–3:15 pm
-     - ELM Hands-on demos and exercises running ELM/TEM
+     - Hands-on demos and exercises running ELM/TEM
      - 
    * - 3:15-3:30 pm
      - Coffee break, troubleshooting
@@ -49,19 +49,19 @@ SVP Breakout Thursday, January 15, 2026
      - **Description**
      - **Details**
    * - 1:30–2:00 pm
-     - Advanced ELM demo
+     - Snow, vegetation, permafrost in ELM
      - Katrina Bennett
    * - 2:00–2:30 pm
-     - Advanced TEM demo
+     - Snow, vegetation, permafrost in TEM
      - Hannah Mevenkamp
    * - 2:30-3:15 pm
-     - Hands on work
+     - Hands-on demos and exercises running ELM/TEM
      - 
    * - 3:15–3:30 pm
      - Coffee break
      - 
    * - 3:45-5:00 pm
-     - Hands on work
+     - Individual work/testing model simulations and runs
      - 
    * - 5:00–5:20 pm
      - Breakout group report out
@@ -80,6 +80,5 @@ SVP Breakout Friday, January 16, 2026
    * - 8:45–12:15 pm
      - Breakout writing sessions
      - In groups work
-   * - 10:00–10:15 pm
+   * - 10:00–10:15 am
      - Coffee
-     - 
