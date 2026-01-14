@@ -1,13 +1,10 @@
 [submodule "E3SM"]
 	path = E3SM
 	url = https://github.com/lanl/NGEE-Arctic-E3SM
-	ignore = all
 [submodule "tools/dapper"]
 	path = tools/dapper
 	url = https://github.com/ngee-arctic/dapper
-	ignore = all
 [submodule "tools/olmt"]
 	path = tools/olmt
 	url = https://github.com/rfiorella/olmt
-	branch = rfiorella/era5
-	ignore = all
+	branch = modex_workshop 
