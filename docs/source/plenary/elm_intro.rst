@@ -43,7 +43,8 @@ you can choose from and substitute into the command below at <site_name> (must d
     -v output:/mnt/output \
     yuanfornl/ngee-arctic-modex26:models-main-latest \
     /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
-    --site_name=<site_name>
+    --site_name=<site_name> \
+    --met_source=<met_source>
 
 This command will run three ELM cases (Rosenbloom and Thornton, 2004): a) a spinup with accelerated
 biogeochemical cycling (to more rapidly spinup biogeochemical pools), b) a second stage of spinup with
@@ -74,7 +75,7 @@ Adding demography and disturbance: ELM-FATES
 --------------------------------------------
 FATES is the “Functionally Assembled Terrestrial Ecosystem Simulator.” It is an optional external module which can run within ELM to include alternative representations of ecosystem processes, namely vegetation demography and dynamic vegetation and disturbance.  FATES is a cohort- and patch-based model of vegetation competition and co-existence, allowing a representation of the terrestrial biosphere which accounts for the division of the land surface into successional stages, and for competition for light between height structured cohorts of representative trees of various plant functional types.
 
-A very detailed explain of FATES can be found in this `Technical Documentation <https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html>`__
+A very detailed explaination of FATES can be found in this `Technical Documentation <https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html>`__
 
 The source code for FATES, as well as discussion boards, and tracking changes can be found in this `GitHub repository <https://github.com/NGEET/fates>`__
 
@@ -187,6 +188,14 @@ Try working through this notebook a few more times - you can change the value of
 
 How different are the surface datasets across these sites?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Each surface dataset provided for this workshop is derived from a 0.5° grid from the global model. Because of this relatively coarse resolution, these surface files may not contain the plant communities or land unit types in the abundance that you'd expect with more detailed knowledge of the particular site. We've included a quick jupyter notebook that you can use to investigate how the area of this grid cell is partitioned among land units (e.g., lake, wetland, vegetated land) and plant functional types (PFTs - e.g., shrubs, grasses, tree types): 00_inspect_surface_file.ipynb.
+
+Take a look at this notebook - all you should need to change is the "site_name" variable at the top of the notebook to look at different sites. Here's an example plot of PFT fractions from Abisko:
+
+.. figure:: ../_static/plenary/elm/abisko_pfts.png
+   :alt: PFTs at abisko
+   :width: 80%
 
 
 Examining case output
