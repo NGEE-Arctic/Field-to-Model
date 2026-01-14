@@ -27,7 +27,7 @@ Wednesday, January 14, 2026
      - 
    * - 10:30–12:00 pm*
      - TEM Introduction and hands-on exercises
-     - Eugenie Euskirchen, Hannah Mevenkamp, Tobey Carman
+     - Hannah Mevenkamp, Tobey Carman
    * - 12:00–1:30 pm*
      - Lunch, break / Dapper Introduction and tutorial
      - Jon Schwenk

@@ -44,9 +44,11 @@ Ice impedance: how frozen soil restricts water movement
 
 When ice forms in the pore space, it does not simply remove water—it blocks flow pathways. ELM represents this using an ice impedance factor, which reduces hydraulic conductivity as a function of the fraction of pore space filled with ice. This reduction follows a strong power-law relationship, meaning that even moderate ice contents can dramatically lower permeability. In practice, partially frozen layers can behave almost like impermeable barriers.
 
-.. note::TODO
+.. math::
 
-    add ice impedance equation from Oleson et al. 2013 here
+    k = 10^{-\Omega F_{ice}} \, k_{sat}
+       \left( \frac{\theta_{liq}}{\phi} \right)^{2B + 3}
+
 
 
 Perched drainage and runoff above frozen layers
@@ -96,7 +98,6 @@ Impacts of cryosuction (ATS)
 
 
 
-Note: Generative AI was used to help draft and revise portions of this text. The authors reviewed and edited the content as needed and take full responsibility for the accuracy and appropriateness of the final document.
 
 Full runs
 ^^^^^^^^^
@@ -166,3 +167,6 @@ Polygonal tundra warming experiment:
         --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons \
         --add_temperature 5.0 --startdate_add_temperature=20100601 --transient_years 200 \
         --arctic_topounit_output
+
+
+Note: Generative AI was used to help draft and revise portions of this text. The authors reviewed and edited the content as needed and take full responsibility for the accuracy and appropriateness of the final document.
