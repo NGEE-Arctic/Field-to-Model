@@ -75,7 +75,7 @@ Adding demography and disturbance: ELM-FATES
 --------------------------------------------
 FATES is the “Functionally Assembled Terrestrial Ecosystem Simulator.” It is an optional external module which can run within ELM to include alternative representations of ecosystem processes, namely vegetation demography and dynamic vegetation and disturbance.  FATES is a cohort- and patch-based model of vegetation competition and co-existence, allowing a representation of the terrestrial biosphere which accounts for the division of the land surface into successional stages, and for competition for light between height structured cohorts of representative trees of various plant functional types.
 
-A very detailed explaination of FATES can be found in this `Technical Documentation <https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html>`__
+A very detailed explanation of FATES can be found in this `Technical Documentation <https://fates-users-guide.readthedocs.io/projects/tech-doc/en/latest/index.html>`__
 
 The source code for FATES, as well as discussion boards, and tracking changes can be found in this `GitHub repository <https://github.com/NGEET/fates>`__
 
