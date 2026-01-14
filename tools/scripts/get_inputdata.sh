@@ -3,8 +3,11 @@
 if [ -d "/mnt/inputdata/.git" ]; then
   git -C /mnt/inputdata fetch
   git -C /mnt/inputdata reset --hard origin/main
+  git -C /mnt/inputdata submodule update --init --recursive
+  # unpack zipped data
+  find /mnt/inputdata -name '*.gz' -exec gunzip -v {} +
 else
-  git clone --depth=1 --single-branch -b main https://github.com/ngee-arctic/field-to-model-inputdata /mnt/inputdata || true
+  git clone --depth=1 --single-branch --recurse-submodules -b main https://github.com/ngee-arctic/field-to-model-inputdata /mnt/inputdata || true
   # unpack zipped data
   find /mnt/inputdata -name '*.gz' -exec gunzip -v {} +
 
