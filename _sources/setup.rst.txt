@@ -201,11 +201,14 @@ platforms (e.g., Windows vs Mac).
 
 
 
-
 Get the workshop data
 ------------------------------
 
 E3SM/ELM and TEM input data needed for the workshop can be downloaded by:
+
+.. tip:: 
+
+    Make sure you are in the field-to-model directory you cloned above before running the steps that follow!
 
 .. code::
 
