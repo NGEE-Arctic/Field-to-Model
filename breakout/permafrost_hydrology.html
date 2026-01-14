@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Permafrost hydrology breakout group &#8212; ModEx 2026 (updated: Jan 14 19:43:49 UTC) documentation</title>
+    <title>7. Permafrost hydrology breakout group &#8212; ModEx 2026 (updated: Jan 14 20:29:32 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=ff86f00b"></script>
+    <script src="../_static/documentation_options.js?v=2db24e8b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -30,7 +30,7 @@
         <li class="right" >
           <a href="TEM_Model.html" title="6.4.2. TEM Model"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 19:43:49 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 20:29:32 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">7. </span>Permafrost hydrology breakout group</a></li> 
       </ul>
     </div>  
@@ -53,6 +53,23 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
 <span class="w"> </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
 <span class="w"> </span>yuanfornl/ngee-arctic-modex26:vis-main-latest
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We updated a few things recently for this breakout group to add the <code class="docutils literal notranslate"><span class="pre">more_vertlayers</span></code> option (since this morning),
+so we’ll have to update our repositories:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>field-to-model
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/jovyan<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>yuanfornl/ngee-arctic-modex26:models-main-latest<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/home/modex_user/tools/scripts/get_inputdata.sh
+</pre></div>
+</div>
 </div>
 <section id="background-on-elm-subsurface-hydrology-and-soil-column-layer">
 <h2><span class="section-number">7.1. </span>Background on ELM subsurface hydrology and soil column layer<a class="headerlink" href="#background-on-elm-subsurface-hydrology-and-soil-column-layer" title="Link to this heading">¶</a></h2>
@@ -109,11 +126,8 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
 </figure>
 <p>In Phase 3 of NGEE Arctic, a new parameterization to represent these polygonal landscapes was introduced to try to capture these effects in ELM (Demir et al. in preparation). This parameterization was developed using intermediate-scale ATS simulations of polygonal tundra to inform new functional relationships between microtopography and surface and subsurface hydrology in ELM.</p>
 <p>We’ve provided surface files that we can investigate the impacts of this parameterization against the simulations we created above.</p>
-</section>
-<section id="impacts-of-cryosuction-ats">
-<h2><span class="section-number">7.4. </span>Impacts of cryosuction (ATS)<a class="headerlink" href="#impacts-of-cryosuction-ats" title="Link to this heading">¶</a></h2>
 <section id="full-runs">
-<h3><span class="section-number">7.4.1. </span>Full runs<a class="headerlink" href="#full-runs" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.1. </span>Full runs<a class="headerlink" href="#full-runs" title="Link to this heading">¶</a></h3>
 <p>The full simulations, including the spinup stages can be run as follows:</p>
 <p>Initial condition comparison:</p>
 <p>Default:</p>
@@ -207,9 +221,8 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
 </ul>
 </li>
 <li><a class="reference internal" href="#impact-of-initialization-conditions-and-vertical-layer-structure-on-permafrost-hydrology">7.2. Impact of initialization conditions and vertical layer structure on permafrost hydrology</a></li>
-<li><a class="reference internal" href="#polygonal-tundra-landscapes">7.3. Polygonal tundra landscapes</a></li>
-<li><a class="reference internal" href="#impacts-of-cryosuction-ats">7.4. Impacts of cryosuction (ATS)</a><ul>
-<li><a class="reference internal" href="#full-runs">7.4.1. Full runs</a></li>
+<li><a class="reference internal" href="#polygonal-tundra-landscapes">7.3. Polygonal tundra landscapes</a><ul>
+<li><a class="reference internal" href="#full-runs">7.3.1. Full runs</a></li>
 </ul>
 </li>
 </ul>
@@ -231,7 +244,6 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
 <li class="toctree-l2"><a class="reference internal" href="#background-on-elm-subsurface-hydrology-and-soil-column-layer">7.1. Background on ELM subsurface hydrology and soil column layer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#impact-of-initialization-conditions-and-vertical-layer-structure-on-permafrost-hydrology">7.2. Impact of initialization conditions and vertical layer structure on permafrost hydrology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#polygonal-tundra-landscapes">7.3. Polygonal tundra landscapes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#impacts-of-cryosuction-ats">7.4. Impacts of cryosuction (ATS)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hillslope_bgc.html">8. Hillslope hydrology and BGC impacts breakout group</a></li>
@@ -267,7 +279,7 @@ and surface boundary conditions, using a field site of Utqiagvik, Alaska as the 
         <li class="right" >
           <a href="TEM_Model.html" title="6.4.2. TEM Model"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 19:43:49 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 20:29:32 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">7. </span>Permafrost hydrology breakout group</a></li> 
       </ul>
     </div>

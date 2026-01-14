@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. Snow, Vegetation, and Permafrost Interactions Breakout Group &#8212; ModEx 2026 (updated: Jan 14 19:43:49 UTC) documentation</title>
+    <title>6. Snow, Vegetation, and Permafrost Interactions Breakout Group &#8212; ModEx 2026 (updated: Jan 14 20:29:32 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=ff86f00b"></script>
+    <script src="../_static/documentation_options.js?v=2db24e8b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="../plenary/ilamb_intro.html" title="5. International Land Model Benchmarking (ILAMB)"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 19:43:49 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 20:29:32 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">6. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a></li> 
       </ul>
     </div>  
@@ -77,6 +77,20 @@ Rantanen et al. 2022).</p>
 warming, we can also change summer and winter precipitation. In the
 example below, we walk through shifting both summer and winter
 precipitation to examine impacts on subsurface conditions.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Reminder - if you need don’t have the visualization container running, you can launch one with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>field-to-model
+
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="w"> </span>always<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/jovyan<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>inputdata:/mnt/inputdata<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>output:/mnt/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yuanfornl/ngee-arctic-modex26:vis-main-latest
+</pre></div>
+</div>
+</div>
 <section id="variables-of-interest-in-tem-and-elm">
 <h2><span class="section-number">6.2. </span>Variables of Interest in TEM and ELM<a class="headerlink" href="#variables-of-interest-in-tem-and-elm" title="Link to this heading">¶</a></h2>
 <p>The following variables are examined to understand how changes in
@@ -349,7 +363,7 @@ nearly four times faster than the globe since 1979. Communications Earth
         <li class="right" >
           <a href="../plenary/ilamb_intro.html" title="5. International Land Model Benchmarking (ILAMB)"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 19:43:49 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 20:29:32 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">6. </span>Snow, Vegetation, and Permafrost Interactions Breakout Group</a></li> 
       </ul>
     </div>
