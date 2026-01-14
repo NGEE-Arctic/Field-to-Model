@@ -77,7 +77,7 @@ SVP Breakout Friday, January 16, 2026
    * - **Time**
      - **Description**
      - **Details**
-   * - 8:45–12:15 pm
+   * - 8:45–12:15 am
      - Breakout writing sessions
      - In groups work
    * - 10:00–10:15 am
