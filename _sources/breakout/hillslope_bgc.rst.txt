@@ -490,7 +490,25 @@ hydrology**.
 Analysis and visualization of ELM simulation outputs
 ----------------------------------------------------
 
-Start jupyter notebook in the Docker container
+There are 2 ways to launch the viz notebook.
+
+Option 1: from terminal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use this command, used elsewhere in the workshop:
+
+.. code::
+
+   docker run -it --rm \
+      --name vis-container \
+      -p 8888:8888 \
+      -v $(pwd):/home/jovyan \
+      -v inputdata:/mnt/inputdata \ 
+      -v output:/mnt/output \
+      yuanfornl/ngee-arctic-modex26:vis-main-latest   
+
+
+Option 2: Start jupyter notebook in the Docker container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. The recent version of Docker Desktop App is very handy to run jupyter notebook container.

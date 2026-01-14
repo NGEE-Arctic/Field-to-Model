@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Hillslope hydrology and BGC impacts breakout group &#8212; ModEx 2026 (updated: Jan 14 18:24:22 UTC) documentation</title>
+    <title>8. Hillslope hydrology and BGC impacts breakout group &#8212; ModEx 2026 (updated: Jan 14 19:43:49 UTC) documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css?v=279e0f84" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e3f3e722" />
-    <script src="../_static/documentation_options.js?v=b915a89e"></script>
+    <script src="../_static/documentation_options.js?v=ff86f00b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="permafrost_hydrology.html" title="7. Permafrost hydrology breakout group"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 18:24:22 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 19:43:49 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>Hillslope hydrology and BGC impacts breakout group</a></li> 
       </ul>
     </div>  
@@ -520,8 +520,22 @@ hydrology</strong>.</p>
 </section>
 <section id="analysis-and-visualization-of-elm-simulation-outputs">
 <h2><span class="section-number">8.5. </span>Analysis and visualization of ELM simulation outputs<a class="headerlink" href="#analysis-and-visualization-of-elm-simulation-outputs" title="Link to this heading">¶</a></h2>
-<section id="start-jupyter-notebook-in-the-docker-container">
-<h3><span class="section-number">8.5.1. </span>Start jupyter notebook in the Docker container<a class="headerlink" href="#start-jupyter-notebook-in-the-docker-container" title="Link to this heading">¶</a></h3>
+<p>There are 2 ways to launch the viz notebook.</p>
+<section id="option-1-from-terminal">
+<h3><span class="section-number">8.5.1. </span>Option 1: from terminal<a class="headerlink" href="#option-1-from-terminal" title="Link to this heading">¶</a></h3>
+<p>Use this command, used elsewhere in the workshop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it --rm \
+   --name vis-container \
+   -p 8888:8888 \
+   -v $(pwd):/home/jovyan \
+   -v inputdata:/mnt/inputdata \
+   -v output:/mnt/output \
+   yuanfornl/ngee-arctic-modex26:vis-main-latest
+</pre></div>
+</div>
+</section>
+<section id="option-2-start-jupyter-notebook-in-the-docker-container">
+<h3><span class="section-number">8.5.2. </span>Option 2: Start jupyter notebook in the Docker container<a class="headerlink" href="#option-2-start-jupyter-notebook-in-the-docker-container" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>After starting the Docker Desktop App, click Left panel’s <em>Images</em>, listing the images available.</p>
 <figure class="align-default">
@@ -556,7 +570,7 @@ hydrology</strong>.</p>
 </ol>
 </section>
 <section id="visualizing-results-using-jupyter-notebook">
-<h3><span class="section-number">8.5.2. </span>Visualizing results using jupyter notebook<a class="headerlink" href="#visualizing-results-using-jupyter-notebook" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">8.5.3. </span>Visualizing results using jupyter notebook<a class="headerlink" href="#visualizing-results-using-jupyter-notebook" title="Link to this heading">¶</a></h3>
 <p>Click the left explorer window, and click-open the folder: <code class="docutils literal notranslate"><span class="pre">/vis_notebooks/hillslope-bgc/</span></code></p>
 <p>Click open file: <code class="docutils literal notranslate"><span class="pre">plot_ELM_output.ipynb</span></code>. We will run this script to
 open a ELM output file, and investigate a few variables.</p>
@@ -567,7 +581,7 @@ open a ELM output file, and investigate a few variables.</p>
 </div></blockquote>
 </section>
 <section id="analyzing-the-impact-of-topounits-and-hillslope-hydrology-on-hydrology-soil-moisture-and-biogeochemistry-gpp">
-<h3><span class="section-number">8.5.3. </span>Analyzing the impact of topounits and hillslope hydrology on hydrology (<strong>soil moisture</strong>) and biogeochemistry (<strong>GPP</strong>)<a class="headerlink" href="#analyzing-the-impact-of-topounits-and-hillslope-hydrology-on-hydrology-soil-moisture-and-biogeochemistry-gpp" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">8.5.4. </span>Analyzing the impact of topounits and hillslope hydrology on hydrology (<strong>soil moisture</strong>) and biogeochemistry (<strong>GPP</strong>)<a class="headerlink" href="#analyzing-the-impact-of-topounits-and-hillslope-hydrology-on-hydrology-soil-moisture-and-biogeochemistry-gpp" title="Link to this heading">¶</a></h3>
 <p>From the left explorer window, click-open file:
 <code class="docutils literal notranslate"><span class="pre">topounit_run_analysis.ipynb</span></code>. We will run this script to open
 <code class="docutils literal notranslate"><span class="pre">merged_ncfile</span></code> we created for 4 simulations in previous runs, and
@@ -634,9 +648,10 @@ conduct some analysis.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#analysis-and-visualization-of-elm-simulation-outputs">8.5. Analysis and visualization of ELM simulation outputs</a><ul>
-<li><a class="reference internal" href="#start-jupyter-notebook-in-the-docker-container">8.5.1. Start jupyter notebook in the Docker container</a></li>
-<li><a class="reference internal" href="#visualizing-results-using-jupyter-notebook">8.5.2. Visualizing results using jupyter notebook</a></li>
-<li><a class="reference internal" href="#analyzing-the-impact-of-topounits-and-hillslope-hydrology-on-hydrology-soil-moisture-and-biogeochemistry-gpp">8.5.3. Analyzing the impact of topounits and hillslope hydrology on hydrology (<strong>soil moisture</strong>) and biogeochemistry (<strong>GPP</strong>)</a></li>
+<li><a class="reference internal" href="#option-1-from-terminal">8.5.1. Option 1: from terminal</a></li>
+<li><a class="reference internal" href="#option-2-start-jupyter-notebook-in-the-docker-container">8.5.2. Option 2: Start jupyter notebook in the Docker container</a></li>
+<li><a class="reference internal" href="#visualizing-results-using-jupyter-notebook">8.5.3. Visualizing results using jupyter notebook</a></li>
+<li><a class="reference internal" href="#analyzing-the-impact-of-topounits-and-hillslope-hydrology-on-hydrology-soil-moisture-and-biogeochemistry-gpp">8.5.4. Analyzing the impact of topounits and hillslope hydrology on hydrology (<strong>soil moisture</strong>) and biogeochemistry (<strong>GPP</strong>)</a></li>
 </ul>
 </li>
 </ul>
@@ -695,7 +710,7 @@ conduct some analysis.</p>
         <li class="right" >
           <a href="permafrost_hydrology.html" title="7. Permafrost hydrology breakout group"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 18:24:22 UTC) documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ModEx 2026 (updated: Jan 14 19:43:49 UTC) documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>Hillslope hydrology and BGC impacts breakout group</a></li> 
       </ul>
     </div>
