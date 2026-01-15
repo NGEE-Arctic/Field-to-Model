@@ -15,7 +15,7 @@ can be pulled from Docker Hub.
     If you prefer to build the images locally, instructions are provided in the :ref:`container-setup` section.
     It will take quite some time, and we strongly recommend using the pre-built containers.
 
-Required software:
+Required software
 --------------------------
 
 You will need the following software:
@@ -150,8 +150,8 @@ The model container has the following models available:
 The model container is ~1.6GB on Docker Hub, and the visualization container is 
 ~2.1GB on Docker Hub.
 
-Once you have the containers downloaded, you can run them on your local machine
-with the following commands:
+Once you have the Docker Desktop downloaded, you can retrieve the containers we'll be using
+to your local machine with the following commands:
 
 .. code::
     

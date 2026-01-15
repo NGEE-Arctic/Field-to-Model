@@ -17,7 +17,7 @@ on:
             - ".cime/**"
             - ".github/workflows/elm_tests.yml"
     schedule:
-      - cron: "0 0 * * *"
+      - cron: "0 0 1 * *"
     workflow_dispatch:
 
 jobs:
@@ -165,7 +165,7 @@ jobs:
             chmod -R u+rwX .cache/inputdata || true
 
             docker run --rm -v $(pwd):/home/modex_user \
-              -v inputdata:/mnt/inputdata \
+              -v $(pwd)/.cache/inputdata:/mnt/inputdata \
               -v output:/mnt/output \
               yuanfornl/ngee-arctic-modex26:models-main-latest \
               /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh \
