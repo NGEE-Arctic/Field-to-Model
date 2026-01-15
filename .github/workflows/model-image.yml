@@ -3,7 +3,7 @@ name: build model images
 on:
   workflow_dispatch:
   push:
-    branches: [ "**" ]
+    branches: [ "main" ]
     paths:
       - "**/Dockerfile-models"
       - ".gitmodules"
