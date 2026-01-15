@@ -308,7 +308,7 @@ Precipitation scaling (rain +40%, snow +60%):
 
    .. code::
       
-      pyddt-runmask --reset --yx 0 0 inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/run-mask.nc`
+      pyddt-runmask --reset --yx 0 0 inputs/cru-ts40_ar5_rcp85_ncar-ccsm4_CALM_Imnavait_Creek_MAT_10x10/run-mask.nc
 
 #. Setup the output specification file 
 
