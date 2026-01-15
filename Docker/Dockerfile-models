@@ -304,8 +304,9 @@ RUN mkdir -p ~/tools ~/model_examples ~/E3SM \
 # Add OLMT
 RUN git clone https://github.com/rfiorella/OLMT.git ~/tools/olmt \
   && cd ~/tools/olmt \
-  && git checkout fc6528bf6944026ebc60e309347289829b16b7f0
+  && git checkout 092f607218727ab29add56d4f7c74388e4c8c6c4
 
 FROM modex-ats-elm-tem AS include-e3sm
 
 COPY --chown=modex_user:modex_user E3SM /home/modex_user/E3SM
+COPY --chown=modex_user:modex_user model_examples /home/modex_user/model_examples
