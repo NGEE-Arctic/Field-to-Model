@@ -342,7 +342,7 @@ In the **modeling** container's bash shell:
 
 What do you expect to see?
 
-    * A thermal wave progating from the surface to the subsurface.
+    * A thermal wave propagating from the surface to the subsurface.
     * An active layer thawing and freezing.
 
 .. code-block:: python
@@ -355,7 +355,7 @@ What do you expect to see?
 
 What do you expect to see?
 
-    * A thermal wave progating from the surface to the subsurface.
+    * A thermal wave propagating from the surface to the subsurface.
     * An active layer thawing and freezing.
 
 Demo 5: Lateral, supra-permafrost flow
@@ -374,7 +374,7 @@ As the Arctic warms, we expect flow pathways to get deeper, accessing the minera
 .. figure:: ../_static/permafrost_breakout/permo-lateral.png
    :alt: ATS demo3a
    :width: 80%
-   
+
 (O'Connor et al 2019)
 
 
