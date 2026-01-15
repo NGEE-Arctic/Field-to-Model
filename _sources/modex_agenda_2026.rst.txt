@@ -69,11 +69,11 @@ Thursday, January 15, 2026
      - Coffee, Mingling
      - 
    * - 8:30–8:45 am*
-     - Daily Charge
-     - Rich Fiorella
+     - Land Ice, Snow, and Sea-Level Rise in E3SM
+     - Matt Hoffman
    * - 8:45–10:15 am*
      - ILAMB Introduction and hands-on tutorial
-     - Jitu Kumar
+     - Forrest Hoffman, Jitu Kumar
    * - 10:15–10:30 am
      - Break
      - 
