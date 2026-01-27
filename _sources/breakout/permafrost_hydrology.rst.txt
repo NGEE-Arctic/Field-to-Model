@@ -394,6 +394,7 @@ What do you expect to see?
 Full ELM runs
 ---------------
 
+
 The full simulations, including the spinup stages can be run as follows:
 
 .. warning::
@@ -405,6 +406,12 @@ The full simulations, including the spinup stages can be run as follows:
         :width: 80%
 
 
+
+
+.. warning::
+
+    Space these jobs out by several minutes due to a limitation in the Docker images.
+
 Initial condition comparison:
 
 Default:
@@ -414,6 +421,7 @@ Default:
     docker run -it --pull always --rm --cpuset-cpus 0 \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
+        -v $(pwd):/home/modex_user \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo
 
@@ -424,6 +432,7 @@ Wet/icy spinup:
     docker run -it --pull always --rm --cpuset-cpus 1 \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
+        -v $(pwd):/home/modex_user \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
         --use_arctic_init --case_prefix=ArcticInit
@@ -436,6 +445,7 @@ More layers + wet spinup:
     docker run -it --pull always --rm --cpuset-cpus 2 \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
+        -v $(pwd):/home/modex_user \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \ 
         --use_arctic_init --more_vertlayers --case_prefix=vertlayers
@@ -447,6 +457,7 @@ Polygonal tundra:
     docker run -it --pull always --rm --cpuset-cpus 3 \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
+        -v $(pwd):/home/modex_user \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
         --use_arctic_init --case_prefix=PolygonalTundra --use_polygonal_tundra --mixed_polygons \
@@ -459,6 +470,7 @@ Polygonal tundra warming experiment (when the first simulation is done!)
     docker run -it --pull always --rm --cpuset-cpus 0 \
         -v inputdata:/mnt/inputdata \
         -v output:/mnt/output \
+        -v $(pwd):/home/modex_user \
         yuanfornl/ngee-arctic-modex26:models-main-latest \
         /home/modex_user/model_examples/ELM/run_ngeearctic_site.sh --site_name=beo \
         --use_arctic_init --case_prefix=PolygonalTundraWarming --use_polygonal_tundra --mixed_polygons \
