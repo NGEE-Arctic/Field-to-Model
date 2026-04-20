@@ -3,7 +3,7 @@ Hillslope hydrology and BGC impacts breakout group
 
 Objectives of the workshop breakout
 -----------------------------------
-Objectives of this workshop breakout is learn how to set up and run ELM
+The objective of this workshop breakout is learn how to set up and run ELM
 simulations to explore a set of four ELM configurations:
 
 +---------+---------------------------+------------------+---------------------+------------------------------+
@@ -152,7 +152,7 @@ exercise.
 ELM Domain Files
 ~~~~~~~~~~~~~~~~
 
-ELM domain file is located within the container volume at:
+The ELM domain file is located within the container volume at:
 ``/mnt/inputdata/E3SM/share/domains/domain.clm/``
 
 Files used in this exercise include the identifier 'C71' for Council
