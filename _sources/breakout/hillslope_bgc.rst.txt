@@ -294,13 +294,15 @@ biogeochemically accelerated spinup.
 
 It will create a case for **transient** simulation. ``--no_submit`` will
 however tell the workflow not start the simulation, which we will do in
-the next step..
+the next step.
 
 
 The above command will generate 3 directories for the case: ``CASE`` = ``topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC``
 
 ``CASEROOT``: ``/mnt/output/cime_case_dirs/topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC``
+
 ``EXEROOT``: ``/mnt/output/cime_run_dirs/topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC/bld``
+
 ``RUNDIR``: ``/mnt/output/cime_run_dirs/topounit_gswp3_AK-SP-CL71_ICB20TRCNPRDCTCBC/run``
 
 .. JK: Commenting out the next three lines since they may not be needed
